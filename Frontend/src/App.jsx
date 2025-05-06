@@ -1,9 +1,17 @@
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Login from './Pages/Login';
+import AdminDashboard from './Pages/AdminDashboard';
 
 function App() {
 
   return (
-    <div className="text-3xl text-green-600">Welcome TO EMS of Seven Hills Facility Services Privated Limited
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to='/admin-dashboard'/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/admin-dashboard" element={<AdminDashboard/>}></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
