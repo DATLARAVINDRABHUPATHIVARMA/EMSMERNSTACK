@@ -5,7 +5,6 @@ import AdminDashboard from './Pages/AdminDashboard';
 function App() {
 
   return (<>
-  aaaaa
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to='/admin-dashboard'/>}></Route>
