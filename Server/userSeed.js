@@ -17,7 +17,7 @@ const userRegister = async ()=> {
             role:"Admin",
             workPlace:'Office',
             client:'None',
-            dateofJoining: 4-30-2025,
+            dateofJoining: 1-30-2025,
         })
         await newUser.save()
     } catch(error) {
