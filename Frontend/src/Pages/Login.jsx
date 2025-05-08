@@ -15,6 +15,13 @@ const Login = () => {
                         <label htmlFor="password" className="block text-grey-700">Password</label>
                         <input type="password" className="w-full px-3 py-2 border" placeholder="********"/>
                     </div>
+                    <div className="mb-4 flex items-center jusify-between">
+                        <label className="inline-flex items-center">
+                            <input type="checkbox" className="form-checkbox"/>
+                            <span className="ml-2 text-gray-700">Remember Me</span>
+                        </label>
+                        <a href="#" className="text-teal-600">Forget Password?</a>
+                    </div>
                 </form>
                 <button>Login</button>
             </div>
