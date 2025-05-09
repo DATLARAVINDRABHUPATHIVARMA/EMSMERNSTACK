@@ -1,5 +1,17 @@
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import Login from './Pages/Login.jsx';
+import AdminDashboard from './Pages/AdminDashboard.jsx';
+
 function App() {
-  return <div className="text-4xl text-green-700">EMPLOYEE MANAGEMENT SYSTEM</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/"  element={<Navigate to='admin-dashboard'/>}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
