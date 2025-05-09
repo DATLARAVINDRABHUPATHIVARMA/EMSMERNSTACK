@@ -17,7 +17,7 @@ const Login = () => {
       if(error.response && !error.response.data.success) {
         setError(error.response.data.error);
       } else{
-        setError("Server Error");
+        setError("abc error");
       }
     }
   };
@@ -40,6 +40,7 @@ const Login = () => {
               className="w-full px-3 py-2 border"
               placeholder="Enter Email"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div>
@@ -51,6 +52,7 @@ const Login = () => {
               className="w-full px-3 py-2 border"
               placeholder="**********"
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div className="mb-4 flex items-center justify-between">
