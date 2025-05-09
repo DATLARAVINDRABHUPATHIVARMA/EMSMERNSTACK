@@ -10,7 +10,7 @@ const userRegister = async ()=> {
             name:"DATLA RAVINDRA BHUPATHI VARMA",
             contact:9133672933,
             address:'44, HACP Colony, Opposite Vikrampuri, Secunderabad - 500009',
-            email:'ravivarmadatla64@gmail.com',
+            email:'admin@gmail.com',
             password: hashPassword,
             employeeID: '1222222222222222222222222',
             designation: 'Full Stack Software Developer',
