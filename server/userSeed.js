@@ -9,9 +9,9 @@ const userRegister = async () => {
     const newUser = new User({
       name: "John Doe",
       contact: "1234567890",
-      email: "johndoe@example.com",
+      email: "sample@gmail.com",
       password: hashPassword,
-      role: "ADMIN"
+      role: "admin"
     })
     await newUser.save();
   } catch(error){
