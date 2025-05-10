@@ -5,7 +5,7 @@ const AdminDashboard = () => {
   const {user} = useAuth()
   return (
     <div>
-      AdminDashboard {user.name}
+      AdminDashboard {user && user.name}
     </div>
   )
 }
