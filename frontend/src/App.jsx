@@ -9,6 +9,9 @@ function App() {
         <Route path="/"  element={<Navigate to='admin-dashboard'/>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
+        <Route path="/manager-dashboard" element={<AdminDashboard />}></Route>
+        <Route path="/staff-dashboard" element={<AdminDashboard />}></Route>
+        <Route path="/employee-dashboard" element={<AdminDashboard />}></Route>
       </Routes>
     </BrowserRouter>
   )

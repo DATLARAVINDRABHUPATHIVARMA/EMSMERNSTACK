@@ -1,9 +1,10 @@
 import React from 'react'
 
 const AdminDashboard = () => {
+  const {user} = useAuth()
   return (
     <div>
-      Admin Dashboard
+      Admin Dashboard {user.name}
     </div>
   )
 }
