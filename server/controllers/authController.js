@@ -25,7 +25,7 @@ const  login = async (req, res) => {
 }
 
 const verify = (req, res) => {
-  res.status(200).json({ success: true, user: req.user });
+  return res.status(200).json({ success: true, user: req.user });
 }
 
 export { login, verify };

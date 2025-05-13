@@ -4,25 +4,26 @@ import User from '../models/User.js';
 const verifyUser = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
-        if (!token) {
-            return res.status(404).json({ success: false, error: "Token not provided" });
-        }
-        const decoded = jwt.verify(token, process.env.JWT_KEY);
-        if(!decoded) {
-            return res.status(404).json({ success: false, error: "Token not valid" });
+        if(!token) {
+            return res.status(404).json({success: false, error: 'No token provided' });
         }
 
-        const user = await User.findById({_id: decoded._id}).select('-password');
-
-        if(!user) {
-            return res.status(404).json({ success: false, error: "User not found" });
+        const decoded = await jwt.verify(token, process.env.JWT_KEY);
+        if(!decoded){
+            return res.status(404).json({ success: false, error: 'Token is invalid' });
         }
 
-        req.user = user;
+        const user = await User.findById({_id:decoded._id}).select('-password');
+
+        if (!user){
+            return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        req.user = user
         next();
     } catch (error) {
-       //req.status(500).json({ success: false, error: "Server Error" });
+        return res.status(500).json({ success: false, error: 'Server error' });
     }
 }
 
-export default verifyUser();
+export default verifyUser;
