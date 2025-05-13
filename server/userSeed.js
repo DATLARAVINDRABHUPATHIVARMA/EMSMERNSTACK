@@ -7,11 +7,28 @@ const userRegister = async () => {
   try{
     const hashPassword = await bcrypt.hash("admin", 10);
     const newUser = new User({
-      name: "John Doe",
-      contact: "1234567890",
-      email: "sample@gmail.com",
+      name: "DATLA RAVINDRA BHUPATHI VARMA",
+      contact: "9133672933",
+      address:"44, HACP Colony, Opposite Vikrampuri, Karkhana, Secunderabad, Telangana, 500009",
+      aadhaarNumber: "571691790704",
+      gender: "MALE",
+      employeeID: "SHF001",
+      email: "ravivarmadatla64@gmail.com",
       password: hashPassword,
-      role: "admin"
+      PANNumber: "BNEPV6837Q",
+      dateOfBirth: new Date("1998-06-10"),
+      dateOfJoining: new Date("2025-05-01"),
+      department: "IT",
+      designation: "Software Engineer",
+      role: "admin",
+      workPlace: "Head Office",
+      client: "SHFS",
+      reportingInchargePerson: "V NagaBhushan Rao",
+      repPersonDesignation: "CEO",
+      bankName: "Karur Vysya Bank",
+      bankAccountNumber: "1234567890123456",
+      IFSCCode: "KVBK000123",
+      bankBranch: "Anakapalle",
     })
     await newUser.save();
   } catch(error){
