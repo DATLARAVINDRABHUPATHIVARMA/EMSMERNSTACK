@@ -26,7 +26,7 @@ const userRegister = async () => {
       reportingInchargePerson: "V NagaBhushan Rao",
       repPersonDesignation: "CEO",
       bankName: "Karur Vysya Bank",
-      bankAccountNumber: "1234568787790123456",
+      bankAccountNumber: "12345687790123456",
       IFSCCode: "KVBK0001234",
       bankBranch: "Anakapalle",
     })
