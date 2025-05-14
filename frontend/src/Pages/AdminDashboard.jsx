@@ -14,7 +14,7 @@ const AdminDashboard = () => {
   }
   return (
     <div>
-      AdminDashboard {user && user.name}
+      <nav className="text-6xl color-green">AdminDashboard {user && user.name}</nav>
     </div>
   )
 }
