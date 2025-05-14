@@ -1,0 +1,46 @@
+import mongoose from "mongoose";
+
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  contact: { type: String, required: true, unique : true },
+  address: { type: String, required: true},
+  aadhaarNumber: { type: Number, required: true, unique : true },
+  gender: { type: String, enum: ["MALE", "FEMALE", "OTHER"], required: true },
+  employeeID: { type: String, required: true, unique : true },
+  email: { type: String, unique: true },
+  password: { type: String},
+  PANNumber: { type: String, unique : true},
+  dateOfBirth: { type: Date, required: true },
+  dateOfJoining: { type: Date, required: true },
+  //profileImage: { type: String, required: true },
+  department: { type: String, required: true },
+  designation: { type: String, required: true },
+  role: {
+    type: String,
+    enum: ["admin", "manager", "staff", "employee"],
+    required: true,
+  },
+  workPlace: { type: String, required: true },
+  client: { type: String, required: true },
+  reportingInchargePerson: { type: String },
+  repPersonDesignation: { type: String },
+  repPersonEmployeeID: { type: String },
+  currentSalary: { type: String },
+  bankName: { type: String, required: true },
+  bankAccountNumber: { type: String, required: true, unique : true },
+  IFSCCode: { type: String, required: true },
+  bankBranch: { type: String, required: true },
+  teamCount: { type: Number },
+  teamDetails: { type: Array },
+  previousDesignation: { type: String },
+  previousSalary: { type: String },
+  dateOfPromotion: { type: Date },
+  dateOfTermination: { type: Date },
+  refPerson: { type: String },
+  isRefPersonEmployee: { type: String, enum: ["Yes", "No"]},
+  refPersonContact: { type: String },
+  refPersonEmployeeID: { type: String },
+});
+
+const User = mongoose.model("User", userSchema);
+export default User;
