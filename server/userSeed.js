@@ -8,12 +8,12 @@ const userRegister = async () => {
     const hashPassword = await bcrypt.hash("admin", 10);
     const newUser = new User({
       name: "LOPSAN",
-      contact: "9133672903",
+      contact: "9133612903",
       address:"44, HACP Colony, Opposite Vikrampuri, Karkhana, Secunderabad, Telangana, 500009",
       aadhaarNumber: "571691790004",
       gender: "MALE",
-      employeeID: "LIV000192",
-      email: "lopsan@gmail.com",
+      employeeID: "LIV0001192",
+      email: "lopsang@gmail.com",
       password: hashPassword,
       PANNumber: "BNEPV6837Q",
       dateOfBirth: new Date("1998-06-10"),
