@@ -21,8 +21,10 @@ const authContext = ({children}) => {
                 }
             } else {
                 setUser(null)
+                setLoading(false);
             }
             } catch (error) {
+                console.log(error)
                 if(error.response && !error.response.data.error) {
                     setUser(null)
                 }

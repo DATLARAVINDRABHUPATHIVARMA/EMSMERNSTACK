@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth } from '../context/authContext.jsx'
-import { useNavigate } from'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeDashboard = () => {
   const {user, loading} = useAuth()
