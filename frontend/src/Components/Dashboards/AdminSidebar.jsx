@@ -9,7 +9,7 @@ const AdminSidebar = () => {
         <h3 className='text-3xl text-center font-dancing-script'>Employee MS</h3>
       </div>
       <div className='px-4'>
-        <NavLink to='/admin-dashboard' className={({isActive}) => `${isActive ? "bg-purple-500" : " "} flex items-center space-x-4 block py-2.5 px-4 rounded`} end>
+        <NavLink to='/admin-dashboard' className={({isActive}) => `${isActive ? "bg-sky-500" : " "} flex items-center space-x-4 block py-2.5 px-4 rounded`} end>
           <FaTachometerAlt /> 
           <span>Dashboard</span> 
         </NavLink>
@@ -29,7 +29,7 @@ const AdminSidebar = () => {
           <FaMapMarked/> 
           <span>Site</span> 
         </NavLink>
-        <NavLink to='/admin-dashboard/store' className={({isActive}) => `${isActive ? "bg-purple-400" : " "} flex items-center space-x-4 block py-2.5 px-4 rounded`}>
+        <NavLink to='/admin-dashboard/store' className={({isActive}) => `${isActive ? "bg-lime-500" : " "} flex items-center space-x-4 block py-2.5 px-4 rounded`}>
           <FaStoreAlt /> 
           <span>Store</span> 
         </NavLink>
@@ -37,7 +37,7 @@ const AdminSidebar = () => {
           <FaCalendarAlt /> 
           <span>Leave</span> 
         </NavLink>
-        <NavLink to='/admin-dashboard' className='flex items-center space-x-4 block py-2.5 px-4 rounded'>
+        <NavLink to='/admin-dashboard' className={({isActive}) => `${isActive ? "bg-red-500" : " "} flex items-center space-x-4 block py-2.5 px-4 rounded`} end>
           <FaMoneyBillWave /> 
           <span>Salary</span> 
         </NavLink>
