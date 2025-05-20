@@ -4,8 +4,8 @@ import AdminDashboard from './Pages/AdminDashboard.jsx';
 import ManagerDashboard from './Pages/ManagerDashboard.jsx';
 import StaffDashboard from './Pages/StaffDashboard.jsx';
 import EmployeeDashboard from './Pages/EmployeeDashboard.jsx';
-import PrivateRoutes from '../Utils/PrivateRoutes.jsx';
-import RoleBaseRoutes from '../Utils/RoleBaseRoutes.jsx';
+import PrivateRoutes from './Utils/PrivateRoutes.jsx';
+import RoleBaseRoutes from './Utils/RoleBaseRoutes.jsx';
 
 function App() {
   return (

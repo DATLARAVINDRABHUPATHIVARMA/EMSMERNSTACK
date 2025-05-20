@@ -1,5 +1,6 @@
 import React from 'react'
-import { useAuth } from '../Context/authContext.jsx'
+import { useAuth } from "../Context/authContext.jsx";
+import AdminSidebar from '../Components/Dashboards/AdminSidebar.jsx';
 
 
 const AdminDashboard = () => {
@@ -7,7 +8,7 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <nav className="text-6xl color-green"> {user && user.name} Admin dashboard</nav>
+      <AdminSidebar/>
     </div>
   )
 }

@@ -1,22 +1,14 @@
 import React from 'react'
-import { useAuth } from '../context/authContext.jsx'
-import { useNavigate } from 'react-router-dom';
+import EmployeeSidebar from '../Components/Dashboards/EmployeeSidebar.jsx';
 
-const EmployeeDashboard = () => {
-  const {user, loading} = useAuth()
-    const navigate = useNavigate()
 
-    if (loading) {
-        return <div>Loading...</div>
-      }
-      if(!user){
-        navigate('/login')
-      }
+const AdminDashboard = () => {
+
   return (
     <div>
-      EmployeeDashboard {user && user.name}
+      <EmployeeSidebar/>
     </div>
   )
 }
 
-export default EmployeeDashboard
+export default AdminDashboard
