@@ -1,9 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Oswald:wght@200..700&display=swap');
-
-@import "tailwindcss";
-
-@theme {
-  --font-dancing-script: 'Dancing Script', 'cursive';
-  --font-bebas-neue: 'Bebas Neue', 'Arial', sans-serif;
-  --font-oswald: 'Oswald', 'Arial', sans-serif;
-}
