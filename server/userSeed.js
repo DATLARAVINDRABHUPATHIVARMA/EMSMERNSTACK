@@ -7,13 +7,13 @@ const userRegister = async () => {
   try{
     const hashPassword = await bcrypt.hash("admin", 10);
     const newUser = new User({
-      name: "LOPSAN",
-      contact: "9133612903",
+      name: "V Nagabhushana Rao",
+      contact: "9133612999",
       address:"44, HACP Colony, Opposite Vikrampuri, Karkhana, Secunderabad, Telangana, 500009",
       aadhaarNumber: "571691790004",
       gender: "MALE",
-      employeeID: "LIV0001192",
-      email: "lopsang@gmail.com",
+      employeeID: "SHFS00001",
+      email: "vnr@gmail.com",
       password: hashPassword,
       PANNumber: "BNEPV6837Q",
       dateOfBirth: new Date("1998-06-10"),
@@ -26,7 +26,7 @@ const userRegister = async () => {
       reportingInchargePerson: "V NagaBhushan Rao",
       repPersonDesignation: "CEO",
       bankName: "Karur Vysya Bank",
-      bankAccountNumber: "12345687790123456",
+      bankAccountNumber: "1234561187790123456",
       IFSCCode: "KVBK0001234",
       bankBranch: "Anakapalle",
     })
