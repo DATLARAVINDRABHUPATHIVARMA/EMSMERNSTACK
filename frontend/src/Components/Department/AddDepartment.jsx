@@ -24,7 +24,8 @@ const AddDepartment = () => {
         }
       });
       if(response.data.success){
-        navigate('/admin-dashboard/departments')
+        navigate('/admin-dashboard/department')
+        console.log('successful')
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
