@@ -1,43 +1,10 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const AddDepartment = () => {
-  const [department, setDepartment] = useState({
-    dep_name: "",
-    description: "",
-  });
-
-  const navigate = useNavigate()
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setDepartment({ ...department, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:5000/api/department/add", department, {
-        headers: {
-          "Authorization": `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      if(response.data.success){
-        navigate('/admin-dashboard/department')
-        console.log('successful')
-      }
-    } catch (error) {
-      if (error.response && !error.response.data.success) {
-        alert(error.response.data.error);
-      }
-    }
-  };
-
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
-      <h2 className="text-2xl font-bold mb-6">Add New Department</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="text-2xl font-bold mb-6">Add Department</h2>
+      <form>
         <div>
           <label
             htmlFor="dep_name"
@@ -47,14 +14,11 @@ const AddDepartment = () => {
           </label>
           <input
             type="text"
-            name="dep_name"
-            onChange={handleChange}
-            placeholder="Department Name"
+            placeholder="Enter Dep Name"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
           />
         </div>
-
         <div className="mt-3">
           <label
             htmlFor="description"
@@ -64,16 +28,28 @@ const AddDepartment = () => {
           </label>
           <textarea
             name="description"
-            onChange={handleChange}
             placeholder="Description"
-            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
             rows="5"
+          ></textarea>
+        </div>
+        <div className="mt-3">
+          <label
+            htmlFor="emp"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Total Employees
+          </label>
+          <input
+            type="text"
+            placeholder="Number of Employees"
+            className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
+            required
           />
         </div>
-
         <button
           type="submit"
-          className="w-full mt-6 bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded"
+          className="w-full mt-6 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
         >
           Add Department
         </button>
