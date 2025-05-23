@@ -81,7 +81,7 @@ const AddDepartment = () => {
             Total Employees
           </label>
           <input
-            type="text"
+            type="number"
             name="employeeCount"
             onChange={handleChange}
             placeholder="Number of Employees"
