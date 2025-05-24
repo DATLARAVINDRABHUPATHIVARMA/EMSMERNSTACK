@@ -10,7 +10,7 @@ const DepartmentList = () => {
   const [filteredDepartments, setFilteredDepartments] = useState([]);
 
   const onDepartmentDelete = async (id) => {
-    const data = departments.filter((dep) => dep._id !== id);
+    const data = departments.filter(dep => dep._id !== id);
     setDepartments(data);
   };
 
@@ -22,7 +22,7 @@ const DepartmentList = () => {
           "http://localhost:5000/api/department",
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );

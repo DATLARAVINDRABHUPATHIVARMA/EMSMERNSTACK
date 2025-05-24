@@ -13,6 +13,8 @@ import SitesList from "./Components/Department/SitesList.jsx";
 import Store from "./Components/Department/Store.jsx";
 import AddDepartment from "./Components/Department/AddDepartment.jsx";
 import EditDepartment from "./Components/Department/EditDepartment.jsx";
+import EmployeeList from "./Components/Employee/EmployeeList.jsx";
+import AddEmployee from "./Components/Employee/AddEmployee.jsx";
 
 function App() {
   return (
@@ -31,6 +33,14 @@ function App() {
           }
         >
           <Route index element={<AdminSummary />}></Route>
+          <Route
+            path="/admin-dashboard/employees"
+            element={<EmployeeList />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/add-employee"
+            element={<AddEmployee />}
+          ></Route>
           <Route
             path="/admin-dashboard/departments"
             element={<DepartmentList />}
