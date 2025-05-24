@@ -19,10 +19,10 @@ export const columns = [
 
 export const DepartmentButtons = () => {
     return (
-        <div>
-            <button>View</button>
-            <button>Edit</button>
-            <button>Delete</button>
+        <div className="flex space-x-3">
+            <button className='px-3 py-1 bg-emerald-500 text-white'>View</button>
+            <button className='px-3 py-1 bg-purple-500 text-white'>Edit</button>
+            <button className='px-3 py-1 bg-red-500 text-white'>Delete</button>
         </div>
     )
 }
