@@ -7,6 +7,12 @@ import axios from "axios";
 const DepartmentList = () => {
   const [departments, setDepartments] = useState([]);
   const [depLoading, setDepLoading] = useState(false);
+  const [filteredDepartments, setFilteredDepartments] = useState([]);
+
+  const onDepartmentDelete = async (id) => {
+    const data = departments.filter((dep) => dep._id !== id);
+    setDepartments(data);
+  };
 
   useEffect(() => {
     const fetchDepartments = async () => {
@@ -27,9 +33,15 @@ const DepartmentList = () => {
             sno: sno++,
             departmentName: dep.departmentName,
             employeeCount: dep.employeeCount,
-            action: <DepartmentButtons />,
+            action: (
+              <DepartmentButtons
+                _id={dep._id}
+                onDepartmentDelete={onDepartmentDelete}
+              />
+            ),
           }));
           setDepartments(data);
+          setFilteredDepartments(data)
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {
@@ -43,9 +55,16 @@ const DepartmentList = () => {
     fetchDepartments();
   }, []);
 
+  const filterDepartments = (e) => {
+    const records = departments.filter((dep) => dep.departmentName.toLowerCase().includes(e.target.value.toLowerCase()))
+    setFilteredDepartments(records)
+  }
+
   return (
     <>
-      { depLoading ? <div>Loading Departments Table...</div> :
+      {depLoading ? (
+        <div>Loading Departments Table...</div>
+      ) : (
         <div className="p-5">
           <div className="text-center">
             <h3 className="text-2xl font-bold">Department Details</h3>
@@ -55,6 +74,7 @@ const DepartmentList = () => {
               type="text"
               placeholder="Search By Dept Name"
               className="px-4 py-0.5 border"
+              onChange={filterDepartments}
             />
             <Link
               to="/admin-dashboard/add-department"
@@ -63,11 +83,11 @@ const DepartmentList = () => {
               Add New Department
             </Link>
           </div>
-          <div className='mt-5'>
-            <DataTable columns={columns} data={departments} />
+          <div className="mt-5">
+            <DataTable columns={columns} data={filteredDepartments} pagination/>
           </div>
         </div>
-      }
+      )}
     </>
   );
 };

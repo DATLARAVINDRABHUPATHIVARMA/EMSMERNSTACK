@@ -12,6 +12,7 @@ import ClientList from "./Components/Department/ClientList.jsx";
 import SitesList from "./Components/Department/SitesList.jsx";
 import Store from "./Components/Department/Store.jsx";
 import AddDepartment from "./Components/Department/AddDepartment.jsx";
+import EditDepartment from "./Components/Department/EditDepartment.jsx";
 
 function App() {
   return (
@@ -37,6 +38,10 @@ function App() {
           <Route
             path="/admin-dashboard/add-department"
             element={<AddDepartment />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/department/:id"
+            element={<EditDepartment />}
           ></Route>
           <Route
             path="/admin-dashboard/clients"
