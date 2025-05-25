@@ -13,12 +13,19 @@ const AddEmployee = () => {
                     </label>
                     <input type="text" name='name' placeholder='Insert Name' className='mt-1 p-2 block w-full border border-gray-300 rounded-md' required/>
                 </div>
+                {/* Personal Contact Number */}
+                <div>
+                    <label className='block text-sm font-medium text-gray-700'>
+                        Personal Contact Number
+                    </label>
+                    <input type="text" name='contactSelf' placeholder='Enter Personal Phone Number' className='mt-1 p-2 block w-full border border-gray-300 rounded-md' required/>
+                </div>
                 {/* Email */}
                 <div>
                     <label className='block text-sm font-medium text-gray-700'>
                         Email
                     </label>
-                    <input type="text" name='email' placeholder='Enter Email' className='mt-1 p-2 block w-full border border-gray-300 rounded-md' required/>
+                    <input type="email" name='email' placeholder='Enter Email' className='mt-1 p-2 block w-full border border-gray-300 rounded-md' required/>
                 </div>
             </div>
         </form>

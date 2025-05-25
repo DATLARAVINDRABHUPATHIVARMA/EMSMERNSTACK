@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  contactOwn: { type: String, required: true, unique : true },
+  contactSelf: { type: String, required: true, unique : true },
   contactCompany: { type: String, unique : true },
   address: { type: String, required: true},
   addressPermanent: { type: String, required: true},
