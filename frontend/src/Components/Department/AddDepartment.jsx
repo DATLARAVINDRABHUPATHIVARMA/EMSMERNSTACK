@@ -47,7 +47,7 @@ const AddDepartment = () => {
             htmlFor="departmentName"
             className="text-sm font-medium text-gray-700"
           >
-            Department Name
+            Department Name*
           </label>
           <input
             type="text"
@@ -78,7 +78,7 @@ const AddDepartment = () => {
             htmlFor="employeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees
+            Total Employees*
           </label>
           <input
             type="number"
@@ -95,6 +95,9 @@ const AddDepartment = () => {
         >
           Add Department
         </button>
+        <div className="mt-3">
+          <p>All * marked must be fields must be required</p>
+        </div>
       </form>
     </div>
   );
