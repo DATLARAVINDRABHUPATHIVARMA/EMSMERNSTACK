@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   profileImage: { type: String },
   dateOfJoining: { type: Date, required: true },
   aadhaarNumber: { type: Number, required: true, unique : true },
+  qualification: { type: String, },
   maritalStatus: { type: String, enum: ["Single", "Married"], required: true},
   emergencyContact: {type: String},
   spouseName: { type : String},
@@ -23,7 +24,7 @@ const userSchema = new mongoose.Schema({
   PANNumber: { type: String, unique : true},
   department: { type: String, required: true },
   designation: { type: String, required: true },
-  desDescription: {type: String},/*array enum*/
+  jobRole: {type: String},/*array enum*/
   workPlace: { type: String, required: true },
   workSiteDetails: { type: String,},
   client: { type: String, required: true },
