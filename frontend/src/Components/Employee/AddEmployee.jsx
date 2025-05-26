@@ -491,7 +491,19 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          /*
+          {/* UAN Number */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              UAN Number
+            </label>
+            <input
+              type="text"
+              name="UANNumber"
+              placeholder="Enter UAN Number "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+        {/*
           <div>
             <label className="block text-sm font-medium text-gray-700">
                Total Team
@@ -514,7 +526,7 @@ const AddEmployee = () => {
               placeholder="Enter Team Details "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
-          </div>*/
+          </div>*/}
           {/*Previous Designation*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
