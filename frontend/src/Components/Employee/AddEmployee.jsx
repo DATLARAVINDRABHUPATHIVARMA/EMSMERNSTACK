@@ -491,7 +491,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Team Count */}
+          /*
           <div>
             <label className="block text-sm font-medium text-gray-700">
                Total Team
@@ -503,7 +503,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Team Details */}
+          
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Team Details 
@@ -514,7 +514,7 @@ const AddEmployee = () => {
               placeholder="Enter Team Details "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
-          </div>
+          </div>*/
           {/*Previous Designation*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -635,6 +635,9 @@ const AddEmployee = () => {
         >
           Add Employee
         </button>
+        <div className="mt-3">
+          <p>All * marked must be fields must be required</p>
+        </div>
       </form>
     </div>
   );
