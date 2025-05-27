@@ -10,13 +10,10 @@ const userRegister = async () => {
       name: "V Nagabhushana Rao",
       contact: "9133612999",
       address:"44, HACP Colony, Opposite Vikrampuri, Karkhana, Secunderabad, Telangana, 500009",
-      //per pre add
       aadhaarNumber: "571691790004",
       gender: "MALE",
       employeeID: "SHFS00001",
-      //martial status
       email: "vnr@gmail.com",
-      //office and personal
       password: hashPassword,
       PANNumber: "BNEPV6837Q",
       dateOfBirth: new Date("1998-06-10"),
@@ -26,18 +23,13 @@ const userRegister = async () => {
       role: "admin",
       workPlace: "Head Office",
       client: "SHFS",
-      //clientid
       reportingInchargePerson: "V NagaBhushan Rao",
       repPersonDesignation: "CEO",
       bankName: "Karur Vysya Bank",
       bankAccountNumber: "1234561187790123456",
       IFSCCode: "KVBK0001234",
       bankBranch: "Anakapalle",
-      //esic
-      //pf
-      //qualification
-      //contact
-      //emergency
+      
     })
     await newUser.save();
   } catch(error){

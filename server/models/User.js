@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+  employeeID: { type: String, required: true, unique : true },
   name: { type: String, required: true },
   personalContact: { type: String, required: true, unique : true },
-  employeeID: { type: String, required: true, unique : true },
   dateOfBirth: { type: Date, required: true },
   personalEmail: { type: String, unique: true },
   password: { type: String},
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
   officeContact: { type: String, unique : true },
   officeEmail: { type: String },
   PANNumber: { type: String, unique : true},
-  department: { type: String, required: true },
+  //department: { type: String, required: true },
   designation: { type: String, required: true },
   jobRole: {type: String},/*array enum*/
   workPlace: { type: String, required: true },
@@ -55,6 +55,8 @@ const userSchema = new mongoose.Schema({
     enum: ["admin", "manager", "staff", "employee"],
     required: true,
   },
+  createdAt:  {type: Date, default: Date.now},
+  updatedAt:  {type: Date, default: Date.now},
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const fetchDepartments = async () => {
     let departments
       try {
