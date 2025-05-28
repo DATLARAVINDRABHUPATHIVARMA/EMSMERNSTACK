@@ -67,7 +67,7 @@ const addEmployee = async (req, res) => {
       isRefPersonEmployee,
       refPersonContact,
       refPersonEmployeeID,
-      webRole,
+      role,
     } = req.body;
 
     const user = await User.findOne({ email });
@@ -129,7 +129,7 @@ const addEmployee = async (req, res) => {
       isRefPersonEmployee,
       refPersonContact,
       refPersonEmployeeID,
-      webRole,
+      role,
     });
     const savedUser = await newUser.save();
 

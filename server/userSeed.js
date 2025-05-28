@@ -8,7 +8,7 @@ const userRegister = async () => {
     const hashPassword = await bcrypt.hash("123123", 10);
     const newUser = new User({
       employeeID: 'AAAA000000',
-      role: "admin",
+      
       name: 'V N Rao', 
       personalContact: '+919000664051',
       dateOfBirth: new Date("1969-05-10"),
@@ -50,6 +50,7 @@ const userRegister = async () => {
       // isRefPersonEmployee: { type: String, enum: ["Yes", "No"]},
       // refPersonContact: { type: String },
       // refPersonEmployeeID: { type: String },
+      role: "admin",
     })
     await newUser.save();
   } catch(error){
