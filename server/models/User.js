@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
   isRefPersonEmployee: { type: String, enum: ["Yes", "No"]},
   refPersonContact: { type: String },
   refPersonEmployeeID: { type: String },
-  role: {
+  webRole: {
     type: String,
     enum: ["admin", "manager", "staff", "employee"],
     required: true,

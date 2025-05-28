@@ -25,11 +25,11 @@ const Login = () => {
         login(response.data.user);
         console.log(response.data.user);
         localStorage.setItem("token", response.data.token);
-        if (response.data.user.role === "admin") {
+        if (response.data.user.webRole === "admin") {
           navigate("/admin-dashboard");
-        } else if (response.data.user.role === "manager") {
+        } else if (response.data.user.webRole === "manager") {
           navigate("/manager-dashboard");
-        } else if (response.data.user.role === "staff") {
+        } else if (response.data.user.webRole === "staff") {
           navigate("/staff-dashboard");
         } else {
           navigate("/employee-dashboard");
