@@ -7,13 +7,13 @@ export const columns = [
     selector: (row) => row.sno,
   },
   {
-    name: "Client Name",
-    selector: (row) => row.clientName,
+    name: "Department Name",
+    selector: (row) => row.siteName,
     sortable: true
   },
   {
     name: "Total Employees",
-    selector: (row) => row.clientEmployeeCount,
+    selector: (row) => row.siteEmployeeCount,
     sortable: true
   },
   {
@@ -22,15 +22,15 @@ export const columns = [
   },
 ];
 
-export const ClientButtons = ({ _id, onClientDelete }) => {
+export const SiteButtons = ({ _id, onSiteDelete }) => {
   const navigate = useNavigate();
 
   const handleDelete = async (id) => {
-    const confirm = window.confirm("Do you want to Delete Client?");
+    const confirm = window.confirm("Do you want to Delete Site?");
     if (confirm) {
       try {
         const response = await axios.delete(
-          `http://localhost:5000/api/client/${id}`,
+          `http://localhost:5000/api/site/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -38,7 +38,7 @@ export const ClientButtons = ({ _id, onClientDelete }) => {
           }
         );
         if (response.data.success) {
-          onClientDelete(id);
+          onSiteDelete(id);
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {
@@ -55,7 +55,7 @@ export const ClientButtons = ({ _id, onClientDelete }) => {
       </button>
       <button
         className="px-3 py-1 bg-purple-600 text-white rounded"
-        onClick={() => navigate(`/admin-dashboard/client/${_id}`)}
+        onClick={() => navigate(`/admin-dashboard/site/${_id}`)}
       >
         Edit
       </button>
@@ -68,4 +68,3 @@ export const ClientButtons = ({ _id, onClientDelete }) => {
     </div>
   );
 };
-

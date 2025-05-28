@@ -78,7 +78,7 @@ const EditClient = () => {
           <input
             type="text"
             name="clientName"
-            value={client.clientName}
+            value={cli.clientName}
             onChange={handleChange}
             placeholder="Enter Client Name"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
@@ -87,14 +87,14 @@ const EditClient = () => {
         </div>
         <div className="mt-3">
           <label
-            htmlFor="description"
+            htmlFor="clientDescription"
             className="block text-sm font-medium text-gray-700"
           >
             Description
           </label>
           <textarea
-            name="description"
-            value={client.description}
+            name="clientDescription"
+            value={cli.clientDescription}
             onChange={handleChange}
             placeholder="Description"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
@@ -103,15 +103,15 @@ const EditClient = () => {
         </div>
         <div className="mt-3">
           <label
-            htmlFor="employeeCount"
+            htmlFor="clientEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
             Total Employees*
           </label>
           <input
             type="number"
-            name="employeeCount"
-            value={client.employeeCount}
+            name="clientEmployeeCount"
+            value={client.clientEmployeeCount}
             onChange={handleChange}
             placeholder="Number of Employees"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"

@@ -49,7 +49,7 @@ const userRegister = async () => {
       // isRefPersonEmployee: { type: String, enum: ["Yes", "No"]},
       // refPersonContact: { type: String },
       // refPersonEmployeeID: { type: String },
-      webRole: 'admin',
+      role: 'admin',
     })
     await newUser.save();
   } catch(error){

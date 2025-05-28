@@ -5,6 +5,7 @@ const getClients = async (req, res) => {
         const clients = await Client.find()
         return res.status(200).json({success: true, clients})
     } catch (error) {
+        console.log(error.message)
         return res.status(500).json({success: false, error: 'get client server error'})
     }
 }
@@ -12,52 +13,52 @@ const getClients = async (req, res) => {
 const editClient = async (req, res) => {
     try {
         const {id} = req.params;
-        const department = await Department.findById({_id: id})
-        return res.status(200).json({success: true, department})
+        const client = await Client.findById({_id: id})
+        return res.status(200).json({success: true, client})
     } catch (error) {
-        return res.status(500).json({success: false, error: 'get department server error'})
+        return res.status(500).json({success: false, error: 'get client server error'})
     }
 }
 
-const addDepartment = async (req, res) => {
+const addClient = async (req, res) => {
     try{
-        const {departmentName, description, employeeCount} = req.body;
-        const newDepartment = new Department ({
-            departmentName,
-            description,
-            employeeCount
+        const {clientName, clientDescription, clientEmployeeCount} = req.body;
+        const newClient = new Client ({
+            clientName,
+            clientDescription,
+            clientEmployeeCount
         })
-        await newDepartment.save()
-        return res.status(200).json({success: true, department: newDepartment})
+        await newClient.save()
+        return res.status(200).json({success: true, client: newClient})
     } catch(error){
-        return res.status(500).json({success: false, error: "add department server error"})
+        return res.status(500).json({success: false, error: "add client server error"})
     }
 
 }
 
-const updateDepartment = async (req, res) => {
+const updateClient = async (req, res) => {
     try {
         const {id} = req.params;
-        const {departmentName, description, employeeCount} = req.body
-        const updateDep = await Department.findByIdAndUpdate({_id: id},{
-            departmentName,
-            description,
-            employeeCount
+        const {clientName, clientDescription, clientEmployeeCount} = req.body
+        const updateCli = await Client.findByIdAndUpdate({_id: id},{
+            clientName,
+            clientDescription,
+            clientEmployeeCount
         })
-        return res.status(200).json({success: true, updateDep})
+        return res.status(200).json({success: true, updateCli})
     } catch (error) {
-        return res.status(500).json({success: false, error: 'Update department server error'})
+        return res.status(500).json({success: false, error: 'Update client server error'})
     }
 }
 
-const deleteDepartment = async (req, res) => {
+const deleteClient = async (req, res) => {
     try {
         const {id} = req.params;
-        const deleteDep = await Department.findByIdAndDelete({_id: id})
-        return res.status(200).json({success: true, deleteDep})
+        const deleteCli = await Client.findByIdAndDelete({_id: id})
+        return res.status(200).json({success: true, deleteCli})
     } catch (error) {
-        return res.status(500).json({success: false, error: 'Delete department server error'})
+        return res.status(500).json({success: false, error: 'Delete client server error'})
     }
 }
 
-export {addDepartment, getDepartments, editDepartment, updateDepartment, deleteDepartment}
+export {addClient, getClients, editClient, updateClient, deleteClient}
