@@ -1,63 +1,14 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  employeeID: { type: String, required: true, unique : true },
-  name: { type: String, required: true },
-  personalContact: { type: String, required: true, unique : true },
-  dateOfBirth: { type: Date, required: true },
-  email: { type: String },
-  password: { type: String},
-  presentAddress: { type: String, required: true},
-  //state //country //pincode //city
-  gender: { type: String, enum: ["Male", "Female", "Other"], required: true },
-  profileImage: { type: String },
-  dateOfJoining: { type: Date, required: true },
-  aadhaarNumber: { type: Number, required: true },
-  qualification: { type: String, },
-  maritalStatus: { type: String, enum: ["Single", "Married"], required: true},
-  emergencyContact: {type: String},
-  spouseName: { type : String},
-  childrenCount: {type: String},
-  permanentAddress: { type: String},
-  officeContact: { type: String},
-  officeEmail: { type: String },
-  PANNumber: { type: String },
-  //department: { type: String, required: true },
-  designation: { type: String, required: true },
-  jobRole: {type: String},/*array enum*/
-  workPlace: { type: String, required: true },
-  workSiteDetails: { type: String,},
-  client: { type: String, required: true },
-  clientID: { type: String, required: true },
-  reportingInchargePerson: { type: String },
-  repPersonDesignation: { type: String },
-  repPersonEmployeeID: { type: String },
-  currentSalary: { type: String },
-  bankName: { type: String},
-  bankAccountNumber: { type: String },
-  IFSCCode: { type: String},
-  bankBranch: { type: String},
-  ESIDetails: { type: String,},
-  insuranceDetails: { type: String,},
-  PFDetails: { type: String,},
-  //teamCount: { type: Number },
-  //teamDetails: { type: Array },
-  previousDesignation: { type: String },
-  previousSalary: { type: String },
-  dateOfPromotion: { type: Date },
-  dateOfTermination: { type: Date },
-  refPerson: { type: String },
-  isRefPersonEmployee: { type: String, enum: ["Yes", "No"]},
-  refPersonContact: { type: String },
-  refPersonEmployeeID: { type: String },
-  role: {
-    type: String,
-    enum: ["admin", "manager", "staff", "employee"],
-    required: true,
-  },
-  createdAt:  {type: Date, default: Date.now},
-  updatedAt:  {type: Date, default: Date.now},
-});
+  name: {type: String, required: true},
+  email: {type: String},
+  password: {type: String},
+  role: {type: String, enum: ["admin","manager", "staff","employee"], required: true},
+  profileImage: {type: String},
+  createdAt: {type: Date, default: Date.now},
+  updatedAt: {type:  Date, default: Date.now},
+})
 
-const User = mongoose.model("User", userSchema);
-export default User;
+const User = mongoose.model("User", userSchema)
+export default User
