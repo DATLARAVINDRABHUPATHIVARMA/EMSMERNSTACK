@@ -1,6 +1,27 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [visiblePassword, setVisiblePassword] = useState(false);
+
+  const toggleVisibility = () => setVisiblePassword(!visiblePassword);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        { email, password }
+      );
+      console.log(response)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       className="flex flex-col items-center h-screen justify-center bg-gradient-to-b from-purple-500 from-50% 
@@ -11,7 +32,8 @@ to-gray-100 to-50% space-y-6"
       </h2>
       <div className="border shadow p-6 w-80 bg-white">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
-        <form>
+        {/*error && <p className="text-red-500">{error}</p>*/}
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700">
               Email
@@ -20,6 +42,7 @@ to-gray-100 to-50% space-y-6"
               type="email"
               className="w-full px-3 py-2 border"
               placeholder="Enter Email"
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -29,14 +52,34 @@ to-gray-100 to-50% space-y-6"
             </label>
             <div className="relative flex justify-between">
               <input
-                // type={visiblePassword ? "text" : "password"}
-                type="password"
+                type={visiblePassword ? "text" : "password"}
                 className="w-full  px-3 py-2 border"
                 placeholder="**********"
-                //onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <button
+                type="button"
+                onClick={toggleVisibility}
+                className="absolute inset-y-0 right-0 px-2 py-2 text-grey-500 hover:text-purple-500 
+transition-colors duration-100"
+              >
+                {visiblePassword ? (
+                  <IoMdEye size={24} />
+                ) : (
+                  <IoMdEyeOff size={24} />
+                )}
+              </button>
             </div>
+          </div>
+          <div className="mb-4 flex items-center justify-between">
+            <label className="inline-flex items-center">
+              <input type="checkbox" className="form-checkbox" />
+              <span className="ml-2 text-md text-gray-700">Remember Me</span>
+            </label>
+            <a href="#" className=" text-sm text-blue-500">
+              Forgot Password?
+            </a>
           </div>
           <div className="mb-4">
             <button
