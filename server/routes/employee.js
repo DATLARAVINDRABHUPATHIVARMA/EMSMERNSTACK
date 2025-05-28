@@ -1,6 +1,6 @@
 import express from 'express'
 import authMiddleware from '../middleware/authMiddleware.js'
-import  {addEmployee, upload} from '../controllers/employeeController.js'
+import  {addEmployee, upload} from '../controllers/EmployeeController.js'
 
 const router = express.Router()
 

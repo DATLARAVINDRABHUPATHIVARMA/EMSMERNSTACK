@@ -8,13 +8,14 @@ import PrivateRoutes from "./Utils/PrivateRoutes.jsx";
 import RoleBaseRoutes from "./Utils/RoleBaseRoutes.jsx";
 import AdminSummary from "./Components/Dashboards/AdminSummary.jsx";
 import DepartmentList from "./Components/Department/DepartmentList.jsx";
-import ClientList from "./Components/Department/ClientList.jsx";
 import SitesList from "./Components/Department/SitesList.jsx";
 import Store from "./Components/Department/Store.jsx";
 import AddDepartment from "./Components/Department/AddDepartment.jsx";
 import EditDepartment from "./Components/Department/EditDepartment.jsx";
 import EmployeeList from "./Components/Employee/EmployeeList.jsx";
 import AddEmployee from "./Components/Employee/AddEmployee.jsx";
+import ClientList from "./Components/Client/ClientList.jsx";
+import AddClient from "./Components/Client/AddClient.jsx";
 
 function App() {
   return (
@@ -55,7 +56,11 @@ function App() {
           ></Route>
           <Route
             path="/admin-dashboard/clients"
-            element={<ClientList />}
+            element={<ClientList />} 
+          ></Route>
+          <Route
+            path="/admin-dashboard/add-client"
+            element={<AddClient />} 
           ></Route>
           <Route path="/admin-dashboard/sites" element={<SitesList />}></Route>
           <Route path="/admin-dashboard/store" element={<Store />}></Route>
