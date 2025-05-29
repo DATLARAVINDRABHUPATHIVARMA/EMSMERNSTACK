@@ -6,6 +6,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const [error, setError] = useState(null);
 
   const toggleVisibility = () => setVisiblePassword(!visiblePassword);
 
@@ -16,9 +17,15 @@ const Login = () => {
         "http://localhost:5000/api/auth/login",
         { email, password }
       );
-      console.log(response)
+      if (response.data.success) {
+        alert("Successfully Login");
+      }
     } catch (error) {
-      console.log(error);
+      if (error.response && !error.response.data.success) {
+        setError(error.response.data.error);
+      } else {
+        setError("abc error");
+      }
     }
   };
 
@@ -32,7 +39,7 @@ to-gray-100 to-50% space-y-6"
       </h2>
       <div className="border shadow p-6 w-80 bg-white">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
-        {/*error && <p className="text-red-500">{error}</p>*/}
+        {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700">
