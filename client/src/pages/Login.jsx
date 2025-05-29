@@ -1,12 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [error, setError] = useState(null);
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const toggleVisibility = () => setVisiblePassword(!visiblePassword);
 
@@ -18,13 +22,23 @@ const Login = () => {
         { email, password }
       );
       if (response.data.success) {
-        alert("Successfully Login");
+        login(response.data.user);
+        localStorage.setItem("token", response.data.token);
+        if (response.data.user.role === "admin") {
+          navigate("/admin-dashboard");
+        } else if (response.data.user.role === "manager") {
+          navigate("/manager-dashboard");
+        } else if (response.data.user.role === "staff") {
+          navigate("/staff-dashboard");
+        } else {
+          navigate("/employee-dashboard");
+        }
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
         setError(error.response.data.error);
       } else {
-        setError("abc error");
+        setError("Server Error");
       }
     }
   };
