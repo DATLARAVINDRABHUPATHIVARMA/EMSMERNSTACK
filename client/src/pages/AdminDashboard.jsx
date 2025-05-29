@@ -16,7 +16,7 @@ const AdminDashboard = () => {
     <div>
       Admin Dashboard of {user && user.name}
     </div>
-  )
+  ) 
 }
 
 export default AdminDashboard
