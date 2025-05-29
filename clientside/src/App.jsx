@@ -7,6 +7,9 @@ import EmployeeDashboard from "./pages/EmployeeDashboard.jsx";
 import PrivateRoutes from "./utils/PrivateRoutes.jsx";
 import RoleBaseRoutes from "./utils/RoleBaseRoutes.jsx";
 import AdminSummary from "./components/dashboard/AdminSummary.jsx";
+import DepartmentList from "./components/department/DepartmentList.jsx";
+import ClientList from "./components/client/ClientList.jsx";
+import SiteList from "./components/site/SiteList.jsx";
 
 function App() {
   return (
@@ -26,11 +29,11 @@ function App() {
         >
           <Route index element={<AdminSummary />}></Route>
           <Route path="/admin-dashboard/departments" element={<DepartmentList />}></Route>
-          <Route path="/admin-dashboard/add-department" element={<AddDepartment />}></Route>
-          <Route path="/admin-dashboard/department/:id" element={<EditDepartment />}></Route>
+          {/* <Route path="/admin-dashboard/add-department" element={<AddDepartment />}></Route> */}
+          {/* <Route path="/admin-dashboard/department/:id" element={<EditDepartment />}></Route> */}
           <Route path="/admin-dashboard/clients" element={<ClientList />}></Route>
-          <Route path="/admin-dashboard/add-client" element={<AddClient />}></Route>
-          <Route path="/admin-dashboard/client/:id" element={<EditClient />}></Route>
+          {/* <Route path="/admin-dashboard/add-client" element={<AddClient />}></Route> */}
+          {/* <Route path="/admin-dashboard/client/:id" element={<EditClient />}></Route> */}
           <Route path="/admin-dashboard/sites" element={<SiteList />}></Route>
         </Route>
         <Route path="/manager-dashboard" element={<ManagerDashboard />}></Route>
