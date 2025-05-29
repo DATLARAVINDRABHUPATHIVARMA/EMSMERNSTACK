@@ -1,14 +1,15 @@
-import React from 'react'
-import { useAuth } from '../context/authContext.jsx'
+import React from "react";
+import { useAuth } from "../context/authContext.jsx";
+import AdminSidebar from "../components/dashboard/AdminSidebar.jsx";
 
 const AdminDashboard = () => {
-  const {user} = useAuth()
+  const { user } = useAuth();
 
   return (
-    <div>
-      Admin Dashboard of {user && user.name}
+    <div className="flex">
+      <AdminSidebar />
     </div>
-  ) 
-}
+  );
+};
 
-export default AdminDashboard
+export default AdminDashboard;
