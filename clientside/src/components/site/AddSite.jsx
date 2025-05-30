@@ -1,10 +1,44 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const AddSite = () => {
+  const [site, setSite] = useState({
+        siteName: "",
+        siteAddress: "",
+        siteDescription: "",
+        siteEmployeeCount: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSite({ ...site, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/site/add", site,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, },
+        }
+      );
+      if (response.data.success) {
+        navigate("/admin-dashboard/sites")
+      }
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
+  }
+    
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
       <h2 className="text-2xl font-bold mb-6">Add Site</h2>
-       <form> 
+       <form onSubmit={handleSubmit}> 
         <div>
           <label
             htmlFor="siteName"
@@ -15,7 +49,7 @@ const AddSite = () => {
           <input
             type="text"
             name="siteName"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Enter Site Name"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
@@ -31,7 +65,7 @@ const AddSite = () => {
           <input
             type="text"
             name="siteAddress"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Enter Site Address"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
@@ -47,7 +81,7 @@ const AddSite = () => {
           </label>
           <textarea
             name="siteDescription"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Site Description"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
             rows="5"
@@ -63,7 +97,7 @@ const AddSite = () => {
           <input
             type="number"
             name="siteEmployeeCount"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Number of Employees in Site"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
             required

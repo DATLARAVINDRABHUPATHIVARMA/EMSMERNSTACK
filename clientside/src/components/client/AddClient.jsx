@@ -1,10 +1,47 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const AddClient = () => {
+  const [client, setClient] = useState({
+      clientID: "",
+      clientName: "",
+      clientServices: "",
+      clientLocation:"",
+      clientServiceStartedOn:"",
+      clientDescription: "",
+      clientEmployeeCount: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setClient({ ...client, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/client/add", client,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, },
+        }
+      );
+      if (response.data.success) {
+        navigate("/admin-dashboard/clients")
+      }
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
+  }
+
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
       <h2 className="text-2xl font-bold mb-6">Add Client</h2>
-       <form> 
+       <form onSubmit={handleSubmit}> 
         <div>
           <label
             htmlFor="clientID"
@@ -15,7 +52,7 @@ const AddClient = () => {
           <input
             type="text"
             name="clientID"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Enter Client ID"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
@@ -31,7 +68,7 @@ const AddClient = () => {
           <input
             type="text"
             name="clientName"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Enter Client Name"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
@@ -47,7 +84,7 @@ const AddClient = () => {
           <input
             type="text"
             name="clientServices"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Enter Client Services"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
@@ -63,7 +100,7 @@ const AddClient = () => {
           <input
             type="text"
             name="clientLocation"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Enter Client Location"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
@@ -79,7 +116,7 @@ const AddClient = () => {
           <input
             type="date"
             name="clientServiceStartedOn"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Enter Service Starting Date"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
@@ -95,7 +132,7 @@ const AddClient = () => {
           </label>
           <textarea
             name="clientDescription"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Client Description"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
             rows="5"
@@ -111,7 +148,7 @@ const AddClient = () => {
           <input
             type="number"
             name="clientEmployeeCount"
-            // onChange={handleChange}
+            onChange={handleChange}
             placeholder="Number of Employees for Client"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
