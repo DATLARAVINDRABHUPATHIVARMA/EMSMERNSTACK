@@ -25,7 +25,7 @@ const AddClient = () => {
     try {
       const response = await axios.post("http://localhost:5000/api/client/add", client,
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, },
+          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
         }
       );
       if (response.data.success) {

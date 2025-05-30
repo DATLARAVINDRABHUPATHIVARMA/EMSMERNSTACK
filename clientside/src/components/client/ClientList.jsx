@@ -1,7 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import DataTable from "react-data-table-component";
 import { Link } from 'react-router-dom'
+import { ClientButtons, columns } from '../../utils/ClientHelper.jsx';
+import axios from 'axios';
 
 const ClientList = () => {
+  const [clients, setClients] = useState([]);
+
+  const onClientDelete = async (id) => {
+    const data = clients.filter(client => client._id !== id);
+    setClients(data);
+  };
+
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/client",
+          {
+            headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`,},
+          }
+        );
+        if(response.data.success){
+          let sno = 1;
+          const data = await response.data.clients.map((client) => ({
+            _id: client._id,
+            sno: sno++,
+            clientID: client.clientID,
+            clientName: client.clientName,
+            clientServices: client.clientServices,
+            clientLocation: client.clientLocation,
+            action: (
+              <ClientButtons _id={client._id} onClientDelete={onClientDelete}/>
+            ),
+          }))
+        }
+      } catch(error){
+
+          }
+        }
+  }, [])
+
   return (
     <div className="p-5">
       <div className="text-center">
@@ -14,6 +52,9 @@ const ClientList = () => {
         <Link to="/admin-dashboard/add-client" className="px-4 py-1 bg-purple-500 rounded text-white">
           Add New Client
         </Link>
+      </div>
+      <div className="mt-5">
+        <DataTable columns={columns} data={filteredClients} pagination/>
       </div>
     </div>
   )

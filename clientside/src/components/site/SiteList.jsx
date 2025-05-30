@@ -1,7 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import DataTable from "react-data-table-component";
 import { Link } from 'react-router-dom'
+import { columns, SiteButtons } from '../../utils/SiteHelper.jsx';
+import axios from 'axios';
 
 const SiteList = () => {
+  const [sites, setSites] = useState([]);
+
+  const onSiteDelete = async (id) => {
+    const data = sites.filter(site => site._id !== id);
+    setSites(data);
+  };
+  
+  useEffect(() => {
+    const fetchSites = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/site",
+          {
+            headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`,},
+          }
+        );
+        if(response.data.success){
+          let sno = 1;
+          const data = await response.data.sites.map((site) => ({
+            _id: site._id,
+            sno: sno++,
+            siteName: site.siteName,
+            action: (
+              <SiteButtons _id={site._id} onSiteDelete={onSiteDelete}/>
+            ),
+          }))
+        }
+      } catch(error){
+
+          }
+        }
+  }, [])
+
   return (
     <div className="p-5">
       <div className="text-center">
@@ -14,6 +49,9 @@ const SiteList = () => {
         <Link to="/admin-dashboard/add-site" className="px-4 py-1 bg-purple-500 rounded text-white">
           Add New Site
         </Link>
+      </div>
+      <div className="mt-5">
+        <DataTable columns={columns} data={filteredSites} pagination/>
       </div>
     </div>
   )

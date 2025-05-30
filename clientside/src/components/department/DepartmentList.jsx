@@ -1,7 +1,43 @@
-import React from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
+import { columns, DepartmentButtons } from "../../utils/DepartmentHelper.jsx";
 
 const DepartmentList = () => {
+  const [departments, setDepartments] = useState([]);
+
+  const onDepartmentDelete = async (id) => {
+    const data = departments.filter(department => department._id !== id);
+    setDepartments(data);
+  };
+
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/department",
+          {
+            headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`,},
+          }
+        );
+        if(response.data.success){
+          let sno = 1;
+          const data = await response.data.departments.map((department) => ({
+            _id: department._id,
+            sno: sno++,
+            departmentName: department.departmentName,
+            departmentEmployeeCount: department.departmentEmployeeCount,
+            action: (
+              <DepartmentButtons _id={department._id} onDepartmentDelete={onDepartmentDelete}/>
+            ),
+          }))
+        }
+      } catch(error){
+
+          }
+        }
+  }, [])
+
   return (
     <div className="p-5">
       <div className="text-center">
@@ -14,6 +50,9 @@ const DepartmentList = () => {
         <Link to="/admin-dashboard/add-department" className="px-4 py-1 bg-purple-500 rounded text-white">
           Add New Department
         </Link>
+      </div>
+      <div className="mt-5">
+        <DataTable columns={columns} data={filteredDepartments} pagination/>
       </div>
     </div>
   );
