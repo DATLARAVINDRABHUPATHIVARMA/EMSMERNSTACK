@@ -7,6 +7,7 @@ import axios from 'axios';
 const ClientList = () => {
   const [clients, setClients] = useState([]);
   const [clientLoading, setClientLoading] = useState(false);
+  const [filteredClients, setFilteredClients] = useState([]);
 
   const onClientDelete = async (id) => {
     const data = clients.filter(client => client._id !== id);
@@ -36,6 +37,7 @@ const ClientList = () => {
             ),
           }))
           setClients(data);
+          setFilteredClients(data)
         }
       } catch(error){
         if (error.response && !error.response.data.success) {
@@ -49,6 +51,11 @@ const ClientList = () => {
     fetchClients();
   }, [])
 
+  const filterClients = (e) => {
+    const records = clients.filter((client) => client.clientID.toLowerCase().includes(e.target.value.toLowerCase()))
+    setFilteredClients(records)
+  }
+
   return (
      <>
       {clientLoading ? (
@@ -60,14 +67,14 @@ const ClientList = () => {
       </div>
       <div className="flex justify-between items-center">
         <input type="text" placeholder="Search By Client ID" className="px-4 py-0.5 border"
-        // onChange={filterClients}
+        onChange={filterClients}
         />
         <Link to="/admin-dashboard/add-client" className="px-4 py-1 bg-purple-500 rounded text-white">
           Add New Client
         </Link>
       </div>
       <div className="mt-5">
-        <DataTable columns={columns} data={clients}/>
+        <DataTable columns={columns} data={filteredClients} pagination/>
       </div>
     </div>
      )}

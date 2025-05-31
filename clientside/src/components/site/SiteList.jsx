@@ -7,6 +7,7 @@ import axios from 'axios';
 const SiteList = () => {
   const [sites, setSites] = useState([]);
   const [siteLoading, setSiteLoading] = useState(false);
+  const [filteredSites, setFilteredSites] = useState([]);
 
   const onSiteDelete = async (id) => {
     const data = sites.filter(site => site._id !== id);
@@ -33,6 +34,7 @@ const SiteList = () => {
             ),
           }))
           setSites(data);
+          setFilteredSites(data)
         }
       } catch(error){
         if (error.response && !error.response.data.success) {
@@ -46,6 +48,11 @@ const SiteList = () => {
     fetchSites();
   }, [])
 
+  const filterSites = (e) => {
+    const records = sites.filter((site) => site.siteName.toLowerCase().includes(e.target.value.toLowerCase()))
+    setFilteredSites(records)
+  }
+
   return (
     <>
       {siteLoading ? (
@@ -57,14 +64,14 @@ const SiteList = () => {
       </div>
       <div className="flex justify-between items-center">
         <input type="text" placeholder="Search By Site" className="px-4 py-0.5 border"
-        // onChange={filterSites}
+        onChange={filterSites}
         />
         <Link to="/admin-dashboard/add-site" className="px-4 py-1 bg-purple-500 rounded text-white">
           Add New Site
         </Link>
       </div>
       <div className="mt-5">
-        <DataTable columns={columns} data={sites} />
+        <DataTable columns={columns} data={filteredSites} pagination/>
       </div>
     </div>
     )}
