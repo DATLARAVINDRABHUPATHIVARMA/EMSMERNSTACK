@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
+  const [clientLoading, setClientLoading] = useState(false);
 
   const onClientDelete = async (id) => {
     const data = clients.filter(client => client._id !== id);
@@ -14,6 +15,7 @@ const ClientList = () => {
 
   useEffect(() => {
     const fetchClients = async () => {
+      setClientLoading(true);
       try {
         const response = await axios.get("http://localhost:5000/api/client",
           {
@@ -33,14 +35,25 @@ const ClientList = () => {
               <ClientButtons _id={client._id} onClientDelete={onClientDelete}/>
             ),
           }))
+          setClients(data);
         }
       } catch(error){
-
-          }
+        if (error.response && !error.response.data.success) {
+          alert(error.response.data.error);
         }
+      } finally {
+        setClientLoading(false);
+      }
+    }
+
+    fetchClients();
   }, [])
 
   return (
+     <>
+      {clientLoading ? (
+        <div>Loading Clients Table...</div>
+      ) : (
     <div className="p-5">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Clients</h3>
@@ -54,9 +67,11 @@ const ClientList = () => {
         </Link>
       </div>
       <div className="mt-5">
-        <DataTable columns={columns} data={filteredClients} pagination/>
+        <DataTable columns={columns} data={clients}/>
       </div>
     </div>
+     )}
+    </>
   )
 }
 

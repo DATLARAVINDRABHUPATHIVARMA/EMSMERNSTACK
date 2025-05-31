@@ -6,6 +6,7 @@ import { columns, DepartmentButtons } from "../../utils/DepartmentHelper.jsx";
 
 const DepartmentList = () => {
   const [departments, setDepartments] = useState([]);
+  const [departmentLoading, setDepartmentLoading] = useState(false);
 
   const onDepartmentDelete = async (id) => {
     const data = departments.filter(department => department._id !== id);
@@ -14,6 +15,7 @@ const DepartmentList = () => {
 
   useEffect(() => {
     const fetchDepartments = async () => {
+      setDepartmentLoading(true);
       try {
         const response = await axios.get("http://localhost:5000/api/department",
           {
@@ -31,14 +33,25 @@ const DepartmentList = () => {
               <DepartmentButtons _id={department._id} onDepartmentDelete={onDepartmentDelete}/>
             ),
           }))
+          setDepartments(data);
         }
       } catch(error){
-
-          }
+        if (error.response && !error.response.data.success) {
+          alert(error.response.data.error);
         }
+      } finally {
+        setDepartmentLoading(false);
+      }
+    }
+
+    fetchDepartments();
   }, [])
 
   return (
+     <>
+      {departmentLoading ? (
+        <div>Loading Departments Table...</div>
+      ) : (
     <div className="p-5">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Departments</h3>
@@ -52,9 +65,11 @@ const DepartmentList = () => {
         </Link>
       </div>
       <div className="mt-5">
-        <DataTable columns={columns} data={filteredDepartments} pagination/>
+        <DataTable columns={columns} data={departments} />
       </div>
     </div>
+     )}
+    </>
   );
 };
 

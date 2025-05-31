@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const SiteList = () => {
   const [sites, setSites] = useState([]);
+  const [siteLoading, setSiteLoading] = useState(false);
 
   const onSiteDelete = async (id) => {
     const data = sites.filter(site => site._id !== id);
@@ -14,6 +15,7 @@ const SiteList = () => {
   
   useEffect(() => {
     const fetchSites = async () => {
+      setSiteLoading(true);
       try {
         const response = await axios.get("http://localhost:5000/api/site",
           {
@@ -30,14 +32,25 @@ const SiteList = () => {
               <SiteButtons _id={site._id} onSiteDelete={onSiteDelete}/>
             ),
           }))
+          setSites(data);
         }
       } catch(error){
-
-          }
+        if (error.response && !error.response.data.success) {
+          alert(error.response.data.error);
         }
+      } finally {
+        setSiteLoading(false);
+      }
+    }
+
+    fetchSites();
   }, [])
 
   return (
+    <>
+      {siteLoading ? (
+        <div>Loading Sites Table...</div>
+      ) : (
     <div className="p-5">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Sites</h3>
@@ -51,9 +64,11 @@ const SiteList = () => {
         </Link>
       </div>
       <div className="mt-5">
-        <DataTable columns={columns} data={filteredSites} pagination/>
+        <DataTable columns={columns} data={sites} />
       </div>
     </div>
+    )}
+    </>
   )
 }
 

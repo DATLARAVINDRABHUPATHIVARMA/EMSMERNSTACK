@@ -1,5 +1,14 @@
 import Client from "../models/Client.js";
 
+const getClients = async (req, res) => {
+    try {
+        const clients = await Client.find()
+        return res.status(200).json({success: true, clients})
+    } catch (error) {
+        return res.status(500).json({success: false, error: 'get client server error'})
+    }
+}
+
 const addClient = async (req, res) => {
   try {
     const {clientID, clientName, clientServices, clientLocation, clientServiceStartedOn, clientDescription, clientEmployeeCount} = req.body;
@@ -13,4 +22,4 @@ const addClient = async (req, res) => {
   }
 }
 
- export {addClient}
+ export {addClient, getClients}
