@@ -45,4 +45,14 @@ const updateClient = async (req, res) => {
   } 
 }
 
- export {addClient, getClients, getClient, updateClient}
+const deleteClient = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const deleteClient = await Client.findByIdAndDelete({_id: id})
+    return res.status(200).json({success: true, deleteClient})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'Delete Client server error'})
+  }
+}
+
+ export {addClient, getClients, getClient, updateClient, deleteClient}
