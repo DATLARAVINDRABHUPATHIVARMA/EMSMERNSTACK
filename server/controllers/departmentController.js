@@ -1,12 +1,12 @@
 import Department from "../models/Department.js";
 
 const getDepartments = async (req, res) => {
-    try {
-        const departments = await Department.find()
-        return res.status(200).json({success: true, departments})
-    } catch (error) {
-        return res.status(500).json({success: false, error: 'get department server error'})
-    }
+  try {
+    const departments = await Department.find()
+    return res.status(200).json({success: true, departments})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'get departments server error'})
+  }
 }
 
 const addDepartment = async (req, res) => {
@@ -24,4 +24,29 @@ const addDepartment = async (req, res) => {
   }
 }
 
- export {addDepartment, getDepartments}
+const getDepartment = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const department = await Department.findById({_id: id})
+    return res.status(200).json({success: true, department})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'get department server error'})
+  }
+}
+
+const updateDepartment = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const {departmentName, departmentDescription, departmentEmployeeCount} = req.body;
+    const updateDepartment = await Department.findByIdAndUpdate({_id: id},{
+      departmentName,
+      departmentDescription,
+      departmentEmployeeCount
+    })
+    return res.status(200).json({success: true, updateDepartment})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'Update Department server error'})
+  } 
+}
+
+ export {addDepartment, getDepartments, getDepartment, updateDepartment}

@@ -78,4 +78,3 @@ export const ClientButtons = ({ _id, onClientDelete }) => {
     </div>
   );
 };
-

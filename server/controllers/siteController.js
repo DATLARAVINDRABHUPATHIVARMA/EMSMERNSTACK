@@ -5,7 +5,7 @@ const getSites = async (req, res) => {
     const sites = await Site.find()
     return res.status(200).json({success: true, sites})
   } catch (error) {
-    return res.status(500).json({success: false, error: 'get site server error'})
+    return res.status(500).json({success: false, error: 'get sites server error'})
   }
 }
 
@@ -25,6 +25,27 @@ const addSite = async (req, res) => {
   }
 }
 
+const getSite = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const site = await Site.findById({_id: id})
+    return res.status(200).json({success: true, site})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'get site server error'})
+  }
+}
 
+const updateSite = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const {siteName, siteAddress, siteDescription, siteEmployeeCount} = req.body;
+    const updateClient = await Client.findByIdAndUpdate({_id: id},{
+      siteName, siteAddress, siteDescription, siteEmployeeCount
+    })
+    return res.status(200).json({success: true, updateSite})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'Update Site server error'})
+  } 
+} 
 
- export {addSite, getSites}
+ export {addSite, getSites, getSite, updateSite}
