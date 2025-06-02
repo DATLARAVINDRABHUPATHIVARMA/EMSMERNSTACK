@@ -860,6 +860,15 @@ const AddEmployee = () => {
             />
           </div>
         </div>
+        <button
+          type="submit"
+          className="w-full mt-6 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Add Employee
+        </button>
+        <div className="mt-3">
+          <p>All * marked must be fields must be required</p>
+        </div>
       </form>
     </div>
   );
