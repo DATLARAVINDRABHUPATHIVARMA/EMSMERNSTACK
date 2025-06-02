@@ -37,3 +37,22 @@ export const fetchClients = async () => {
   }
   return clients
 }
+
+export const fetchSites = async () => {
+  let sites
+  try {
+    const response = await axios.get("http://localhost:5000/api/site", {
+      headers: {
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+    if(response.data.success){
+      sites = response.data.sites
+    }
+  } catch (error) {
+    if(error.response && !error.response.data.success){
+      alert(error.response.data.error);
+    }
+  }
+  return sites
+}
