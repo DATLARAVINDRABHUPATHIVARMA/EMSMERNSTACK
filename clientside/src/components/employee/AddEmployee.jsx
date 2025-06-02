@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import {
-  fetchClients,
-  fetchDepartments,
-  fetchSites,
-} from "../../utils/EmployeeHelper.jsx";
+import { fetchClients, fetchDepartments, fetchSites, } from "../../utils/EmployeeHelper.jsx";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddEmployee = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
@@ -13,6 +11,8 @@ const AddEmployee = () => {
   const [departments, setDepartments] = useState([]);
   const [clients, setClients] = useState([]);
   const [sites, setSites] = useState([]);
+  const [formData, setFormData] = useState({});
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getDepartments = async () => {
@@ -38,10 +38,43 @@ const AddEmployee = () => {
     getSites();
   });
 
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
+    } else {
+      setFormData((prevData) => ({ ...prevData, [name]: value }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formDataObj = new FormData()
+    Object.keys(formData).forEach((key) =>{
+      formDataObj.append(key, formData[key])
+    })
+    
+    try {
+      const response = await axios.post("http://localhost:5000/api/employee/add", formDataObj,
+        {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
+        }
+      );
+      if (response.data.success) {
+        navigate("/admin-dashboard/employees")
+      }
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
+  }
+
   return (
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Add New Employee</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Employee ID */}
           <div>
@@ -51,7 +84,8 @@ const AddEmployee = () => {
             <input
               type="text"
               name="employeeID"
-              /*onChange={handleChange}*/ placeholder="Enter Employee ID"
+              onChange={handleChange}
+              placeholder="Enter Employee ID"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
@@ -64,7 +98,8 @@ const AddEmployee = () => {
             <input
               type="text"
               name="name"
-              /*onChange={handleChange}*/ placeholder="Enter Full Name as per Aadhaar"
+              onChange={handleChange}
+              placeholder="Enter Full Name as per Aadhaar"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
@@ -77,7 +112,8 @@ const AddEmployee = () => {
             <input
               type="number"
               name="personalContact"
-              /*onChange={handleChange}*/ placeholder="Enter Personal Phone Number"
+              onChange={handleChange}
+              placeholder="Enter Personal Phone Number"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
@@ -90,7 +126,8 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfBirth"
-              /*onChange={handleChange}*/ className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
@@ -102,7 +139,8 @@ const AddEmployee = () => {
             <input
               type="email"
               name="email"
-              /*onChange={handleChange}*/ placeholder="Enter Personal Email"
+              onChange={handleChange}
+              placeholder="Enter Personal Email"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
@@ -116,7 +154,8 @@ const AddEmployee = () => {
                 type={visiblePassword ? "text" : "password"}
                 name="password"
                 placeholder="**********"
-                /*onChange={handleChange}*/ className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                onChange={handleChange}
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               />
               <button
                 type="button"
@@ -140,7 +179,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="presentAddress"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Present Address"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -153,7 +192,7 @@ const AddEmployee = () => {
             </label>
             <select
               name="gender"
-              //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -171,7 +210,7 @@ const AddEmployee = () => {
             <input
               type="file"
               name="profileImage"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Upload Image"
               accept="image/*"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -185,7 +224,7 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfJoining"
-              //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
@@ -198,7 +237,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="aadhaarNumber"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Aadhaar Number"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -212,19 +251,19 @@ const AddEmployee = () => {
             <input
               type="text"
               name="qualifiaction"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Highest Qualification "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Nationality */}
+          {/* Nationality 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Nationality*
             </label>
             <select
               name="nationality"
-              //   onChange={handleChange}
+                onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -232,7 +271,7 @@ const AddEmployee = () => {
               <option value="India">India</option>
               <option value="Other">Other</option>
             </select>
-          </div>
+          </div>*/}
           {/* Marital Status */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -240,7 +279,7 @@ const AddEmployee = () => {
             </label>
             <select
               name="maritalStatus"
-              //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -257,7 +296,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="emergencyContact"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Other Contact Number for Emergency "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -271,7 +310,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="spouseName"
-              //  onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Spouse Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -284,7 +323,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="childrenCount"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Number of Children "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -297,7 +336,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="permanentAddress"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Permanent Address "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -311,7 +350,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="officeContact"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Office Phone Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -324,7 +363,7 @@ const AddEmployee = () => {
             <input
               type="email"
               name="officeEmail"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Office Email "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -337,7 +376,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="PANNumber"
-              //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter PAN Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -349,7 +388,8 @@ const AddEmployee = () => {
             </label>
             <select
               name="department"
-              /*onChange={handleChange}*/ className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
               <option value="">Select Department</option>
@@ -368,7 +408,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="designation"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Designation"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -381,7 +421,7 @@ const AddEmployee = () => {
             </label>
             <select
               name="workPlace"
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -401,7 +441,7 @@ const AddEmployee = () => {
             <textarea
               name="jobRole"
               placeholder="Enter Job Details"
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               rows={4}
               required
@@ -415,7 +455,7 @@ const AddEmployee = () => {
             <textarea
               name="workSiteDetails"
               placeholder="Enter Site Details"
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               rows={4}
               required
@@ -428,7 +468,8 @@ const AddEmployee = () => {
             </label>
             <select
               name="clientID"
-              /*onChange={handleChange}*/ className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
               <option value="">Select Client ID</option>
@@ -446,7 +487,8 @@ const AddEmployee = () => {
             </label>
             <select
               name="clientName"
-              /*onChange={handleChange}*/ className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
               <option value="">Select Client</option>
@@ -465,7 +507,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="reportingInchargePerson"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reporting Person Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -478,7 +520,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="repPersonDesignation"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reporting Person Designation "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -491,7 +533,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="repPersonEmployeeID"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reporting Person Employee ID "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -503,8 +545,8 @@ const AddEmployee = () => {
             </label>
             <input
               type="text"
-              name="salary"
-            //   onChange={handleChange}
+              name="currentSalary"
+              onChange={handleChange}
               placeholder="Enter Salary "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -517,7 +559,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="bankName"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Bank Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -530,7 +572,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="bankAccountNumber"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Account Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -544,7 +586,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="IFSCCode"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter IFSC Code"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -558,7 +600,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="bankBranch"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Branch "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -571,7 +613,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="ESIDetails"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter ESI Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -584,7 +626,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="insuranceDetails"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Insurance Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -597,7 +639,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="PFDetails"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter PF Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -610,12 +652,12 @@ const AddEmployee = () => {
             <input
               type="text"
               name="UANNumber"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter UAN Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*Total Team */}
+          {/*{/*Total Team 
           <div>
             <label className="block text-sm font-medium text-gray-700">
                Total Team
@@ -623,12 +665,12 @@ const AddEmployee = () => {
             <input
               type="number"
               name="teamCount"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Total Team Members "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*
+          
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Team Details 
@@ -649,7 +691,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="previousDesignation"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Previous Designation "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -662,7 +704,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="previousSalary"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Previous Salary "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -675,7 +717,7 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfPromotion"
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
@@ -687,7 +729,7 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfTermination"
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
@@ -697,8 +739,8 @@ const AddEmployee = () => {
               Web Role*
             </label>
             <select
-              name="webRole"
-            //   onChange={handleChange}
+              name="role"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -717,7 +759,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="refPerson1"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reference Person 1 Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -730,7 +772,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="refPerson1Contact"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reference 1 Contact"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -742,7 +784,7 @@ const AddEmployee = () => {
             </label>
             <select
               name="isRefPerson1Employee"
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
               <option value="">Reference 1 Status</option>
@@ -758,7 +800,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="refPerson1EmployeeID"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reference Person 1 Employee ID "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -771,7 +813,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="refPerson2"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reference Person 2 Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -784,7 +826,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="refPerson2Contact"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reference 2 Contact"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -796,7 +838,7 @@ const AddEmployee = () => {
             </label>
             <select
               name="isRefPerson2Employee"
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
               <option value="">Reference 2 Status</option>
@@ -812,7 +854,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="refPerson2EmployeeID"
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Reference Person 2 Employee ID "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
