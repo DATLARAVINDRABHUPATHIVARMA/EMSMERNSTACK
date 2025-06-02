@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { fetchClients, fetchDepartments } from "../../utils/EmployeeHelper.jsx";
 
 const AddEmployee = () => {
     const [visiblePassword, setVisiblePassword] = useState(false);
     const toggleVisibility = () => setVisiblePassword(!visiblePassword);
+
+    const [departments, setDepartments] = useState([])
+    const [clients, setClients] = useState([])
+
+    useEffect(() => {
+      const getDepartments = async () => {
+        const departments = await fetchDepartments()
+        setDepartments(departments)
+      }
+      getDepartments()
+    })
+
+    useEffect(() => {
+      const getClients = async () => {
+        const clients = await fetchClients()
+        setClients(clients)
+      }
+      getClients()
+    })
 
   return (
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
@@ -116,11 +136,49 @@ const AddEmployee = () => {
               required
             >
               <option value="">Select Department</option>
-            {/*departments.map((dep) => (
-                <option key={dep._id} value={dep._id}>
-                  {dep.departmentName}
+              {departments.map((department) => (
+                <option key={department._id} value={department._id}>
+                  {department.departmentName}
                 </option>
-              ))}*/}
+              ))}
+            </select>
+          </div>
+          {/* Client  ID*/}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Client ID*
+            </label>
+            <select
+              name="clientID"
+            //   onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Client ID</option>
+              {clients.map((client) => (
+                <option key={client._id} value={client._id}>
+                  {client.clientID}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* Client */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Client*
+            </label>
+            <select
+              name="client"
+            //   onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Client</option>
+              {clients.map((client) => (
+                <option key={client._id} value={client._id}>
+                  {client.clientName}
+                </option>
+              ))}
             </select>
           </div>
           </div>
