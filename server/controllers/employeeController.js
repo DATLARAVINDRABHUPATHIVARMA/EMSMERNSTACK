@@ -118,7 +118,6 @@ const addEmployee = async (req, res) => {
       workPlace,
       workSiteDetails,
       client,
-      clientID,
       reportingInchargePerson,
       repPersonDesignation,
       repPersonEmployeeID,

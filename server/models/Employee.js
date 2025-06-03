@@ -26,7 +26,6 @@ const employeeSchema = new Schema({
   workPlace: {  type: Schema.Types.ObjectId, ref: "Site", required: true  },
   workSiteDetails: { type: String,},//*
   client: { type: Schema.Types.ObjectId, ref: "Client", required: true  },
-  clientID: { type: Schema.Types.ObjectId, ref: "Client", required: true  },
   reportingInchargePerson: { type: String },
   repPersonDesignation: { type: String },
   repPersonEmployeeID: { type: String },
