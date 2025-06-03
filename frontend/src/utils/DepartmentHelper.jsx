@@ -13,7 +13,7 @@ export const columns = [
   },
   {
     name: "Total Employees",
-    selector: (row) => row.employeeCount,
+    selector: (row) => row.departmentEmployeeCount,
     sortable: true
   },
   {
@@ -33,7 +33,7 @@ export const DepartmentButtons = ({ _id, onDepartmentDelete }) => {
           `http://localhost:5000/api/department/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );

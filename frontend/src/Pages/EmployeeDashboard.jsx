@@ -1,14 +1,11 @@
 import React from 'react'
-import EmployeeSidebar from '../Components/Dashboards/EmployeeSidebar.jsx';
 
-
-const AdminDashboard = () => {
-
+const EmployeeDashboard = () => {
   return (
     <div>
-      <EmployeeSidebar/>
+      
     </div>
   )
 }
 
-export default AdminDashboard
+export default EmployeeDashboard

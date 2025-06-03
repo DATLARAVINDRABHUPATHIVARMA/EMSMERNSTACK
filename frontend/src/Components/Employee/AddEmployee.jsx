@@ -1,45 +1,81 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { fetchClients, fetchDepartments, fetchSites, } from "../../utils/EmployeeHelper.jsx";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddEmployee = () => {
-  useEffect(() => {}, []);
-
   const [visiblePassword, setVisiblePassword] = useState(false);
-
   const toggleVisibility = () => setVisiblePassword(!visiblePassword);
+
+  const [departments, setDepartments] = useState([]);
+  const [clients, setClients] = useState([]);
+  const [sites, setSites] = useState([]);
+  const [formData, setFormData] = useState({});
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const getDepartments = async () => {
+      const departments = await fetchDepartments();
+      setDepartments(departments);
+    };
+    getDepartments();
+  }, []);
+
+  useEffect(() => {
+    const getClients = async () => {
+      const clients = await fetchClients();
+      setClients(clients);
+    };
+    getClients();
+  }, []);
+
+  useEffect(() => {
+    const getSites = async () => {
+      const sites = await fetchSites();
+      setSites(sites);
+    };
+    getSites();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setFormData((prevData) => ({...prevData, [name]: files[0]}));
+    } else {
+      setFormData((prevData) => ({...prevData, [name]: value}));
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formDataObj = new FormData()
+    Object.keys(formData).forEach((key) => {
+      formDataObj.append(key, formData[key])
+    })
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/employee/add", formDataObj,
+        {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
+        }
+      );
+      if (response.data.success) {
+        navigate("/admin-dashboard/employees")
+      }
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
+  }
 
   return (
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Add New Employee</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Name */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Name*
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter Full Name as per Aadhaar"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          {/* Personal Contact Number */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Phone Number*
-            </label>
-            <input
-              type="number"
-              name="personalContact"
-              placeholder="Enter Personal Phone Number"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          {/* Employee ID */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Employee ID*
@@ -47,12 +83,38 @@ const AddEmployee = () => {
             <input
               type="text"
               name="employeeID"
+              onChange={handleChange}
               placeholder="Enter Employee ID"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Date Of Birth */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Name*
+            </label>
+            <input
+              type="text"
+              name="name"
+              onChange={handleChange}
+              placeholder="Enter Full Name as per Aadhaar"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number*
+            </label>
+            <input
+              type="text"
+              name="personalContact"
+              onChange={handleChange}
+              placeholder="Enter Personal Phone Number"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Birth*
@@ -60,24 +122,23 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfBirth"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Personal Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Personal Email
             </label>
             <input
               type="email"
-              name="personalEmail"
+              name="email"
+              onChange={handleChange}
               placeholder="Enter Personal Email"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
             />
           </div>
-          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Password
@@ -87,14 +148,15 @@ const AddEmployee = () => {
                 type={visiblePassword ? "text" : "password"}
                 name="password"
                 placeholder="**********"
+                onChange={handleChange}
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
               <button
                 type="button"
                 onClick={toggleVisibility}
                 className="absolute inset-y-0 right-0 px-2 py-2 text-grey-500 hover:text-purple-500 transition-colors duration-100"
               >
+                {" "}
                 {visiblePassword ? (
                   <IoMdEye size={24} />
                 ) : (
@@ -103,7 +165,6 @@ const AddEmployee = () => {
               </button>
             </div>
           </div>
-          {/* Present Address */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Present Address*
@@ -111,28 +172,28 @@ const AddEmployee = () => {
             <input
               type="text"
               name="presentAddress"
+              onChange={handleChange}
               placeholder="Enter Present Address"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
-          </div>
-          {/* Gender */}
+          </div> 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Gender*
             </label>
             <select
               name="gender"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
               <option value="">Select Gender</option>
-              <option value="MALE">Male</option>
-              <option value="FEMALE">Female</option>
-              <option value="OTHER">Other</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
             </select>
           </div>
-          {/* Employee Image */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Photo*
@@ -140,12 +201,12 @@ const AddEmployee = () => {
             <input
               type="file"
               name="profileImage"
+              onChange={handleChange}
               placeholder="Upload Image"
               accept="image/*"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Date Of Joining */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Joining*
@@ -153,42 +214,59 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfJoining"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Aadhaar Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Aadhaar Number*
             </label>
             <input
-              type="number"
+              type="text"
               name="aadhaarNumber"
+              onChange={handleChange}
               placeholder="Enter Aadhaar Number"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Qualification*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Highest Qualification
             </label>
             <input
               type="text"
-              name="qualifiaction"
+              name="qualification"
+              onChange={handleChange}
               placeholder="Enter Highest Qualification "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Marital Status */}
+          {/* Nationality 
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Nationality*
+            </label>
+            <select
+              name="nationality"
+                onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Country</option>
+              <option value="India">India</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Marital Status*
             </label>
             <select
               name="maritalStatus"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -197,20 +275,19 @@ const AddEmployee = () => {
               <option value="Married">Married</option>
             </select>
           </div>
-          {/* Emergency Contact Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Other Emergency Phone Number*
             </label>
             <input
-              type="number"
+              type="text"
               name="emergencyContact"
+              onChange={handleChange}
               placeholder="Enter Other Contact Number for Emergency "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Spouse Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Spouse Name
@@ -218,11 +295,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="spouseName"
+              onChange={handleChange}
               placeholder="Enter Spouse Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Children Count */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Children Count
@@ -230,11 +307,11 @@ const AddEmployee = () => {
             <input
               type="number"
               name="childrenCount"
+              onChange={handleChange}
               placeholder="Number of Children "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Permanent Address */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Permanent Address*
@@ -242,24 +319,24 @@ const AddEmployee = () => {
             <input
               type="text"
               name="permanentAddress"
+              onChange={handleChange}
               placeholder="Enter Permanent Address "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Office Phone Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Office Phone Number
             </label>
             <input
-              type="number"
+              type="text"
               name="officeContact"
+              onChange={handleChange}
               placeholder="Enter Office Phone Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Office Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Office Email
@@ -267,11 +344,11 @@ const AddEmployee = () => {
             <input
               type="email"
               name="officeEmail"
+              onChange={handleChange}
               placeholder="Enter Office Email "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* PAN Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               PAN Number
@@ -279,132 +356,153 @@ const AddEmployee = () => {
             <input
               type="text"
               name="PANNumber"
+              onChange={handleChange}
               placeholder="Enter PAN Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Department */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Department*
             </label>
             <select
               name="department"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
               <option value="">Select Department</option>
+              {departments.map((department) => (
+                <option key={department._id} value={department._id}>
+                  {department.departmentName}
+                </option>
+              ))}
             </select>
           </div>
-          {/* Designation */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Designation*
             </label>
-            < input type='text' name="designation" placeholder='Enter Designation' className="mt-1 p-2 block w-full border border-gray-300 rounded-md" required /> 
+            <input
+              type="text"
+              name="designation"
+              onChange={handleChange}
+              placeholder="Enter Designation"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            />
           </div>
-          {/* Work Place */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Site*
             </label>
             <select
               name="workPlace"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
               <option value="">Select Site</option>
+              {sites.map((site) => (
+                <option key={site._id} value={site._id}>
+                  {site.siteName}
+                </option>
+              ))}
             </select>
           </div>
-          {/* Job Role */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Job Role*
             </label>
-            < textarea name="jobRole" placeholder='Enter Job Details' className="mt-1 p-2 block w-full border border-gray-300 rounded-md" rows={4} required /> 
+            <textarea
+              name="jobRole"
+              placeholder="Enter Job Details"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              rows={1}
+              required
+            />
           </div>
-          {/* Site Details */}
+          {/* Site Details
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Site Details*
             </label>
-            < textarea name="workSiteDetails" placeholder='Enter Site Details' className="mt-1 p-2 block w-full border border-gray-300 rounded-md" rows={4} required /> 
-          </div>
-          {/* Client */}
+            <textarea
+              name="workSiteDetails"
+              placeholder="Enter Site Details"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              rows={4}
+              required
+            />
+          </div>*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Client*
             </label>
             <select
-              name="client"
+              name="clientName"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
               <option value="">Select Client</option>
+              {clients.map((client) => (
+                <option key={client._id} value={client._id}>
+                  {client.clientName}
+                </option>
+              ))}
             </select>
           </div>
-          {/* Client  ID*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Client ID*
-            </label>
-            <select
-              name="clientID"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">Select Client ID</option>
-            </select>
-          </div>
-          {/* Reporting Incharge / Manager */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Reporting Person
+              Reporting Manager
             </label>
             <input
               type="text"
               name="reportingInchargePerson"
-              placeholder="Enter Reporting Person Name "
+              onChange={handleChange}
+              placeholder="Enter Reporting Manager Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Reporting Incharge Designation */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Reporting Person Designation
+              Reporting Manager Designation
             </label>
             <input
               type="text"
               name="repPersonDesignation"
-              placeholder="Enter Reporting Person Designation "
+              onChange={handleChange}
+              placeholder="Enter Reporting Manager Designation "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Reporting Incharge Employee ID */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Reporting Person Employee ID
+              Reporting Manager Employee ID
             </label>
             <input
               type="text"
               name="repPersonEmployeeID"
-              placeholder="Enter Reporting Person Employee ID "
+              onChange={handleChange}
+              placeholder="Enter Reporting Manager Employee ID "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Salary */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Salary*
+              Salary
             </label>
             <input
               type="text"
-              name="salary"
+              name="currentSalary"
+              onChange={handleChange}
               placeholder="Enter Salary "
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md" required
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Bank Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank Name*
@@ -412,25 +510,24 @@ const AddEmployee = () => {
             <input
               type="text"
               name="bankName"
+              onChange={handleChange}
               placeholder="Enter Bank Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
             />
           </div>
-          {/* Bank Account Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank Account Number*
             </label>
             <input
-              type="number"
+              type="text"
               name="bankAccountNumber"
+              onChange={handleChange}
               placeholder="Enter Account Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Bank IFSC Code */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank IFSC Code*
@@ -438,12 +535,12 @@ const AddEmployee = () => {
             <input
               type="text"
               name="IFSCCode"
+              onChange={handleChange}
               placeholder="Enter IFSC Code"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
           </div>
-          {/* Bank Branch */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank Branch
@@ -451,11 +548,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="bankBranch"
+              onChange={handleChange}
               placeholder="Enter Branch "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* ESI Details */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               ESI Number
@@ -463,11 +560,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="ESIDetails"
+              onChange={handleChange}
               placeholder="Enter ESI Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Insurance Details */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Insurance Number
@@ -475,11 +572,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="insuranceDetails"
+              onChange={handleChange}
               placeholder="Enter Insurance Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* PF Details */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               PF Number
@@ -487,11 +584,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="PFDetails"
+              onChange={handleChange}
               placeholder="Enter PF Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* UAN Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               UAN Number
@@ -499,11 +596,12 @@ const AddEmployee = () => {
             <input
               type="text"
               name="UANNumber"
+              onChange={handleChange}
               placeholder="Enter UAN Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-        {/*
+          {/*Total Team 
           <div>
             <label className="block text-sm font-medium text-gray-700">
                Total Team
@@ -511,6 +609,7 @@ const AddEmployee = () => {
             <input
               type="number"
               name="teamCount"
+              onChange={handleChange}
               placeholder="Enter Total Team Members "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
@@ -523,11 +622,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="teamDetails"
+              onChange={handleChange}
               placeholder="Enter Team Details "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>*/}
-          {/*Previous Designation*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Previous Designation
@@ -535,11 +634,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="previousDesignation"
+              onChange={handleChange}
               placeholder="Enter Previous Designation "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*Previous Salary*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Previous Salary
@@ -547,11 +646,11 @@ const AddEmployee = () => {
             <input
               type="text"
               name="previousSalary"
+              onChange={handleChange}
               placeholder="Enter Previous Salary "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Date Of Promotion */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Promotion
@@ -559,10 +658,10 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfPromotion"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Date Of Termination */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Termination
@@ -570,66 +669,17 @@ const AddEmployee = () => {
             <input
               type="date"
               name="dateOfTermination"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*Reference Person*/}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Reference Person Name
-            </label>
-            <input
-              type="text"
-              name="refPerson"
-              placeholder="Enter Reference Person Name "
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          {/*Reference Person Contact*/}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Reference Person Contact
-            </label>
-            <input
-              type="number"
-              name="refPersonContact"
-              placeholder="Enter Reference Contact"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          {/* Reference Status */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Reference Status Employee or Not
-            </label>
-            <select
-              name="isRefPersonEmployee"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            >
-              <option value="">Reference Status</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </div>
-          {/*Reference Person Employee ID*/}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Reference Person Employee ID
-            </label>
-            <input
-              type="text"
-              name="refPersonEmployeeID"
-              placeholder="Enter Reference Person Employee ID "
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          {/* Web Role */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Web Role*
             </label>
             <select
-              name="webRole"
+              name="role"
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -639,6 +689,106 @@ const AddEmployee = () => {
               <option value="staff">Staff</option>
               <option value="employee">Employee</option>
             </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference Person 1 Name
+            </label>
+            <input
+              type="text"
+              name="refPerson1"
+              onChange={handleChange}
+              placeholder="Enter Reference Person 1 Name "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference Person 1 Contact
+            </label>
+            <input
+              type="number"
+              name="refPerson1Contact"
+              onChange={handleChange}
+              placeholder="Enter Reference 1 Contact"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference 1 Status Employee or Not
+            </label>
+            <select
+              name="isRefPerson1Employee"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            >
+              <option value="">Reference 1 Status</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference Person 1 Employee ID
+            </label>
+            <input
+              type="text"
+              name="refPerson1EmployeeID"
+              onChange={handleChange}
+              placeholder="Enter Reference Person 1 Employee ID "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference Person 2 Name
+            </label>
+            <input
+              type="text"
+              name="refPerson2"
+              onChange={handleChange}
+              placeholder="Enter Reference Person 2 Name "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference Person 2 Contact
+            </label>
+            <input
+              type="number"
+              name="refPerson2Contact"
+              onChange={handleChange}
+              placeholder="Enter Reference 2 Contact"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference 2 Status Employee or Not
+            </label>
+            <select
+              name="isRefPerson2Employee"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            >
+              <option value="">Reference 2 Status</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Reference Person 2 Employee ID
+            </label>
+            <input
+              type="text"
+              name="refPerson2EmployeeID"
+              onChange={handleChange}
+              placeholder="Enter Reference Person 2 Employee ID "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
           </div>
         </div>
         <button
