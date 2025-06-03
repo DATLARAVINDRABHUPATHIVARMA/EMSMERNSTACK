@@ -388,7 +388,7 @@ const AddEmployee = () => {
             </label>
             <select
               name="department"
-              // onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
@@ -408,7 +408,7 @@ const AddEmployee = () => {
             <input
               type="text"
               name="designation"
-              // onChange={handleChange}
+              onChange={handleChange}
               placeholder="Enter Designation"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -421,7 +421,7 @@ const AddEmployee = () => {
             </label>
             <select
               name="workPlace"
-              // onChange={handleChange}
+              onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
