@@ -9,7 +9,6 @@ const EmployeeList = () => {
       </div>
       <div className="flex justify-between items-center">
         <input type="text" placeholder="Search By Employee ID" className="px-4 py-0.5 border"
-        // onChange={filterClients}
         />
         <Link to="/admin-dashboard/add-employee" className="px-4 py-1 bg-purple-500 rounded text-white">
           Add New Employee
