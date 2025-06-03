@@ -41,20 +41,20 @@ const AddEmployee = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
-      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
+      setFormData((prevData) => ({...prevData, [name]: files[0]}));
     } else {
-      setFormData((prevData) => ({ ...prevData, [name]: value }));
+      setFormData((prevData) => ({...prevData, [name]: value}));
     }
-  };
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formDataObj = new FormData()
-    Object.keys(formData).forEach((key) =>{
+    Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key])
     })
-    
+
     try {
       const response = await axios.post("http://localhost:5000/api/employee/add", formDataObj,
         {
@@ -110,7 +110,7 @@ const AddEmployee = () => {
               Phone Number*
             </label>
             <input
-              type="number"
+              type="text"
               name="personalContact"
               onChange={handleChange}
               placeholder="Enter Personal Phone Number"
@@ -235,7 +235,7 @@ const AddEmployee = () => {
               Aadhaar Number*
             </label>
             <input
-              type="number"
+              type="text"
               name="aadhaarNumber"
               onChange={handleChange}
               placeholder="Enter Aadhaar Number"
@@ -250,7 +250,7 @@ const AddEmployee = () => {
             </label>
             <input
               type="text"
-              name="qualifiaction"
+              name="qualification"
               onChange={handleChange}
               placeholder="Enter Highest Qualification "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -294,7 +294,7 @@ const AddEmployee = () => {
               Other Emergency Phone Number*
             </label>
             <input
-              type="number"
+              type="text"
               name="emergencyContact"
               onChange={handleChange}
               placeholder="Enter Other Contact Number for Emergency "
@@ -348,7 +348,7 @@ const AddEmployee = () => {
               Office Phone Number
             </label>
             <input
-              type="number"
+              type="text"
               name="officeContact"
               onChange={handleChange}
               placeholder="Enter Office Phone Number "
@@ -460,25 +460,6 @@ const AddEmployee = () => {
               rows={4}
               required
             />
-          </div>
-          {/* Client  ID*/}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Client ID*
-            </label>
-            <select
-              name="clientID"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">Select Client ID</option>
-              {clients.map((client) => (
-                <option key={client._id} value={client._id}>
-                  {client.clientID}
-                </option>
-              ))}
-            </select>
           </div>
           {/* Client */}
           <div>

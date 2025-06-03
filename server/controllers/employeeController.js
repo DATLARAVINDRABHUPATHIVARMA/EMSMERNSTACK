@@ -44,7 +44,7 @@ const addEmployee = async (req, res) => {
       workPlace,
       workSiteDetails,
       client,
-      clientID,
+      //clientID,
       reportingInchargePerson,
       repPersonDesignation,
       repPersonEmployeeID,
@@ -92,7 +92,7 @@ const addEmployee = async (req, res) => {
     });
     const savedUser = await newUser.save();
 
-    const newEmployee = new Employee({
+     const newEmployee = new Employee({
       userId: savedUser._id,
       employeeID,
       personalContact,
