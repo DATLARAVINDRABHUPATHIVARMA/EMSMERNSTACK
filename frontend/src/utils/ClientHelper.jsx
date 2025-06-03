@@ -7,13 +7,23 @@ export const columns = [
     selector: (row) => row.sno,
   },
   {
+    name: "Client ID",
+    selector: (row) => row.clientID,
+    sortable: true
+  },
+  {
     name: "Client Name",
     selector: (row) => row.clientName,
     sortable: true
   },
   {
-    name: "Total Employees",
-    selector: (row) => row.clientEmployeeCount,
+    name: "Client Services",
+    selector: (row) => row.clientServices,
+    sortable: true
+  },
+  {
+    name: "Client Location",
+    selector: (row) => row.clientLocation,
     sortable: true
   },
   {
@@ -33,7 +43,7 @@ export const ClientButtons = ({ _id, onClientDelete }) => {
           `http://localhost:5000/api/client/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -68,4 +78,3 @@ export const ClientButtons = ({ _id, onClientDelete }) => {
     </div>
   );
 };
-

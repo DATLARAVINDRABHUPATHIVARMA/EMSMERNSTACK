@@ -7,15 +7,20 @@ export const columns = [
     selector: (row) => row.sno,
   },
   {
-    name: "Department Name",
+    name: "Site Name",
     selector: (row) => row.siteName,
     sortable: true
   },
-  {
-    name: "Total Employees",
-    selector: (row) => row.siteEmployeeCount,
-    sortable: true
-  },
+  // {
+  //   name: "Site Name",
+  //   selector: (row) => row.siteName,
+  //   sortable: true
+  // }, map embed location
+  // {
+  //   name: "Site Name",
+  //   selector: (row) => row.siteName,
+  //   sortable: true
+  // }, clients for the site
   {
     name: "Action",
     selector: (row) => row.action,
@@ -33,7 +38,7 @@ export const SiteButtons = ({ _id, onSiteDelete }) => {
           `http://localhost:5000/api/site/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );

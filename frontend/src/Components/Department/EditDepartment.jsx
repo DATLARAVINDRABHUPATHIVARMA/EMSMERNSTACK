@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 const EditDepartment = () => {
     const {id} = useParams()
     const [department, setDepartment] = useState([])
-    const [depLoading, setDepLoading] = useState(false)
+    const [departmentLoading, setDepartmentLoading] = useState(false)
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -16,13 +16,13 @@ const EditDepartment = () => {
 
     useEffect(() => {
     const fetchDepartments = async () => {
-      setDepLoading(true);
+      setDepartmentLoading(true);
       try {
         const response = await axios.get(
           `http://localhost:5000/api/department/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -34,7 +34,7 @@ const EditDepartment = () => {
           alert(error.response.data.error);
         }
       } finally {
-        setDepLoading(false);
+        setDepartmentLoading(false);
       }
     };
     
@@ -49,7 +49,7 @@ const EditDepartment = () => {
             department,
             {
               headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
               },
             }
           );
@@ -64,7 +64,7 @@ const EditDepartment = () => {
   }
 
   return (
-    <>{depLoading ? <div>Loading...</div> :
+    <>{departmentLoading ? <div>Loading...</div> :
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
       <h2 className="text-2xl font-bold mb-6">Edit Department</h2>
       <form onSubmit={handleSubmit}>
@@ -80,38 +80,38 @@ const EditDepartment = () => {
             name="departmentName"
             value={department.departmentName}
             onChange={handleChange}
-            placeholder="Enter Dep Name"
+            placeholder="Enter Department Name"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
           />
         </div>
         <div className="mt-3">
           <label
-            htmlFor="description"
+            htmlFor="departmentDescription"
             className="block text-sm font-medium text-gray-700"
           >
-            Description
+            Department Description
           </label>
           <textarea
-            name="description"
-            value={department.description}
+            name="departmentDescription"
+            value={department.departmentDescription}
             onChange={handleChange}
-            placeholder="Description"
+            placeholder="Department Description"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
             rows="5"
           ></textarea>
         </div>
         <div className="mt-3">
           <label
-            htmlFor="employeeCount"
+            htmlFor="departmentEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees*
+            Total Employees in Department*
           </label>
           <input
             type="number"
-            name="employeeCount"
-            value={department.employeeCount}
+            name="departmentEmployeeCount"
+            value={department.departmentEmployeeCount}
             onChange={handleChange}
             placeholder="Number of Employees"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"

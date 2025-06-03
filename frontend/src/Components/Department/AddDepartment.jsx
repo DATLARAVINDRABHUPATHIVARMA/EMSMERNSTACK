@@ -1,31 +1,27 @@
-import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddDepartment = () => {
-  const [department, SetDepartment] = useState({
-    departmentName: "",
-    description: "",
-    employeeCount: "",
+  const [department, setDepartment] = useState({
+      departmentName: "",
+      departmentDescription: "",
+      departmentEmployeeCount: "",
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    SetDepartment({ ...department, [name]: value });
+    setDepartment({ ...department, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/department/add",
-        department,
+      const response = await axios.post("http://localhost:5000/api/department/add", department,
         {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
+          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
         }
       );
       if (response.data.success) {
@@ -36,12 +32,12 @@ const AddDepartment = () => {
         alert(error.response.data.error);
       }
     }
-  };
+  }
 
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
       <h2 className="text-2xl font-bold mb-6">Add Department</h2>
-      <form onSubmit={handleSubmit}>
+       <form onSubmit={handleSubmit}> 
         <div>
           <label
             htmlFor="departmentName"
@@ -53,38 +49,38 @@ const AddDepartment = () => {
             type="text"
             name="departmentName"
             onChange={handleChange}
-            placeholder="Enter Dep Name"
+            placeholder="Enter Department Name"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
           />
         </div>
         <div className="mt-3">
           <label
-            htmlFor="description"
+            htmlFor="departmentDescription"
             className="block text-sm font-medium text-gray-700"
           >
-            Description
+            Department Description
           </label>
           <textarea
-            name="description"
+            name="departmentDescription"
             onChange={handleChange}
-            placeholder="Description"
+            placeholder="Department Description"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
             rows="5"
           ></textarea>
         </div>
         <div className="mt-3">
           <label
-            htmlFor="employeeCount"
+            htmlFor="departmentEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees*
+            Total Employees in Department*
           </label>
           <input
             type="number"
-            name="employeeCount"
+            name="departmentEmployeeCount"
             onChange={handleChange}
-            placeholder="Number of Employees"
+            placeholder="Number of Employees in Department"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
           />
@@ -100,7 +96,7 @@ const AddDepartment = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AddDepartment;
+export default AddDepartment
