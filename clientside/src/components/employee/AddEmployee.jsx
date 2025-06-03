@@ -76,7 +76,6 @@ const AddEmployee = () => {
       <h2 className="text-2xl font-bold mb-6">Add New Employee</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Employee ID */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Employee ID*
@@ -90,7 +89,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Name*
@@ -104,7 +102,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Personal Contact Number */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Phone Number*
@@ -118,7 +115,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Date Of Birth */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Birth*
@@ -131,7 +127,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Personal Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Personal Email
@@ -144,7 +139,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Password
@@ -171,7 +165,6 @@ const AddEmployee = () => {
               </button>
             </div>
           </div>
-          {/* Present Address 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Present Address*
@@ -184,8 +177,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
-          </div>
-          // Gender 
+          </div> 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Gender*
@@ -202,7 +194,6 @@ const AddEmployee = () => {
               <option value="Other">Other</option>
             </select>
           </div>
-          {/* Employee Image */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Photo*
@@ -216,7 +207,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Date Of Joining 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Joining*
@@ -229,7 +219,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Aadhaar Number
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Aadhaar Number*
@@ -243,7 +232,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Qualification
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Highest Qualification
@@ -272,7 +260,6 @@ const AddEmployee = () => {
               <option value="Other">Other</option>
             </select>
           </div>*/}
-          {/* Marital Status 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Marital Status*
@@ -288,7 +275,6 @@ const AddEmployee = () => {
               <option value="Married">Married</option>
             </select>
           </div>
-          {/* Emergency Contact Number 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Other Emergency Phone Number*
@@ -302,7 +288,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Spouse Name 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Spouse Name
@@ -315,7 +300,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Children Count 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Children Count
@@ -328,7 +312,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Permanent Address 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Permanent Address*
@@ -342,7 +325,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Office Phone Number 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Office Phone Number
@@ -355,7 +337,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Office Email 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Office Email
@@ -368,7 +349,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* PAN Number 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               PAN Number
@@ -381,7 +361,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Department */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Department*
@@ -400,7 +379,6 @@ const AddEmployee = () => {
               ))}
             </select>
           </div>
-          {/* Designation 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Designation*
@@ -414,7 +392,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Work Place */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Site*
@@ -433,7 +410,6 @@ const AddEmployee = () => {
               ))}
             </select>
           </div>
-          {/* Job Role 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Job Role*
@@ -443,7 +419,7 @@ const AddEmployee = () => {
               placeholder="Enter Job Details"
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              rows={4}
+              rows={1}
               required
             />
           </div>
@@ -460,8 +436,7 @@ const AddEmployee = () => {
               rows={4}
               required
             />
-          </div>
-          {/* Client */}
+          </div>*/}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Client*
@@ -480,46 +455,42 @@ const AddEmployee = () => {
               ))}
             </select>
           </div>
-          {/* Reporting Incharge / Manager 
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Reporting Person
+              Reporting Manager
             </label>
             <input
               type="text"
               name="reportingInchargePerson"
               onChange={handleChange}
-              placeholder="Enter Reporting Person Name "
+              placeholder="Enter Reporting Manager Name "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Reporting Incharge Designation 
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Reporting Person Designation
+              Reporting Manager Designation
             </label>
             <input
               type="text"
               name="repPersonDesignation"
               onChange={handleChange}
-              placeholder="Enter Reporting Person Designation "
+              placeholder="Enter Reporting Manager Designation "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Reporting Incharge Employee ID 
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Reporting Person Employee ID
+              Reporting Manager Employee ID
             </label>
             <input
               type="text"
               name="repPersonEmployeeID"
               onChange={handleChange}
-              placeholder="Enter Reporting Person Employee ID "
+              placeholder="Enter Reporting Manager Employee ID "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Salary
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Salary
@@ -532,7 +503,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Bank Name
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank Name*
@@ -545,13 +515,12 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Bank Account Number
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank Account Number*
             </label>
             <input
-              type="number"
+              type="text"
               name="bankAccountNumber"
               onChange={handleChange}
               placeholder="Enter Account Number "
@@ -559,7 +528,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Bank IFSC Code
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank IFSC Code*
@@ -573,7 +541,6 @@ const AddEmployee = () => {
               required
             />
           </div>
-          {/* Bank Branch
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Bank Branch
@@ -586,7 +553,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* ESI Details 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               ESI Number
@@ -599,7 +565,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Insurance Details
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Insurance Number
@@ -612,7 +577,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* PF Details
           <div>
             <label className="block text-sm font-medium text-gray-700">
               PF Number
@@ -625,7 +589,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* UAN Number
           <div>
             <label className="block text-sm font-medium text-gray-700">
               UAN Number
@@ -638,7 +601,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*{/*Total Team 
+          {/*Total Team 
           <div>
             <label className="block text-sm font-medium text-gray-700">
                Total Team
@@ -664,7 +627,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>*/}
-          {/*Previous Designation
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Previous Designation
@@ -677,7 +639,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*Previous Salary
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Previous Salary
@@ -690,7 +651,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Date Of Promotion 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Promotion
@@ -702,7 +662,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Date Of Termination 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Termination
@@ -714,7 +673,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Web Role */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Web Role*
@@ -732,7 +690,6 @@ const AddEmployee = () => {
               <option value="employee">Employee</option>
             </select>
           </div>
-          {/*Reference Person 1
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference Person 1 Name
@@ -745,7 +702,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*Reference Person 1 Contact
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference Person 1 Contact
@@ -758,7 +714,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Reference 1 Status 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference 1 Status Employee or Not
@@ -773,7 +728,6 @@ const AddEmployee = () => {
               <option value="No">No</option>
             </select>
           </div>
-          {/*Reference Person 1 Employee ID
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference Person 1 Employee ID
@@ -786,7 +740,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*Reference Person 2
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference Person 2 Name
@@ -799,7 +752,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/*Reference Person 2 Contact
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference Person 2 Contact
@@ -812,7 +764,6 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
-          {/* Reference 2 Status 
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference 2 Status Employee or Not
@@ -827,7 +778,6 @@ const AddEmployee = () => {
               <option value="No">No</option>
             </select>
           </div>
-          {/*Reference Person 2 Employee ID
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reference Person 2 Employee ID
@@ -839,7 +789,7 @@ const AddEmployee = () => {
               placeholder="Enter Reference Person 2 Employee ID "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
-          </div>*/}
+          </div>
         </div>
         <button
           type="submit"
