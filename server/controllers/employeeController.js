@@ -2,6 +2,7 @@ import multer from "multer";
 import Employee from "../models/Employee.js";
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
+import path from "path";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -29,7 +30,6 @@ const addEmployee = async (req, res) => {
       dateOfJoining,
       aadhaarNumber,
       qualification,
-      nationality,
       maritalStatus,
       emergencyContact,
       spouseName,
@@ -64,6 +64,7 @@ const addEmployee = async (req, res) => {
       dateOfPromotion,
       dateOfTermination,
       role,
+      profileImage,
       refPerson1,
       isRefPerson1Employee,
       refPerson1Contact,
@@ -78,7 +79,7 @@ const addEmployee = async (req, res) => {
     if (user) {
       return res
         .status(400)
-        .json({ success: false, errror: "User already registered in emp" });
+        .json({ success: false, error: "User already registered in emp" });
     }
 
     const hashPassword = await bcrypt.hash(password, 10);
@@ -88,7 +89,7 @@ const addEmployee = async (req, res) => {
       email,
       password: hashPassword,
       role,
-      profileImage: req.file ? req.file.filename : "",
+      profileImage: req.file ? req.file.filename : ""
     });
     const savedUser = await newUser.save();
 
@@ -156,7 +157,7 @@ const addEmployee = async (req, res) => {
 
 const getEmployees = async (req, res) => {
   try {
-    const employees = await Employee.find().populate('userId',{password: 0}).populate('department')
+    const employees = await Employee.find().populate('userId',{password: 0})
     return res.status(200).json({success: true, employees})
   } catch (error) {
     return res.status(500).json({success: false, error: 'get employees server error'})

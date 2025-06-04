@@ -1,4 +1,41 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+export const columns = [
+  {
+    name: "S.No",
+    selector: (row) => row.sno,
+    width: "58px"
+  },
+  {
+    name: "Employee ID",
+    selector: (row) => row.employeeID,
+    sortable: true,
+    width: "114px"
+  },
+  {
+    name: "Name",
+    selector: (row) => row.name,
+    sortable: true,
+    width: "250px"
+  },
+  {
+    name: "Image",
+    selector: (row) => row.profileImage,
+  },
+  {
+    name: "Joining Date",
+    selector: (row) => row.dateOfJoining,
+  },
+  {
+    name: "Designation",
+    selector: (row) => row.designation,
+  },
+  {
+    name: "Action",
+    selector: (row) => row.action,
+  },
+];
 
 export const fetchDepartments = async () => {
   let departments
@@ -56,3 +93,33 @@ export const fetchSites = async () => {
   }
   return sites
 }
+
+export const EmployeeButtons = ({ _id }) => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="flex space-x-3">
+      <button className="px-3 py-1 bg-emerald-600 text-white rounded">
+        View
+      </button>
+      <button
+        className="px-3 py-1 bg-purple-600 text-white rounded"
+        onClick={() => navigate(`/admin-dashboard/client/${_id}`)}
+      >
+        Edit
+      </button>
+      <button
+        className="px-3 py-1 bg-yellow-600 text-white rounded"
+      >
+        Salary
+      </button>
+      <button
+        className="px-3 py-1 bg-red-600 text-white rounded"
+      >
+        Leave
+      </button>
+      
+    </div>
+  );
+};
+
