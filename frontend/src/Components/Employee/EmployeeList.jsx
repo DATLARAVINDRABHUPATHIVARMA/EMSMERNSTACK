@@ -21,9 +21,9 @@ const EmployeeList = () => {
             _id: employee._id,
             sno: sno++,
             employeeID: employee.employeeID,
-            profileImage: employee.userId.profileImage,
+            profileImage: <img width={40} className='rounded-full' src={`http://localhost:5000/${employee.userId.profileImage}`}/>,
             name: employee.userId.name,
-            dateOfJoining: new Date(employee.dateOfJoining).toDateString(),
+            dateOfJoining: new Date(employee.dateOfJoining).toLocaleDateString(),
             designation: employee.designation,
             action: <EmployeeButtons _id={employee._id} />,
           }));

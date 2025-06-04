@@ -206,7 +206,7 @@ const AddEmployee = () => {
             </label>
             <input
               type="file"
-              name="profileImage"
+              name="image"
               onChange={handleChange}
               placeholder="Upload Image"
               accept="image/*"
@@ -448,7 +448,7 @@ const AddEmployee = () => {
               Client*
             </label>
             <select
-              name="clientName"
+              name="client"
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required

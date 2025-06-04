@@ -8,6 +8,11 @@ export const columns = [
     width: "58px"
   },
   {
+    name: "Image",
+    selector: (row) => row.profileImage,
+    width: '80px'
+  },
+  {
     name: "Employee ID",
     selector: (row) => row.employeeID,
     sortable: true,
@@ -20,20 +25,20 @@ export const columns = [
     width: "250px"
   },
   {
-    name: "Image",
-    selector: (row) => row.profileImage,
-  },
-  {
-    name: "Joining Date",
+    name: "Joining",
     selector: (row) => row.dateOfJoining,
+    sortable: true,
+    width: "92px"
   },
   {
     name: "Designation",
     selector: (row) => row.designation,
+    width: "180px"
   },
   {
     name: "Action",
     selector: (row) => row.action,
+    center: "true"
   },
 ];
 
@@ -99,7 +104,8 @@ export const EmployeeButtons = ({ _id }) => {
 
   return (
     <div className="flex space-x-3">
-      <button className="px-3 py-1 bg-emerald-600 text-white rounded">
+      <button className="px-3 py-1 bg-emerald-600 text-white rounded"
+        onClick={() => navigate(`/admin-dashboard/employees/${_id}`)}>
         View
       </button>
       <button

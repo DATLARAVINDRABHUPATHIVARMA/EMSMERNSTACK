@@ -43,7 +43,7 @@ const addEmployee = async (req, res) => {
       jobRole,
       workPlace,
       // workSiteDetails,
-      clientName,
+      client,
       //clientID,
       reportingInchargePerson,
       repPersonDesignation,
@@ -118,7 +118,7 @@ const addEmployee = async (req, res) => {
       jobRole,
       workPlace,
       // workSiteDetails,
-      clientName,
+      client,
       reportingInchargePerson,
       repPersonDesignation,
       repPersonEmployeeID,
@@ -164,4 +164,14 @@ const getEmployees = async (req, res) => {
   }
 }
 
-export { addEmployee, upload, getEmployees };
+const getEmployee = async (req, res) => {
+  const {id} = req.params;
+  try {
+    const employee = await Employee.findById({_id: id}).populate('userId',{password: 0}).populate('department').populate('client')
+    return res.status(200).json({success: true, employee})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'get employee server error'})
+  }
+}
+
+export { addEmployee, upload, getEmployees, getEmployee };
