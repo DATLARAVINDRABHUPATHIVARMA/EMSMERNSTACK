@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { fetchClients, fetchDepartments, fetchSites, } from "../../utils/EmployeeHelper.jsx";
+import {
+  fetchClients,
+  fetchDepartments,
+  fetchSites,
+} from "../../utils/EmployeeHelper.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -12,7 +16,7 @@ const AddEmployee = () => {
   const [clients, setClients] = useState([]);
   const [sites, setSites] = useState([]);
   const [formData, setFormData] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getDepartments = async () => {
@@ -41,35 +45,37 @@ const AddEmployee = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
-      setFormData((prevData) => ({...prevData, [name]: files[0]}));
+      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
     } else {
-      setFormData((prevData) => ({...prevData, [name]: value}));
+      setFormData((prevData) => ({ ...prevData, [name]: value }));
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataObj = new FormData()
+    const formDataObj = new FormData();
     Object.keys(formData).forEach((key) => {
-      formDataObj.append(key, formData[key])
-    })
+      formDataObj.append(key, formData[key]);
+    });
 
     try {
-      const response = await axios.post("http://localhost:5000/api/employee/add", formDataObj,
+      const response = await axios.post(
+        "http://localhost:5000/api/employee/add",
+        formDataObj,
         {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
       if (response.data.success) {
-        navigate("/admin-dashboard/employees")
+        navigate("/admin-dashboard/employees");
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
         alert(error.response.data.error);
       }
     }
-  }
+  };
 
   return (
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
@@ -177,7 +183,7 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
-          </div> 
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Gender*
@@ -200,7 +206,7 @@ const AddEmployee = () => {
             </label>
             <input
               type="file"
-              name="profileImage"
+              name="image"
               onChange={handleChange}
               placeholder="Upload Image"
               accept="image/*"
@@ -442,7 +448,7 @@ const AddEmployee = () => {
               Client*
             </label>
             <select
-              name="clientName"
+              name="client"
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -450,7 +456,7 @@ const AddEmployee = () => {
               <option value="">Select Client</option>
               {clients.map((client) => (
                 <option key={client._id} value={client._id}>
-                  {client.clientName}
+                  {client.clientID}
                 </option>
               ))}
             </select>

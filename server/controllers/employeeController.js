@@ -2,6 +2,7 @@ import multer from "multer";
 import Employee from "../models/Employee.js";
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
+import path from "path";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -23,62 +24,62 @@ const addEmployee = async (req, res) => {
       dateOfBirth,
       email,
       password,
-      // presentAddress,
-      // //state //country //pincode //city
-      // gender,
-      // dateOfJoining,
-      // aadhaarNumber,
-      // qualification,
-      //nationality,
-      // maritalStatus,
-      // emergencyContact,
-      // spouseName,
-      // childrenCount,
-      // permanentAddress,
-      // officeContact,
-      // officeEmail,
-      // PANNumber,
+      presentAddress,
+      //state //country //pincode //city
+      gender,
+      dateOfJoining,
+      aadhaarNumber,
+      qualification,
+      maritalStatus,
+      emergencyContact,
+      spouseName,
+      childrenCount,
+      permanentAddress,
+      officeContact,
+      officeEmail,
+      PANNumber,
       department,
-      // designation,
-      // jobRole,
+      designation,
+      jobRole,
       workPlace,
       // workSiteDetails,
       client,
       //clientID,
-      // reportingInchargePerson,
-      // repPersonDesignation,
-      // repPersonEmployeeID,
-      // currentSalary,
-      // bankName,
-      // bankAccountNumber,
-      // IFSCCode,
-      // bankBranch,
-      // ESIDetails,
-      // insuranceDetails,
-      // PFDetails,
-      // UANNumber,
-      //teamCount,
-      //teamDetails: { type: Array },
-      // previousDesignation,
-      // previousSalary,
-      // dateOfPromotion,
-      // dateOfTermination,
+      reportingInchargePerson,
+      repPersonDesignation,
+      repPersonEmployeeID,
+      currentSalary,
+      bankName,
+      bankAccountNumber,
+      IFSCCode,
+      bankBranch,
+      ESIDetails,
+      insuranceDetails,
+      PFDetails,
+      UANNumber,
+      // teamCount,
+      // teamDetails: { type: Array },
+      previousDesignation,
+      previousSalary,
+      dateOfPromotion,
+      dateOfTermination,
       role,
-      // refPerson1,
-      // isRefPerson1Employee,
-      // refPerson1Contact,
-      // refPerson1EmployeeID,
-      // refPerson2,
-      // isRefPerson2Employee,
-      // refPerson2Contact,
-      // refPerson2EmployeeID,
+      profileImage,
+      refPerson1,
+      isRefPerson1Employee,
+      refPerson1Contact,
+      refPerson1EmployeeID,
+      refPerson2,
+      isRefPerson2Employee,
+      refPerson2Contact,
+      refPerson2EmployeeID,
     } = req.body;
 
     const user = await User.findOne({ email });
     if (user) {
       return res
         .status(400)
-        .json({ success: false, errror: "User already registered in emp" });
+        .json({ success: false, error: "User already registered in emp" });
     }
 
     const hashPassword = await bcrypt.hash(password, 10);
@@ -88,7 +89,7 @@ const addEmployee = async (req, res) => {
       email,
       password: hashPassword,
       role,
-      profileImage: req.file ? req.file.filename : "",
+      profileImage: req.file ? req.file.filename : ""
     });
     const savedUser = await newUser.save();
 
@@ -97,53 +98,53 @@ const addEmployee = async (req, res) => {
       employeeID,
       personalContact,
       dateOfBirth,
-      // presentAddress,
+      presentAddress,
       // //state //country //pincode //city
-      // gender,
-      // dateOfJoining,
-      // aadhaarNumber,
-      // qualification,
+      gender,
+      dateOfJoining,
+      aadhaarNumber,
+      qualification,
       // //nationality,
-      // maritalStatus,
-      // emergencyContact,
-      // spouseName,
-      // childrenCount,
-      // permanentAddress,
-      // officeContact,
-      // officeEmail,
-      // PANNumber,
+      maritalStatus,
+      emergencyContact,
+      spouseName,
+      childrenCount,
+      permanentAddress,
+      officeContact,
+      officeEmail,
+      PANNumber,
       department,
-      // designation,
-      // jobRole,
+      designation,
+      jobRole,
       workPlace,
       // workSiteDetails,
       client,
-      // reportingInchargePerson,
-      // repPersonDesignation,
-      // repPersonEmployeeID,
-      // currentSalary,
-      // bankName,
-      // bankAccountNumber,
-      // IFSCCode,
-      // bankBranch,
-      // ESIDetails,
-      // insuranceDetails,
-      // PFDetails,
-      // UANNumber,
+      reportingInchargePerson,
+      repPersonDesignation,
+      repPersonEmployeeID,
+      currentSalary,
+      bankName,
+      bankAccountNumber,
+      IFSCCode,
+      bankBranch,
+      ESIDetails,
+      insuranceDetails,
+      PFDetails,
+      UANNumber,
       // //teamCount,
       // //teamDetails: { type: Array },
-      // previousDesignation,
-      // previousSalary,
-      // dateOfPromotion,
-      // dateOfTermination,
-      // refPerson1,
-      // isRefPerson1Employee,
-      // refPerson1Contact,
-      // refPerson1EmployeeID,
-      // refPerson2,
-      // isRefPerson2Employee,
-      // refPerson2Contact,
-      // refPerson2EmployeeID,
+      previousDesignation,
+      previousSalary,
+      dateOfPromotion,
+      dateOfTermination,
+      refPerson1,
+      isRefPerson1Employee,
+      refPerson1Contact,
+      refPerson1EmployeeID,
+      refPerson2,
+      isRefPerson2Employee,
+      refPerson2Contact,
+      refPerson2EmployeeID,
     });
 
     await newEmployee.save();
@@ -154,4 +155,23 @@ const addEmployee = async (req, res) => {
   }
 };
 
-export { addEmployee, upload };
+const getEmployees = async (req, res) => {
+  try {
+    const employees = await Employee.find().populate('userId',{password: 0})
+    return res.status(200).json({success: true, employees})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'get employees server error'})
+  }
+}
+
+const getEmployee = async (req, res) => {
+  const {id} = req.params;
+  try {
+    const employee = await Employee.findById({_id: id}).populate('userId',{password: 0}).populate('department').populate('client')
+    return res.status(200).json({success: true, employee})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'get employee server error'})
+  }
+}
+
+export { addEmployee, upload, getEmployees, getEmployee };
