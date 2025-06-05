@@ -38,8 +38,7 @@ const ViewEmployee = () => {
             Employee Details
           </h2>
           <div className="flex items-center justify-center">
-            <img
-              src={`http://localhost:5000/${employee.userId.profileImage}`}
+            <img src={`http://localhost:5000/${employee.userId.profileImage}`}
               className="rounded-full border w-72"
             />
           </div>

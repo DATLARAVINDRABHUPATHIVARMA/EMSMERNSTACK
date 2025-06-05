@@ -7,6 +7,7 @@ import { columns, EmployeeButtons } from "../../utils/EmployeeHelper.jsx";
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [employeeLoading, setEmployeeLoading] = useState(false);
+   const [filteredEmployees, setFilteredEmployees] = useState([]);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -28,6 +29,7 @@ const EmployeeList = () => {
             action: <EmployeeButtons _id={employee._id} />,
           }));
           setEmployees(data);
+          setFilteredEmployees(data);
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {
@@ -41,6 +43,11 @@ const EmployeeList = () => {
     fetchEmployees();
   }, []);
 
+  const handleFilter = (e) => {
+    const records = employees.filter((employee) => employee.employeeID.toLowerCase().includes(e.target.value.toLowerCase()))
+    setFilteredEmployees(records)
+  }
+
   return (
     <div className="p-5">
       <div className="text-center">
@@ -51,6 +58,7 @@ const EmployeeList = () => {
           type="text"
           placeholder="Search By Employee ID"
           className="px-4 py-0.5 border"
+          onChange={handleFilter}
         />
         <Link
           to="/admin-dashboard/add-employee"
@@ -60,7 +68,7 @@ const EmployeeList = () => {
         </Link>
       </div>
       <div className="mt-5">
-              <DataTable columns={columns} data={employees} pagination/>
+              <DataTable columns={columns} data={filteredEmployees} pagination/>
             </div>
     </div>
   );

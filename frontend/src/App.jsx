@@ -8,8 +8,9 @@ import PrivateRoutes from "./utils/PrivateRoutes.jsx";
 import RoleBaseRoutes from "./utils/RoleBaseRoutes.jsx";
 import AdminSummary from "./components/dashboard/AdminSummary.jsx";
 import EmployeeList from "./Components/Employee/EmployeeList.jsx";
-import ViewEmployee from "./Components/Employee/ViewEmployee.jsx";
 import AddEmployee from "./Components/Employee/AddEmployee.jsx";
+import ViewEmployee from "./Components/Employee/ViewEmployee.jsx";
+import EditEmployee from "./Components/Employee/EditEmployee.jsx";
 import DepartmentList from "./components/department/DepartmentList.jsx";
 import AddDepartment from "./components/department/AddDepartment.jsx";
 import EditDepartment from "./components/department/EditDepartment.jsx";
@@ -38,8 +39,9 @@ function App() {
         >
           <Route index element={<AdminSummary />}></Route>
           <Route path="/admin-dashboard/employees" element={<EmployeeList />}></Route>
-          <Route path="/admin-dashboard/employees/:id" element={<ViewEmployee />}></Route>
           <Route path="/admin-dashboard/add-employee" element={<AddEmployee />}></Route>
+          <Route path="/admin-dashboard/employees/:id" element={<ViewEmployee />}></Route>
+          <Route path="/admin-dashboard/employees/edit/:id" element={<EditEmployee />}></Route>
           <Route path="/admin-dashboard/departments" element={<DepartmentList />}></Route>
           <Route path="/admin-dashboard/add-department" element={<AddDepartment />}></Route>
           <Route path="/admin-dashboard/department/:id" element={<EditDepartment />}></Route>
