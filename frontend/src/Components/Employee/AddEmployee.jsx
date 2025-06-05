@@ -403,7 +403,7 @@ const AddEmployee = () => {
               Site*
             </label>
             <select
-              name="workPlace"
+              name="site"
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
@@ -456,7 +456,7 @@ const AddEmployee = () => {
               <option value="">Select Client</option>
               {clients.map((client) => (
                 <option key={client._id} value={client._id}>
-                  {client.clientName}
+                  {client.clientID}
                 </option>
               ))}
             </select>
