@@ -33,7 +33,7 @@ const ViewEmployee = () => {
   return (
     <>
       {employee ? (
-        <div className="max-w-3xl mx-auto mt-10 bg-green-400 p-8 rounded-md shadow-md">
+        <div className="max-w-3xl mx-auto mt-10 bg-purple-200 p-8 rounded-md shadow-md">
           <h2 className="text-2xl font-bold mb-8 text-center">
             Employee Details
           </h2>
@@ -44,14 +44,15 @@ const ViewEmployee = () => {
             />
           </div>
           <br />
-          <div className="flex items-center justify space-x-3 mb-5">
+          <div className="flex items-center  justify space-x-3 mb-5">
             <p className="text-lg font-bold">Employee ID:</p>
             <p className="font-medium">{employee.employeeID}</p>
-</div>
-            <div className="flex items-center justify space-x-3 mb-5">
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Name:</p>
-            <p className="font-medium">{employee.userId.name}</p></div>
-          
+            <p className="font-medium">{employee.userId.name}</p>
+          </div>
+
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Date of Birth:</p>
             <p className="font-medium">
@@ -78,9 +79,7 @@ const ViewEmployee = () => {
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Emergency Phone Number:</p>
-            <p className="font-medium">
-              {employee.emergencyContact}
-            </p>
+            <p className="font-medium">{employee.emergencyContact}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Office Phone Number:</p>
@@ -104,15 +103,11 @@ const ViewEmployee = () => {
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Present Address:</p>
-            <p className="font-medium">
-              {employee.presentAddress}
-            </p>
+            <p className="font-medium">{employee.presentAddress}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Permanent Address:</p>
-            <p className="font-medium">
-              {employee.permanentAddress}
-            </p>
+            <p className="font-medium">{employee.permanentAddress}</p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Marital Status:</p>
@@ -146,9 +141,7 @@ const ViewEmployee = () => {
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Site:</p>
-            <p className="font-medium">
-              {employee.site.siteName}
-            </p>
+            <p className="font-medium">{employee.site.siteName}</p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Site Address:</p>
@@ -161,17 +154,107 @@ const ViewEmployee = () => {
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Client:</p>
             <p className="font-medium">{employee.client.clientName}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reporting Manager:</p>
+            <p className="font-medium">{employee.reportingInchargePerson}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reporting Manager Designation:</p>
+            <p className="font-medium">{employee.repPersonDesignation}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reporting Manager Employee ID:</p>
+            <p className="font-medium">{employee.repPersonEmployeeID}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Salary:</p>
+            <p className="font-medium">{employee.currentSalary}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Bank Name:</p>
+            <p className="font-medium">{employee.bankName}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Bank Account Number:</p>
+            <p className="font-medium">{employee.bankAccountNumber}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Bank IFSC Code:</p>
+            <p className="font-medium">{employee.IFSCCode}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Bank Branch:</p>
+            <p className="font-medium">{employee.bankBranch}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">ESI Number:</p>
+            <p className="font-medium">{employee.ESIDetails}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">PF Number:</p>
+            <p className="font-medium">{employee.PFDetails}</p>
           </div><div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Client Location:</p>
-            <p className="font-medium">{employee.client.clientLocation}</p>
+            <p className="text-lg font-bold">Insurance Number:</p>
+            <p className="font-medium">{employee.insuranceDetails}</p>
+          </div><div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold"> UAN Number:</p>
+            <p className="font-medium">{employee.UANNumber}</p>
+          </div><div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Previous Designation:</p>
+            <p className="font-medium">{employee.previousDesignation}</p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Personal Email:</p>
-            <p className="font-medium">{employee.userId.email}</p>
+            <p className="text-lg font-bold">Previous Salary:</p>
+            <p className="font-medium">{employee.previousSalary}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
+            <p className="text-lg font-bold">Date of Promotion:</p>
+            <p className="font-medium">
+              {employee.dateOfPromotion}
+            </p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
+            <p className="text-lg font-bold">Date of Termination:</p>
+            <p className="font-medium">
+              {employee.dateOfTermination}
+            </p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Department:</p>
-            <p className="font-medium">{employee.departmentName}</p>
+            <p className="text-lg font-bold">Web Role:</p>
+            <p className="font-medium">{employee.userId.role}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 1:</p>
+            <p className="font-medium">{employee.refPerson1}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 1 Status:</p>
+            <p className="font-medium">{employee.isRefPerson1Employee}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 1 Contact:</p>
+            <p className="font-medium">{employee.refPerson1Contact}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 1 Employee ID:</p>
+            <p className="font-medium">{employee.refPerson1EmployeeID}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 2:</p>
+            <p className="font-medium">{employee.refPerson2}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 2 Status:</p>
+            <p className="font-medium">{employee.isRefPerson2Employee}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 2 Contact:</p>
+            <p className="font-medium">{employee.refPerson2Contact}</p>
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+            <p className="text-lg font-bold">Reference 2 Employee ID:</p>
+            <p className="font-medium">{employee.refPerson2EmployeeID}</p>
           </div>
         </div>
       ) : (
