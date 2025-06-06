@@ -7,7 +7,7 @@ import { columns, EmployeeButtons } from "../../utils/EmployeeHelper.jsx";
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [employeeLoading, setEmployeeLoading] = useState(false);
-   const [filteredEmployees, setFilteredEmployees] = useState([]);
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -22,9 +22,17 @@ const EmployeeList = () => {
             _id: employee._id,
             sno: sno++,
             employeeID: employee.employeeID,
-            profileImage: <img width={40} className='rounded-full' src={`http://localhost:5000/${employee.userId.profileImage}`}/>,
+            profileImage: (
+              <img
+                width={40}
+                className="rounded-full"
+                src={`http://localhost:5000/${employee.userId.profileImage}`}
+              />
+            ),
             name: employee.userId.name,
-            dateOfJoining: new Date(employee.dateOfJoining).toLocaleDateString(),
+            dateOfJoining: new Date(
+              employee.dateOfJoining
+            ).toLocaleDateString(),
             designation: employee.designation,
             action: <EmployeeButtons _id={employee._id} />,
           }));
@@ -44,9 +52,11 @@ const EmployeeList = () => {
   }, []);
 
   const handleFilter = (e) => {
-    const records = employees.filter((employee) => employee.employeeID.toLowerCase().includes(e.target.value.toLowerCase()))
-    setFilteredEmployees(records)
-  }
+    const records = employees.filter((employee) =>
+      employee.employeeID.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredEmployees(records);
+  };
 
   return (
     <div className="p-5">
@@ -68,8 +78,8 @@ const EmployeeList = () => {
         </Link>
       </div>
       <div className="mt-5">
-              <DataTable columns={columns} data={filteredEmployees} pagination/>
-            </div>
+        <DataTable columns={columns} data={filteredEmployees} pagination />
+      </div>
     </div>
   );
 };
