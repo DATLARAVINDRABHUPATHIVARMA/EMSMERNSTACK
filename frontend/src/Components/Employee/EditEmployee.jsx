@@ -63,7 +63,6 @@ const EditEmployee = () => {
           const employee = response.data.employee;
           setEmployee((prev) => ({
             ...prev,
-            employeeID: employee.employeeID,
             name: employee.userId.name,
             personalContact: employee.personalContact,
             presentAddress: employee.presentAddress,
@@ -165,19 +164,7 @@ const EditEmployee = () => {
           <h2 className="text-2xl font-bold mb-6">Edit Employee</h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Employee ID*
-                </label>
-                <input
-                  type="text"
-                  name="employeeID"
-                  value={employee.employeeID}
-                  placeholder="Enter Employee ID"
-                  className="mt-1 p-2 block w-full border bg-gray-300 border-gray-300 rounded-md"
-                  required
-                />
-              </div>
+              
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Name*

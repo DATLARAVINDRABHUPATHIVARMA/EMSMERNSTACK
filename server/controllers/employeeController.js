@@ -182,7 +182,26 @@ const updateEmployee = async (req, res) => {
     const {id} = req.params;
     const { name, personalContact, presentAddress, qualification, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
 
-    
+    const employee = await Employee.findById({ _id : id });
+    if(!employee){
+      return res.status(404).json({success: false, error: 'employee not found'})
+    }
+
+    const user = await User.findById({ _id : employee.userId });
+    if(!user){
+      return res.status(404).json({success: false, error: 'user not found'})
+    }
+
+    const updateUser = await User.findByIdAndUpdate({ _id : employee.userId }, {name})
+
+    const updateEmployee = await Employee.findByIdAndUpdate({ _id : id }, { personalContact, presentAddress, qualification, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion })
+
+    if (!updateEmployee || !updateUser){
+       return res.status(404).json({success: false, error: 'document not found'})
+    }
+
+    return res.status(200).json({success: true, message: 'employee updated'})
+
   } catch (error) {
     return res.status(500).json({success: false, error: 'update employee server error'})
   }
