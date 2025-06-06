@@ -10,30 +10,30 @@ export const columns = [
   {
     name: "Image",
     selector: (row) => row.profileImage,
-    width: '80px'
+    width: '70px'
   },
   {
     name: "Employee ID",
     selector: (row) => row.employeeID,
     sortable: true,
-    width: "114px"
+    width: "120px"
   },
   {
     name: "Name",
     selector: (row) => row.name,
     sortable: true,
-    width: "250px"
+    width: "205px"
   },
   {
     name: "Joining",
     selector: (row) => row.dateOfJoining,
     sortable: true,
-    width: "92px"
+    width: "88px"
   },
   {
     name: "Designation",
     selector: (row) => row.designation,
-    width: "180px"
+    width: "150px"
   },
   {
     name: "Action",
@@ -103,7 +103,7 @@ export const EmployeeButtons = ({ _id }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex space-x-3">
+    <div className="flex space-x-1">
       <button className="px-3 py-1 bg-emerald-600 text-white rounded"
         onClick={() => navigate(`/admin-dashboard/employees/${_id}`)}>
         View

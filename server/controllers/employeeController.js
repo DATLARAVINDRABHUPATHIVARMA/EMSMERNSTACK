@@ -1,6 +1,9 @@
 import multer from "multer";
 import Employee from "../models/Employee.js";
 import User from "../models/User.js";
+import Department from "../models/Department.js";
+import Client from "../models/Client.js";
+import Site from "../models/Site.js";
 import bcrypt from "bcrypt";
 import path from "path";
 
@@ -174,4 +177,15 @@ const getEmployee = async (req, res) => {
   }
 }
 
-export { addEmployee, upload, getEmployees, getEmployee };
+const updateEmployee = async (req, res) => {
+  try{
+    const {id} = req.params;
+    const { name, personalContact, presentAddress, qualification, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
+
+    
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'update employee server error'})
+  }
+}
+
+export { addEmployee, upload, getEmployees, getEmployee, updateEmployee };

@@ -13,12 +13,15 @@ import ViewEmployee from "./Components/Employee/ViewEmployee.jsx";
 import EditEmployee from "./Components/Employee/EditEmployee.jsx";
 import DepartmentList from "./components/department/DepartmentList.jsx";
 import AddDepartment from "./components/department/AddDepartment.jsx";
+// import AddDepartment from "./components/department/AddDepartment.jsx";
 import EditDepartment from "./components/department/EditDepartment.jsx";
 import ClientList from "./components/client/ClientList.jsx";
 import AddClient from "./components/client/AddClient.jsx";
+// import AddClient from "./components/client/AddClient.jsx";
 import EditClient from "./components/client/EditClient.jsx";
 import SiteList from "./components/site/SiteList.jsx";
 import AddSite from "./components/site/AddSite.jsx";
+// import AddSite from "./components/site/AddSite.jsx";
 import EditSite from "./components/site/EditSite.jsx";
 
 function App() {
@@ -44,11 +47,14 @@ function App() {
           <Route path="/admin-dashboard/employees/edit/:id" element={<EditEmployee />}></Route>
           <Route path="/admin-dashboard/departments" element={<DepartmentList />}></Route>
           <Route path="/admin-dashboard/add-department" element={<AddDepartment />}></Route>
+          <Route path="/admin-dashboard/add-department" element={<AddDepartment />}></Route>
           <Route path="/admin-dashboard/department/:id" element={<EditDepartment />}></Route>
           <Route path="/admin-dashboard/clients" element={<ClientList />}></Route>
           <Route path="/admin-dashboard/add-client" element={<AddClient />}></Route>
+          <Route path="/admin-dashboard/add-client" element={<AddClient />}></Route>
           <Route path="/admin-dashboard/client/:id" element={<EditClient />}></Route>
           <Route path="/admin-dashboard/sites" element={<SiteList />}></Route>
+          <Route path="/admin-dashboard/add-site" element={<AddSite />}></Route>
           <Route path="/admin-dashboard/add-site" element={<AddSite />}></Route>
           <Route path="/admin-dashboard/site/:id" element={<EditSite />}></Route>
         </Route>
