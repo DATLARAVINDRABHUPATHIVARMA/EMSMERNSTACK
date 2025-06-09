@@ -66,6 +66,7 @@ const EditEmployee = () => {
             employeeID: employee.employeeID,
             name: employee.userId.name,
             personalContact: employee.personalContact,
+            dateOfBirth: employee.dateOfBirth,
             presentAddress: employee.presentAddress,
             qualification: employee.qualification,
             maritalStatus: employee.maritalStatus,
@@ -145,7 +146,7 @@ const EditEmployee = () => {
         `http://localhost:5000/api/employee/${id}`,
         employee,
         {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` },
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
       if (response.data.success) {
@@ -167,15 +168,13 @@ const EditEmployee = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Name*
+                  Employee ID*
                 </label>
                 <input
                   type="text"
                   name="employeeID"
                   value={employee.employeeID}
-                  
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
-                  required
                 />
               </div>
               <div>
@@ -204,6 +203,17 @@ const EditEmployee = () => {
                   placeholder="Enter Personal Phone Number"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                   required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Date of Birth*
+                </label>
+                <input
+                  type="text"
+                  name="dateOfBirth"
+                  value={new Date(employee.dateOfBirth).toDateString()}
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                 />
               </div>
               <div>
