@@ -22,7 +22,7 @@ const employeeSchema = new Schema({
   PANNumber: { type: String },
   department: { type: Schema.Types.ObjectId, ref: "Department", required: true },
   designation: { type: String, required: true },
-  site: {  type: Schema.Types.ObjectId, ref: "Site", required: true  },
+  site: { type: Schema.Types.ObjectId, ref: "Site", required: true  },
   jobRole: { type: String},/*array enum*/
   // workSiteDetails: { type: String,},//*
   client: { type: Schema.Types.ObjectId, ref: "Client", required: true  },
