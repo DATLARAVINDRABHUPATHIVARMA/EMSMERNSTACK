@@ -1,14 +1,24 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchClients } from "../../utils/SiteHelper.jsx";
 
 const AddSite = () => {
+  const [clients, setClients] = useState([]);
   const [site, setSite] = useState({
-        siteName: "",
-        siteAddress: "",
-        siteDescription: "",
-        siteEmployeeCount: "",
+    siteName: "",
+    siteAddress: "",
+    siteDescription: "",
+    siteEmployeeCount: "",
   });
+
+  useEffect(() => {
+    const getClients = async () => {
+      const clients = await fetchClients();
+      setClients(clients);
+    };
+    getClients();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -20,25 +30,27 @@ const AddSite = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/site/add", site,
+      const response = await axios.post(
+        "http://localhost:5000/api/site/add",
+        site,
         {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
       if (response.data.success) {
-        navigate("/admin-dashboard/sites")
+        navigate("/admin-dashboard/sites");
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
         alert(error.response.data.error);
       }
     }
-  }
-    
+  };
+
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
       <h2 className="text-2xl font-bold mb-6">Add Site</h2>
-       <form onSubmit={handleSubmit}> 
+      <form onSubmit={handleSubmit}>
         <div>
           <label
             htmlFor="siteName"
@@ -71,6 +83,27 @@ const AddSite = () => {
             required
           />
         </div>
+        <div className="mt-3">
+          <label
+            htmlFor="siteClients"
+            className="text-sm font-medium text-gray-700"
+          >
+            Clients in the Site*
+          </label>
+          <select
+              name="siteClients"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Choose Clients</option>
+              {clients.map((client) => (
+                <option key={client._id} value={client._id}>
+                  {client.clientName}
+                </option>
+              ))}
+            </select>
+          </div>
         {/* start date, updation date, ending date, map location etc*/}
         <div className="mt-3">
           <label
@@ -114,7 +147,7 @@ const AddSite = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddSite
+export default AddSite;

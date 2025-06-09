@@ -1,17 +1,36 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchDepartments, fetchSites } from "../../utils/ClientHelper.jsx";
 
 const AddClient = () => {
+  const [departments, setDepartments] = useState([]);
+  const [sites, setSites] = useState([]);
   const [client, setClient] = useState({
-      clientID: "",
-      clientName: "",
-      clientServices: "",
-      clientLocation:"",
-      clientServiceStartedOn:"",
-      clientDescription: "",
-      clientEmployeeCount: "",
+    clientID: "",
+    clientName: "",
+    clientServices: "",
+    clientLocation: "",
+    clientServiceStartedOn: "",
+    clientDescription: "",
+    clientEmployeeCount: "",
   });
+
+  useEffect(() => {
+    const getDepartments = async () => {
+      const departments = await fetchDepartments();
+      setDepartments(departments);
+    };
+    getDepartments();
+  }, []);
+
+  useEffect(() => {
+    const getSites = async () => {
+      const sites = await fetchSites();
+      setSites(sites);
+    };
+    getSites();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -23,25 +42,27 @@ const AddClient = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/client/add", client,
+      const response = await axios.post(
+        "http://localhost:5000/api/client/add",
+        client,
         {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
       if (response.data.success) {
-        navigate("/admin-dashboard/clients")
+        navigate("/admin-dashboard/clients");
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
         alert(error.response.data.error);
       }
     }
-  }
+  };
 
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
       <h2 className="text-2xl font-bold mb-6">Add Client</h2>
-       <form onSubmit={handleSubmit}> 
+      <form onSubmit={handleSubmit}>
         <div>
           <label
             htmlFor="clientID"
@@ -81,14 +102,20 @@ const AddClient = () => {
           >
             Client Services*
           </label>
-          <input
-            type="text"
+          <select
             name="clientServices"
             onChange={handleChange}
             placeholder="Enter Client Services"
             className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             required
-          />
+          >
+            <option value="">Choose Services</option>
+            {departments.map((department) => (
+              <option key={department._id} value={department._id}>
+                {department.departmentName}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="mt-3">
           <label
@@ -97,15 +124,20 @@ const AddClient = () => {
           >
             Client Location*
           </label>
-          <input
-            type="text"
-            name="clientLocation"
-            onChange={handleChange}
-            placeholder="Enter Client Location"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
+            <select
+              name="clientLocation"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Site</option>
+              {sites.map((site) => (
+                <option key={site._id} value={site._id}>
+                  {site.siteName}
+                </option>
+              ))}
+            </select>
+          </div>
         <div className="mt-3">
           <label
             htmlFor="clientServiceStartedOn"
@@ -165,7 +197,7 @@ const AddClient = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddClient
+export default AddClient;
