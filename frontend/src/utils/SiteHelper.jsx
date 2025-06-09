@@ -55,7 +55,9 @@ export const SiteButtons = ({ _id, onSiteDelete }) => {
 
   return (
     <div className="flex space-x-3">
-      <button className="px-3 py-1 bg-emerald-600 text-white rounded">
+      <button className="px-3 py-1 bg-emerald-600 text-white rounded"
+      onClick={() => navigate(`/admin-dashboard/sites/${_id}`)}
+      >
         View
       </button>
       <button

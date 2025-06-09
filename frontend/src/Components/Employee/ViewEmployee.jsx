@@ -13,7 +13,7 @@ const ViewEmployee = () => {
           `http://localhost:5000/api/employee/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );

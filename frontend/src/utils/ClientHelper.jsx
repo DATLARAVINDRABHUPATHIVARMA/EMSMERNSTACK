@@ -5,11 +5,13 @@ export const columns = [
   {
     name: "S.No",
     selector: (row) => row.sno,
+    width: "58px"
   },
   {
     name: "Client ID",
     selector: (row) => row.clientID,
-    sortable: true
+    sortable: true,
+    width: "158px"
   },
   {
     name: "Client Name",
@@ -60,7 +62,9 @@ export const ClientButtons = ({ _id, onClientDelete }) => {
 
   return (
     <div className="flex space-x-3">
-      <button className="px-3 py-1 bg-emerald-600 text-white rounded">
+      <button className="px-3 py-1 bg-emerald-600 text-white rounded"
+      onClick={() => navigate(`/admin-dashboard/clients/${_id}`)}
+      >
         View
       </button>
       <button
