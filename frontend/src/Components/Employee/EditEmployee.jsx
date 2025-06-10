@@ -243,6 +243,19 @@ const EditEmployee = () => {
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
+               <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Branch Major
+                </label>
+                <input
+                  type="text"
+                  name="major"
+                  value={employee.major}
+                  onChange={handleChange}
+                  placeholder="Enter MAjor Branch of Study "
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
               {/* Nationality 
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -275,6 +288,45 @@ const EditEmployee = () => {
                   <option value="Married">Married</option>
                 </select>
               </div>
+              <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Father's Name
+            </label>
+            <input
+              type="text"
+              name="fatherName"
+              value={employee.fatherName}
+              onChange={handleChange}
+              placeholder="Enter Father's Name"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Mother's Name
+            </label>
+            <input
+              type="text"
+              name="motherName"
+              value={employee.motherName}
+              onChange={handleChange}
+              placeholder="Enter Mother's Name"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Siblings
+            </label>
+            <input
+              type="text"
+              name="siblings"
+              value={employee.siblings}
+              onChange={handleChange}
+              placeholder="Enter Siblings"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Other Emergency Phone Number*

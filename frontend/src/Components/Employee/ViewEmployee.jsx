@@ -89,6 +89,18 @@ const ViewEmployee = () => {
             <p className="font-medium">{employee.officeEmail}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
+            <p className="text-lg font-bold">Father's Name:</p>
+            <p className="font-medium">{employee.fatherName}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
+            <p className="text-lg font-bold">Mother's Name:</p>
+            <p className="font-medium">{employee.motherName}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
+            <p className="text-lg font-bold">Siblings:</p>
+            <p className="font-medium">{employee.siblings}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Aadhaar Number:</p>
             <p className="font-medium">{employee.aadhaarNumber}</p>
           </div>
@@ -99,6 +111,10 @@ const ViewEmployee = () => {
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Qualification:</p>
             <p className="font-medium">{employee.qualification}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
+            <p className="text-lg font-bold">Branch Major:</p>
+            <p className="font-medium">{employee.major}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Present Address:</p>

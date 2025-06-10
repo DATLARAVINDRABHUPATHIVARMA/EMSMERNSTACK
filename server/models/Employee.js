@@ -12,6 +12,7 @@ const employeeSchema = new Schema({
   dateOfJoining: { type: Date, required: true },
   aadhaarNumber: { type: String, required: true },
   qualification: { type: String, },
+  major: { type: String, },
   maritalStatus: { type: String, enum: ["Single", "Married"], required: true},
   emergencyContact: {type: String},
   spouseName: { type : String},
