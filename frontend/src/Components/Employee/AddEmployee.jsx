@@ -95,6 +95,14 @@ const AddEmployee = () => {
               required
             />
           </div>
+        </div>
+        <button
+          type="button"
+          className="w-full mt-6 mb-6 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Basic Details
+        </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Name*
@@ -119,6 +127,19 @@ const AddEmployee = () => {
               placeholder="Enter Personal Phone Number"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Photo*
+            </label>
+            <input
+              type="file"
+              name="image"
+              onChange={handleChange}
+              placeholder="Upload Image"
+              accept="image/*"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
           <div>
@@ -171,6 +192,14 @@ const AddEmployee = () => {
               </button>
             </div>
           </div>
+          </div>
+          <button
+          type="button"
+          className="w-full mt-6 mb-6 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Address
+        </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Present Address*
@@ -182,8 +211,30 @@ const AddEmployee = () => {
               placeholder="Enter Present Address"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
+            /> 
+           
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Permanent Address*
+            </label>
+            <input
+              type="text"
+              name="permanentAddress"
+              onChange={handleChange}
+              placeholder="Enter Permanent Address "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
             />
           </div>
+          </div>
+          <button
+          type="button"
+          className="w-full mt-6 mb-6 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Personal Details
+        </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Gender*
@@ -199,19 +250,6 @@ const AddEmployee = () => {
               <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Photo*
-            </label>
-            <input
-              type="file"
-              name="image"
-              onChange={handleChange}
-              placeholder="Upload Image"
-              accept="image/*"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -316,19 +354,6 @@ const AddEmployee = () => {
               onChange={handleChange}
               placeholder="Number of Children "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Permanent Address*
-            </label>
-            <input
-              type="text"
-              name="permanentAddress"
-              onChange={handleChange}
-              placeholder="Enter Permanent Address "
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
             />
           </div>
           <div>
