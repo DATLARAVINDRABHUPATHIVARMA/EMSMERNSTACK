@@ -192,8 +192,8 @@ const AddEmployee = () => {
               </button>
             </div>
           </div>
-          </div>
-          <button
+        </div>
+        <button
           type="button"
           className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
         >
@@ -211,7 +211,7 @@ const AddEmployee = () => {
               placeholder="Enter Present Address"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
-            /> 
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -226,8 +226,8 @@ const AddEmployee = () => {
               required
             />
           </div>
-          </div>
-          <button
+        </div>
+        <button
           type="button"
           className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
         >
@@ -296,18 +296,18 @@ const AddEmployee = () => {
               required
             />
           </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                PAN Number
-              </label>
-              <input
-                type="text"
-                name="PANNumber"
-                onChange={handleChange}
-                placeholder="Enter PAN Number "
-                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              />
-            </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              PAN Number
+            </label>
+            <input
+              type="text"
+              name="PANNumber"
+              onChange={handleChange}
+              placeholder="Enter PAN Number "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Highest Qualification
@@ -403,6 +403,15 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
+        </div>
+        <button
+          type="button"
+          className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Employee Details
+        </button>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Date of Joining*
@@ -414,6 +423,73 @@ const AddEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Designation*
+            </label>
+            <input
+              type="text"
+              name="designation"
+              onChange={handleChange}
+              placeholder="Enter Designation"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Department*
+            </label>
+            <select
+              name="department"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Department</option>
+              {departments.map((department) => (
+                <option key={department._id} value={department._id}>
+                  {department.departmentName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Client*
+            </label>
+            <select
+              name="client"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Client</option>
+              {clients.map((client) => (
+                <option key={client._id} value={client._id}>
+                  {client.clientName+" ("+ client.clientID + ")"}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Site*
+            </label>
+            <select
+              name="site"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Select Site</option>
+              {sites.map((site) => (
+                <option key={site._id} value={site._id}>
+                  {site.siteName}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -438,55 +514,6 @@ const AddEmployee = () => {
               placeholder="Enter Office Email "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Department*
-            </label>
-            <select
-              name="department"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">Select Department</option>
-              {departments.map((department) => (
-                <option key={department._id} value={department._id}>
-                  {department.departmentName}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Designation*
-            </label>
-            <input
-              type="text"
-              name="designation"
-              onChange={handleChange}
-              placeholder="Enter Designation"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Site*
-            </label>
-            <select
-              name="site"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">Select Site</option>
-              {sites.map((site) => (
-                <option key={site._id} value={site._id}>
-                  {site.siteName}
-                </option>
-              ))}
-            </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -515,24 +542,6 @@ const AddEmployee = () => {
               required
             />
           </div>*/}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Client*
-            </label>
-            <select
-              name="client"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">Select Client</option>
-              {clients.map((client) => (
-                <option key={client._id} value={client._id}>
-                  {client.clientID}
-                </option>
-              ))}
-            </select>
-          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Reporting Manager

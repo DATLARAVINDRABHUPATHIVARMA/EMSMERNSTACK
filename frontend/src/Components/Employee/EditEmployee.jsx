@@ -252,7 +252,7 @@ const EditEmployee = () => {
                   name="major"
                   value={employee.major}
                   onChange={handleChange}
-                  placeholder="Enter MAjor Branch of Study "
+                  placeholder="Enter Major Branch of Study "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
@@ -514,7 +514,7 @@ const EditEmployee = () => {
                   <option value="">Select Client</option>
                   {clients.map((client) => (
                     <option key={client._id} value={client._id}>
-                      {client.clientID}
+                      {client.clientID} 
                     </option>
                   ))}
                 </select>

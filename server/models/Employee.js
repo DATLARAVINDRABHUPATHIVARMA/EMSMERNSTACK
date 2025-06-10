@@ -7,6 +7,9 @@ const employeeSchema = new Schema({
   personalContact: { type: String, required: true, unique: true}, //countrycode
   dateOfBirth: { type: Date, required: true },
   presentAddress: { type: String, required: true},
+  fatherName: { type: String,},
+  motherName: { type: String,},
+  siblings: { type: String,},
   //state //country //pincode //city
   gender: { type: String, enum: ["Male", "Female", "Other"], required: true },
   dateOfJoining: { type: Date, required: true },

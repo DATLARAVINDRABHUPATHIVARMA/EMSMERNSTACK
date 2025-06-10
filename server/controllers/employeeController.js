@@ -28,6 +28,9 @@ const addEmployee = async (req, res) => {
       email,
       password,
       presentAddress,
+      fatherName,
+      motherName,
+      siblings,
       //state //country //pincode //city
       gender,
       dateOfJoining,
@@ -103,6 +106,9 @@ const addEmployee = async (req, res) => {
       personalContact,
       dateOfBirth,
       presentAddress,
+      fatherName,
+      motherName,
+      siblings,
       // //state //country //pincode //city
       gender,
       dateOfJoining,
@@ -182,7 +188,7 @@ const getEmployee = async (req, res) => {
 const updateEmployee = async (req, res) => {
   try{
     const {id} = req.params;
-    const { name, personalContact, presentAddress, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
+    const { name, personalContact, presentAddress, fatherName, motherName, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
 
     const employee = await Employee.findById({ _id : id });
     if(!employee){
@@ -196,7 +202,7 @@ const updateEmployee = async (req, res) => {
 
     const updateUser = await User.findByIdAndUpdate({ _id : employee.userId }, {name})
 
-    const updateEmployee = await Employee.findByIdAndUpdate({ _id : id }, { personalContact, presentAddress, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion })
+    const updateEmployee = await Employee.findByIdAndUpdate({ _id : id }, { personalContact, presentAddress, fatherName, motherName, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion })
 
     if (!updateEmployee || !updateUser){
        return res.status(404).json({success: false, error: 'document not found'})

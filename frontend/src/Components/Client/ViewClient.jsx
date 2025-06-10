@@ -47,11 +47,11 @@ const ViewClient = () => {
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Client Services:</p>
-            <p className="font-medium">{client.clientServices}</p>
+            <p className="font-medium">{client.department.departmentName}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Client Location:</p>
-            <p className="font-medium">{client.clientLocation}</p>
+            <p className="font-medium">{client.site.siteName}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Client Services Starting Date:</p>
