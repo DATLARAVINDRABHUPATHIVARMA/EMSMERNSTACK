@@ -306,7 +306,7 @@ const AddEmployee = () => {
                 type="number"
                 name="prePincode"
                 onChange={handleChange}
-                placeholder="Enter Present Address"
+                placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 required
               />
@@ -418,11 +418,91 @@ const AddEmployee = () => {
                 type="number"
                 name="perPincode"
                 onChange={handleChange}
-                placeholder="Enter Present Address"
+                placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 required
               />
             </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Physical 
+        </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Height
+            </label>
+            <input
+              type="text"
+              name="height"
+              onChange={handleChange}
+              placeholder="Enter Height"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Weight
+            </label>
+            <input
+              type="text"
+              name="weight"
+              onChange={handleChange}
+              placeholder="Enter Weight"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Chest
+            </label>
+            <input
+              type="text"
+              name="chest"
+              onChange={handleChange}
+              placeholder="Enter Chest"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Disease (if any)
+            </label>
+            <input
+              type="text"
+              name="disease"
+              onChange={handleChange}
+              placeholder="Enter disease"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Eye Colour
+            </label>
+            <input
+              type="text"
+              name="eyeColour"
+              onChange={handleChange}
+              placeholder="Enter Eye Colour"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Hair Colour
+            </label>
+            <input
+              type="text"
+              name="hairColour"
+              onChange={handleChange}
+              placeholder="Enter Hair Colour"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
           </div>
         </div>
         <button
@@ -446,6 +526,18 @@ const AddEmployee = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
+              Father's Occupation
+            </label>
+            <input
+              type="text"
+              name="fatherOccupation"
+              onChange={handleChange}
+              placeholder="Enter Father's Occupation"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
               Mother's Name
             </label>
             <input
@@ -453,6 +545,18 @@ const AddEmployee = () => {
               name="motherName"
               onChange={handleChange}
               placeholder="Enter Mother's Name"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Mother's Occupation
+            </label>
+            <input
+              type="text"
+              name="motherOccupation"
+              onChange={handleChange}
+              placeholder="Enter Mother's Occupation"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
