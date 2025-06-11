@@ -201,9 +201,11 @@ const AddEmployee = () => {
         </button>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Present Address*
-            </label>
+            <button
+              type="button"
+              className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+            >Present Address</button>
+            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
             <input
               type="text"
               name="presentAddress"
@@ -211,7 +213,70 @@ const AddEmployee = () => {
               placeholder="Enter Present Address"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
-            />
+            /></div>
+            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
+            <input
+              type="text"
+              name="presentAddress"
+              onChange={handleChange}
+              placeholder="Enter Present Address"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            /></div>
+            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
+            <input
+              type="text"
+              name="presentAddress"
+              onChange={handleChange}
+              placeholder="Enter Present Address"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            /></div>
+            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
+            <input
+              type="text"
+              name="presentAddress"
+              onChange={handleChange}
+              placeholder="Enter Present Address"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            /></div>
+            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
+            <input
+              type="text"
+              name="presentAddress"
+              onChange={handleChange}
+              placeholder="Enter Present Address"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            /></div>
+            <div className="mt-2 mb-2"><label className="block text-sm font-medium text-gray-700">House Number</label>
+            <input
+              type="text"
+              name="presentAddress"
+              onChange={handleChange}
+              placeholder="Enter Present Address"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            /></div>
+            <div className="mt-2 mb-2"><label className="block text-sm font-medium text-gray-700">House Number</label>
+            <input
+              type="text"
+              name="presentAddress"
+              onChange={handleChange}
+              placeholder="Enter Present Address"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            /></div>
+            <div className="mt-2 mb-2"><label className="block text-sm font-medium text-gray-700">House Number</label>
+            <input
+              type="text"
+              name="presentAddress"
+              onChange={handleChange}
+              placeholder="Enter Present Address"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            /></div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -468,7 +533,7 @@ const AddEmployee = () => {
               <option value="">Select Client</option>
               {clients.map((client) => (
                 <option key={client._id} value={client._id}>
-                  {client.clientName+" ("+ client.clientID + ")"}
+                  {client.clientName + " (" + client.clientID + ")"}
                 </option>
               ))}
             </select>
