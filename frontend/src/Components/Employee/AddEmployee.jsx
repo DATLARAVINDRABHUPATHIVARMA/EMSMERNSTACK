@@ -203,93 +203,226 @@ const AddEmployee = () => {
           <div>
             <button
               type="button"
-              className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
-            >Present Address</button>
-            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
-            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
-            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
-            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
-            <div><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
-            <div className="mt-2 mb-2"><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
-            <div className="mt-2 mb-2"><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
-            <div className="mt-2 mb-2"><label className="block text-sm font-medium text-gray-700">House Number</label>
-            <input
-              type="text"
-              name="presentAddress"
-              onChange={handleChange}
-              placeholder="Enter Present Address"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            /></div>
+              className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Present Address
+            </button>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                House Number / Door Number / Flat Number
+              </label>
+              <input
+                type="text"
+                name="preHNo"
+                onChange={handleChange}
+                placeholder="Enter House Number or Door Number"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Street / Lane
+              </label>
+              <input
+                type="text"
+                name="preStreet"
+                onChange={handleChange}
+                placeholder="Enter Street Details"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Village / Locality
+              </label>
+              <input
+                type="text"
+                name="preVillage"
+                onChange={handleChange}
+                placeholder="Enter Village"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Mandal / Municipality / Area
+              </label>
+              <input
+                type="text"
+                name="preMandal"
+                onChange={handleChange}
+                placeholder="Enter Area"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                District / City
+              </label>
+              <input
+                type="text"
+                name="preCity"
+                onChange={handleChange}
+                placeholder="Enter District / City"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                State
+              </label>
+              <input
+                type="text"
+                name="preState"
+                onChange={handleChange}
+                placeholder="Enter State"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Country
+              </label>
+              <input
+                type="text"
+                name="preCountry"
+                onChange={handleChange}
+                placeholder="Enter Country"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Pin Code / Zip Code
+              </label>
+              <input
+                type="number"
+                name="prePincode"
+                onChange={handleChange}
+                placeholder="Enter Present Address"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Permanent Address*
-            </label>
-            <input
-              type="text"
-              name="permanentAddress"
-              onChange={handleChange}
-              placeholder="Enter Permanent Address "
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
-            />
+            <button
+              type="button"
+              className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Permanent Address
+            </button>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                House Number / Door Number / Flat Number
+              </label>
+              <input
+                type="text"
+                name="perHNo"
+                onChange={handleChange}
+                placeholder="Enter House Number or Door Number"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Street / Lane
+              </label>
+              <input
+                type="text"
+                name="perStreet"
+                onChange={handleChange}
+                placeholder="Enter Street Details"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Village / Locality
+              </label>
+              <input
+                type="text"
+                name="perVillage"
+                onChange={handleChange}
+                placeholder="Enter Village"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Mandal / Municipality / Area
+              </label>
+              <input
+                type="text"
+                name="perMandal"
+                onChange={handleChange}
+                placeholder="Enter Area"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                District / City
+              </label>
+              <input
+                type="text"
+                name="perCity"
+                onChange={handleChange}
+                placeholder="Enter District / City"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                State
+              </label>
+              <input
+                type="text"
+                name="perState"
+                onChange={handleChange}
+                placeholder="Enter State"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Country
+              </label>
+              <input
+                type="text"
+                name="perCountry"
+                onChange={handleChange}
+                placeholder="Enter Country"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Pin Code / Zip Code
+              </label>
+              <input
+                type="number"
+                name="perPincode"
+                onChange={handleChange}
+                placeholder="Enter Present Address"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
+              />
+            </div>
           </div>
         </div>
         <button

@@ -11,13 +11,31 @@ const EditEmployee = () => {
   const [employee, setEmployee] = useState({
     name: "",
     personalContact: "",
-    presentAddress: "",
+    preHNo: "",
+    preStreet: "",
+    preVillage: "",
+    preMandal: "",
+    preCity: "",
+    preState: "",
+    preCountry: "",
+    prePincode: "",
+    perHNo: "",
+    perStreet: "",
+    perVillage: "",
+    perMandal: "",
+    perCity: "",
+    perState: "",
+    perCountry: "",
+    perPincode: "",
+    fatherName: "",
+    motherName: "",
+    siblings: "",
     qualification: "",
+    major: "",
     maritalStatus: "",
     emergencyContact: "",
     spouseName: "",
     childrenCount: "",
-    permanentAddress: "",
     officeContact: "",
     officeEmail: "",
     PANNumber: "",
@@ -67,13 +85,31 @@ const EditEmployee = () => {
             name: employee.userId.name,
             personalContact: employee.personalContact,
             dateOfBirth: employee.dateOfBirth,
-            presentAddress: employee.presentAddress,
+            preHNo: employee.preHNo,
+            preStreet: employee.preStreet,
+            preVillage: employee.preVillage,
+            preMandal: employee.preMandal,
+            preCity: employee.preCity,
+            preState: employee.preState,
+            preCountry: employee.preCountry,
+            prePincode: employee.prePincode,
+            perHNo: employee.perHNo,
+            perStreet: employee.perStreet,
+            perVillage: employee.perVillage,
+            perMandal: employee.perMandal,
+            perCity: employee.perCity,
+            perState: employee.perState,
+            perCountry: employee.perCountry,
+            perPincode: employee.perPincode,
+            fatherName: employee.fatherName,
+            motherName: employee.motherName,
+            siblings: employee.siblings,
             qualification: employee.qualification,
+            major: employee.major,
             maritalStatus: employee.maritalStatus,
             emergencyContact: employee.emergencyContact,
             spouseName: employee.spouseName,
             childrenCount: employee.childrenCount,
-            permanentAddress: employee.permanentAddress,
             officeContact: employee.officeContact,
             officeEmail: employee.officeEmail,
             PANNumber: employee.PANNumber,
@@ -216,20 +252,262 @@ const EditEmployee = () => {
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                 />
               </div>
+            </div>
+            <button
+              type="button"
+              className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Address
+            </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Present Address*
-                </label>
-                <input
-                  type="text"
-                  name="presentAddress"
-                  value={employee.presentAddress}
-                  onChange={handleChange}
-                  placeholder="Enter Present Address"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
-                />
+                <button
+                  type="button"
+                  className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded"
+                >
+                  Present Address
+                </button>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    House Number / Door Number / Flat Number
+                  </label>
+                  <input
+                    type="text"
+                    name="preHNo"
+                    value={employee.preHNo}
+                    onChange={handleChange}
+                    placeholder="Enter House Number or Door Number"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Street / Lane
+                  </label>
+                  <input
+                    type="text"
+                    name="preStreet"
+                    value={employee.preStreet}
+                    onChange={handleChange}
+                    placeholder="Enter Street Details"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Village / Locality
+                  </label>
+                  <input
+                    type="text"
+                    name="preVillage"
+                    value={employee.preVillage}
+                    onChange={handleChange}
+                    placeholder="Enter Village"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Mandal / Municipality / Area
+                  </label>
+                  <input
+                    type="text"
+                    name="preMandal"
+                    value={employee.preMandal}
+                    onChange={handleChange}
+                    placeholder="Enter Area"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    District / City
+                  </label>
+                  <input
+                    type="text"
+                    name="preCity"
+                    value={employee.preCity}
+                    onChange={handleChange}
+                    placeholder="Enter District / City"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    State
+                  </label>
+                  <input
+                    type="text"
+                    name="preState"
+                    value={employee.preState}
+                    onChange={handleChange}
+                    placeholder="Enter State"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    name="preCountry"
+                    value={employee.preCountry}
+                    onChange={handleChange}
+                    placeholder="Enter Country"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Pin Code / Zip Code
+                  </label>
+                  <input
+                    type="number"
+                    name="prePincode"
+                    value={employee.prePincode}
+                    onChange={handleChange}
+                    placeholder="Enter Present Address"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
               </div>
+              <div>
+                <button
+                  type="button"
+                  className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded"
+                >
+                  Permanent Address
+                </button>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    House Number / Door Number / Flat Number
+                  </label>
+                  <input
+                    type="text"
+                    name="perHNo"
+                    value={employee.perHNo}
+                    onChange={handleChange}
+                    placeholder="Enter House Number or Door Number"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Street / Lane
+                  </label>
+                  <input
+                    type="text"
+                    name="perStreet"
+                    value={employee.perStreet}
+                    onChange={handleChange}
+                    placeholder="Enter Street Details"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Village / Locality
+                  </label>
+                  <input
+                    type="text"
+                    name="perVillage"
+                    value={employee.perVillage}
+                    onChange={handleChange}
+                    placeholder="Enter Village"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Mandal / Municipality / Area
+                  </label>
+                  <input
+                    type="text"
+                    name="perMandal"
+                    value={employee.perMandal}
+                    onChange={handleChange}
+                    placeholder="Enter Area"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    District / City
+                  </label>
+                  <input
+                    type="text"
+                    name="perCity"
+                    value={employee.perCity}
+                    onChange={handleChange}
+                    placeholder="Enter District / City"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    State
+                  </label>
+                  <input
+                    type="text"
+                    name="perState"
+                    value={employee.perState}
+                    onChange={handleChange}
+                    placeholder="Enter State"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    name="perCountry"
+                    value={employee.perCountry}
+                    onChange={handleChange}
+                    placeholder="Enter Country"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Pin Code / Zip Code
+                  </label>
+                  <input
+                    type="number"
+                    name="perPincode"
+                    value={employee.perPincode}
+                    onChange={handleChange}
+                    placeholder="Enter Present Address"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Other Personal Details
+            </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Highest Qualification
@@ -243,7 +521,7 @@ const EditEmployee = () => {
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
-               <div>
+              <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Branch Major
                 </label>
@@ -289,44 +567,44 @@ const EditEmployee = () => {
                 </select>
               </div>
               <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Father's Name
-            </label>
-            <input
-              type="text"
-              name="fatherName"
-              value={employee.fatherName}
-              onChange={handleChange}
-              placeholder="Enter Father's Name"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Mother's Name
-            </label>
-            <input
-              type="text"
-              name="motherName"
-              value={employee.motherName}
-              onChange={handleChange}
-              placeholder="Enter Mother's Name"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Siblings
-            </label>
-            <input
-              type="text"
-              name="siblings"
-              value={employee.siblings}
-              onChange={handleChange}
-              placeholder="Enter Siblings"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Father's Name
+                </label>
+                <input
+                  type="text"
+                  name="fatherName"
+                  value={employee.fatherName}
+                  onChange={handleChange}
+                  placeholder="Enter Father's Name"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Mother's Name
+                </label>
+                <input
+                  type="text"
+                  name="motherName"
+                  value={employee.motherName}
+                  onChange={handleChange}
+                  placeholder="Enter Mother's Name"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Siblings
+                </label>
+                <input
+                  type="text"
+                  name="siblings"
+                  value={employee.siblings}
+                  onChange={handleChange}
+                  placeholder="Enter Siblings"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Other Emergency Phone Number*
@@ -365,20 +643,6 @@ const EditEmployee = () => {
                   onChange={handleChange}
                   placeholder="Number of Children "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Permanent Address*
-                </label>
-                <input
-                  type="text"
-                  name="permanentAddress"
-                  value={employee.permanentAddress}
-                  onChange={handleChange}
-                  placeholder="Enter Permanent Address "
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
                 />
               </div>
               <div>
@@ -514,7 +778,7 @@ const EditEmployee = () => {
                   <option value="">Select Client</option>
                   {clients.map((client) => (
                     <option key={client._id} value={client._id}>
-                      {client.clientID} 
+                      {client.clientID}
                     </option>
                   ))}
                 </select>

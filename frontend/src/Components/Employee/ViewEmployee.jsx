@@ -118,11 +118,11 @@ const ViewEmployee = () => {
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Present Address:</p>
-            <p className="font-medium">{employee.presentAddress}</p>
+            <p className="font-medium">{employee.preHNo+", "+employee.preStreet+", "+employee.preVillage+", "+employee.preMandal+", "+employee.preCity+", "+employee.preState+", "+employee.preCountry+" - "+employee.prePincode+"."}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Permanent Address:</p>
-            <p className="font-medium">{employee.permanentAddress}</p>
+            <p className="font-medium">{employee.perHNo+", "+employee.perStreet+", "+employee.perVillage+", "+employee.perMandal+", "+employee.perCity+", "+employee.perState+", "+employee.perCountry+" - "+employee.perPincode+"."}</p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Marital Status:</p>

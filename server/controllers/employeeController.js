@@ -27,7 +27,14 @@ const addEmployee = async (req, res) => {
       dateOfBirth,
       email,
       password,
-      presentAddress,
+      preHNo,
+      preStreet,
+      preVillage,
+      preMandal,
+      preCity,
+      preState,
+      preCountry,
+      prePincode,
       fatherName,
       motherName,
       siblings,
@@ -41,7 +48,14 @@ const addEmployee = async (req, res) => {
       emergencyContact,
       spouseName,
       childrenCount,
-      permanentAddress,
+      perHNo,
+      perStreet,
+      perVillage,
+      perMandal,
+      perCity,
+      perState,
+      perCountry,
+      perPincode,
       officeContact,
       officeEmail,
       PANNumber,
@@ -105,7 +119,14 @@ const addEmployee = async (req, res) => {
       employeeID,
       personalContact,
       dateOfBirth,
-      presentAddress,
+      preHNo,
+      preStreet,
+      preVillage,
+      preMandal,
+      preCity,
+      preState,
+      preCountry,
+      prePincode,
       fatherName,
       motherName,
       siblings,
@@ -120,7 +141,14 @@ const addEmployee = async (req, res) => {
       emergencyContact,
       spouseName,
       childrenCount,
-      permanentAddress,
+      perHNo,
+      perStreet,
+      perVillage,
+      perMandal,
+      perCity,
+      perState,
+      perCountry,
+      perPincode,
       officeContact,
       officeEmail,
       PANNumber,
@@ -188,7 +216,7 @@ const getEmployee = async (req, res) => {
 const updateEmployee = async (req, res) => {
   try{
     const {id} = req.params;
-    const { name, personalContact, presentAddress, fatherName, motherName, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
+    const { name, personalContact, perHNo, perStreet, perVillage, perMandal, perCity, perState, perCountry, perPincode, fatherName, motherName, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, preHNo, preStreet, preVillage, preMandal, preCity, preState, preCountry, prePincode, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
 
     const employee = await Employee.findById({ _id : id });
     if(!employee){
@@ -202,7 +230,7 @@ const updateEmployee = async (req, res) => {
 
     const updateUser = await User.findByIdAndUpdate({ _id : employee.userId }, {name})
 
-    const updateEmployee = await Employee.findByIdAndUpdate({ _id : id }, { personalContact, presentAddress, fatherName, motherName, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, permanentAddress, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion })
+    const updateEmployee = await Employee.findByIdAndUpdate({ _id : id }, { personalContact, preHNo, preStreet, preVillage, preMandal, preCity, preState, preCountry, prePincode, perHNo, perStreet, perVillage, perMandal, perCity, perState, perCountry, perPincode, fatherName, motherName, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, officeContact, officeEmail, PANNumber, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion })
 
     if (!updateEmployee || !updateUser){
        return res.status(404).json({success: false, error: 'document not found'})
