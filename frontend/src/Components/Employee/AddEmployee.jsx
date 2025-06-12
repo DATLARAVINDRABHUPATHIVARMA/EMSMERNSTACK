@@ -1025,7 +1025,7 @@ const AddEmployee = () => {
           type="button"
           className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
         >
-          Physical Standards
+          Physical Traits
         </button>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
