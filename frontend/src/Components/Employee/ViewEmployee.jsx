@@ -13,7 +13,7 @@ const ViewEmployee = () => {
           `http://localhost:5000/api/employee/${id}`,
           {
             headers: {
-              'Authorization': `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -37,48 +37,159 @@ const ViewEmployee = () => {
           <h2 className="text-2xl font-bold mb-8 text-center">
             Employee Details
           </h2>
-          <div className="flex items-center justify-center">
-            <img src={`http://localhost:5000/${employee.userId.profileImage}`}
-              className="rounded-full border w-72"
-            />
+          <h3 className="text-xl font-bold mb-4 text-center">
+            Basic Details
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex items-center justify-center">
+              <img
+                src={`http://localhost:5000/${employee.userId.profileImage}`}
+                className="rounded-full border w-60 duration-500 hover:scale-110"
+              />
+            </div>
+            <div>
+              <div className="flex items-center  justify space-x-3 mt-3 mb-4">
+                <p className="text-lg font-bold">Employee ID:</p>
+                <p className="font-medium">{employee.employeeID}</p>
+              </div>
+              <div className="flex items-center justify space-x-3 mb-4">
+                <p className="text-lg font-bold">Name:</p>
+                <p className="font-medium">{employee.userId.name}</p>
+              </div>
+              <div className="flex items-center justify space-x-3 mb-4">
+                <p className="text-lg font-bold">Phone Number:</p>
+                <p className="font-medium">{employee.personalContact}</p>
+              </div>
+              <div className="flex items-center justify space-x-3 mb-4">
+                <p className="text-lg font-bold">Date of Birth:</p>
+                <p className="font-medium">
+                  {new Date(employee.dateOfBirth).toDateString()}
+                </p>
+              </div>
+              <div className="flex items-center justify space-x-3 mb-4">
+                <p className="text-lg font-bold">Email:</p>
+                <p className="font-medium">{employee.userId.email}</p>
+              </div>
+              {/*<div className="flex items-center justify space-x-3 mt-3">
+                <p className="text-lg font-bold">Age:</p>
+                <p className="font-medium">())}
+                  {(new Date(employee.dateOfBirth).toYearString Years
+                </p>
+              </div>*/}
+            </div>
           </div>
-          <br />
-          <div className="flex items-center  justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Employee ID:</p>
-            <p className="font-medium">{employee.employeeID}</p>
+          <h3 className="text-xl font-bold mt-5 mb-4 text-center">
+            Address
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex items-center justify space-x-3 mb-5">
+              <p className="text-lg font-bold">Present Address:</p>
+              <p className="font-medium">{ employee.preHNo + ", " + employee.preStreet + ", " + employee.preVillage + ", " + employee.preMandal + ", " + employee.preCity + ", " + employee.preState + ", " + employee.preCountry + " - " + employee.prePincode + "." }</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-5">
+              <p className="text-lg font-bold">Permanent Address:</p>
+              <p className="font-medium">{ employee.perHNo + ", " + employee.perStreet + ", " + employee.perVillage + ", " + employee.perMandal + ", " + employee.perCity + ", " + employee.perState + ", " + employee.perCountry + " - " + employee.perPincode + "." }</p>
+            </div>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Name:</p>
-            <p className="font-medium">{employee.userId.name}</p>
+          <h3 className="text-xl font-bold mt-5 mb-4 text-center">
+            Personal Details
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Gender:</p>
+              <p className="font-medium">{employee.gender}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Blood Group:</p>
+              <p className="font-medium">{employee.bloodGroup}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Emergency Phone Number:</p>
+              <p className="font-medium">{employee.emergencyContact}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Religion:</p>
+              <p className="font-medium">{employee.religion}</p>
+            </div>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Qualification:</p>
+            <p className="font-medium">{employee.qualification}</p>
           </div>
-
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Date of Birth:</p>
-            <p className="font-medium">
-              {new Date(employee.dateOfBirth).toLocaleDateString()}
-            </p>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Branch Major:</p>
+            <p className="font-medium">{employee.major}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Gender:</p>
-            <p className="font-medium">{employee.gender}</p>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Category:</p>
+            <p className="font-medium">{employee.caste}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Date of Joining:</p>
-            <p className="font-medium">
-              {new Date(employee.dateOfJoining).toDateString()}
-            </p>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Sub-Category:</p>
+            <p className="font-medium">{employee.subCaste}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Personal Phone Number:</p>
-            <p className="font-medium">{employee.personalContact}</p>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Mother Tongue:</p>
+            <p className="font-medium">{employee.motherTongue}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Personal Email:</p>
-            <p className="font-medium">{employee.userId.email}</p>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Languages Known:</p>
+            <p className="font-medium">{employee.languagesKnown}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Emergency Phone Number:</p>
-            <p className="font-medium">{employee.emergencyContact}</p>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Disability Status:</p>
+            <p className="font-medium">{employee.PWDStatus}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Kind Of Diasbility:</p>
+            <p className="font-medium">{employee.disability}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Aadhaar Number:</p>
+            <p className="font-medium">{employee.aadhaarNumber}</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">PAN Number:</p>
+            <p className="font-medium">{employee.PANNumber}</p>
+          </div>
+          </div>
+          <h3 className="text-xl font-bold mt-5 mb-4 text-center">
+            Employee Details
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Date of Joining:</p>
+              <p className="font-medium">
+                {new Date(employee.dateOfJoining).toDateString()}
+              </p>
+            </div>
+            <div className="flex text-center items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Status:</p>
+              <p className="font-medium">{employee.empStatus}</p>
+            </div>
+            <div className="flex text-center items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Designation:</p>
+              <p className="font-medium">{employee.designation}</p>
+            </div>
+            <div className="flex text-center items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Department:</p>
+              <p className="font-medium">{employee.department.departmentName}</p>
+            </div>
+            <div className="flex text-center items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Client ID:</p>
+              <p className="font-medium">{employee.client.clientID}</p>
+            </div>
+            <div className="flex text-center items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Client:</p>
+              <p className="font-medium">{employee.client.clientName}</p>
+            </div>
+            <div className="flex text-center items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Site:</p>
+              <p className="font-medium">{employee.site.siteName}</p>
+            </div>
+            <div className="flex text-center items-center justify-center space-x-3 mb-5">
+              <p className="text-lg font-bold">Site Address:</p>
+              <p className="font-medium">{employee.site.siteAddress}</p>
+            </div>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Office Phone Number:</p>
@@ -100,35 +211,11 @@ const ViewEmployee = () => {
             <p className="text-lg font-bold">Siblings:</p>
             <p className="font-medium">{employee.siblings}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Aadhaar Number:</p>
-            <p className="font-medium">{employee.aadhaarNumber}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">PAN Number:</p>
-            <p className="font-medium">{employee.PANNumber}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Qualification:</p>
-            <p className="font-medium">{employee.qualification}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Branch Major:</p>
-            <p className="font-medium">{employee.major}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Present Address:</p>
-            <p className="font-medium">{employee.preHNo+", "+employee.preStreet+", "+employee.preVillage+", "+employee.preMandal+", "+employee.preCity+", "+employee.preState+", "+employee.preCountry+" - "+employee.prePincode+"."}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Permanent Address:</p>
-            <p className="font-medium">{employee.perHNo+", "+employee.perStreet+", "+employee.perVillage+", "+employee.perMandal+", "+employee.perCity+", "+employee.perState+", "+employee.perCountry+" - "+employee.perPincode+"."}</p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+          <div className="flex text-center items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Marital Status:</p>
             <p className="font-medium">{employee.maritalStatus}</p>
           </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
+          <div className="flex text-center items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Spouse Name:</p>
             <p className="font-medium">{employee.spouseName}</p>
           </div>
@@ -137,38 +224,8 @@ const ViewEmployee = () => {
             <p className="font-medium">{employee.childrenCount}</p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Department:</p>
-            <p className="font-medium">{employee.department.departmentName}</p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Department Description:</p>
-            <p className="font-medium">
-              {employee.department.departmentDescription}
-            </p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Designation:</p>
-            <p className="font-medium">{employee.designation}</p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Job Role:</p>
             <p className="font-medium">{employee.jobRole}</p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Site:</p>
-            <p className="font-medium">{employee.site.siteName}</p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Site Address:</p>
-            <p className="font-medium">{employee.site.siteAddress}</p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Client ID:</p>
-            <p className="font-medium">{employee.client.clientID}</p>
-          </div>
-          <div className="flex text-center items-center justify-center space-x-3 mb-5">
-            <p className="text-lg font-bold">Client:</p>
-            <p className="font-medium">{employee.client.clientName}</p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Reporting Manager:</p>
@@ -209,13 +266,16 @@ const ViewEmployee = () => {
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">PF Number:</p>
             <p className="font-medium">{employee.PFDetails}</p>
-          </div><div className="flex text-center items-center justify-center space-x-3 mb-5">
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Insurance Number:</p>
             <p className="font-medium">{employee.insuranceDetails}</p>
-          </div><div className="flex text-center items-center justify-center space-x-3 mb-5">
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold"> UAN Number:</p>
             <p className="font-medium">{employee.UANNumber}</p>
-          </div><div className="flex text-center items-center justify-center space-x-3 mb-5">
+          </div>
+          <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Previous Designation:</p>
             <p className="font-medium">{employee.previousDesignation}</p>
           </div>
@@ -225,15 +285,11 @@ const ViewEmployee = () => {
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Date of Promotion:</p>
-            <p className="font-medium">
-              {employee.dateOfPromotion}
-            </p>
+            <p className="font-medium">{employee.dateOfPromotion}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Date of Termination:</p>
-            <p className="font-medium">
-              {employee.dateOfTermination}
-            </p>
+            <p className="font-medium">{employee.dateOfTermination}</p>
           </div>
           <div className="flex text-center items-center justify-center space-x-3 mb-5">
             <p className="text-lg font-bold">Web Role:</p>
