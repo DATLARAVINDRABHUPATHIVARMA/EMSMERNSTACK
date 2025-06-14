@@ -9,8 +9,10 @@ import axios from "axios";
 
 const EditEmployee = () => {
   const [employee, setEmployee] = useState({
+    employeeID: "",
     name: "",
     personalContact: "",
+    dateOfBirth: "",
     email: "",
     preHNo: "",
     preStreet: "",
@@ -29,27 +31,43 @@ const EditEmployee = () => {
     perCountry: "",
     perPincode: "",
     gender: "",
-    fatherName: "",
-    motherName: "",
-    siblings: "",
+    bloodGroup: "",
+    emergencyContact: "",
+    religion: "",
     qualification: "",
     major: "",
-    maritalStatus: "",
-    emergencyContact: "",
-    spouseName: "",
-    childrenCount: "",
+    caste: "",
+    subCaste: "",
+    motherTongue: "",
+    languagesKnown: "",
+    PWDStatus: "",
+    disability: "",
+    aadhaarNumber: "",
+    PANNumber: "",
+    dateOfJoining: "",
+    empStatus: "",
+    designation: "",
+    department: "",
+    client: "",
+    site: "",
     officeContact: "",
     officeEmail: "",
-    PANNumber: "",
-    department: "",
-    designation: "",
-    site: "",
     jobRole: "",
-    client: "",
+    role: "",
+    currentSalary: 0,
     reportingInchargePerson: "",
     repPersonDesignation: "",
     repPersonEmployeeID: "",
-    currentSalary: 0,
+    previousDesignation: "",
+    previousSalary: "",
+    dateOfPromotion: "",
+    dateOfTermination: "",
+    fatherName: "",
+    motherName: "",
+    siblings: "",
+    maritalStatus: "",
+    spouseName: "",
+    childrenCount: "",
     bankName: "",
     bankAccountNumber: "",
     IFSCCode: "",
@@ -58,9 +76,6 @@ const EditEmployee = () => {
     insuranceDetails: "",
     PFDetails: "",
     UANNumber: "",
-    previousDesignation: "",
-    previousSalary: "",
-    dateOfPromotion: "",
   });
   const [departments, setDepartments] = useState(null);
   const [clients, setClients] = useState(null);
@@ -105,27 +120,43 @@ const EditEmployee = () => {
             perCountry: employee.perCountry,
             perPincode: employee.perPincode,
             gender: employee.gender,
-            fatherName: employee.fatherName,
-            motherName: employee.motherName,
-            siblings: employee.siblings,
+            bloodGroup: employee.bloodGroup,
+            emergencyContact: employee.emergencyContact,
+            religion: employee.religion,
             qualification: employee.qualification,
             major: employee.major,
-            maritalStatus: employee.maritalStatus,
-            emergencyContact: employee.emergencyContact,
-            spouseName: employee.spouseName,
-            childrenCount: employee.childrenCount,
+            caste: employee.caste,
+            subCaste: employee.subCaste,
+            motherTongue: employee.motherTongue,
+            languagesKnown: employee.languagesKnown,
+            PWDStatus: employee.PWDStatus,
+            disability: employee.disability,
+            aadhaarNumber: employee.aadhaarNumber,
+            PANNumber: employee.PANNumber,
+            dateOfJoining: employee.dateOfJoining,
+            empStatus: employee.empStatus,
+            designation: employee.designation,
+            department: employee.department,
+            client: employee.client,
+            site: employee.site,
             officeContact: employee.officeContact,
             officeEmail: employee.officeEmail,
-            PANNumber: employee.PANNumber,
-            department: employee.department,
-            designation: employee.designation,
-            site: employee.site,
             jobRole: employee.jobRole,
-            client: employee.client,
+            role: employee.userId.role,
+            currentSalary: employee.currentSalary,
             reportingInchargePerson: employee.reportingInchargePerson,
             repPersonDesignation: employee.repPersonDesignation,
             repPersonEmployeeID: employee.repPersonEmployeeID,
-            currentSalary: employee.currentSalary,
+            previousDesignation: employee.previousDesignation,
+            previousSalary: employee.previousSalary,
+            dateOfPromotion: employee.dateOfPromotion,
+            dateOfTermination: employee.dateOfTermination,
+            fatherName: employee.fatherName,
+            motherName: employee.motherName,
+            siblings: employee.siblings,
+            maritalStatus: employee.maritalStatus,
+            spouseName: employee.spouseName,
+            childrenCount: employee.childrenCount,
             bankName: employee.bankName,
             bankAccountNumber: employee.bankAccountNumber,
             IFSCCode: employee.IFSCCode,
@@ -134,9 +165,6 @@ const EditEmployee = () => {
             insuranceDetails: employee.insuranceDetails,
             PFDetails: employee.PFDetails,
             UANNumber: employee.UANNumber,
-            previousDesignation: employee.previousDesignation,
-            previousSalary: employee.previousSalary,
-            dateOfPromotion: employee.dateOfPromotion,
           }));
         }
       } catch (error) {
@@ -634,6 +662,7 @@ const EditEmployee = () => {
                 </label>
                 <select
                   name="caste"
+                  value={employee.caste}
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 >
@@ -651,6 +680,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="subCaste"
+                  value={employee.subCaste}
                   onChange={handleChange}
                   placeholder="Enter Sub Category"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -663,6 +693,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="motherTongue"
+                  value={employee.motherTongue}
                   onChange={handleChange}
                   placeholder="Enter Mother Tongue"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -751,88 +782,112 @@ const EditEmployee = () => {
               <option value="Other">Other</option>
             </select>
           </div>*/}
+            </div>
+            <button
+              type="button"
+              className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Employee Details
+            </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Marital Status*
+                  Date of Joining*
+                </label>
+                <input
+                  type="text"
+                  name="dateOfJoining"
+                  value={new Date(employee.dateOfJoining).toDateString()}
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Employee Current Status
                 </label>
                 <select
-                  name="maritalStatus"
-                  value={employee.maritalStatus}
+                  name="empStatus"
+                  value={employee.empStatus}
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                   required
                 >
-                  <option value="">Select Marital Status</option>
-                  <option value="Single">Single</option>
-                  <option value="Married">Married</option>
-                  <option value="Divorced">Divorced</option>
-                  <option value="Widowed">Widowed</option>
+                  <option value="">Select Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Resigned">Resigned</option>
                 </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Father's Name
+                  Designation*
                 </label>
                 <input
                   type="text"
-                  name="fatherName"
-                  value={employee.fatherName}
+                  name="designation"
+                  value={employee.designation}
                   onChange={handleChange}
-                  placeholder="Enter Father's Name"
+                  placeholder="Enter Designation"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  required
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Mother's Name
+                  Department*
                 </label>
-                <input
-                  type="text"
-                  name="motherName"
-                  value={employee.motherName}
+                <select
+                  name="department"
+                  value={employee.department}
                   onChange={handleChange}
-                  placeholder="Enter Mother's Name"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
+                  required
+                >
+                  <option value="">Select Department</option>
+                  {departments.map((department) => (
+                    <option key={department._id} value={department._id}>
+                      {department.departmentName}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Siblings
+                  Client*
                 </label>
-                <input
-                  type="text"
-                  name="siblings"
-                  value={employee.siblings}
+                <select
+                  name="client"
+                  value={employee.client}
                   onChange={handleChange}
-                  placeholder="Enter Siblings"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
+                  required
+                >
+                  <option value="">Select Client</option>
+                  {clients.map((client) => (
+                    <option key={client._id} value={client._id}>
+                      {client.clientID}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Spouse Name
+                  Site*
                 </label>
-                <input
-                  type="text"
-                  name="spouseName"
-                  value={employee.spouseName}
+                <select
+                  name="site"
+                  value={employee.site}
                   onChange={handleChange}
-                  placeholder="Enter Spouse Name "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Children Count
-                </label>
-                <input
-                  type="number"
-                  name="childrenCount"
-                  value={employee.childrenCount}
-                  onChange={handleChange}
-                  placeholder="Number of Children "
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
+                  required
+                >
+                  <option value="">Select Site</option>
+                  {sites.map((site) => (
+                    <option key={site._id} value={site._id}>
+                      {site.siteName}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -862,58 +917,6 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Department*
-                </label>
-                <select
-                  name="department"
-                  value={employee.department}
-                  onChange={handleChange}
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
-                >
-                  <option value="">Select Department</option>
-                  {departments.map((department) => (
-                    <option key={department._id} value={department._id}>
-                      {department.departmentName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Designation*
-                </label>
-                <input
-                  type="text"
-                  name="designation"
-                  value={employee.designation}
-                  onChange={handleChange}
-                  placeholder="Enter Designation"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Site*
-                </label>
-                <select
-                  name="site"
-                  value={employee.site}
-                  onChange={handleChange}
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
-                >
-                  <option value="">Select Site</option>
-                  {sites.map((site) => (
-                    <option key={site._id} value={site._id}>
-                      {site.siteName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
                   Job Role*
                 </label>
                 <textarea
@@ -926,38 +929,30 @@ const EditEmployee = () => {
                   required
                 />
               </div>
-              {/* Site Details
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Site Details*
-            </label>
-            <textarea
-              name="workSiteDetails"
-              placeholder="Enter Site Details"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              rows={4}
-              required
-            />
-          </div>*/}
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Client*
+                  Web Role*
                 </label>
-                <select
-                  name="client"
-                  value={employee.client}
-                  onChange={handleChange}
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                <input
+                  type="text"
+                  name="role"
+                  value={employee.role}
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                   required
-                >
-                  <option value="">Select Client</option>
-                  {clients.map((client) => (
-                    <option key={client._id} value={client._id}>
-                      {client.clientID}
-                    </option>
-                  ))}
-                </select>
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Salary
+                </label>
+                <input
+                  type="text"
+                  name="currentSalary"
+                  value={employee.currentSalary}
+                  onChange={handleChange}
+                  placeholder="Enter Salary "
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -1000,17 +995,185 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Salary
+                  Previous Designation
                 </label>
                 <input
                   type="text"
-                  name="currentSalary"
-                  value={employee.currentSalary}
+                  name="previousDesignation"
+                  value={employee.previousDesignation}
                   onChange={handleChange}
-                  placeholder="Enter Salary "
+                  placeholder="Enter Previous Designation "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Previous Salary
+                </label>
+                <input
+                  type="text"
+                  name="previousSalary"
+                  value={employee.previousSalary}
+                  onChange={handleChange}
+                  placeholder="Enter Previous Salary "
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Date of Promotion
+                </label>
+                <input
+                  type="date"
+                  name="dateOfPromotion"
+                  value={employee.dateOfPromotion}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Date of Termination
+                </label>
+                <input
+                  type="date"
+                  name="dateOfTermination"
+                  value={employee.dateOfTermination}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Family Details
+            </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Father's Name
+                </label>
+                <input
+                  type="text"
+                  name="fatherName"
+                  value={employee.fatherName}
+                  onChange={handleChange}
+                  placeholder="Enter Father's Name"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Father's Occupation
+                </label>
+                <input
+                  type="text"
+                  name="fatherOccupation"
+                  value={employee.fatherOccupation}
+                  onChange={handleChange}
+                  placeholder="Enter Father's Occupation"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Mother's Name
+                </label>
+                <input
+                  type="text"
+                  name="motherName"
+                  value={employee.motherName}
+                  onChange={handleChange}
+                  placeholder="Enter Mother's Name"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Mother's Occupation
+                </label>
+                <input
+                  type="text"
+                  name="motherOccupation"
+                  value={employee.motherOccupation}
+                  onChange={handleChange}
+                  placeholder="Enter Mother's Occupation"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Marital Status*
+                </label>
+                <select
+                  name="maritalStatus"
+                  value={employee.maritalStatus}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  required
+                >
+                  <option value="">Select Marital Status</option>
+                  <option value="Single">Single</option>
+                  <option value="Married">Married</option>
+                  <option value="Divorced">Divorced</option>
+                  <option value="Widowed">Widowed</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Siblings
+                </label>
+                <input
+                  type="text"
+                  name="siblings"
+                  value={employee.siblings}
+                  onChange={handleChange}
+                  placeholder="Enter Siblings"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Spouse Name
+                </label>
+                <input
+                  type="text"
+                  name="spouseName"
+                  value={employee.spouseName}
+                  onChange={handleChange}
+                  placeholder="Enter Spouse Name "
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Children Count
+                </label>
+                <input
+                  type="number"
+                  name="childrenCount"
+                  value={employee.childrenCount}
+                  onChange={handleChange}
+                  placeholder="Number of Children "
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              {/* Site Details
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Site Details*
+            </label>
+            <textarea
+              name="workSiteDetails"
+              placeholder="Enter Site Details"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              rows={4}
+              required
+            />
+          </div>*/}
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Bank Name*
@@ -1143,44 +1306,6 @@ const EditEmployee = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>*/}
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Previous Designation
-                </label>
-                <input
-                  type="text"
-                  name="previousDesignation"
-                  value={employee.previousDesignation}
-                  onChange={handleChange}
-                  placeholder="Enter Previous Designation "
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Previous Salary
-                </label>
-                <input
-                  type="text"
-                  name="previousSalary"
-                  value={employee.previousSalary}
-                  onChange={handleChange}
-                  placeholder="Enter Previous Salary "
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Date of Promotion
-                </label>
-                <input
-                  type="date"
-                  name="dateOfPromotion"
-                  value={employee.dateOfPromotion}
-                  onChange={handleChange}
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
             </div>
             <button
               type="submit"
