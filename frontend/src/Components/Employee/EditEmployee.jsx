@@ -73,7 +73,7 @@ const EditEmployee = () => {
           `http://localhost:5000/api/employee/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -213,6 +213,14 @@ const EditEmployee = () => {
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                 />
               </div>
+            </div>
+            <button
+              type="button"
+              className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+            >
+              Basic Personal Details
+            </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Name*
@@ -235,10 +243,8 @@ const EditEmployee = () => {
                   type="text"
                   name="personalContact"
                   value={employee.personalContact}
-                  onChange={handleChange}
                   placeholder="Enter Personal Phone Number"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                 />
               </div>
               <div>
