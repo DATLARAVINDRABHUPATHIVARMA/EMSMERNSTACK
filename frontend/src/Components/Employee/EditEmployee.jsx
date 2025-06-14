@@ -11,6 +11,7 @@ const EditEmployee = () => {
   const [employee, setEmployee] = useState({
     name: "",
     personalContact: "",
+    email: "",
     preHNo: "",
     preStreet: "",
     preVillage: "",
@@ -27,6 +28,7 @@ const EditEmployee = () => {
     perState: "",
     perCountry: "",
     perPincode: "",
+    gender: "",
     fatherName: "",
     motherName: "",
     siblings: "",
@@ -73,7 +75,7 @@ const EditEmployee = () => {
           `http://localhost:5000/api/employee/${id}`,
           {
             headers: {
-              "Authorization": `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -85,6 +87,7 @@ const EditEmployee = () => {
             name: employee.userId.name,
             personalContact: employee.personalContact,
             dateOfBirth: employee.dateOfBirth,
+            email: employee.userId.email,
             preHNo: employee.preHNo,
             preStreet: employee.preStreet,
             preVillage: employee.preVillage,
@@ -101,6 +104,7 @@ const EditEmployee = () => {
             perState: employee.perState,
             perCountry: employee.perCountry,
             perPincode: employee.perPincode,
+            gender: employee.gender,
             fatherName: employee.fatherName,
             motherName: employee.motherName,
             siblings: employee.siblings,
@@ -245,6 +249,7 @@ const EditEmployee = () => {
                   value={employee.personalContact}
                   placeholder="Enter Personal Phone Number"
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  required
                 />
               </div>
               <div>
@@ -256,12 +261,25 @@ const EditEmployee = () => {
                   name="dateOfBirth"
                   value={new Date(employee.dateOfBirth).toDateString()}
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Personal Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  value={employee.email}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
             </div>
             <button
               type="button"
-              className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+              className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
             >
               Address
             </button>
@@ -269,7 +287,7 @@ const EditEmployee = () => {
               <div>
                 <button
                   type="button"
-                  className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded"
+                  className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded"
                 >
                   Present Address
                 </button>
@@ -389,7 +407,7 @@ const EditEmployee = () => {
               <div>
                 <button
                   type="button"
-                  className="w-full bg-purple-500 text-white font-bold py-2 px-4 rounded"
+                  className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded"
                 >
                   Permanent Address
                 </button>
@@ -509,11 +527,81 @@ const EditEmployee = () => {
             </div>
             <button
               type="button"
-              className="w-full mt-8 mb-4 bg-purple-500 text-white font-bold py-2 px-4 rounded"
+              className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
             >
               Other Personal Details
             </button>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Gender*
+                </label>
+                <input
+                  type="text"
+                  name="gender"
+                  value={employee.gender}
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Blood Group
+                </label>
+                <select
+                  name="bloodGroup"
+                  value={employee.bloodGroup}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">Select Blood Group</option>
+                  <option value="A+">A+ve</option>
+                  <option value="AB+">AB+ve</option>
+                  <option value="B+">B+ve</option>
+                  <option value="O+">O+ve</option>
+                  <option value="A-">A-ve</option>
+                  <option value="AB-">AB-ve</option>
+                  <option value="B-">B-ve</option>
+                  <option value="O-">O-ve</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Emergency Phone Number*
+                </label>
+                <input
+                  type="text"
+                  name="emergencyContact"
+                  value={employee.emergencyContact}
+                  onChange={handleChange}
+                  placeholder="Enter Other Contact Number for Emergency "
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Religion
+                </label>
+                <select
+                  name="religion"
+                  value={employee.religion}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">Select Religion</option>
+                  <option value="Hinduism">Hindu</option>
+                  <option value="Islam">Muslim</option>
+                  <option value="Sikhism">Sikh</option>
+                  <option value="Christianity">Christian</option>
+                  <option value="Buddhism">Buddhist</option>
+                  <option value="Jainism">Jain</option>
+                  <option value="Shinto">Shinto</option>
+                  <option value="Judaism">Jew</option>
+                  <option value="Taoism">Tao</option>
+                  <option value="Zoroastrianism">Zoroastrian</option>
+                </select>
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Highest Qualification
@@ -537,6 +625,113 @@ const EditEmployee = () => {
                   value={employee.major}
                   onChange={handleChange}
                   placeholder="Enter Major Branch of Study "
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Caste
+                </label>
+                <select
+                  name="caste"
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">Select Category</option>
+                  <option value="OC">General</option>
+                  <option value="BC">Other Backward Classes</option>
+                  <option value="SC">Scheduled Caste</option>
+                  <option value="ST">Scheduled Tribe</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Sub Caste
+                </label>
+                <input
+                  type="text"
+                  name="subCaste"
+                  onChange={handleChange}
+                  placeholder="Enter Sub Category"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Mother Tongue
+                </label>
+                <input
+                  type="text"
+                  name="motherTongue"
+                  onChange={handleChange}
+                  placeholder="Enter Mother Tongue"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Languages Known
+                </label>
+                <input
+                  type="text"
+                  name="languagesKnown"
+                  value={employee.languagesKnown}
+                  onChange={handleChange}
+                  placeholder="Enter Known Languages"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Person With Disability Status
+                </label>
+                <select
+                  name="PWDStatus"
+                  value={employee.PWDStatus}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">Person With Disability Status</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Disability
+                </label>
+                <input
+                  type="text"
+                  name="disability"
+                  value={employee.disability}
+                  onChange={handleChange}
+                  placeholder="If disabled enter disability"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Aadhaar Number*
+                </label>
+                <input
+                  type="text"
+                  name="aadhaarNumber"
+                  value={employee.aadhaarNumber}
+                  placeholder="Enter Aadhaar Number"
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  PAN Number
+                </label>
+                <input
+                  type="text"
+                  name="PANNumber"
+                  value={employee.PANNumber}
+                  onChange={handleChange}
+                  placeholder="Enter PAN Number "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
@@ -615,20 +810,6 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Other Emergency Phone Number*
-                </label>
-                <input
-                  type="text"
-                  name="emergencyContact"
-                  value={employee.emergencyContact}
-                  onChange={handleChange}
-                  placeholder="Enter Other Contact Number for Emergency "
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
                   Spouse Name
                 </label>
                 <input
@@ -676,19 +857,6 @@ const EditEmployee = () => {
                   value={employee.officeEmail}
                   onChange={handleChange}
                   placeholder="Enter Office Email "
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  PAN Number
-                </label>
-                <input
-                  type="text"
-                  name="PANNumber"
-                  value={employee.PANNumber}
-                  onChange={handleChange}
-                  placeholder="Enter PAN Number "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
