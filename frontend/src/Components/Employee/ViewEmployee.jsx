@@ -81,7 +81,7 @@ const ViewEmployee = () => {
           <h3 className="text-xl font-bold mt-5 mb-4 text-center">
             Address
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+          
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Present Address:</p>
               <p className="font-medium">{ employee.preHNo + ", " + employee.preStreet + ", " + employee.preVillage + ", " + employee.preMandal + ", " + employee.preCity + ", " + employee.preState + ", " + employee.preCountry + " - " + employee.prePincode + "." }</p>
@@ -90,7 +90,7 @@ const ViewEmployee = () => {
               <p className="text-lg font-bold">Permanent Address:</p>
               <p className="font-medium">{ employee.perHNo + ", " + employee.perStreet + ", " + employee.perVillage + ", " + employee.perMandal + ", " + employee.perCity + ", " + employee.perState + ", " + employee.perCountry + " - " + employee.perPincode + "." }</p>
             </div>
-          </div>
+          
           <h3 className="text-xl font-bold mt-5 mb-4 text-center">
             Personal Details
           </h3>
@@ -304,6 +304,7 @@ const ViewEmployee = () => {
               <p className="text-lg font-bold">Disease:</p>
               <p className="font-medium">{employee.disease}</p>
             </div>
+          </div>
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Identification Marks 1:</p>
               <p className="font-medium">{employee.IDMark1}</p>
@@ -312,7 +313,6 @@ const ViewEmployee = () => {
               <p className="text-lg font-bold">Identification Marks 2:</p>
               <p className="font-medium">{employee.IDMark2}</p>
             </div>
-          </div>
           <h3 className="text-xl font-bold mt-5 mb-4 text-center">
             ESI and PF Details
           </h3>

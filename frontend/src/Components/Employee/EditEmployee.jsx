@@ -86,6 +86,18 @@ const EditEmployee = () => {
     bankAccountNumber: "",
     IFSCCode: "",
     bankBranch: "",
+    refPerson1: "",
+    isRefPerson1Employee: "",
+    refPerson1Contact: "",
+    refPerson1Email: "",
+    refPerson1Occupation: "",
+    refPerson1EmployeeID: "",
+    refPerson2: "",
+    isRefPerson2Employee: "",
+    refPerson2Contact: "",
+    refPerson2Email: "",
+    refPerson2Occupation: "",
+    refPerson2EmployeeID: ""
   });
   const [departments, setDepartments] = useState(null);
   const [clients, setClients] = useState(null);
@@ -185,6 +197,18 @@ const EditEmployee = () => {
             bankAccountNumber: employee.bankAccountNumber,
             IFSCCode: employee.IFSCCode,
             bankBranch: employee.bankBranch,
+            refPerson1: employee.refPerson1,
+            isRefPerson1Employee: employee.isRefPerson1Employee,
+            refPerson1Contact: employee.refPerson1Contact,
+            refPerson1Email: employee.refPerson1Email,
+            refPerson1Occupation: employee.refPerson1Occupation,
+            refPerson1EmployeeID: employee.refPerson1EmployeeID,
+            refPerson2: employee.refPerson2,
+            isRefPerson2Employee: employee.isRefPerson2Employee,
+            refPerson2Contact: employee.refPerson2Contact,
+            refPerson2Email: employee.refPerson2Email,
+            refPerson2Occupation: employee.refPerson2Occupation,
+            refPerson2EmployeeID: employee.refPerson2EmployeeID,
           }));
         }
       } catch (error) {
@@ -1469,6 +1493,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson1"
+                  value={employee.refPerson1}
                   onChange={handleChange}
                   placeholder="Enter Reference Person 1 Name "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1481,6 +1506,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson1Contact"
+                  value={employee.refPerson1Contact}
                   onChange={handleChange}
                   placeholder="Enter Reference 1 Contact"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1493,6 +1519,7 @@ const EditEmployee = () => {
                 <input
                   type="email"
                   name="refPerson1Email"
+                  value={employee.refPerson1Email}
                   onChange={handleChange}
                   placeholder="Enter Reference 1 Email"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1504,6 +1531,7 @@ const EditEmployee = () => {
                 </label>
                 <select
                   name="isRefPerson1Employee"
+                  value={employee.isRefPerson1Employee}
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 >
@@ -1519,6 +1547,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson1EmployeeID"
+                  value={employee.refPerson1EmployeeID}
                   onChange={handleChange}
                   placeholder="Enter Reference Person 1 Employee ID "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1531,6 +1560,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson1Occupation"
+                  value={employee.refPerson1Occupation}
                   onChange={handleChange}
                   placeholder="Enter Reference 1 Occupation"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1543,6 +1573,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson2"
+                  value={employee.refPerson2}
                   onChange={handleChange}
                   placeholder="Enter Reference Person 2 Name "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1555,6 +1586,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson2Contact"
+                  value={employee.refPerson2Contact}
                   onChange={handleChange}
                   placeholder="Enter Reference 2 Contact"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1567,6 +1599,7 @@ const EditEmployee = () => {
                 <input
                   type="email"
                   name="refPerson2Email"
+                  value={employee.refPerson2Email}
                   onChange={handleChange}
                   placeholder="Enter Reference 2 Email"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1578,6 +1611,7 @@ const EditEmployee = () => {
                 </label>
                 <select
                   name="isRefPerson2Employee"
+                  value={employee.isRefPerson2Employee}
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 >
@@ -1593,6 +1627,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson2EmployeeID"
+                  value={employee.refPerson2EmployeeID}
                   onChange={handleChange}
                   placeholder="Enter Reference Person 2 Employee ID "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -1605,6 +1640,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="refPerson2Occupation"
+                  value={employee.refPerson2Occupation}
                   onChange={handleChange}
                   placeholder="Enter Reference 2 Occupation"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
