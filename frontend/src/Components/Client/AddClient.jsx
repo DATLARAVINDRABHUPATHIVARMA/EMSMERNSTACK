@@ -183,7 +183,6 @@ const AddClient = () => {
             onChange={handleChange}
             placeholder="Number of Employees for Client"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
           />
         </div>
         <button

@@ -133,7 +133,6 @@ const EditSite = () => {
             onChange={handleChange}
             placeholder="Number of Employees in Site"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
           />
         </div>
         <button
