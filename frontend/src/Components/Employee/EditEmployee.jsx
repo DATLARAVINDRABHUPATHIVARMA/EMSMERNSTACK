@@ -1501,6 +1501,21 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
+                  Reference 1 Status Employee or Not
+                </label>
+                <select
+                  name="isRefPerson1Employee"
+                  value={employee.isRefPerson1Employee}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">Reference 1 Status</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
                   Reference Person 1 Contact
                 </label>
                 <input
@@ -1527,18 +1542,16 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Reference 1 Status Employee or Not
+                  Reference Person 1 Occupation
                 </label>
-                <select
-                  name="isRefPerson1Employee"
-                  value={employee.isRefPerson1Employee}
+                <input
+                  type="text"
+                  name="refPerson1Occupation"
+                  value={employee.refPerson1Occupation}
                   onChange={handleChange}
+                  placeholder="Enter Reference 1 Occupation"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                >
-                  <option value="">Reference 1 Status</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -1555,19 +1568,6 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Reference Person 1 Occupation
-                </label>
-                <input
-                  type="text"
-                  name="refPerson1Occupation"
-                  value={employee.refPerson1Occupation}
-                  onChange={handleChange}
-                  placeholder="Enter Reference 1 Occupation"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
                   Reference Person 2 Name
                 </label>
                 <input
@@ -1578,6 +1578,21 @@ const EditEmployee = () => {
                   placeholder="Enter Reference Person 2 Name "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Reference 2 Status Employee or Not
+                </label>
+                <select
+                  name="isRefPerson2Employee"
+                  value={employee.isRefPerson2Employee}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">Reference 2 Status</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -1607,18 +1622,16 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Reference 2 Status Employee or Not
+                  Reference Person 2 Occupation
                 </label>
-                <select
-                  name="isRefPerson2Employee"
-                  value={employee.isRefPerson2Employee}
+                <input
+                  type="text"
+                  name="refPerson2Occupation"
+                  value={employee.refPerson2Occupation}
                   onChange={handleChange}
+                  placeholder="Enter Reference 2 Occupation"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                >
-                  <option value="">Reference 2 Status</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -1630,19 +1643,6 @@ const EditEmployee = () => {
                   value={employee.refPerson2EmployeeID}
                   onChange={handleChange}
                   placeholder="Enter Reference Person 2 Employee ID "
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Reference Person 2 Occupation
-                </label>
-                <input
-                  type="text"
-                  name="refPerson2Occupation"
-                  value={employee.refPerson2Occupation}
-                  onChange={handleChange}
-                  placeholder="Enter Reference 2 Occupation"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
