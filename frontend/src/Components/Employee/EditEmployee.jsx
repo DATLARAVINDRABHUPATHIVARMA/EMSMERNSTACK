@@ -909,7 +909,7 @@ const EditEmployee = () => {
                   <option value="">Select Client</option>
                   {clients.map((client) => (
                     <option key={client._id} value={client._id}>
-                      {client.clientID}
+                      {client.clientName + " (" + client.clientID + ")"}
                     </option>
                   ))}
                 </select>

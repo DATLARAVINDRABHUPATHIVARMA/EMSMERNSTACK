@@ -8,6 +8,7 @@ const AddSite = () => {
   const [site, setSite] = useState({
     siteName: "",
     siteAddress: "",
+    siteClients: "",
     siteDescription: "",
     siteEmployeeCount: "",
   });
@@ -48,49 +49,34 @@ const AddSite = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
+    <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Add Site</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label
-            htmlFor="siteName"
-            className="text-sm font-medium text-gray-700"
-          >
-            Site Name*
-          </label>
-          <input
-            type="text"
-            name="siteName"
-            onChange={handleChange}
-            placeholder="Enter Site Name"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        <div className="mt-3">
-          <label
-            htmlFor="siteAddress"
-            className="text-sm font-medium text-gray-700"
-          >
-            Site Address*
-          </label>
-          <input
-            type="text"
-            name="siteAddress"
-            onChange={handleChange}
-            placeholder="Enter Site Address"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        <div className="mt-3">
-          <label
-            htmlFor="siteClients"
-            className="text-sm font-medium text-gray-700"
-          >
-            Clients in the Site*
-          </label>
-          <select
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="siteName"
+              className="text-sm font-medium text-gray-700"
+            >
+              Site Name*
+            </label>
+            <input
+              type="text"
+              name="siteName"
+              onChange={handleChange}
+              placeholder="Enter Site Name"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="siteClients"
+              className="text-sm font-medium text-gray-700"
+            >
+              Clients in the Site*
+            </label>
+            <select
               name="siteClients"
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
@@ -104,28 +90,46 @@ const AddSite = () => {
               ))}
             </select>
           </div>
-        {/* start date, updation date, ending date, map location etc*/}
-        <div className="mt-3">
-          <label
-            htmlFor="siteDescription"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Site Description
-          </label>
-          <textarea
-            name="siteDescription"
-            onChange={handleChange}
-            placeholder="Site Description"
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-            rows="5"
-          ></textarea>
+          <div>
+            <label
+              htmlFor="siteAddress"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Site Address*
+            </label>
+            <textarea
+              type="text"
+              name="siteAddress"
+              onChange={handleChange}
+              placeholder="Enter Site Address"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+              rows="5"
+            />
+          </div>
+          {/* start date, updation date, ending date, map location etc*/}
+          <div>
+            <label
+              htmlFor="siteDescription"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Site Description
+            </label>
+            <textarea
+              name="siteDescription"
+              onChange={handleChange}
+              placeholder="Site Description"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              rows="5"
+            ></textarea>
+          </div>
         </div>
         <div className="mt-3">
           <label
             htmlFor="siteEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees in Site*
+            Total Employees in Site
           </label>
           <input
             type="number"

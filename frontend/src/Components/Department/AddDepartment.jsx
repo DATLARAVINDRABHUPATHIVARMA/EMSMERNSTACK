@@ -74,7 +74,7 @@ const AddDepartment = () => {
             htmlFor="departmentEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees in Department*
+            Total Employees in Department
           </label>
           <input
             type="number"

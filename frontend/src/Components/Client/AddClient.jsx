@@ -60,70 +60,157 @@ const AddClient = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
+    <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Add Client</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label
-            htmlFor="clientID"
-            className="text-sm font-medium text-gray-700"
-          >
-            Client ID*
-          </label>
-          <input
-            type="text"
-            name="clientID"
-            onChange={handleChange}
-            placeholder="Enter Client ID"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="clientID"
+              className="text-sm font-medium text-gray-700"
+            >
+              Client ID*
+            </label>
+            <input
+              type="text"
+              name="clientID"
+              onChange={handleChange}
+              placeholder="Enter Client ID"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
         </div>
-        <div className="mt-3">
-          <label
-            htmlFor="clientName"
-            className="text-sm font-medium text-gray-700"
-          >
-            Client Name*
-          </label>
-          <input
-            type="text"
-            name="clientName"
-            onChange={handleChange}
-            placeholder="Enter Client Name"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        <div className="mt-3">
-          <label
-            htmlFor="clientServices"
-            className="text-sm font-medium text-gray-700"
-          >
-            Client Services*
-          </label>
-          <select
-            name="clientServices"
-            onChange={handleChange}
-            placeholder="Enter Client Services"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          >
-            <option value="">Choose Services</option>
-            {departments.map((department) => (
-              <option key={department._id} value={department._id}>
-                {department.departmentName}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="mt-3">
-          <label
-            htmlFor="clientLocation"
-            className="text-sm font-medium text-gray-700"
-          >
-            Client Location*
-          </label>
+        <button
+          type="button"
+          className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Basic Details
+        </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="clientName"
+              className="text-sm font-medium text-gray-700"
+            >
+              Client Name*
+            </label>
+            <input
+              type="text"
+              name="clientName"
+              onChange={handleChange}
+              placeholder="Enter Client Name"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientContactPerson"
+              className="text-sm font-medium text-gray-700"
+            >
+              Contact Person*
+            </label>
+            <input
+              type="text"
+              name="clientContactPerson"
+              onChange={handleChange}
+              placeholder="Enter Contact Person Name"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientContact"
+              className="text-sm font-medium text-gray-700"
+            >
+              Phone Number*
+            </label>
+            <input
+              type="text"
+              name="clientContact"
+              onChange={handleChange}
+              placeholder="Enter Phone Number"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientEmail"
+              className="text-sm font-medium text-gray-700"
+            >
+              Client Email*
+            </label>
+            <input
+              type="email"
+              name="clientEmail"
+              onChange={handleChange}
+              placeholder="Enter Client's Email"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientDesignation"
+              className="text-sm font-medium text-gray-700"
+            >
+              Contact Person Designation
+            </label>
+            <input
+              type="text"
+              name="clientDesignation"
+              onChange={handleChange}
+              placeholder="Enter Contact Person Designation"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientServiceStartedOn"
+              className="text-sm font-medium text-gray-700"
+            >
+              Client Start Date
+            </label>
+            <input
+              type="date"
+              name="clientServiceStartedOn"
+              onChange={handleChange}
+              placeholder="Enter Client Starting Date"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientServices"
+              className="text-sm font-medium text-gray-700"
+            >
+              Client Services*
+            </label>
+            <select
+              name="clientServices"
+              onChange={handleChange}
+              placeholder="Enter Client Services"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Choose Services</option>
+              {departments.map((department) => (
+                <option key={department._id} value={department._id}>
+                  {department.departmentName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="clientLocation"
+              className="text-sm font-medium text-gray-700"
+            >
+              Client Location*
+            </label>
             <select
               name="clientLocation"
               onChange={handleChange}
@@ -138,24 +225,142 @@ const AddClient = () => {
               ))}
             </select>
           </div>
-        <div className="mt-3">
-          <label
-            htmlFor="clientServiceStartedOn"
-            className="text-sm font-medium text-gray-700"
-          >
-            Client Service Starting Date*
-          </label>
-          <input
-            type="date"
-            name="clientServiceStartedOn"
-            onChange={handleChange}
-            placeholder="Enter Service Starting Date"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
         </div>
         {/* updation date, ending date, logo, map location etc*/}
-        <div className="mt-3">
+        <button
+          type="button"
+          className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Address
+        </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="clientHNo"
+              className="block text-sm font-medium text-gray-700"
+            >
+              House Number / Door Number / Flat Number
+            </label>
+            <input
+              type="text"
+              name="clientHNo"
+              onChange={handleChange}
+              placeholder="Enter House Number or Door Number"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientStreet"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Street / Lane
+            </label>
+            <input
+              type="text"
+              name="clientStreet"
+              onChange={handleChange}
+              placeholder="Enter Street Details"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientVillage"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Village / Locality
+            </label>
+            <input
+              type="text"
+              name="clientVillage"
+              onChange={handleChange}
+              placeholder="Enter Village"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientMandal"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Mandal / Municipality / Area
+            </label>
+            <input
+              type="text"
+              name="clientMandal"
+              onChange={handleChange}
+              placeholder="Enter Area"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientCity"
+              className="block text-sm font-medium text-gray-700"
+            >
+              District / City
+            </label>
+            <input
+              type="text"
+              name="clientCity"
+              onChange={handleChange}
+              placeholder="Enter District / City"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientState"
+              className="block text-sm font-medium text-gray-700"
+            >
+              State
+            </label>
+            <input
+              type="text"
+              name="clientState"
+              onChange={handleChange}
+              placeholder="Enter State"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientCountry"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Country
+            </label>
+            <input
+              type="text"
+              name="clientCountry"
+              onChange={handleChange}
+              placeholder="Enter Country"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientPincode"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Pin Code / Zip Code
+            </label>
+            <input
+              type="number"
+              name="clientPincode"
+              onChange={handleChange}
+              placeholder="Enter Pincode"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
+        <button
+          type="button"
+          className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        >
+        </button>
+        <div>
           <label
             htmlFor="clientDescription"
             className="block text-sm font-medium text-gray-700"
@@ -175,7 +380,7 @@ const AddClient = () => {
             htmlFor="clientEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees for Client*
+            Total Employees for Client
           </label>
           <input
             type="number"
