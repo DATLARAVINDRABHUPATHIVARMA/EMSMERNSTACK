@@ -1,4 +1,5 @@
 import Site from "../models/Site.js";
+import Client from "../models/Client.js";
 
 const getSites = async (req, res) => {
   try {

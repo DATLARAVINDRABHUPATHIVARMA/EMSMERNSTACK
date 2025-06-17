@@ -1,4 +1,6 @@
 import Client from "../models/Client.js";
+import Department from "../models/Department.js";
+import Site from "../models/Site.js";
 
 const getClients = async (req, res) => {
   try {

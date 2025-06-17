@@ -16,17 +16,17 @@ export const columns = [
   {
     name: "Client Name",
     selector: (row) => row.clientName,
-    sortable: true
+    sortable: true,
   },
   {
     name: "Client Services",
-    selector: (row) => row.clientServices,
-    sortable: true
+    selector: (row) => row.departmentName,
+    sortable: true,
   },
   {
     name: "Client Location",
-    selector: (row) => row.clientLocation,
-    sortable: true
+    selector: (row) => row.siteName,
+    sortable: true,
   },
   {
     name: "Action",

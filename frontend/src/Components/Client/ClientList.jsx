@@ -30,8 +30,8 @@ const ClientList = () => {
             sno: sno++,
             clientID: client.clientID,
             clientName: client.clientName,
-            clientServices: client.clientServices,
-            clientLocation: client.clientLocation,
+            departmentName: client.department.departmentName,
+            siteName: client.site.siteName,
             action: (
               <ClientButtons _id={client._id} onClientDelete={onClientDelete}/>
             ),

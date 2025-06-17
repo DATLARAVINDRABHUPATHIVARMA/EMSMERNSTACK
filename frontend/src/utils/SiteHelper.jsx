@@ -7,8 +7,13 @@ export const columns = [
     selector: (row) => row.sno,
   },
   {
-    name: "Site Name",
+    name: "Site",
     selector: (row) => row.siteName,
+    sortable: true
+  },
+  {
+    name: "Site Clients",
+    selector: (row) => row.clientName,
     sortable: true
   },
   // {
