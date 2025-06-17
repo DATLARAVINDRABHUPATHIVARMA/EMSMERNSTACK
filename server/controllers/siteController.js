@@ -2,7 +2,7 @@ import Site from "../models/Site.js";
 
 const getSites = async (req, res) => {
   try {
-    const sites = await Site.find()
+    const sites = await Site.find().populate('client')
     return res.status(200).json({success: true, sites})
   } catch (error) {
     return res.status(500).json({success: false, error: 'get sites server error'})
@@ -12,13 +12,8 @@ const getSites = async (req, res) => {
 const addSite = async (req, res) => {
   try {
     const {siteName, siteClients, siteAddress, siteDescription, siteEmployeeCount} = req.body;
-    const newSite = new Site ({
-      siteName,
-      siteClients,
-      siteAddress,
-      siteDescription,
-      siteEmployeeCount
-    })
+
+    const newSite = new Site ({ siteName, siteClients, siteAddress, siteDescription, siteEmployeeCount })
     await newSite.save()
     return res.status(200).json({success: true, site: newSite})
   } catch (error) {

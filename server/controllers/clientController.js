@@ -2,7 +2,7 @@ import Client from "../models/Client.js";
 
 const getClients = async (req, res) => {
   try {
-    const clients = await Client.find()
+    const clients = await Client.find().populate('department').populate('site')
     return res.status(200).json({success: true, clients})
   } catch (error) {
     return res.status(500).json({success: false, error: 'get clients server error'})
@@ -12,6 +12,7 @@ const getClients = async (req, res) => {
 const addClient = async (req, res) => {
   try {
     const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount} = req.body;
+    
     const newClient = new Client ({
       clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount
     })
