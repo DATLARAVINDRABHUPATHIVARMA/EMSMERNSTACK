@@ -11,9 +11,10 @@ const getSites = async (req, res) => {
 
 const addSite = async (req, res) => {
   try {
-    const {siteName, siteAddress, siteDescription, siteEmployeeCount} = req.body;
+    const {siteName, siteClients, siteAddress, siteDescription, siteEmployeeCount} = req.body;
     const newSite = new Site ({
       siteName,
+      siteClients,
       siteAddress,
       siteDescription,
       siteEmployeeCount

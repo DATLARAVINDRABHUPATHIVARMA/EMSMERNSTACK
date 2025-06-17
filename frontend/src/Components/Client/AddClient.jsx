@@ -357,7 +357,7 @@ const AddClient = () => {
         </div>
         <button
           type="button"
-          className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+          className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-0.5 px-4 rounded"
         >
         </button>
         <div>

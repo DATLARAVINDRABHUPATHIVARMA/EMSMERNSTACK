@@ -11,9 +11,9 @@ const getClients = async (req, res) => {
 
 const addClient = async (req, res) => {
   try {
-    const {clientID, clientName, clientServices, clientLocation, clientServiceStartedOn, clientDescription, clientEmployeeCount} = req.body;
+    const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount} = req.body;
     const newClient = new Client ({
-      clientID, clientName, clientServices, clientLocation, clientServiceStartedOn, clientDescription, clientEmployeeCount
+      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount
     })
     await newClient.save()
     return res.status(200).json({success: true, client: newClient})
