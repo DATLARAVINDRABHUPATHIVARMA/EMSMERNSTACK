@@ -30,7 +30,7 @@ const SiteList = () => {
             _id: site._id,
             sno: sno++,
             siteName: site.siteName,
-            // clientName: site.siteClients.clientName,
+            clientName: site.siteClients.clientName,
             action: (
               <SiteButtons _id={site._id} onSiteDelete={onSiteDelete}/>
             ),

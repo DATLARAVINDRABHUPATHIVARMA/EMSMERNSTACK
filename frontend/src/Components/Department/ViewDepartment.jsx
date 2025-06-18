@@ -13,7 +13,7 @@ const ViewDepartment = () => {
           `http://localhost:5000/api/department/${id}`,
           {
             headers: {
-              'Authorization': `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -37,17 +37,21 @@ const ViewDepartment = () => {
           <h2 className="text-2xl font-bold mb-8 text-center">
             Department Details
           </h2>
-          <div className="flex items-center  justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Department:</p>
-            <p className="font-medium">{department.departmentName}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div className="flex items-center  justify space-x-3 mb-5">
+              <p className="text-lg font-bold">Department / Service:</p>
+              <p className="font-medium">{department.departmentName}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-5">
+              <p className="text-lg font-bold">Total Employees:</p>
+              <p className="font-medium">
+                {department.departmentEmployeeCount}
+              </p>
+            </div>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Department Description:</p>
             <p className="font-medium">{department.departmentDescription}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Total Employees:</p>
-            <p className="font-medium">{department.departmentEmployeeCount}</p>
           </div>
         </div>
       ) : (
@@ -55,6 +59,6 @@ const ViewDepartment = () => {
       )}
     </>
   );
-}
+};
 
 export default ViewDepartment;

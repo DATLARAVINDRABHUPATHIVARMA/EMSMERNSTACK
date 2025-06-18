@@ -13,7 +13,7 @@ const ViewSite = () => {
           `http://localhost:5000/api/site/${id}`,
           {
             headers: {
-              'Authorization': `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -34,12 +34,20 @@ const ViewSite = () => {
     <>
       {site ? (
         <div className="max-w-3xl mx-auto mt-10 p-8 rounded-md shadow-md">
-          <h2 className="text-2xl font-bold mb-8 text-center">
-            Site Details
-          </h2>
-          <div className="flex items-center  justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Site:</p>
-            <p className="font-medium">{site.siteName}</p>
+          <h2 className="text-2xl font-bold mb-8 text-center">Site Details</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div className="flex items-center  justify space-x-3 mb-5">
+              <p className="text-lg font-bold">Site:</p>
+              <p className="font-medium">{site.siteName}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-5">
+              <p className="text-lg font-bold">Total Employees:</p>
+              <p className="font-medium">{site.siteEmployeeCount}</p>
+            </div>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-5">
+            <p className="text-lg font-bold">Clients in the Site:</p>
+            <p className="font-medium">{site.siteClients.clientName}</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-5">
             <p className="text-lg font-bold">Site Address:</p>
@@ -49,16 +57,12 @@ const ViewSite = () => {
             <p className="text-lg font-bold">Site Description:</p>
             <p className="font-medium">{site.siteDescription}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Total Employees:</p>
-            <p className="font-medium">{site.siteEmployeeCount}</p>
-          </div>
         </div>
       ) : (
         <div>Loading...</div>
       )}
     </>
   );
-}
+};
 
 export default ViewSite;

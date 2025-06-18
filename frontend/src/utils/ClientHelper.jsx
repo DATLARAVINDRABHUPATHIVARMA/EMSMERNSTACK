@@ -5,32 +5,41 @@ export const columns = [
   {
     name: "S.No",
     selector: (row) => row.sno,
-    width: "58px"
+    width: "58px",
+    center: true
   },
   {
     name: "Client ID",
     selector: (row) => row.clientID,
     sortable: true,
-    width: "158px"
+    width: "120px",
+    center: true
   },
   {
     name: "Client Name",
     selector: (row) => row.clientName,
     sortable: true,
+    width: "300px",
+    center: true
   },
   {
     name: "Client Services",
     selector: (row) => row.departmentName,
     sortable: true,
+    width: "180px",
+    center: true
   },
   {
     name: "Client Location",
     selector: (row) => row.siteName,
     sortable: true,
+    width: "180px",
+    center: true
   },
   {
     name: "Action",
     selector: (row) => row.action,
+    center: true
   },
 ];
 

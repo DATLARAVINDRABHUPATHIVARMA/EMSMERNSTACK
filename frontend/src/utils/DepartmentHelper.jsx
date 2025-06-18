@@ -5,20 +5,25 @@ export const columns = [
   {
     name: "S.No",
     selector: (row) => row.sno,
+    width: "58px",
+    center: true
   },
   {
     name: "Department Name",
     selector: (row) => row.departmentName,
-    sortable: true
+    sortable: true,
+    center: true
   },
   {
     name: "Total Employees",
     selector: (row) => row.departmentEmployeeCount,
-    sortable: true
+    sortable: true,
+    center: true
   },
   {
     name: "Action",
     selector: (row) => row.action,
+    center: true
   },
 ];
 

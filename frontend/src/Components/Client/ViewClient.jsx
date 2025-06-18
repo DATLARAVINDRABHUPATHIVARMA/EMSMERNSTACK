@@ -13,7 +13,7 @@ const ViewClient = () => {
           `http://localhost:5000/api/client/${id}`,
           {
             headers: {
-              'Authorization': `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
@@ -37,31 +37,63 @@ const ViewClient = () => {
           <h2 className="text-2xl font-bold mb-8 text-center">
             Client Details
           </h2>
-          <div className="flex items-center  justify space-x-3 mb-5">
+          <div className="flex items-center  justify space-x-3 mb-4">
             <p className="text-lg font-bold">Client ID:</p>
             <p className="font-medium">{client.clientID}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
+          <div className="flex items-center justify space-x-3 mb-4">
             <p className="text-lg font-bold">Client:</p>
             <p className="font-medium">{client.clientName}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div className="flex items-center  justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Contact Person:</p>
+              <p className="font-medium">{client.clientContactPerson}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Person's Designation:</p>
+              <p className="font-medium">{client.clientDesignation}</p>
+            </div>
+            <div className="flex items-center  justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Phone Number:</p>
+              <p className="font-medium">{client.clientContact}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Email:</p>
+              <p className="font-medium">{client.clientEmail}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Client Services Starting Date:</p>
+              <p className="font-medium">{client.clientServicesStartedOn}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Client Location:</p>
+              <p className="font-medium">{client.clientLocation.siteName}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">GST Number:</p>
+              <p className="font-medium">{client.clientGSTNo}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">PAN Number:</p>
+              <p className="font-medium">{client.clientPANNo}</p>
+            </div>
+          </div>
+          <div className="flex items-center justify space-x-3 mt-3 mb-4">
             <p className="text-lg font-bold">Client Services:</p>
-            <p className="font-medium">{client.department.departmentName}</p>
+            <p className="font-medium">
+              {client.clientServices.departmentName}
+            </p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Client Location:</p>
-            <p className="font-medium">{client.site.siteName}</p>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Address:</p>
+            <p className="font-medium">{ client.clientHNo + ", " + client.clientStreet + ", " + client.clientVillage + ", " + client.clientMandal + ", " + client.clientCity + ", " + client.clientState + ", " + client.clientCountry + " - " + client.clientPincode + "." }</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
-            <p className="text-lg font-bold">Client Services Starting Date:</p>
-            <p className="font-medium">{client.clientServicesStartedOn}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-5">
+          <div className="flex items-center justify space-x-3 mb-4">
             <p className="text-lg font-bold">Client Description:</p>
             <p className="font-medium">{client.clientDescription}</p>
           </div>
-          <div className="flex items-center justify space-x-3 mb-5">
+          <div className="flex items-center justify space-x-3 mb-4">
             <p className="text-lg font-bold">Total Employees:</p>
             <p className="font-medium">{client.clientEmployeeCount}</p>
           </div>
@@ -71,6 +103,6 @@ const ViewClient = () => {
       )}
     </>
   );
-}
+};
 
 export default ViewClient;

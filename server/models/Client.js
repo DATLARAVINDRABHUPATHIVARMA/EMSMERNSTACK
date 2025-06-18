@@ -11,6 +11,8 @@ const clientSchema = new Schema({
     clientServiceStartedOn: { type: Date },
     clientServices: { type: Schema.Types.ObjectId, ref: "Department", required: true },
     clientLocation: { type: Schema.Types.ObjectId, ref: "Site", required: true },
+    clientGSTNo: { type: String, },
+    clientPANNo: { type: String, },
     clientHNo: { type: String, },
     clientStreet: { type: String, },
     clientVillage: { type: String, },

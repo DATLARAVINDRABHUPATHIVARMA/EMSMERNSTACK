@@ -9,9 +9,14 @@ const AddClient = () => {
   const [client, setClient] = useState({
     clientID: "",
     clientName: "",
-    clientServices: "",
-    clientLocation: "",
+    clientContactPerson: "",
+    clientContact: "",
+    clientEmail: "",
+    clientDesignation: "",
     clientServiceStartedOn: "",
+    clientServices: "",
+    clientLocation: "",  clientGSTNo: "", clientPANNo: "",
+    clientHNo: "", clientStreet: "",  clientVillage: "",  clientMandal: "", clientCity: "", clientState: "", clientCountry: "", clientPincode: "", 
     clientDescription: "",
     clientEmployeeCount: "",
   });
@@ -224,6 +229,36 @@ const AddClient = () => {
                 </option>
               ))}
             </select>
+          </div>
+          <div>
+            <label
+              htmlFor="clientGSTNo"
+              className="text-sm font-medium text-gray-700"
+            >
+              GST Number
+            </label>
+            <input
+              type="text"
+              name="clientGSTNo"
+              onChange={handleChange}
+              placeholder="Enter Client's GST Number"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="clientPANNo"
+              className="text-sm font-medium text-gray-700"
+            >
+              PAN Number
+            </label>
+            <input
+              type="text"
+              name="clientPANNo"
+              onChange={handleChange}
+              placeholder="Enter Client's PAN Number"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            />
           </div>
         </div>
         {/* updation date, ending date, logo, map location etc*/}
