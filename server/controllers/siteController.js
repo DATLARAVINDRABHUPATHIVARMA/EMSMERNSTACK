@@ -1,9 +1,9 @@
 import Site from "../models/Site.js";
-import Client from "../models/Client.js";
+
 
 const getSites = async (req, res) => {
   try {
-    const sites = await Site.find().populate('client')
+    const sites = await Site.find().populate("siteClients")
     return res.status(200).json({success: true, sites})
   } catch (error) {
     return res.status(500).json({success: false, error: 'get sites server error'})

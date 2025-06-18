@@ -23,13 +23,14 @@ const SiteList = () => {
             headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`,},
           }
         );
+        console.log(response.data)
         if(response.data.success){
           let sno = 1;
           const data = await response.data.sites.map((site) => ({
             _id: site._id,
             sno: sno++,
             siteName: site.siteName,
-            clientName: site.client.clientName,
+            // clientName: site.siteClients.clientName,
             action: (
               <SiteButtons _id={site._id} onSiteDelete={onSiteDelete}/>
             ),
@@ -55,28 +56,20 @@ const SiteList = () => {
   }
 
   return (
-    <>
-      {siteLoading ? (
-        <div>Loading Sites Table...</div>
-      ) : (
     <div className="p-5">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Sites</h3>
       </div>
       <div className="flex justify-between items-center">
-        <input type="text" placeholder="Search By Site" className="px-4 py-0.5 border"
-        onChange={filterSites}
-        />
+        <input type="text" placeholder="Search By Site" className="px-4 py-0.5 border" onChange={filterSites}/>
         <Link to="/admin-dashboard/add-site" className="px-4 py-1 bg-purple-500 rounded text-white">
           Add New Site
         </Link>
       </div>
       <div className="mt-5">
-        <DataTable columns={columns} data={filteredSites} pagination/>
+        <DataTable columns={columns} data={filteredSites}/>
       </div>
     </div>
-    )}
-    </>
   )
 }
 

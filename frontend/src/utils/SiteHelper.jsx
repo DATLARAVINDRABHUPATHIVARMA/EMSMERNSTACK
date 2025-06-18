@@ -80,19 +80,19 @@ export const SiteButtons = ({ _id, onSiteDelete }) => {
   return (
     <div className="flex space-x-3">
       <button className="px-3 py-1 bg-emerald-600 text-white rounded"
-      onClick={() => navigate(`/admin-dashboard/sites/${_id}`)}
+     /* onClick={() => navigate(`/admin-dashboard/sites/${_id}`)}*/
       >
         View
       </button>
       <button
         className="px-3 py-1 bg-purple-600 text-white rounded"
-        onClick={() => navigate(`/admin-dashboard/site/${_id}`)}
+      //   onClick={() => navigate(`/admin-dashboard/site/${_id}`)}
       >
         Edit
       </button>
       <button
         className="px-3 py-1 bg-red-600 text-white rounded"
-        onClick={() => handleDelete(_id)}
+        //onClick={() => handleDelete(_id)}
       >
         Delete
       </button>

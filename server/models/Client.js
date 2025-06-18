@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { Schema } from "mongoose";
 
-const clientSchema = new mongoose.Schema({
+const clientSchema = new Schema({
     clientID: { type : String, required : true },
     clientName: { type : String, required : true },
     clientContactPerson: { type : String, required : true },

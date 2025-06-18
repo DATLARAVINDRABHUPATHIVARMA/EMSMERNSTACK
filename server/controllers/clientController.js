@@ -4,7 +4,7 @@ import Site from "../models/Site.js";
 
 const getClients = async (req, res) => {
   try {
-    const clients = await Client.find().populate('department').populate('site')
+    const clients = await Client.find().populate('clientServices').populate('clientLocation')
     return res.status(200).json({success: true, clients})
   } catch (error) {
     return res.status(500).json({success: false, error: 'get clients server error'})

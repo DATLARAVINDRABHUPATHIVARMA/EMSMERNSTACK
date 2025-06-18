@@ -30,8 +30,8 @@ const ClientList = () => {
             sno: sno++,
             clientID: client.clientID,
             clientName: client.clientName,
-            departmentName: client.department.departmentName,
-            siteName: client.site.siteName,
+            departmentName: client.clientServices.departmentName,
+            siteName: client.clientLocation.siteName,
             action: (
               <ClientButtons _id={client._id} onClientDelete={onClientDelete}/>
             ),
@@ -57,10 +57,6 @@ const ClientList = () => {
   }
 
   return (
-     <>
-      {clientLoading ? (
-        <div>Loading Clients Table...</div>
-      ) : (
     <div className="p-5">
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Clients</h3>
@@ -77,8 +73,6 @@ const ClientList = () => {
         <DataTable columns={columns} data={filteredClients} pagination/>
       </div>
     </div>
-     )}
-    </>
   )
 }
 
