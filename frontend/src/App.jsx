@@ -52,11 +52,11 @@ function App() {
           <Route path="/admin-dashboard/clients" element={<ClientList />}></Route>
           <Route path="/admin-dashboard/add-client" element={<AddClient />}></Route>
           <Route path="/admin-dashboard/clients/:id" element={<ViewClient />}></Route>
-          <Route path="/admin-dashboard/client/:id" element={<EditClient />}></Route>
+          <Route path="/admin-dashboard/clients/edit/:id" element={<EditClient />}></Route>
           <Route path="/admin-dashboard/sites" element={<SiteList />}></Route>
           <Route path="/admin-dashboard/add-site" element={<AddSite />}></Route>
           <Route path="/admin-dashboard/sites/:id" element={<ViewSite />}></Route>
-          <Route path="/admin-dashboard/site/:id" element={<EditSite />}></Route>
+          <Route path="/admin-dashboard/sites/edit/:id" element={<EditSite />}></Route>
         </Route>
         <Route path="/manager-dashboard" element={<ManagerDashboard />}></Route>
         <Route path="/staff-dashboard" element={<StaffDashboard />}></Route>

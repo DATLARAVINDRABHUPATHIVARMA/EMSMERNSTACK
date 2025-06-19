@@ -35,11 +35,12 @@ const getSite = async (req, res) => {
 const updateSite = async (req, res) => {
   try {
     const {id} = req.params;
-    const {siteName, siteAddress, siteDescription, siteEmployeeCount} = req.body;
-    const updateSite = await Site.findByIdAndUpdate({_id: id},{
-      siteName, siteAddress, siteDescription, siteEmployeeCount
+    const {siteName, siteClients, siteAddress, siteDescription, siteEmployeeCount} = req.body;
+
+    const site = await Site.findByIdAndUpdate({_id: id},{
+      siteName, siteClients, siteAddress, siteDescription, siteEmployeeCount
     })
-    return res.status(200).json({success: true, updateSite})
+    return res.status(200).json({success: true, site})
   } catch (error) {
     return res.status(500).json({success: false, error: 'Update Site server error'})
   } 

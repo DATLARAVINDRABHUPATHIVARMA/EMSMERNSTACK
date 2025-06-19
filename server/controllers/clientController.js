@@ -38,9 +38,9 @@ const getClient = async (req, res) => {
 const updateClient = async (req, res) => {
   try {
     const {id} = req.params;
-    const {clientID, clientName, clientServices, clientLocation, clientServiceStartedOn, clientDescription, clientEmployeeCount} = req.body;
+    const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount} = req.body;
     const updateClient = await Client.findByIdAndUpdate({_id: id},{
-      clientID, clientName, clientServices, clientLocation, clientServiceStartedOn, clientDescription, clientEmployeeCount
+      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount
     })
     return res.status(200).json({success: true, updateClient})
   } catch (error) {

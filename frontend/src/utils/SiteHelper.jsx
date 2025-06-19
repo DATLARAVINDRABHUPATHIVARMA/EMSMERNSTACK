@@ -87,7 +87,7 @@ export const SiteButtons = ({ _id, onSiteDelete }) => {
       </button>
       <button
         className="px-3 py-1 bg-purple-600 text-white rounded"
-        onClick={() => navigate(`/admin-dashboard/site/${_id}`)}
+        onClick={() => navigate(`/admin-dashboard/sites/edit/${_id}`)}
       >
         Edit
       </button>
