@@ -26,9 +26,9 @@ const addClient = async (req, res) => {
 }
 
 const getClient = async (req, res) => {
+  const {id} = req.params;
   try {
-    const {id} = req.params;
-    const client = await Client.findById({_id: id})
+    const client = await Client.findById({_id: id}).populate('clientServices').populate('clientLocation')
     return res.status(200).json({success: true, client})
   } catch (error) {
     return res.status(500).json({success: false, error: 'get client server error'})

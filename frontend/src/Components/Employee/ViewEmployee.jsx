@@ -81,7 +81,6 @@ const ViewEmployee = () => {
           <h3 className="text-xl font-bold mt-5 mb-4 text-center">
             Address
           </h3>
-          
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Present Address:</p>
               <p className="font-medium">{ employee.preHNo + ", " + employee.preStreet + ", " + employee.preVillage + ", " + employee.preMandal + ", " + employee.preCity + ", " + employee.preState + ", " + employee.preCountry + " - " + employee.prePincode + "." }</p>

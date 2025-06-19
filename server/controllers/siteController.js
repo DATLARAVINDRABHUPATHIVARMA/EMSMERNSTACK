@@ -23,9 +23,9 @@ const addSite = async (req, res) => {
 }
 
 const getSite = async (req, res) => {
+  const {id} = req.params;
   try {
-    const {id} = req.params;
-    const site = await Site.findById({_id: id})
+    const site = await Site.findById({_id: id}).populate('siteClients')
     return res.status(200).json({success: true, site})
   } catch (error) {
     return res.status(500).json({success: false, error: 'get site server error'})

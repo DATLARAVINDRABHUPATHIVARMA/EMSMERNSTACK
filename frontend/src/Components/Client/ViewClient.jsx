@@ -64,7 +64,7 @@ const ViewClient = () => {
             </div>
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Client Services Starting Date:</p>
-              <p className="font-medium">{client.clientServicesStartedOn}</p>
+              <p className="font-medium">{new Date(client.clientServicesStartedOn).toDateString()}</p>
             </div>
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Client Location:</p>

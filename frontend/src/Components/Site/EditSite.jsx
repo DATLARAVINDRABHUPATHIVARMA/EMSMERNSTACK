@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { fetchClients, } from "../../utils/EmployeeHelper.jsx";
 import React, { useState,  useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -6,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 const EditSite = () => {
     const {id} = useParams()
     const [site, setSite] = useState([])
+    const [clients, setClients] = useState(null);
     const [siteLoading, setSiteLoading] = useState(false)
     const navigate = useNavigate()
 
@@ -15,7 +17,7 @@ const EditSite = () => {
   };
 
     useEffect(() => {
-    const fetchSites = async () => {
+    const fetchSite = async () => {
       setSiteLoading(true);
       try {
         const response = await axios.get(
@@ -38,7 +40,7 @@ const EditSite = () => {
       }
     };
     
-    fetchSites();
+    fetchSite();
   }, [])
 
   const handleSubmit = async (e) => {
