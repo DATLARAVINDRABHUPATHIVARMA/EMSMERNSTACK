@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 import { Schema } from "mongoose";
 
 const clientSchema = new Schema({
-    clientID: { type : String, required : true },
+    clientID: { type : String, required : true, unique: true},
     clientName: { type : String, required : true },
     clientContactPerson: { type : String, required : true },
     clientContact: { type : String, required : true },
-    clientEmail: { type : String, required : true },
-    clientDesignation: { type : String, required : true },
+    clientEmail: { type : String, },
+    clientDesignation: { type : String, },
     clientServiceStartedOn: { type: Date },
     clientServices: { type: Schema.Types.ObjectId, ref: "Department", required: true },
     clientLocation: { type: Schema.Types.ObjectId, ref: "Site", required: true },

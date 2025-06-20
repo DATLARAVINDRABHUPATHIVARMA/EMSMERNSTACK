@@ -6,20 +6,27 @@ import { fetchDepartments, fetchSites } from "../../utils/ClientHelper.jsx";
 const AddClient = () => {
   const [departments, setDepartments] = useState([]);
   const [sites, setSites] = useState([]);
-  const [client, setClient] = useState({
-    clientID: "",
+  const [client, setClient] = useState({clientID: "",
     clientName: "",
     clientContactPerson: "",
     clientContact: "",
     clientEmail: "",
     clientDesignation: "",
-    clientServiceStartedOn: "",
+    clientServicesStartedOn: "",
     clientServices: "",
-    clientLocation: "",  clientGSTNo: "", clientPANNo: "",
-    clientHNo: "", clientStreet: "",  clientVillage: "",  clientMandal: "", clientCity: "", clientState: "", clientCountry: "", clientPincode: "", 
+    clientLocation: "",
+    clientGSTNo: "",
+    clientPANNo: "",
+    clientHNo: "",
+    clientStreet: "",
+    clientVillage: "",
+    clientMandal: "",
+    clientCity: "",
+    clientState: "",
+    clientCountry: "",
+    clientPincode: "",
     clientDescription: "",
-    clientEmployeeCount: "",
-  });
+    clientEmployeeCount: "",});
 
   useEffect(() => {
     const getDepartments = async () => {
@@ -154,7 +161,6 @@ const AddClient = () => {
               onChange={handleChange}
               placeholder="Enter Client's Email"
               className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-              required
             />
           </div>
           <div>

@@ -28,12 +28,12 @@ export const columns = [
     name: "Joining",
     selector: (row) => row.dateOfJoining,
     sortable: true,
-    width: "88px"
+    width: "96px"
   },
   {
     name: "Designation",
     selector: (row) => row.designation,
-    width: "150px"
+    width: "180px"
   },
   {
     name: "Action",

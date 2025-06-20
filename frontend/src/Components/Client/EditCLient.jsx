@@ -220,7 +220,6 @@ const EditClient = () => {
                   onChange={handleChange}
                   placeholder="Enter Client's Email"
                   className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-                  required
                 />
               </div>
               <div>

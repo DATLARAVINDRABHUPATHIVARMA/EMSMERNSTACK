@@ -15,6 +15,14 @@ const addClient = async (req, res) => {
   try {
     const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount} = req.body;
     
+    const user = await Client.findOne({ clientID });
+        if (user) {
+          return res
+            .status(400)
+            .json({ success: false, error: "Client already registered" });
+        }
+
+
     const newClient = new Client ({
       clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount
     })
