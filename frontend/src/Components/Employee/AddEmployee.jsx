@@ -131,7 +131,7 @@ const AddEmployee = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Photo*
+              Photo
             </label>
             <input
               type="file"
@@ -177,6 +177,7 @@ const AddEmployee = () => {
                 placeholder="**********"
                 onChange={handleChange}
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                required
               />
               <button
                 type="button"
@@ -217,7 +218,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter House Number or Door Number"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -230,7 +230,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Street Details"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -243,7 +242,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Village"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -256,7 +254,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Area"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -269,7 +266,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter District / City"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -282,7 +278,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter State"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -295,7 +290,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Country"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -308,7 +302,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
           </div>
@@ -329,7 +322,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter House Number or Door Number"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -342,7 +334,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Street Details"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -355,7 +346,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Village"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -368,7 +358,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Area"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -381,7 +370,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter District / City"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -394,7 +382,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter State"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -407,7 +394,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Country"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
             <div className="mt-2 mb-2">
@@ -420,7 +406,6 @@ const AddEmployee = () => {
                 onChange={handleChange}
                 placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                required
               />
             </div>
           </div>
@@ -478,7 +463,6 @@ const AddEmployee = () => {
               onChange={handleChange}
               placeholder="Enter Other Contact Number for Emergency "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
             />
           </div>
           <div>
@@ -680,6 +664,8 @@ const AddEmployee = () => {
               <option value="">Select Status</option>
               <option value="Active">Active</option>
               <option value="Resigned">Resigned</option>
+              <option value="Terminated">Terminated</option>
+              <option value="Quitted">Quitted</option>
             </select>
           </div>
           <div>
@@ -783,7 +769,6 @@ const AddEmployee = () => {
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               rows={1}
-              required
             />
           </div>
           <div>
@@ -975,7 +960,6 @@ const AddEmployee = () => {
               name="maritalStatus"
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
             >
               <option value="">Select Marital Status</option>
               <option value="Single">Single</option>
@@ -1236,7 +1220,6 @@ const AddEmployee = () => {
               onChange={handleChange}
               placeholder="Enter Account Number "
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
             />
           </div>
           <div>
@@ -1249,7 +1232,6 @@ const AddEmployee = () => {
               onChange={handleChange}
               placeholder="Enter IFSC Code"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              required
             />
           </div>
           <div>

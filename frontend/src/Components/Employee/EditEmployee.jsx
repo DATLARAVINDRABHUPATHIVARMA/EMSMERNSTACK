@@ -102,6 +102,7 @@ const EditEmployee = () => {
                   name="employeeID"
                   value={employee.employeeID}
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  required
                 />
               </div>
             </div>
@@ -189,7 +190,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter House Number or Door Number"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -203,7 +203,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Street Details"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -217,7 +216,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Village"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -231,7 +229,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Area"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -245,7 +242,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter District / City"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -259,7 +255,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter State"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -273,7 +268,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Country"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -287,7 +281,6 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Present Address"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
                   />
                 </div>
               </div>
@@ -309,7 +302,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter House Number or Door Number"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -323,7 +316,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Street Details"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -337,7 +330,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Village"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -351,7 +344,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Area"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -365,7 +358,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter District / City"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -379,7 +372,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter State"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -393,7 +386,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Country"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
                 <div className="mt-2 mb-2">
@@ -407,7 +400,7 @@ const EditEmployee = () => {
                     onChange={handleChange}
                     placeholder="Enter Present Address"
                     className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                    required
+                    // required
                   />
                 </div>
               </div>
@@ -463,7 +456,7 @@ const EditEmployee = () => {
                   onChange={handleChange}
                   placeholder="Enter Other Contact Number for Emergency "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
+                  // required
                 />
               </div>
               <div>
@@ -658,7 +651,7 @@ const EditEmployee = () => {
                   name="dateOfJoining"
                   value={new Date(employee.dateOfJoining).toDateString()}
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
-                  required
+                  // required
                 />
               </div>
               <div>
@@ -675,6 +668,8 @@ const EditEmployee = () => {
                   <option value="">Select Status</option>
                   <option value="Active">Active</option>
                   <option value="Resigned">Resigned</option>
+                  <option value="Terminated">Terminated</option>
+                  <option value="Quitted">Quitted</option>
                 </select>
               </div>
               <div>
@@ -785,20 +780,25 @@ const EditEmployee = () => {
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                   rows={1}
-                  required
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Web Role*
                 </label>
-                <input
-                  type="text"
+                <select
                   name="role"
+                  onChange={handleChange}
                   value={employee.role}
-                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                   required
-                />
+                >
+                  <option value="">Select Web Role</option>
+                  <option value="admin">Admin</option>
+                  <option value="manager">Manager</option>
+                  <option value="staff">Staff</option>
+                  <option value="employee">Employee</option>
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -1263,7 +1263,6 @@ const EditEmployee = () => {
                   onChange={handleChange}
                   placeholder="Enter Account Number "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
                 />
               </div>
               <div>
@@ -1277,7 +1276,6 @@ const EditEmployee = () => {
                   onChange={handleChange}
                   placeholder="Enter IFSC Code"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                  required
                 />
               </div>
               <div>
