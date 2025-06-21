@@ -3,8 +3,9 @@ import { Schema } from "mongoose";
 
 const employeeSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  organization: { type: String, enum: ["SEVEN HILLS FACILITY SERVICES PRIVATE LIMITED", "LIV SIGNITY SERVICES (OPC) PRIVATE LIMITED"],},
   employeeID: { type: String, required: true, unique: true}, //auto load
-  personalContact: { type: String, required: true, unique: true}, //countrycode
+  personalContact: { type: String, required: true,}, //countrycode
   dateOfBirth: { type: Date, required: true },
   preHNo: { type: String, },
   preStreet: { type: String, },

@@ -48,19 +48,23 @@ const ViewEmployee = () => {
               />
             </div>
             <div>
-              <div className="flex items-center  justify space-x-3 mt-3 mb-4">
+              <div className="flex items-center justify space-x-3 mt-3 mb-2">
                 <p className="text-lg font-bold">Employee ID:</p>
                 <p className="font-medium">{employee.employeeID}</p>
               </div>
-              <div className="flex items-center justify space-x-3 mb-4">
+              <div className="flex items-center justify space-x-3 mb-2">
+                <p className="text-lg font-bold">Company:</p>
+                <p className="font-medium">{employee.organization}</p>
+              </div>
+              <div className="flex items-center justify space-x-3 mb-2">
                 <p className="text-lg font-bold">Name:</p>
                 <p className="font-medium">{employee.userId.name}</p>
               </div>
-              <div className="flex items-center justify space-x-3 mb-4">
+              <div className="flex items-center justify space-x-3 mb-2">
                 <p className="text-lg font-bold">Phone Number:</p>
                 <p className="font-medium">{employee.personalContact}</p>
               </div>
-              <div className="flex items-center justify space-x-3 mb-4">
+              <div className="flex items-center justify space-x-3 mb-2">
                 <p className="text-lg font-bold">Date of Birth:</p>
                 <p className="font-medium">
                   {new Date(employee.dateOfBirth).toDateString()}

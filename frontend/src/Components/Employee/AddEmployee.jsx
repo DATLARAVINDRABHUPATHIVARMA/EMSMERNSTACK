@@ -84,6 +84,20 @@ const AddEmployee = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
+              Company*
+            </label>
+            <select
+              name="organization"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            >
+              <option value="">Select Company</option>
+              <option value="SEVEN HILLS FACILITY SERVICES PRIVATE LIMITED">SEVEN HILLS FACILITY SERVICES PRIVATE LIMITED</option>
+              <option value="LIV SIGNITY SERVICES (OPC) PRIVATE LIMITED">LIV SIGNITY SERVICES (OPC) PRIVATE LIMITED</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
               Employee ID*
             </label>
             <input
