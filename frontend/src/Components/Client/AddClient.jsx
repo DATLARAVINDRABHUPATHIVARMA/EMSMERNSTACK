@@ -129,7 +129,6 @@ const AddClient = () => {
               onChange={handleChange}
               placeholder="Enter Contact Person Name"
               className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-              required
             />
           </div>
           <div>
@@ -145,7 +144,6 @@ const AddClient = () => {
               onChange={handleChange}
               placeholder="Enter Phone Number"
               className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-              required
             />
           </div>
           <div>

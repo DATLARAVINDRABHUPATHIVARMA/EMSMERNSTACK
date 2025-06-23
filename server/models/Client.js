@@ -4,8 +4,8 @@ import { Schema } from "mongoose";
 const clientSchema = new Schema({
     clientID: { type : String, required : true, unique: true},
     clientName: { type : String, required : true },
-    clientContactPerson: { type : String, required : true },
-    clientContact: { type : String, required : true },
+    clientContactPerson: { type : String, },
+    clientContact: { type : String, },
     clientEmail: { type : String, },
     clientDesignation: { type : String, },
     clientServiceStartedOn: { type: Date },
