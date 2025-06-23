@@ -28,7 +28,7 @@ export const columns = [
     name: "Joining",
     selector: (row) => row.dateOfJoining,
     sortable: true,
-    width: "96px"
+    width: "140px"
   },
   {
     name: "Designation",

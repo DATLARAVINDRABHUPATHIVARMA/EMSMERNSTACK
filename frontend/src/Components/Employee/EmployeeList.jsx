@@ -32,7 +32,7 @@ const EmployeeList = () => {
             name: employee.userId.name,
             dateOfJoining: new Date(
               employee.dateOfJoining
-            ).toLocaleDateString(),
+            ).toDateString(),
             designation: employee.designation,
             action: <EmployeeButtons _id={employee._id} />,
           }));
