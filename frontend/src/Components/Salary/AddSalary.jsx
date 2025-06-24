@@ -7,6 +7,7 @@ const AddSalary = () => {
   const [employee, setEmployee] = useState({ organization: "", employeeID: "", name: "", personalContact: "", dateOfBirth: "", email: "", preHNo: "", preStreet: "", preVillage: "", preMandal: "", preCity: "", preState: "", preCountry: "", prePincode: "", perHNo: "", perStreet: "", perVillage: "", perMandal: "", perCity: "", perState: "", perCountry: "", perPincode: "", gender: "", bloodGroup: "", emergencyContact: "", religion: "", qualification: "", major: "", caste: "", subCaste: "", motherTongue: "", languagesKnown: "", PWDStatus: "", disability: "", aadhaarNumber: "", PANNumber: "", dateOfJoining: "", empStatus: "", designation: "", department: "", client: "", site: "", officeContact: "", officeEmail: "", jobRole: "", role: "", currentSalary: "", reportingInchargePerson: "", repPersonDesignation: "", repPersonEmployeeID: "", previousDesignation: "", previousSalary: "", dateOfPromotion: "", dateOfTermination: "", fatherName: "", fatherOccupation: "", motherName: "", motherOccupation: "", maritalStatus: "", spouseName: "", childrenCount: "", siblings: "", height: "", weight: "", chest: "", eyeColour: "", hairColour: "", disease: "", IDMark1: "", IDMark2: "", ESIDetails: "", insuranceDetails: "", PFDetails: "", UANNumber: "", bankName: "", bankAccountNumber: "", IFSCCode: "", bankBranch: "", refPerson1: "", isRefPerson1Employee: "", refPerson1Contact: "", refPerson1Email: "", refPerson1Occupation: "", refPerson1EmployeeID: "", refPerson2: "", isRefPerson2Employee: "", refPerson2Contact: "", refPerson2Email: "", refPerson2Occupation: "", refPerson2EmployeeID: "" });
   const [departments, setDepartments] = useState(null);
   const [clients, setClients] = useState(null);
+  const [employees, setEmployees] = useState(null);
   const [sites, setSites] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -60,6 +61,10 @@ const AddSalary = () => {
     getSites();
   }, []);
 
+  const handleClient = async (e) => {
+    
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEmployee((prevData) => ({ ...prevData, [name]: value }));
@@ -93,7 +98,43 @@ const AddSalary = () => {
           <h2 className="text-2xl font-bold mb-6">Add Salary</h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Client*
+                </label>
+                <select
+                  name="client"
+                  value={employee.client}
+                  onChange={handleClient}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  required
+                >
+                  <option value="">Select Client</option>
+                  {clients.map((client) => (
+                    <option key={client._id} value={client._id}>
+                      {client.clientName + " (" + client.clientID + ")"}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Employee
+                </label>
+                <select
+                  name="client"
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  required
+                >
+                  <option value="">Select Employee</option>
+                  {employees.map((employee) => (
+                    <option key={employee._id} value={employee._id}>
+                      {employee.employeeID}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   Employee ID*

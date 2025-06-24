@@ -30,6 +30,8 @@ const EmployeeList = () => {
               />
             ),
             name: employee.userId.name,
+            aadhaarNumber: employee.aadhaarNumber,
+            personalContact: employee.personalContact,
             dateOfJoining: new Date(
               employee.dateOfJoining
             ).toISOString(),
@@ -51,12 +53,19 @@ const EmployeeList = () => {
     fetchEmployees();
   }, []);
 
+  const [searchTerm, setSearchTerm] = useState('');
+
   const handleFilter = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchTerm(value);
+
     const records = employees.filter((employee) =>
-      employee.employeeID.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    setFilteredEmployees(records);
-  };
+     ['employeeID', 'name', 'aadhaarNumber', 'personalContact', 'designation', "dateOfJoining"].some(
+      (key) => employee[key]?.toLowerCase().includes(value)
+    )
+  );
+    setFilteredEmployees(records)
+  };  
 
   return (
     <div className="p-5">
@@ -66,8 +75,9 @@ const EmployeeList = () => {
       <div className="flex justify-between items-center">
         <input
           type="text"
-          placeholder="Search By Employee ID"
+          placeholder="Search By Employee ID / Name / Aadhaar Number"
           className="px-4 py-0.5 border"
+          value={searchTerm}
           onChange={handleFilter}
         />
         <Link

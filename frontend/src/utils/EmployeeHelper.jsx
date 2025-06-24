@@ -19,8 +19,8 @@ export const columns = [
     width: "120px"
   },
   {
-    name: "Name",
-    selector: (row) => row.name,
+    name: ["Name"],
+    selector: ((row) => [row.name, <br/>,"Phone Number : ", row.personalContact, <br/>, "Aadhaar : ", row.aadhaarNumber, ]),
     sortable: true,
     width: "205px"
   },
