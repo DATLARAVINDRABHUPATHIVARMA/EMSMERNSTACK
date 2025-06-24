@@ -51,8 +51,17 @@ const ClientList = () => {
     fetchClients();
   }, [])
 
+  const [searchTerm, setSearchTerm] = useState('');
+
   const filterClients = (e) => {
-    const records = clients.filter((client) => client.clientID.toLowerCase().includes(e.target.value.toLowerCase()))
+    const value = e.target.value.toLowerCase();
+    setSearchTerm(value);
+
+    const records = clients.filter((client) =>
+     ['clientID', 'clientName'].some(
+      (key) => client[key]?.toLowerCase().includes(value)
+    )
+  );
     setFilteredClients(records)
   }
 
@@ -63,6 +72,7 @@ const ClientList = () => {
       </div>
       <div className="flex justify-between items-center">
         <input type="text" placeholder="Search By Client ID" className="px-4 py-0.5 border"
+        value={searchTerm}
         onChange={filterClients}
         />
         <Link to="/admin-dashboard/add-client" className="px-4 py-1 bg-purple-500 rounded text-white">
