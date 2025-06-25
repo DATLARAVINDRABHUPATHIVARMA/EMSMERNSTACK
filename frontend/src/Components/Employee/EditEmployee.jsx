@@ -469,7 +469,7 @@ const EditEmployee = () => {
                   name="personalEmail"
                   value={employee.personalEmail}
                   placeholder="Enter Personal Email"
-                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
               <div>
@@ -495,7 +495,7 @@ const EditEmployee = () => {
                   name="nationality"
                   value={employee.nationality}
                   placeholder="Enter Nationality"
-                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
               <div>

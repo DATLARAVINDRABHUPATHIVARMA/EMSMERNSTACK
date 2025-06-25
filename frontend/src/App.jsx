@@ -24,6 +24,7 @@ import AddSite from "./components/site/AddSite.jsx";
 import ViewSite from "./Components/Site/ViewSite.jsx";
 import EditSite from "./components/site/EditSite.jsx";
 import AddSalary from "./Components/Salary/AddSalary.jsx";
+import ViewSalary from "./Components/Salary/ViewSalary.jsx";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/admin-dashboard/add-employee" element={<AddEmployee />}></Route>
           <Route path="/admin-dashboard/employees/:id" element={<ViewEmployee />}></Route>
           <Route path="/admin-dashboard/employees/edit/:id" element={<EditEmployee />}></Route>
+          <Route path="/admin-dashboard/employees/salary/:id" element={<ViewSalary />}></Route>
           <Route path="/admin-dashboard/departments" element={<DepartmentList />}></Route>
           <Route path="/admin-dashboard/add-department" element={<AddDepartment />}></Route>
           <Route path="/admin-dashboard/departments/:id" element={<ViewDepartment />}></Route>
