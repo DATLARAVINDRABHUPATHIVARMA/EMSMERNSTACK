@@ -90,4 +90,14 @@ const updateEmployee = async (req, res) => {
   }
 }
 
-export { addEmployee, upload, getEmployees, getEmployee, updateEmployee };
+const fetchEmployeesByClientID  = async (req, res) => {
+  const {id} = req.params;
+  try {
+    const employees = await Employee.find({client: id})
+    return res.status(200).json({success: true, employees})
+  } catch (error) {
+    return res.status(500).json({success: false, error: 'get employeesByClientID server error'})
+  }
+}
+
+export { addEmployee, upload, getEmployees, getEmployee, updateEmployee, fetchEmployeesByClientID };

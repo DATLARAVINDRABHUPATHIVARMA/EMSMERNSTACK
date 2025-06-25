@@ -23,6 +23,7 @@ import SiteList from "./components/site/SiteList.jsx";
 import AddSite from "./components/site/AddSite.jsx";
 import ViewSite from "./Components/Site/ViewSite.jsx";
 import EditSite from "./components/site/EditSite.jsx";
+import AddSalary from "./Components/Salary/AddSalary.jsx";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
           <Route path="/admin-dashboard/add-site" element={<AddSite />}></Route>
           <Route path="/admin-dashboard/sites/:id" element={<ViewSite />}></Route>
           <Route path="/admin-dashboard/sites/edit/:id" element={<EditSite />}></Route>
+          <Route path="/admin-dashboard/salary/addSalary" element={<AddSalary />}></Route>
         </Route>
         <Route path="/manager-dashboard" element={<ManagerDashboard />}></Route>
         <Route path="/staff-dashboard" element={<StaffDashboard />}></Route>

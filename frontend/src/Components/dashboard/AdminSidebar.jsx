@@ -37,7 +37,7 @@ const AdminSidebar = () => {
           <FaCalendarAlt /> 
           <span>Leave</span> 
         </NavLink>
-        <NavLink to='/admin-dashboard/salary' className={({isActive}) => `${isActive ? "bg-purple-500" : " "} flex items-center space-x-4 block py-2.5 px-4 rounded`}>
+        <NavLink to='/admin-dashboard/salary/addSalary' className={({isActive}) => `${isActive ? "bg-purple-500" : " "} flex items-center space-x-4 block py-2.5 px-4 rounded`}>
           <FaMoneyBillWave /> 
           <span>Salary</span> 
         </NavLink>
