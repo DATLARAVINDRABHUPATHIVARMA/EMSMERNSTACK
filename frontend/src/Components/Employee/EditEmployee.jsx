@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditEmployee = () => {
-  const [employee, setEmployee] = useState({ organization: "", employeeID: "", name: "", personalContact: "", dateOfBirth: "", email: "", preHNo: "", preStreet: "", preVillage: "", preMandal: "", preCity: "", preState: "", preCountry: "", prePincode: "", perHNo: "", perStreet: "", perVillage: "", perMandal: "", perCity: "", perState: "", perCountry: "", perPincode: "", gender: "", bloodGroup: "", emergencyContact: "", religion: "", qualification: "", major: "", caste: "", subCaste: "", motherTongue: "", languagesKnown: "", PWDStatus: "", disability: "", aadhaarNumber: "", PANNumber: "", dateOfJoining: "", empStatus: "", designation: "", department: "", client: "", site: "", officeContact: "", officeEmail: "", jobRole: "", role: "", currentSalary: "", reportingInchargePerson: "", repPersonDesignation: "", repPersonEmployeeID: "", previousDesignation: "", previousSalary: "", dateOfPromotion: "", dateOfTermination: "", fatherName: "", fatherOccupation: "", motherName: "", motherOccupation: "", maritalStatus: "", spouseName: "", childrenCount: "", siblings: "", height: "", weight: "", chest: "", eyeColour: "", hairColour: "", disease: "", IDMark1: "", IDMark2: "", ESIDetails: "", insuranceDetails: "", PFDetails: "", UANNumber: "", bankName: "", bankAccountNumber: "", IFSCCode: "", bankBranch: "", refPerson1: "", isRefPerson1Employee: "", refPerson1Contact: "", refPerson1Email: "", refPerson1Occupation: "", refPerson1EmployeeID: "", refPerson2: "", isRefPerson2Employee: "", refPerson2Contact: "", refPerson2Email: "", refPerson2Occupation: "", refPerson2EmployeeID: "" });
+  const [employee, setEmployee] = useState({ organization: "", employeeID: "", name: "", personalContact: "", dateOfBirth: "", email: "", preHNo: "", preStreet: "", preVillage: "", preMandal: "", preCity: "", preState: "", preCountry: "", prePincode: "", perHNo: "", perStreet: "", perVillage: "", perMandal: "", perCity: "", perState: "", perCountry: "", perPincode: "", gender: "", bloodGroup: "",  personalEmail: "",emergencyContact: "", nationality: "", religion: "", qualification: "", major: "", caste: "", subCaste: "", motherTongue: "", languagesKnown: "", PWDStatus: "", disability: "", aadhaarNumber: "", PANNumber: "", dateOfJoining: "", empStatus: "", designation: "", department: "", client: "", site: "", officeContact: "", officeEmail: "", jobRole: "", role: "", currentSalary: "", reportingInchargePerson: "", repPersonDesignation: "", repPersonEmployeeID: "", previousDesignation: "", previousSalary: "", dateOfPromotion: "", dateOfTermination: "", fatherName: "", fatherOccupation: "", motherName: "", motherOccupation: "", maritalStatus: "", spouseName: "", childrenCount: "", siblings: "", height: "", weight: "", chest: "", eyeColour: "", hairColour: "", disease: "", IDMark1: "", IDMark2: "", ESIDetails: "", insuranceDetails: "", PFDetails: "", UANNumber: "", bankName: "", bankAccountNumber: "", IFSCCode: "", bankBranch: "", refPerson1: "", isRefPerson1Employee: "", refPerson1Contact: "", refPerson1Email: "", refPerson1Occupation: "", refPerson1EmployeeID: "", refPerson2: "", isRefPerson2Employee: "", refPerson2Contact: "", refPerson2Email: "", refPerson2Occupation: "", refPerson2EmployeeID: "" });
   const [departments, setDepartments] = useState(null);
   const [clients, setClients] = useState(null);
   const [sites, setSites] = useState(null);
@@ -24,7 +24,7 @@ const EditEmployee = () => {
         );
         if (response.data.success) {
           const employee = response.data.employee;
-          setEmployee((prev) => ({ ...prev, organization: employee.organization, employeeID: employee.employeeID, name: employee.userId.name, personalContact: employee.personalContact, dateOfBirth: employee.dateOfBirth, email: employee.userId.email, preHNo: employee.preHNo, preStreet: employee.preStreet, preVillage: employee.preVillage, preMandal: employee.preMandal, preCity: employee.preCity, preState: employee.preState, preCountry: employee.preCountry, prePincode: employee.prePincode, perHNo: employee.perHNo, perStreet: employee.perStreet, perVillage: employee.perVillage, perMandal: employee.perMandal, perCity: employee.perCity, perState: employee.perState, perCountry: employee.perCountry, perPincode: employee.perPincode, gender: employee.gender, bloodGroup: employee.bloodGroup, emergencyContact: employee.emergencyContact, religion: employee.religion, qualification: employee.qualification, major: employee.major, caste: employee.caste, subCaste: employee.subCaste, motherTongue: employee.motherTongue, languagesKnown: employee.languagesKnown, PWDStatus: employee.PWDStatus, disability: employee.disability, aadhaarNumber: employee.aadhaarNumber, PANNumber: employee.PANNumber, dateOfJoining: employee.dateOfJoining, empStatus: employee.empStatus, designation: employee.designation, department: employee.department, client: employee.client, site: employee.site, officeContact: employee.officeContact, officeEmail: employee.officeEmail, jobRole: employee.jobRole, role: employee.userId.role, currentSalary: employee.currentSalary, reportingInchargePerson: employee.reportingInchargePerson, repPersonDesignation: employee.repPersonDesignation, repPersonEmployeeID: employee.repPersonEmployeeID, previousDesignation: employee.previousDesignation, previousSalary: employee.previousSalary, dateOfPromotion: employee.dateOfPromotion, dateOfTermination: employee.dateOfTermination, fatherName: employee.fatherName, fatherOccupation: employee.fatherOccupation, motherName: employee.motherName, motherOccupation: employee.motherOccupation, maritalStatus: employee.maritalStatus, spouseName: employee.spouseName, childrenCount: employee.childrenCount, siblings: employee.siblings, height: employee.height, weight: employee.weight, chest: employee.chest, eyeColour: employee.eyeColour, hairColour: employee.hairColour, disease: employee.disease, IDMark1: employee.IDMark1, IDMark2: employee.IDMark2, ESIDetails: employee.ESIDetails, insuranceDetails: employee.insuranceDetails, PFDetails: employee.PFDetails, UANNumber: employee.UANNumber, bankName: employee.bankName, bankAccountNumber: employee.bankAccountNumber, IFSCCode: employee.IFSCCode, bankBranch: employee.bankBranch, refPerson1: employee.refPerson1, isRefPerson1Employee: employee.isRefPerson1Employee, refPerson1Contact: employee.refPerson1Contact, refPerson1Email: employee.refPerson1Email, refPerson1Occupation: employee.refPerson1Occupation, refPerson1EmployeeID: employee.refPerson1EmployeeID, refPerson2: employee.refPerson2, isRefPerson2Employee: employee.isRefPerson2Employee, refPerson2Contact: employee.refPerson2Contact, refPerson2Email: employee.refPerson2Email, refPerson2Occupation: employee.refPerson2Occupation, refPerson2EmployeeID: employee.refPerson2EmployeeID, }));
+          setEmployee((prev) => ({ ...prev, organization: employee.organization, employeeID: employee.employeeID, name: employee.userId.name, personalContact: employee.personalContact, dateOfBirth: employee.dateOfBirth, email: employee.userId.email, preHNo: employee.preHNo, preStreet: employee.preStreet, preVillage: employee.preVillage, preMandal: employee.preMandal, preCity: employee.preCity, preState: employee.preState, preCountry: employee.preCountry, prePincode: employee.prePincode, perHNo: employee.perHNo, perStreet: employee.perStreet, perVillage: employee.perVillage, perMandal: employee.perMandal, perCity: employee.perCity, perState: employee.perState, perCountry: employee.perCountry, perPincode: employee.perPincode, gender: employee.gender, bloodGroup: employee.bloodGroup, personalEmail: employee.personalEmail, nationality: employee.nationality, emergencyContact: employee.emergencyContact, religion: employee.religion, qualification: employee.qualification, major: employee.major, caste: employee.caste, subCaste: employee.subCaste, motherTongue: employee.motherTongue, languagesKnown: employee.languagesKnown, PWDStatus: employee.PWDStatus, disability: employee.disability, aadhaarNumber: employee.aadhaarNumber, PANNumber: employee.PANNumber, dateOfJoining: employee.dateOfJoining, empStatus: employee.empStatus, designation: employee.designation, department: employee.department, client: employee.client, site: employee.site, officeContact: employee.officeContact, officeEmail: employee.officeEmail, jobRole: employee.jobRole, role: employee.userId.role, currentSalary: employee.currentSalary, reportingInchargePerson: employee.reportingInchargePerson, repPersonDesignation: employee.repPersonDesignation, repPersonEmployeeID: employee.repPersonEmployeeID, previousDesignation: employee.previousDesignation, previousSalary: employee.previousSalary, dateOfPromotion: employee.dateOfPromotion, dateOfTermination: employee.dateOfTermination, fatherName: employee.fatherName, fatherOccupation: employee.fatherOccupation, motherName: employee.motherName, motherOccupation: employee.motherOccupation, maritalStatus: employee.maritalStatus, spouseName: employee.spouseName, childrenCount: employee.childrenCount, siblings: employee.siblings, height: employee.height, weight: employee.weight, chest: employee.chest, eyeColour: employee.eyeColour, hairColour: employee.hairColour, disease: employee.disease, IDMark1: employee.IDMark1, IDMark2: employee.IDMark2, ESIDetails: employee.ESIDetails, insuranceDetails: employee.insuranceDetails, PFDetails: employee.PFDetails, UANNumber: employee.UANNumber, bankName: employee.bankName, bankAccountNumber: employee.bankAccountNumber, IFSCCode: employee.IFSCCode, bankBranch: employee.bankBranch, refPerson1: employee.refPerson1, isRefPerson1Employee: employee.isRefPerson1Employee, refPerson1Contact: employee.refPerson1Contact, refPerson1Email: employee.refPerson1Email, refPerson1Occupation: employee.refPerson1Occupation, refPerson1EmployeeID: employee.refPerson1EmployeeID, refPerson2: employee.refPerson2, isRefPerson2Employee: employee.isRefPerson2Employee, refPerson2Contact: employee.refPerson2Contact, refPerson2Email: employee.refPerson2Email, refPerson2Occupation: employee.refPerson2Occupation, refPerson2EmployeeID: employee.refPerson2EmployeeID, }));
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {
@@ -149,9 +149,10 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="personalContact"
+                  onChange={handleChange}
                   value={employee.personalContact}
                   placeholder="Enter Personal Phone Number"
-                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                   required
                 />
               </div>
@@ -169,14 +170,13 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Personal Email
+                  userID
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   name="email"
-                  onChange={handleChange}
                   value={employee.email}
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                 />
               </div>
             </div>
@@ -462,6 +462,18 @@ const EditEmployee = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
+                  Personal Email
+                </label>
+                <input
+                  type="email"
+                  name="personalEmail"
+                  value={employee.personalEmail}
+                  placeholder="Enter Personal Email"
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
                   Emergency Phone Number*
                 </label>
                 <input
@@ -472,6 +484,18 @@ const EditEmployee = () => {
                   placeholder="Enter Other Contact Number for Emergency "
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                   // required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Nationality
+                </label>
+                <input
+                  type="text"
+                  name="nationality"
+                  value={employee.nationality}
+                  placeholder="Enter Nationality"
+                  className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                 />
               </div>
               <div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchClients, fetchDepartments, fetchSites, } from "../../utils/EmployeeHelper.jsx";
+import { fetchClients, fetchDepartments, fetchSites, getEmployees, } from "../../utils/EmployeeHelper.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -62,7 +62,8 @@ const AddSalary = () => {
   }, []);
 
   const handleClient = async (e) => {
-    
+    const emps = await getEmployees(e.target.value)
+    setEmployees(emps)
   };
 
   const handleChange = (e) => {

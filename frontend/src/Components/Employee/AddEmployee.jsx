@@ -170,13 +170,13 @@ const AddEmployee = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Personal Email
+              Login Email
             </label>
             <input
-              type="email"
+              type="text"
               name="email"
               onChange={handleChange}
-              placeholder="Enter Personal Email"
+              placeholder="Enter Login Email"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
@@ -469,6 +469,18 @@ const AddEmployee = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
+              Personal Email
+            </label>
+            <input
+              type="email"
+              name="personalEmail"
+              onChange={handleChange}
+              placeholder="Enter Personal Email"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
               Emergency Phone Number*
             </label>
             <input
@@ -476,6 +488,18 @@ const AddEmployee = () => {
               name="emergencyContact"
               onChange={handleChange}
               placeholder="Enter Other Contact Number for Emergency "
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Nationality
+            </label>
+            <input
+              type="text"
+              name="nationality"
+              onChange={handleChange}
+              placeholder="nationality"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             />
           </div>
