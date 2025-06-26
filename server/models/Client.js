@@ -10,7 +10,6 @@ const clientSchema = new Schema({
     clientDesignation: { type : String, },
     clientServiceStartedOn: { type: Date },
     clientServiceEndOn: { type: Date },
-    
     clientServices: { type: Schema.Types.ObjectId, ref: "Department", required: true },
     clientLocation: { type: Schema.Types.ObjectId, ref: "Site", required: true },
     state: { type: String, },
