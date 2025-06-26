@@ -1,153 +1,187 @@
-import axios from 'axios'
-import React, { useState,  useEffect} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-
+import axios from "axios";
+import { fetchClients } from "../../utils/EmployeeHelper.jsx";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditSite = () => {
-    const {id} = useParams()
-    const [site, setSite] = useState([])
-    const [siteLoading, setSiteLoading] = useState(false)
-    const navigate = useNavigate()
+  const { id } = useParams();
+  const [site, setSite] = useState({ siteName: "", siteClients: "", siteAddress: "", siteDescription: "", siteEmployeeCount: "", });
+  const [clients, setClients] = useState(null);
+  const navigate = useNavigate();
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setSite({ ...site, [name]: value });
+    setSite((prevData) => ({ ...prevData, [name]: value }));
   };
 
-    useEffect(() => {
-    const fetchSites = async () => {
-      setSiteLoading(true);
+  useEffect(() => {
+    const getClients = async () => {
+      const clients = await fetchClients();
+      setClients(clients);
+    };
+    getClients();
+  }, []);
+
+  useEffect(() => {
+    const fetchSite = async () => {
       try {
         const response = await axios.get(
           `http://localhost:5000/api/site/${id}`,
           {
             headers: {
-              'Authorization': `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );
         if (response.data.success) {
-          setSite(response.data.site)
+          const site = response.data.site;
+          setSite((prev) => ({ ...prev, siteName: site.siteName, siteClients: site.siteClients, siteAddress: site.siteAddress, siteDescription: site.siteDescription, siteEmployeeCount: site.siteEmployeeCount, }));
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {
           alert(error.response.data.error);
         }
-      } finally {
-        setSiteLoading(false);
-      }
+      } 
     };
-    
-    fetchSites();
-  }, [])
+
+    fetchSite();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-        try {
-          const response = await axios.put(
-            `http://localhost:5000/api/site/${id}`,
-            site,
-            {
-              headers: {
-                "Authorization": `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          );
-          if (response.data.success) {
-            navigate("/admin-dashboard/sites")
-          }
-        } catch (error) {
-          if (error.response && !error.response.data.success) {
-            alert(error.response.data.error);
-          }
+
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/site/${id}`,
+        site,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
-  }
+      );
+      if (response.data.success) {
+        navigate("/admin-dashboard/sites");
+      }
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
+  };
 
   return (
-    <>{siteLoading ? <div>Loading...</div> :
-    <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
-      <h2 className="text-2xl font-bold mb-6">Edit Site</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label
-            htmlFor="siteName"
-            className="text-sm font-medium text-gray-700"
-          >
-            Site Name*
-          </label>
-          <input
-            type="text"
-            name="siteName"
-            value={site.siteName}
-            onChange={handleChange}
-            placeholder="Enter Site Name"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
+    <>
+      { clients && site ? (
+        <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
+          <h2 className="text-2xl font-bold mb-6">Edit Site</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label
+                  htmlFor="siteName"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Site Name*
+                </label>
+                <input
+                  type="text"
+                  name="siteName"
+                  value={site.siteName}
+                  onChange={handleChange}
+                  placeholder="Enter Site Name"
+                  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="siteClients"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Clients in the Site*
+                </label>
+                <select
+                  name="siteClients"
+                  value={site.siteClients}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  required
+                >
+                  <option value="">Choose Clients</option>
+                  {clients.map((client) => (
+                    <option key={client._id} value={client._id}>
+                      {client.clientName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label
+                  htmlFor="siteAddress"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Site Address*
+                </label>
+                <textarea
+                  type="text"
+                  name="siteAddress"
+                  value={site.siteAddress}
+                  onChange={handleChange}
+                  placeholder="Enter Site Address"
+                  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+                  required
+                  rows="5"
+                />
+              </div>
+              {/* start date, updation date, ending date, map location etc*/}
+              <div>
+                <label
+                  htmlFor="siteDescription"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Site Description
+                </label>
+                <textarea
+                  name="siteDescription"
+                  value={site.siteDescription}
+                  onChange={handleChange}
+                  placeholder="Site Description"
+                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+            <div className="mt-3">
+              <label
+                htmlFor="siteEmployeeCount"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Total Employees in Site*
+              </label>
+              <input
+                type="number"
+                name="siteEmployeeCount"
+                value={site.siteEmployeeCount}
+                onChange={handleChange}
+                placeholder="Number of Employees in Site"
+                className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full mt-6 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Edit Site
+            </button>
+            <div className="mt-3">
+              <p>All * marked must be fields must be required</p>
+            </div>
+          </form>
         </div>
-        <div className="mt-3">
-          <label
-            htmlFor="siteAddress"
-            className="text-sm font-medium text-gray-700"
-          >
-            Site Address*
-          </label>
-          <input
-            type="text"
-            name="siteAddress"
-            value={site.siteAddress}
-            onChange={handleChange}
-            placeholder="Enter Site Address"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        {/* start date, updation date, ending date, map location etc*/}
-        <div className="mt-3">
-          <label
-            htmlFor="siteDescription"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Site Description
-          </label>
-          <textarea
-            name="siteDescription"
-            value={site.siteDescription}
-            onChange={handleChange}
-            placeholder="Site Description"
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-            rows="5"
-          ></textarea>
-        </div>
-        <div className="mt-3">
-          <label
-            htmlFor="siteEmployeeCount"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Total Employees in Site*
-          </label>
-          <input
-            type="number"
-            name="siteEmployeeCount"
-            value={site.siteEmployeeCount}
-            onChange={handleChange}
-            placeholder="Number of Employees in Site"
-            className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full mt-6 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Edit Site
-        </button>
-        <div className="mt-3">
-          <p>All * marked must be fields must be required</p>
-        </div>
-      </form>
-    </div>}</>
-  )
-}
+      ) : <div>Loading....</div> }
+    </>
+  );
+};
 
-export default EditSite
+export default EditSite;

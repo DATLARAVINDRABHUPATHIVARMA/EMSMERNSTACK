@@ -1,14 +1,25 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchClients } from "../../utils/SiteHelper.jsx";
 
 const AddSite = () => {
+  const [clients, setClients] = useState([]);
   const [site, setSite] = useState({
-        siteName: "",
-        siteAddress: "",
-        siteDescription: "",
-        siteEmployeeCount: "",
+    siteName: "",
+    siteClients: "",
+    siteAddress: "",
+    siteDescription: "",
+    siteEmployeeCount: "",
   });
+
+  useEffect(() => {
+    const getClients = async () => {
+      const clients = await fetchClients();
+      setClients(clients);
+    };
+    getClients();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -20,79 +31,105 @@ const AddSite = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/site/add", site,
+      const response = await axios.post(
+        "http://localhost:5000/api/site/add",
+        site,
         {
-          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}`, },
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
       if (response.data.success) {
-        navigate("/admin-dashboard/sites")
+        navigate("/admin-dashboard/sites");
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
         alert(error.response.data.error);
       }
     }
-  }
-    
+  };
+
   return (
-    <div className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md w-96">
+    <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Add Site</h2>
-       <form onSubmit={handleSubmit}> 
-        <div>
-          <label
-            htmlFor="siteName"
-            className="text-sm font-medium text-gray-700"
-          >
-            Site Name*
-          </label>
-          <input
-            type="text"
-            name="siteName"
-            onChange={handleChange}
-            placeholder="Enter Site Name"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        <div className="mt-3">
-          <label
-            htmlFor="siteAddress"
-            className="text-sm font-medium text-gray-700"
-          >
-            Site Address*
-          </label>
-          <input
-            type="text"
-            name="siteAddress"
-            onChange={handleChange}
-            placeholder="Enter Site Address"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
-          />
-        </div>
-        {/* start date, updation date, ending date, map location etc*/}
-        <div className="mt-3">
-          <label
-            htmlFor="siteDescription"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Site Description
-          </label>
-          <textarea
-            name="siteDescription"
-            onChange={handleChange}
-            placeholder="Site Description"
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-            rows="5"
-          ></textarea>
+      <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              htmlFor="siteName"
+              className="text-sm font-medium text-gray-700"
+            >
+              Site Name*
+            </label>
+            <input
+              type="text"
+              name="siteName"
+              onChange={handleChange}
+              placeholder="Enter Site Name"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="siteClients"
+              className="text-sm font-medium text-gray-700"
+            >
+              Clients in the Site*
+            </label>
+            <select
+              name="siteClients"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              required
+            >
+              <option value="">Choose Clients</option>
+              {clients.map((client) => (
+                <option key={client._id} value={client._id}>
+                  {client.clientName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="siteAddress"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Site Address*
+            </label>
+            <textarea
+              type="text"
+              name="siteAddress"
+              onChange={handleChange}
+              placeholder="Enter Site Address"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+              required
+              rows="5"
+            />
+          </div>
+          {/* start date, updation date, ending date, map location etc*/}
+          <div>
+            <label
+              htmlFor="siteDescription"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Site Description
+            </label>
+            <textarea
+              name="siteDescription"
+              onChange={handleChange}
+              placeholder="Site Description"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              rows="5"
+            ></textarea>
+          </div>
         </div>
         <div className="mt-3">
           <label
             htmlFor="siteEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees in Site*
+            Total Employees in Site
           </label>
           <input
             type="number"
@@ -100,7 +137,6 @@ const AddSite = () => {
             onChange={handleChange}
             placeholder="Number of Employees in Site"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
           />
         </div>
         <button
@@ -114,7 +150,7 @@ const AddSite = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddSite
+export default AddSite;

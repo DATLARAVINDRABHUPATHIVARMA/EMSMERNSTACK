@@ -74,7 +74,7 @@ const AddDepartment = () => {
             htmlFor="departmentEmployeeCount"
             className="block text-sm font-medium text-gray-700"
           >
-            Total Employees in Department*
+            Total Employees in Department
           </label>
           <input
             type="number"
@@ -82,7 +82,6 @@ const AddDepartment = () => {
             onChange={handleChange}
             placeholder="Number of Employees in Department"
             className="block mt-1 w-full p-2 border border-gray-300 rounded-md"
-            required
           />
         </div>
         <button

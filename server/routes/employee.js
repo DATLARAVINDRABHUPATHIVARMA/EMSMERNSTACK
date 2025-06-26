@@ -1,14 +1,14 @@
 import express from 'express'
 import authMiddleware from '../middleware/authMiddleware.js'
-import { addEmployee, upload } from '../controllers/employeeController.js'
+import { addEmployee, upload, getEmployees, getEmployee, updateEmployee, fetchEmployeesByClientID} from '../controllers/employeeController.js'
 
 const router = express.Router()
 
-// router.get ('/', authMiddleware, getClients)
+router.get ('/', authMiddleware, getEmployees)
 router.post ('/add', authMiddleware, upload.single('image'), addEmployee)
-// router.get ('/:id', authMiddleware, getClient)
-// router.put ('/:id', authMiddleware, updateClient)
-// router.delete ('/:id', authMiddleware, deleteClient)
+router.get ('/:id', authMiddleware, getEmployee)
+router.put ('/:id', authMiddleware, updateEmployee)
+router.get ('/client/:id', authMiddleware, fetchEmployeesByClientID)
 
 
 export default router

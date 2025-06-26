@@ -25,8 +25,8 @@ const addDepartment = async (req, res) => {
 }
 
 const getDepartment = async (req, res) => {
+  const {id} = req.params;
   try {
-    const {id} = req.params;
     const department = await Department.findById({_id: id})
     return res.status(200).json({success: true, department})
   } catch (error) {
