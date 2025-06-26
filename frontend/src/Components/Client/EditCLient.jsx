@@ -17,14 +17,22 @@ const EditClient = () => {
     clientLocation: "",
     clientGSTNo: "",
     clientPANNo: "",
-    clientHNo: "",
-    clientStreet: "",
-    clientVillage: "",
-    clientMandal: "",
-    clientCity: "",
-    clientState: "",
-    clientCountry: "",
-    clientPincode: "",
+    clientBillHNo: "",
+    clientBillStreet: "",
+    clientBillVillage: "",
+    clientBillMandal: "",
+    clientBillCity: "",
+    clientBillState: "",
+    clientBillCountry: "",
+    clientBillPincode: "",
+    clientShipHNo: "",
+    clientShipStreet: "",
+    clientShipVillage: "",
+    clientShipMandal: "",
+    clientShipCity: "",
+    clientShipState: "",
+    clientShipCountry: "",
+    clientShipPincode: "",
     clientDescription: "",
     clientEmployeeCount: "",
   });
@@ -65,8 +73,9 @@ const EditClient = () => {
           }
         );
         if (response.data.success) {
-          const client = response.data.client
-          setClient({...client,
+          const client = response.data.client;
+          setClient({
+            ...client,
             clientID: client.clientID,
             clientName: client.clientName,
             clientContactPerson: client.clientContactPerson,
@@ -78,14 +87,22 @@ const EditClient = () => {
             clientLocation: client.clientLocation,
             clientGSTNo: client.clientGSTNo,
             clientPANNo: client.clientPANNo,
-            clientHNo: client.clientHNo,
-            clientStreet: client.clientStreet,
-            clientVillage: client.clientVillage,
-            clientMandal: client.clientMandal,
-            clientCity: client.clientCity,
-            clientState: client.clientState,
-            clientCountry: client.clientCountry,
-            clientPincode: client.clientPincode,
+            clientBillHNo: client.clientBillHNo,
+            clientBillStreet: client.clientBillStreet,
+            clientBillVillage: client.clientBillVillage,
+            clientBillMandal: client.clientBillMandal,
+            clientBillCity: client.clientBillCity,
+            clientBillState: client.clientBillState,
+            clientBillCountry: client.clientBillCountry,
+            clientBillPincode: client.clientBillPincode,
+            clientShipHNo: client.clientShipHNo,
+            clientShipStreet: client.clientShipStreet,
+            clientShipVillage: client.clientShipVillage,
+            clientShipMandal: client.clientShipMandal,
+            clientShipCity: client.clientShipCity,
+            clientShipState: client.clientShipState,
+            clientShipCountry: client.clientShipCountry,
+            clientShipPincode: client.clientShipPincode,
             clientDescription: client.clientDescription,
             clientEmployeeCount: client.clientEmployeeCount,
           });
@@ -339,132 +356,276 @@ const EditClient = () => {
             </button>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label
-                  htmlFor="clientHNo"
-                  className="block text-sm font-medium text-gray-700"
+                <button
+                  type="button"
+                  className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded"
                 >
-                  House Number / Door Number / Flat Number
-                </label>
-                <input
-                  type="text"
-                  name="clientHNo"
-                  value={client.clientHNo}
-                  onChange={handleChange}
-                  placeholder="Enter House Number or Door Number"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
+                  Billing Address
+                </button>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillHNo"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    House Number / Door Number / Flat Number
+                  </label>
+                  <input
+                    type="text"
+                    name="clientBillHNo"
+                    value={client.clientBillHNo}
+                    onChange={handleChange}
+                    placeholder="Enter House Number or Door Number"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillStreet"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Street / Lane
+                  </label>
+                  <input
+                    type="text"
+                    name="clientBillStreet"
+                    value={client.clientBillStreet}
+                    onChange={handleChange}
+                    placeholder="Enter Street Details"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillVillage"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Village / Locality
+                  </label>
+                  <input
+                    type="text"
+                    name="clientBillVillage"
+                    value={client.clientBillVillage}
+                    onChange={handleChange}
+                    placeholder="Enter Village"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillMandal"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Mandal / Municipality / Area
+                  </label>
+                  <input
+                    type="text"
+                    name="clientBillMandal"
+                    value={client.clientBillMandal}
+                    onChange={handleChange}
+                    placeholder="Enter Area"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillCity"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    District / City
+                  </label>
+                  <input
+                    type="text"
+                    name="clientBillCity"
+                    value={client.clientBillCity}
+                    onChange={handleChange}
+                    placeholder="Enter District / City"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillState"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    State
+                  </label>
+                  <input
+                    type="text"
+                    name="clientBillState"
+                    value={client.clientBillState}
+                    onChange={handleChange}
+                    placeholder="Enter State"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillCountry"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    name="clientBillCountry"
+                    value={client.clientBillCountry}
+                    onChange={handleChange}
+                    placeholder="Enter Country"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillPincode"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Pin Code / Zip Code
+                  </label>
+                  <input
+                    type="number"
+                    name="clientBillPincode"
+                    value={client.clientBillPincode}
+                    onChange={handleChange}
+                    placeholder="Enter Pincode"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
               </div>
               <div>
-                <label
-                  htmlFor="clientStreet"
-                  className="block text-sm font-medium text-gray-700"
+                <button
+                  type="button"
+                  className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded"
                 >
-                  Street / Lane
-                </label>
-                <input
-                  type="text"
-                  name="clientStreet"
-                  value={client.clientStreet}
-                  onChange={handleChange}
-                  placeholder="Enter Street Details"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="clientVillage"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Village / Locality
-                </label>
-                <input
-                  type="text"
-                  name="clientVillage"
-                  value={client.clientVillage}
-                  onChange={handleChange}
-                  placeholder="Enter Village"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="clientMandal"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Mandal / Municipality / Area
-                </label>
-                <input
-                  type="text"
-                  name="clientMandal"
-                  value={client.clientMandal}
-                  onChange={handleChange}
-                  placeholder="Enter Area"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="clientCity"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  District / City
-                </label>
-                <input
-                  type="text"
-                  name="clientCity"
-                  value={client.clientCity}
-                  onChange={handleChange}
-                  placeholder="Enter District / City"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="clientState"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  State
-                </label>
-                <input
-                  type="text"
-                  name="clientState"
-                  value={client.clientState}
-                  onChange={handleChange}
-                  placeholder="Enter State"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="clientCountry"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Country
-                </label>
-                <input
-                  type="text"
-                  name="clientCountry"
-                  value={client.clientCountry}
-                  onChange={handleChange}
-                  placeholder="Enter Country"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="clientPincode"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Pin Code / Zip Code
-                </label>
-                <input
-                  type="number"
-                  name="clientPincode"
-                  value={client.clientPincode}
-                  onChange={handleChange}
-                  placeholder="Enter Pincode"
-                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-                />
+                  Billing Address
+                </button>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientBillHNo"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    House Number / Door Number / Flat Number
+                  </label>
+                  <input
+                    type="text"
+                    name="clientShipHNo"
+                    value={client.clientShipHNo}
+                    onChange={handleChange}
+                    placeholder="Enter House Number or Door Number"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientShipStreet"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Street / Lane
+                  </label>
+                  <input
+                    type="text"
+                    name="clientShipStreet"
+                    value={client.clientShipStreet}
+                    onChange={handleChange}
+                    placeholder="Enter Street Details"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientShipVillage"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Village / Locality
+                  </label>
+                  <input
+                    type="text"
+                    name="clientShipVillage"
+                    value={client.clientShipVillage}
+                    onChange={handleChange}
+                    placeholder="Enter Village"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientShipMandal"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Mandal / Municipality / Area
+                  </label>
+                  <input
+                    type="text"
+                    name="clientShipMandal"
+                    value={client.clientShipMandal}
+                    onChange={handleChange}
+                    placeholder="Enter Area"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientShipCity"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    District / City
+                  </label>
+                  <input
+                    type="text"
+                    name="clientShipCity"
+                    value={client.clientShipCity}
+                    onChange={handleChange}
+                    placeholder="Enter District / City"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientShipState"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    State
+                  </label>
+                  <input
+                    type="text"
+                    name="clientShipState"
+                    value={client.clientShipState}
+                    onChange={handleChange}
+                    placeholder="Enter State"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientShipCountry"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    name="clientShipCountry"
+                    value={client.clientShipCountry}
+                    onChange={handleChange}
+                    placeholder="Enter Country"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
+                <div className="mt-2 mb-2">
+                  <label
+                    htmlFor="clientShipPincode"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Pin Code / Zip Code
+                  </label>
+                  <input
+                    type="number"
+                    name="clientShipPincode"
+                    value={client.clientShipPincode}
+                    onChange={handleChange}
+                    placeholder="Enter Pincode"
+                    className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                  />
+                </div>
               </div>
             </div>
             <button

@@ -86,8 +86,12 @@ const ViewClient = () => {
             </p>
           </div>
           <div className="flex items-center justify space-x-3 mb-2">
-            <p className="text-lg font-bold">Address:</p>
-            <p className="font-medium">{ client.clientHNo + ", " + client.clientStreet + ", " + client.clientVillage + ", " + client.clientMandal + ", " + client.clientCity + ", " + client.clientState + ", " + client.clientCountry + " - " + client.clientPincode + "." }</p>
+            <p className="text-lg font-bold">Billing Address:</p>
+            <p className="font-medium">{ client.clientBillHNo + ", " + client.clientBillStreet + ", " + client.clientBillVillage + ", " + client.clientBillMandal + ", " + client.clientBillCity + ", " + client.clientBillState + ", " + client.clientBillCountry + " - " + client.clientBillPincode + "." }</p>
+          </div>
+          <div className="flex items-center justify space-x-3 mb-2">
+            <p className="text-lg font-bold">Shipping Address:</p>
+            <p className="font-medium">{ client.clientShipHNo + ", " + client.clientShipStreet + ", " + client.clientShipVillage + ", " + client.clientShipMandal + ", " + client.clientShipCity + ", " + client.clientShipState + ", " + client.clientShipCountry + " - " + client.clientShipPincode + "." }</p>
           </div>
           <div className="flex items-center justify space-x-3 mb-2">
             <p className="text-lg font-bold">Client Description:</p>

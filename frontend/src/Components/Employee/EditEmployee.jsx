@@ -468,6 +468,7 @@ const EditEmployee = () => {
                   type="email"
                   name="personalEmail"
                   value={employee.personalEmail}
+                  onChange={handleChange}
                   placeholder="Enter Personal Email"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
@@ -494,6 +495,7 @@ const EditEmployee = () => {
                   type="text"
                   name="nationality"
                   value={employee.nationality}
+                  onChange={handleChange}
                   placeholder="Enter Nationality"
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />

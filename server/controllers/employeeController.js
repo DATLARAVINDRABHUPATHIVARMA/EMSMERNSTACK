@@ -63,7 +63,7 @@ const getEmployee = async (req, res) => {
 const updateEmployee = async (req, res) => {
   try{
     const {id} = req.params;
-    const { name, organization, personalContact, perHNo, perStreet, perVillage, perMandal, perCity, perState, perCountry, perPincode, fatherName, motherName, height, weight, hairColour, eyeColour, chest, disease, IDMark1, IDMark2, bloodGroup, fatherOccupation, motherOccupation, motherTongue, nationality, personalEmail, languagesKnown, religion, caste, subCaste, PWDStatus, disability, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, preHNo, preStreet, preVillage, preMandal, preCity, preState, preCountry, prePincode, officeContact, officeEmail, PANNumber, empStatus, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
+    const { name, organization, personalContact, email, perHNo, perStreet, perVillage, perMandal, perCity, perState, perCountry, perPincode, fatherName, motherName, height, weight, hairColour, eyeColour, chest, disease, IDMark1, IDMark2, bloodGroup, fatherOccupation, motherOccupation, motherTongue, nationality, personalEmail, languagesKnown, religion, caste, subCaste, PWDStatus, disability, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, preHNo, preStreet, preVillage, preMandal, preCity, preState, preCountry, prePincode, officeContact, officeEmail, PANNumber, empStatus, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion } = req.body;
 
     const employee = await Employee.findById({ _id : id });
     if(!employee){
@@ -75,7 +75,7 @@ const updateEmployee = async (req, res) => {
       return res.status(404).json({success: false, error: 'user not found'})
     }
 
-    const updateUser = await User.findByIdAndUpdate({ _id : employee.userId }, {name})
+    const updateUser = await User.findByIdAndUpdate({ _id : employee.userId }, {name, email})
 
     const updateEmployee = await Employee.findByIdAndUpdate({ _id : id }, { organization, personalContact, preHNo, preStreet, preVillage, preMandal, preCity, preState, preCountry, prePincode, perHNo, perStreet, perVillage, perMandal, perCity, perState, perCountry, perPincode, fatherName, motherName, height, weight, hairColour, eyeColour, chest, disease, IDMark1, IDMark2, bloodGroup, fatherOccupation, motherOccupation, motherTongue, languagesKnown, nationality, personalEmail, religion, caste, subCaste, PWDStatus, disability, siblings, qualification, major, maritalStatus, emergencyContact, spouseName, childrenCount, officeContact, officeEmail, PANNumber, empStatus, department, designation, jobRole, site, client, reportingInchargePerson, repPersonDesignation, repPersonEmployeeID, currentSalary, bankName, bankAccountNumber, IFSCCode, bankBranch, ESIDetails, insuranceDetails, PFDetails, UANNumber, previousDesignation, previousSalary, dateOfPromotion })
 

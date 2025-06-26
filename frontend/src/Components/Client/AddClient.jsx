@@ -6,7 +6,8 @@ import { fetchDepartments, fetchSites } from "../../utils/ClientHelper.jsx";
 const AddClient = () => {
   const [departments, setDepartments] = useState([]);
   const [sites, setSites] = useState([]);
-  const [client, setClient] = useState({clientID: "",
+  const [client, setClient] = useState({
+    clientID: "",
     clientName: "",
     clientContactPerson: "",
     clientContact: "",
@@ -17,16 +18,25 @@ const AddClient = () => {
     clientLocation: "",
     clientGSTNo: "",
     clientPANNo: "",
-    clientHNo: "",
-    clientStreet: "",
-    clientVillage: "",
-    clientMandal: "",
-    clientCity: "",
-    clientState: "",
-    clientCountry: "",
-    clientPincode: "",
+    clientBillHNo: "",
+    clientBillStreet: "",
+    clientBillVillage: "",
+    clientBillMandal: "",
+    clientBillCity: "",
+    clientBillState: "",
+    clientBillCountry: "",
+    clientBillPincode: "",
+    clientShipHNo: "",
+    clientShipStreet: "",
+    clientShipVillage: "",
+    clientShipMandal: "",
+    clientShipCity: "",
+    clientShipState: "",
+    clientShipCountry: "",
+    clientShipPincode: "",
     clientDescription: "",
-    clientEmployeeCount: "",});
+    clientEmployeeCount: "",
+  });
 
   useEffect(() => {
     const getDepartments = async () => {
@@ -274,131 +284,242 @@ const AddClient = () => {
         </button>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label
-              htmlFor="clientHNo"
-              className="block text-sm font-medium text-gray-700"
+            <button
+              type="button"
+              className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded"
             >
-              House Number / Door Number / Flat Number
-            </label>
-            <input
-              type="text"
-              name="clientHNo"
-              onChange={handleChange}
-              placeholder="Enter House Number or Door Number"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
+              Billing Address
+            </button>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillHNo"
+                className="block text-sm font-medium text-gray-700"
+              >
+                House Number / Door Number / Flat Number
+              </label>
+              <input
+                type="text"
+                name="clientBillHNo"
+                onChange={handleChange}
+                placeholder="Enter House Number or Door Number"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillStreet"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Street / Lane
+              </label>
+              <input
+                type="text"
+                name="clientBillStreet"
+                onChange={handleChange}
+                placeholder="Enter Street Details"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillVillage"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Village / Locality
+              </label>
+              <input
+                type="text"
+                name="clientBillVillage"
+                onChange={handleChange}
+                placeholder="Enter Village"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillMandal"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Mandal / Municipality / Area
+              </label>
+              <input
+                type="text"
+                name="clientBillMandal"
+                onChange={handleChange}
+                placeholder="Enter Area"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillCity"
+                className="block text-sm font-medium text-gray-700"
+              >
+                District / City
+              </label>
+              <input
+                type="text"
+                name="clientBillCity"
+                onChange={handleChange}
+                placeholder="Enter District / City"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillState"
+                className="block text-sm font-medium text-gray-700"
+              >
+                State
+              </label>
+              <input
+                type="text"
+                name="clientBillState"
+                onChange={handleChange}
+                placeholder="Enter State"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillCountry"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Country
+              </label>
+              <input
+                type="text"
+                name="clientBillCountry"
+                onChange={handleChange}
+                placeholder="Enter Country"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label
+                htmlFor="clientBillPincode"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Pin Code / Zip Code
+              </label>
+              <input
+                type="number"
+                name="clientBillPincode"
+                onChange={handleChange}
+                placeholder="Enter Pincode"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
           </div>
           <div>
-            <label
-              htmlFor="clientStreet"
-              className="block text-sm font-medium text-gray-700"
+            <button
+              type="button"
+              className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded"
             >
-              Street / Lane
-            </label>
-            <input
-              type="text"
-              name="clientStreet"
-              onChange={handleChange}
-              placeholder="Enter Street Details"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="clientVillage"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Village / Locality
-            </label>
-            <input
-              type="text"
-              name="clientVillage"
-              onChange={handleChange}
-              placeholder="Enter Village"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="clientMandal"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Mandal / Municipality / Area
-            </label>
-            <input
-              type="text"
-              name="clientMandal"
-              onChange={handleChange}
-              placeholder="Enter Area"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="clientCity"
-              className="block text-sm font-medium text-gray-700"
-            >
-              District / City
-            </label>
-            <input
-              type="text"
-              name="clientCity"
-              onChange={handleChange}
-              placeholder="Enter District / City"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="clientState"
-              className="block text-sm font-medium text-gray-700"
-            >
-              State
-            </label>
-            <input
-              type="text"
-              name="clientState"
-              onChange={handleChange}
-              placeholder="Enter State"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="clientCountry"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Country
-            </label>
-            <input
-              type="text"
-              name="clientCountry"
-              onChange={handleChange}
-              placeholder="Enter Country"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="clientPincode"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Pin Code / Zip Code
-            </label>
-            <input
-              type="number"
-              name="clientPincode"
-              onChange={handleChange}
-              placeholder="Enter Pincode"
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
+              Shipping Address
+            </button>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipHNo" className="block text-sm font-medium text-gray-700">
+                House Number / Door Number / Flat Number
+              </label>
+              <input
+                type="text"
+                name="clientShipHNo"
+                onChange={handleChange}
+                placeholder="Enter House Number or Door Number"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipStreet" className="block text-sm font-medium text-gray-700">
+                Street / Lane
+              </label>
+              <input
+                type="text"
+                name="clientShipStreet"
+                onChange={handleChange}
+                placeholder="Enter Street Details"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipVillage" className="block text-sm font-medium text-gray-700">
+                Village / Locality
+              </label>
+              <input
+                type="text"
+                name="clientShipVillage"
+                onChange={handleChange}
+                placeholder="Enter Village"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipMandal" className="block text-sm font-medium text-gray-700">
+                Mandal / Municipality / Area
+              </label>
+              <input
+                type="text"
+                name="clientShipMandal"
+                onChange={handleChange}
+                placeholder="Enter Area"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipCity" className="block text-sm font-medium text-gray-700">
+                District / City
+              </label>
+              <input
+                type="text"
+                name="clientShipCity"
+                onChange={handleChange}
+                placeholder="Enter District / City"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipState" className="block text-sm font-medium text-gray-700">
+                State
+              </label>
+              <input
+                type="text"
+                name="clientShipState"
+                onChange={handleChange}
+                placeholder="Enter State"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipCountry" className="block text-sm font-medium text-gray-700">
+                Country
+              </label>
+              <input
+                type="text"
+                name="clientShipCountry"
+                onChange={handleChange}
+                placeholder="Enter Country"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-2 mb-2">
+              <label htmlFor="clientShipPincode" className="block text-sm font-medium text-gray-700">
+                Pin Code / Zip Code
+              </label>
+              <input
+                type="number"
+                name="clientShipPincode"
+                onChange={handleChange}
+                placeholder="Enter Pincode"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
           </div>
         </div>
         <button
           type="button"
           className="w-full mt-8 mb-4 bg-blue-500 text-white font-bold py-0.5 px-4 rounded"
-        >
-        </button>
+        ></button>
         <div>
           <label
             htmlFor="clientDescription"

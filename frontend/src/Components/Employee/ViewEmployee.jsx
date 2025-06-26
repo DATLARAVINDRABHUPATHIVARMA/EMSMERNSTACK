@@ -71,7 +71,7 @@ const ViewEmployee = () => {
                 </p>
               </div>
               <div className="flex items-center justify space-x-3 mb-4">
-                <p className="text-lg font-bold">Email:</p>
+                <p className="text-lg font-bold">User ID:</p>
                 <p className="font-medium">{employee.userId.email}</p>
               </div>
               {/*<div className="flex items-center justify space-x-3 mt-3">
@@ -107,8 +107,16 @@ const ViewEmployee = () => {
               <p className="font-medium">{employee.bloodGroup}</p>
             </div>
             <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Personal Email:</p>
+              <p className="font-medium">{employee.personalEmail}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Emergency Phone Number:</p>
               <p className="font-medium">{employee.emergencyContact}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Nationality:</p>
+              <p className="font-medium">{employee.nationality}</p>
             </div>
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Religion:</p>

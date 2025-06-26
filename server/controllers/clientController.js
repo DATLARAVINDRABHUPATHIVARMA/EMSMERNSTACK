@@ -13,7 +13,7 @@ const getClients = async (req, res) => {
 
 const addClient = async (req, res) => {
   try {
-    const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount} = req.body;
+    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount } = req.body;
     
     const user = await Client.findOne({ clientID });
         if (user) {
@@ -24,7 +24,7 @@ const addClient = async (req, res) => {
 
 
     const newClient = new Client ({
-      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount
+      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientDescription, clientEmployeeCount
     })
     await newClient.save()
     return res.status(200).json({success: true, client: newClient})
@@ -46,9 +46,9 @@ const getClient = async (req, res) => {
 const updateClient = async (req, res) => {
   try {
     const {id} = req.params;
-    const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount} = req.body;
+    const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientDescription, clientEmployeeCount} = req.body;
     const updateClient = await Client.findByIdAndUpdate({_id: id},{
-      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientHNo, clientStreet, clientVillage, clientMandal, clientCity, clientState, clientCountry, clientPincode, clientDescription, clientEmployeeCount
+      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServices, clientLocation, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientDescription, clientEmployeeCount
     })
     return res.status(200).json({success: true, updateClient})
   } catch (error) {

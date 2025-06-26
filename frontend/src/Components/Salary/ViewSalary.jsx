@@ -36,7 +36,7 @@ const ViewSalary = () => {
         setSearchTerm(value);
     
         const records = salaries.filter((sal) =>
-         ['payDate'].some(
+         ['payDate', ].some(
           (key) => sal[key]?.toLowerCase().includes(value)
         )
       );
