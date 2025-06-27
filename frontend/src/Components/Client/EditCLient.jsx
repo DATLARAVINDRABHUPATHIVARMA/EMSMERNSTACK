@@ -3,6 +3,16 @@ import { fetchDepartments, fetchSites } from "../../utils/EmployeeHelper.jsx";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+const stateGstCodes = {
+  "Andhra Pradesh": "37", "Arunachal Pradesh": "12", "Assam": "18", "Bihar": "10",
+  "Chhattisgarh": "22", "Delhi": "07", "Goa": "30", "Gujarat": "24", "Haryana": "06",
+  "Himachal Pradesh": "02", "Jammu and Kashmir": "01", "Jharkhand": "20", "Karnataka": "29",
+  "Kerala": "32", "Madhya Pradesh": "23", "Maharashtra": "27", "Manipur": "14", "Meghalaya": "17",
+  "Mizoram": "15", "Nagaland": "13", "Odisha": "21", "Punjab": "03", "Rajasthan": "08", "Sikkim": "11",
+  "Tamil Nadu": "33", "Telangana": "36", "Tripura": "16", "Uttar Pradesh": "09", "Uttarakhand": "05",
+  "West Bengal": "19", "Puducherry": "34", "Other Territory": "97"
+};
+
 const EditClient = () => {
   const { id } = useParams();
   const [client, setClient] = useState({
@@ -12,7 +22,8 @@ const EditClient = () => {
     clientContact: "",
     clientEmail: "",
     clientDesignation: "",
-    clientServicesStartedOn: "",
+    clientServiceStartedOn: "",
+    clientServiceEndOn: "",
     clientServices: "",
     clientLocation: "",
     clientGSTNo: "",
@@ -61,6 +72,30 @@ const EditClient = () => {
     getSites();
   }, []);
 
+  const [gstSuffix, setGstSuffix] = useState("");
+
+  const handleStateChange = (e) => {
+    const state = e.target.value;
+    const prefix = stateGstCodes[state] || "";
+    setClient((prev) => ({
+      ...prev,
+      state,
+      clientGSTNo: prefix + gstSuffix
+    }));
+  };
+
+  const handleGstSuffixChange = (e) => {
+    const input = e.target.value.toUpperCase().replace(/\s/g, "").slice(0, 13);
+    const prefix = stateGstCodes[client.state] || "";
+    const fullGst = prefix + input;
+
+    setGstSuffix(input);
+    setClient((prev) => ({
+      ...prev,
+      clientGSTNo: fullGst
+    }));
+  };
+
   useEffect(() => {
     const fetchClient = async () => {
       try {
@@ -82,7 +117,8 @@ const EditClient = () => {
             clientContact: client.clientContact,
             clientEmail: client.clientEmail,
             clientDesignation: client.clientDesignation,
-            clientServicesStartedOn: client.clientServicesStartedOn,
+            clientServiceStartedOn: client.clientServiceStartedOn,
+            clientServiceEndOn: client.clientServiceEndOn,
             clientServices: client.clientServices,
             clientLocation: client.clientLocation,
             clientGSTNo: client.clientGSTNo,
@@ -263,9 +299,25 @@ const EditClient = () => {
                 <input
                   type="date"
                   name="clientServiceStartedOn"
-                  value={client.clientServicesStartedOn}
+                  value={client.clientServiceStartedOn}
                   onChange={handleChange}
                   placeholder="Enter Client Starting Date"
+                  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="clientServiceEndOn"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Client End Date
+                </label>
+                <input
+                  type="date"
+                  name="clientServiceEndOn"
+                  value={client.clientServiceEndOn}
+                  onChange={handleChange}
+                  placeholder="Enter Client Ending Date"
                   className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                 />
               </div>
@@ -315,21 +367,42 @@ const EditClient = () => {
                 </select>
               </div>
               <div>
-                <label
-                  htmlFor="clientGSTNo"
-                  className="text-sm font-medium text-gray-700"
-                >
-                  GST Number
-                </label>
-                <input
-                  type="text"
-                  name="clientGSTNo"
-                  value={client.clientGSTNo}
-                  onChange={handleChange}
-                  placeholder="Enter Client's GST Number"
-                  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
+        <label className="text-sm font-medium text-gray-700">Select State</label>
+        <select
+  name="state"
+  value={client.state}
+  onChange={handleStateChange}
+  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+  required
+>
+  <option value="">-- Select State --</option>
+  {Object.keys(stateGstCodes).map((stateName) => (
+    <option key={stateName} value={stateName}>
+      {stateName}
+    </option>
+  ))}
+</select>
+      </div>
+
+      {/* GST Number: Single Input (prefix + editable suffix) */}
+      <div>
+        <label className="text-sm font-medium text-gray-700">GST Number</label>
+        <div className="flex mt-1">
+          <span className="inline-flex items-center px-3 border border-r-0 bg-gray-200 rounded-l-md text-sm font-mono">
+            {stateGstCodes[client.state] || ""}
+          </span>
+          <input
+            type="text"
+            value={gstSuffix}
+            onChange={handleGstSuffixChange}
+            maxLength={13}
+            disabled={!client.state}
+            placeholder="Enter the remaining GST number Completely"
+            className="flex-1 p-2 border border-l-0 rounded-r-md"
+            required
+          />
+        </div>
+      </div>
               <div>
                 <label
                   htmlFor="clientPANNo"

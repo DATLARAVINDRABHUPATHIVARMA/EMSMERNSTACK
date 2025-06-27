@@ -3,6 +3,16 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchDepartments, fetchSites } from "../../utils/ClientHelper.jsx";
 
+const stateGstCodes = {
+  "Andhra Pradesh": "37", "Arunachal Pradesh": "12", "Assam": "18", "Bihar": "10",
+  "Chhattisgarh": "22", "Delhi": "07", "Goa": "30", "Gujarat": "24", "Haryana": "06",
+  "Himachal Pradesh": "02", "Jammu and Kashmir": "01", "Jharkhand": "20", "Karnataka": "29",
+  "Kerala": "32", "Madhya Pradesh": "23", "Maharashtra": "27", "Manipur": "14", "Meghalaya": "17",
+  "Mizoram": "15", "Nagaland": "13", "Odisha": "21", "Punjab": "03", "Rajasthan": "08", "Sikkim": "11",
+  "Tamil Nadu": "33", "Telangana": "36", "Tripura": "16", "Uttar Pradesh": "09", "Uttarakhand": "05",
+  "West Bengal": "19", "Puducherry": "34", "Other Territory": "97"
+};
+
 const AddClient = () => {
   const [departments, setDepartments] = useState([]);
   const [sites, setSites] = useState([]);
@@ -13,10 +23,12 @@ const AddClient = () => {
     clientContact: "",
     clientEmail: "",
     clientDesignation: "",
-    clientServicesStartedOn: "",
+    clientServiceStartedOn: "",
+    clientServiceEndOn: "",
     clientServices: "",
     clientLocation: "",
     clientGSTNo: "",
+    state: "",
     clientPANNo: "",
     clientBillHNo: "",
     clientBillStreet: "",
@@ -38,6 +50,8 @@ const AddClient = () => {
     clientEmployeeCount: "",
   });
 
+  const [gstSuffix, setGstSuffix] = useState("");
+
   useEffect(() => {
     const getDepartments = async () => {
       const departments = await fetchDepartments();
@@ -58,7 +72,29 @@ const AddClient = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setClient({ ...client, [name]: value });
+    setClient((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleStateChange = (e) => {
+    const state = e.target.value;
+    const prefix = stateGstCodes[state] || "";
+    setClient((prev) => ({
+      ...prev,
+      state,
+      clientGSTNo: prefix + gstSuffix
+    }));
+  };
+
+  const handleGstSuffixChange = (e) => {
+    const input = e.target.value.toUpperCase().replace(/\s/g, "").slice(0, 13);
+    const prefix = stateGstCodes[client.state] || "";
+    const fullGst = prefix + input;
+
+    setGstSuffix(input);
+    setClient((prev) => ({
+      ...prev,
+      clientGSTNo: fullGst
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -80,6 +116,8 @@ const AddClient = () => {
       }
     }
   };
+
+
 
   return (
     <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
@@ -203,6 +241,21 @@ const AddClient = () => {
           </div>
           <div>
             <label
+              htmlFor="clientServiceEndOn"
+              className="text-sm font-medium text-gray-700"
+            >
+              Client End Date
+            </label>
+            <input
+              type="date"
+              name="clientServiceEndOn"
+              onChange={handleChange}
+              placeholder="Enter Client Ending Date"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label
               htmlFor="clientServices"
               className="text-sm font-medium text-gray-700"
             >
@@ -245,20 +298,42 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-            <label
-              htmlFor="clientGSTNo"
-              className="text-sm font-medium text-gray-700"
-            >
-              GST Number
-            </label>
-            <input
-              type="text"
-              name="clientGSTNo"
-              onChange={handleChange}
-              placeholder="Enter Client's GST Number"
-              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            />
-          </div>
+        <label className="text-sm font-medium text-gray-700">Select State</label>
+        <select
+  name="state"
+  value={client.state}
+  onChange={handleStateChange}
+  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+  required
+>
+  <option value="">-- Select State --</option>
+  {Object.keys(stateGstCodes).map((stateName) => (
+    <option key={stateName} value={stateName}>
+      {stateName}
+    </option>
+  ))}
+</select>
+      </div>
+
+      {/* GST Number: Single Input (prefix + editable suffix) */}
+      <div>
+        <label className="text-sm font-medium text-gray-700">GST Number</label>
+        <div className="flex mt-1">
+          <span className="inline-flex items-center px-3 border border-r-0 bg-gray-200 rounded-l-md text-sm font-mono">
+            {stateGstCodes[client.state] || ""}
+          </span>
+          <input
+            type="text"
+            value={gstSuffix}
+            onChange={handleGstSuffixChange}
+            maxLength={13}
+            disabled={!client.state}
+            placeholder="Enter the remaining GST number Completely "
+            className="flex-1 p-2 border border-l-0 rounded-r-md"
+            required
+          />
+        </div>
+      </div>
           <div>
             <label
               htmlFor="clientPANNo"
@@ -419,7 +494,10 @@ const AddClient = () => {
               Shipping Address
             </button>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipHNo" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipHNo"
+                className="block text-sm font-medium text-gray-700"
+              >
                 House Number / Door Number / Flat Number
               </label>
               <input
@@ -431,7 +509,10 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipStreet" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipStreet"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Street / Lane
               </label>
               <input
@@ -443,7 +524,10 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipVillage" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipVillage"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Village / Locality
               </label>
               <input
@@ -455,7 +539,10 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipMandal" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipMandal"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Mandal / Municipality / Area
               </label>
               <input
@@ -467,7 +554,10 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipCity" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipCity"
+                className="block text-sm font-medium text-gray-700"
+              >
                 District / City
               </label>
               <input
@@ -479,7 +569,10 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipState" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipState"
+                className="block text-sm font-medium text-gray-700"
+              >
                 State
               </label>
               <input
@@ -491,7 +584,10 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipCountry" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipCountry"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Country
               </label>
               <input
@@ -503,7 +599,10 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label htmlFor="clientShipPincode" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="clientShipPincode"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Pin Code / Zip Code
               </label>
               <input
