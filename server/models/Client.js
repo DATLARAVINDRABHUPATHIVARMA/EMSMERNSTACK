@@ -15,8 +15,7 @@ const clientSchema = new Schema({
     clientServices: { type: Schema.Types.ObjectId, ref: "Department", required: true },
     clientLocation: { type: Schema.Types.ObjectId, ref: "Site", required: true },
     state: { type: String, },
-    clientGSTNo: { type: String, validate: { validator: function (v) { return /^\d{2}[A-Z0-9]{13}$/.test(v); // 15 characters, starts with 2-digit prefix
-     }, message: props => `${props.value} is not a valid GST number!` } },
+    clientGSTNo: { type: String, validate: { validator: function (v) { return /^\d{2}[A-Z0-9]{13}$/.test(v);  }, message: props => `${props.value} is not a valid GST number!` } },
     clientPANNo: { type: String, },
     clientBillHNo: { type: String, },
     clientBillStreet: { type: String, },

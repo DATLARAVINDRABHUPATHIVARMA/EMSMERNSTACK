@@ -202,7 +202,6 @@ const AddClient = () => {
             >
               Client Email*
             </label>
-            <input
               type="email"
               name="clientEmail"
               onChange={handleChange}
@@ -235,8 +234,8 @@ const AddClient = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
               <option value="">Select</option>
-              <option value="36">Male</option>
-              <option value="37">Female</option>
+              <option value="36AAVCS6287K1ZA">Male</option>
+              <option value="37AAVCS6287K1Z8">Female</option>
             </select>
           </div>
           <div>
@@ -249,7 +248,7 @@ const AddClient = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
               <option value="">Select</option>
-              <option value="A">Male</option>
+              <option value="AAVCS6287K">Male</option>
             </select>
           </div>
           <div>
