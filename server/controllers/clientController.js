@@ -23,7 +23,7 @@ const getClients = async (req, res) => {
 
 const addClient = async (req, res) => {
   try {
-    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount } = req.body;
+    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount } = req.body;
 
     if (!clientID || !clientName || !state || !clientGSTNo) {
       return res.status(400).json({ success: false, error: "Missing required fields" });
@@ -48,7 +48,7 @@ const addClient = async (req, res) => {
     }
 
     const newClient = new Client ({
-      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount
+      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount
     })
     await newClient.save()
     return res.status(200).json({success: true, client: newClient})

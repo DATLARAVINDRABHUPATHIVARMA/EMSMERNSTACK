@@ -23,6 +23,7 @@ const AddClient = () => {
     clientContact: "",
     clientEmail: "",
     clientDesignation: "",
+    companyGst: "", companyPan: "",
     clientServiceStartedOn: "",
     clientServiceEndOn: "",
     clientServices: "",
@@ -223,6 +224,33 @@ const AddClient = () => {
               placeholder="Enter Contact Person Designation"
               className="mt-1 w-full p-2 border border-gray-300 rounded-md"
             />
+          </div>
+          <div>
+            <label htmlFor="companyGst" className="block text-sm font-medium text-gray-700">
+              Organization GST NO
+            </label>
+            <select
+              name="companyGst"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            >
+              <option value="">Select</option>
+              <option value="36">Male</option>
+              <option value="37">Female</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="companyPan" className="block text-sm font-medium text-gray-700">
+              Organization PAN NO
+            </label>
+            <select
+              name="companyPan"
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            >
+              <option value="">Select</option>
+              <option value="A">Male</option>
+            </select>
           </div>
           <div>
             <label

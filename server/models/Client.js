@@ -8,6 +8,8 @@ const clientSchema = new Schema({
     clientContact: { type : String, },
     clientEmail: { type : String, },
     clientDesignation: { type : String, },
+    companyGst: { type : String, enum: ["36AAVCS6287K1ZA","37AAVCS6287K1Z8"] },
+    companyPan: { type : String, enum: ["AAVCS6287K"]},
     clientServiceStartedOn: { type: Date },
     clientServiceEndOn: { type: Date },
     clientServices: { type: Schema.Types.ObjectId, ref: "Department", required: true },
