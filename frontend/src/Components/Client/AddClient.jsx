@@ -23,7 +23,7 @@ const AddClient = () => {
     clientContact: "",
     clientEmail: "",
     clientDesignation: "",
-    companyGst: "", companyPan: "",
+    companyGst: "36AAVCS6287K1ZA", companyPan: "AAVCS6287K",
     clientServiceStartedOn: "",
     clientServiceEndOn: "",
     clientServices: "",
@@ -202,6 +202,7 @@ const AddClient = () => {
             >
               Client Email*
             </label>
+            <input
               type="email"
               name="clientEmail"
               onChange={handleChange}
@@ -230,12 +231,12 @@ const AddClient = () => {
             </label>
             <select
               name="companyGst"
+              value={client.companyGst}
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
-              <option value="">Select</option>
-              <option value="36AAVCS6287K1ZA">Male</option>
-              <option value="37AAVCS6287K1Z8">Female</option>
+              <option value="36AAVCS6287K1ZA">36AAVCS6287K1ZA</option>
+              <option value="37AAVCS6287K1Z8">37AAVCS6287K1Z8</option>
             </select>
           </div>
           <div>
@@ -244,11 +245,11 @@ const AddClient = () => {
             </label>
             <select
               name="companyPan"
+              value={client.companyPan}
               onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 block w-full border border-gray-300 bg-gray-100 rounded-md"
             >
-              <option value="">Select</option>
-              <option value="AAVCS6287K">Male</option>
+              <option value="AAVCS6287K">AAVCS6287K</option>
             </select>
           </div>
           <div>
