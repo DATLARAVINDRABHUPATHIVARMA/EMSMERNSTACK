@@ -39,16 +39,6 @@ const AddClient = () => {
     clientShipCountry: "",
     clientShipPincode: "",
     orderNo: "",
-    PTState: "",
-    LWFState: "",
-    PFBranch: "",
-    ESIBranch: "",
-    clientType: "",
-    location: "",
-    unit: "",
-    subUnitName: "",
-    invoice: "",
-    paySheet: "",
     clientDescription: "",
     clientEmployeeCount: "",
   });
@@ -699,7 +689,6 @@ const AddClient = () => {
           </div>
           <div>
             <label
-              htmlFor="PTState"
               className="block text-sm font-medium text-gray-700"
             >
               PT State
@@ -709,7 +698,7 @@ const AddClient = () => {
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
-              <option value="">-- Select State --</option>
+              <option value="">Select State</option>
               <option value="Andaman and Nicobar Islands">
                 Andaman and Nicobar Islands
               </option>
