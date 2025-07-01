@@ -14,7 +14,8 @@ const AddClient = () => {
     clientContactPerson: "",
     clientContact: "",
     clientEmail: "",
-    clientDesignation: "", landlineNo: "", faxNo: "", companyGst: "36AAVCS6287K1ZA", companyPan: "AAVCS6287K", clientServiceStartedOn: "",
+    clientDesignation: "", landlineNo: "", faxNo: "", companyGst: "36AAVCS6287K1ZA", companyPan: "AAVCS6287K",
+    clientServiceStartedOn: "",
     clientServiceEndOn: "",
     clientServices: "",
     clientLocation: "",
@@ -36,7 +37,10 @@ const AddClient = () => {
     clientShipCity: "",
     clientShipState: "",
     clientShipCountry: "",
-    clientShipPincode: "", orderNo: "", PTState: "", LWFState: "", PFBranch: "", ESIBranch: "", clientType: "", branch: "", mainUnit: "", invoice: "", paySheet: "", clientDescription: "", clientEmployeeCount: "",
+    clientShipPincode: "",
+    orderNo: "",
+    clientDescription: "",
+    clientEmployeeCount: "",
   });
 
   const [gstSuffix, setGstSuffix] = useState("");
@@ -314,7 +318,7 @@ const AddClient = () => {
               className="mt-1 w-full p-2 border border-gray-300 rounded-md"
               required
             >
-              <option value="">-- Select Services --</option>
+              <option value="">Choose Services</option>
               {departments.map((department) => (
                 <option key={department._id} value={department._id}>
                   {department.departmentName}
@@ -323,41 +327,42 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-            <label className="text-sm font-medium text-gray-700">Select State</label>
-            <select
-              name="state"
-              value={client.state}
-              onChange={handleStateChange}
-              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-              required
-            >
-              <option value="">-- Select State --</option>
-              {Object.keys(stateGstCodes).map((stateName) => (
-              <option key={stateName} value={stateName}>
-                {stateName}
-              </option>
-              ))}
-            </select>
-          </div>
-          {/* GST Number: Single Input (prefix + editable suffix) */}
-          <div>
-            <label className="text-sm font-medium text-gray-700">GST Number</label>
-            <div className="flex mt-1">
-              <span className="inline-flex items-center px-3 border border-r-0 bg-gray-200 rounded-l-md text-sm font-mono">
-                {stateGstCodes[client.state] || ""}
-              </span>
-              <input
-                type="text"
-                value={gstSuffix}
-                onChange={handleGstSuffixChange}
-                maxLength={13}
-                disabled={!client.state}
-                placeholder="Enter the remaining GST number Completely "
-                className="flex-1 p-2 border border-l-0 rounded-r-md"
-                required
-              />
-            </div>
-          </div>
+        <label className="text-sm font-medium text-gray-700">Select State</label>
+        <select
+  name="state"
+  value={client.state}
+  onChange={handleStateChange}
+  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+  required
+>
+  <option value="">-- Select State --</option>
+  {Object.keys(stateGstCodes).map((stateName) => (
+    <option key={stateName} value={stateName}>
+      {stateName}
+    </option>
+  ))}
+</select>
+      </div>
+
+      {/* GST Number: Single Input (prefix + editable suffix) */}
+      <div>
+        <label className="text-sm font-medium text-gray-700">GST Number</label>
+        <div className="flex mt-1">
+          <span className="inline-flex items-center px-3 border border-r-0 bg-gray-200 rounded-l-md text-sm font-mono">
+            {stateGstCodes[client.state] || ""}
+          </span>
+          <input
+            type="text"
+            value={gstSuffix}
+            onChange={handleGstSuffixChange}
+            maxLength={13}
+            disabled={!client.state}
+            placeholder="Enter the remaining GST number Completely "
+            className="flex-1 p-2 border border-l-0 rounded-r-md"
+            required
+          />
+        </div>
+      </div>
           <div>
             <label
               htmlFor="clientPANNo"
@@ -666,7 +671,7 @@ const AddClient = () => {
               htmlFor="clientLocation"
               className="text-sm font-medium text-gray-700"
             >
-              Client Location*
+              Branch*
             </label>
             <select
               name="clientLocation"
@@ -674,7 +679,7 @@ const AddClient = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               required
             >
-              <option value="">-- Select Site --</option>
+              <option value="">Select Branch</option>
               {sites.map((site) => (
                 <option key={site._id} value={site._id}>
                   {site.siteName}
@@ -683,7 +688,9 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="PTState" className="block text-sm font-medium text-gray-700">
+            <label
+              className="block text-sm font-medium text-gray-700"
+            >
               PT State
             </label>
             <select
@@ -691,15 +698,19 @@ const AddClient = () => {
               onChange={handleChange}
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
-              <option value="">-- Select State --</option>
-              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+              <option value="">Select State</option>
+              <option value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
               <option value="Assam">Assam</option>
               <option value="Bihar">Bihar</option>
               <option value="Chandigarh">Chandigarh</option>
               <option value="Chhattisgarh">Chhattisgarh</option>
-              <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+              <option value="Dadra and Nagar Haveli">
+                Dadra and Nagar Haveli
+              </option>
               <option value="Daman and Diu">Daman and Diu</option>
               <option value="Delhi">Delhi</option>
               <option value="Goa">Goa</option>
@@ -734,7 +745,10 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="LWFState" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="LWFState"
+              className="block text-sm font-medium text-gray-700"
+            >
               LWF State
             </label>
             <select
@@ -743,14 +757,18 @@ const AddClient = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
               <option value="">-- Select State --</option>
-              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+              <option value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
               <option value="Assam">Assam</option>
               <option value="Bihar">Bihar</option>
               <option value="Chandigarh">Chandigarh</option>
               <option value="Chhattisgarh">Chhattisgarh</option>
-              <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+              <option value="Dadra and Nagar Haveli">
+                Dadra and Nagar Haveli
+              </option>
               <option value="Daman and Diu">Daman and Diu</option>
               <option value="Delhi">Delhi</option>
               <option value="Goa">Goa</option>
@@ -785,7 +803,10 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="PFBranch" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="PFBranch"
+              className="block text-sm font-medium text-gray-700"
+            >
               PF Branch
             </label>
             <select
@@ -794,14 +815,18 @@ const AddClient = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
               <option value="">-- Select State --</option>
-              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+              <option value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
               <option value="Assam">Assam</option>
               <option value="Bihar">Bihar</option>
               <option value="Chandigarh">Chandigarh</option>
               <option value="Chhattisgarh">Chhattisgarh</option>
-              <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+              <option value="Dadra and Nagar Haveli">
+                Dadra and Nagar Haveli
+              </option>
               <option value="Daman and Diu">Daman and Diu</option>
               <option value="Delhi">Delhi</option>
               <option value="Goa">Goa</option>
@@ -836,7 +861,10 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="ESIBranch" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="ESIBranch"
+              className="block text-sm font-medium text-gray-700"
+            >
               ESI Branch
             </label>
             <select
@@ -845,14 +873,18 @@ const AddClient = () => {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
             >
               <option value="">-- Select State --</option>
-              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+              <option value="Andaman and Nicobar Islands">
+                Andaman and Nicobar Islands
+              </option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
               <option value="Assam">Assam</option>
               <option value="Bihar">Bihar</option>
               <option value="Chandigarh">Chandigarh</option>
               <option value="Chhattisgarh">Chhattisgarh</option>
-              <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+              <option value="Dadra and Nagar Haveli">
+                Dadra and Nagar Haveli
+              </option>
               <option value="Daman and Diu">Daman and Diu</option>
               <option value="Delhi">Delhi</option>
               <option value="Goa">Goa</option>
@@ -887,7 +919,10 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="clientType" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="clientType"
+              className="block text-sm font-medium text-gray-700"
+            >
               Client Type
             </label>
             <select
@@ -897,79 +932,133 @@ const AddClient = () => {
             >
               <option value="">-- Select --</option>
               <option value="One Time Joining">One Time Joining</option>
-              <option value="Annual Maintenance Contract">Annual Maintenance Contract</option>
+              <option value="Annual Maintenance Contract">
+                Annual Maintenance Contract
+              </option>
             </select>
           </div>
           <div>
-            <label htmlFor="branch" className="block text-sm font-medium text-gray-700">
-              Branch
-            </label>
-            <select
-              name="branch"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            <label
+              htmlFor="location"
+              className="block text-sm font-medium text-gray-700"
             >
-              <option value="">-- Select --</option>
-              <option value="Hyderabad">Hyderabad</option>
-              <option value="Other">Other</option>
-            </select>
+              Location
+            </label>
+            <input
+              type="text"
+              name="location"
+              onChange={handleChange}
+              placeholder="Enter location"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
           </div>
+        </div>
+        <div className="mt-3">
           <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1">
-        Unit
-      </label>
-      <div className="flex items-center gap-4">
-        <label className="inline-flex items-center">
-          <input
-            type="radio"
-            name="mainUnit"
-            value="Main Unit"
-            checked={client.mainUnit === "Main Unit"}
-            onChange={handleChange}
-            className="mr-2"
-          />
-          Main Unit
-        </label>
-        <label className="inline-flex items-center">
-          <input
-            type="radio"
-            name="mainUnit"
-            value="Sub Unit"
-            checked={client.mainUnit === "Sub Unit"}
-            onChange={handleChange}
-            className="mr-2"
-          />
-          Sub Unit
-        </label>
-      </div>
-    </div>
-          <div>
-            <label htmlFor="invoice" className="block text-sm font-medium text-gray-700">
-              Invoice
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Unit
             </label>
-            <select
-              name="invoice"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            >
-              <option value="">-- Select --</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
+            <div className="flex items-center gap-4">
+              <label className="inline-flex items-center">
+                <input
+                  type="radio"
+                  name="unit"
+                  value="Main Unit"
+                  checked={client.unit === "Main Unit"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Main Unit
+              </label>
+              <label className="inline-flex items-center">
+                <input
+                  type="radio"
+                  name="unit"
+                  value="Sub Unit"
+                  checked={client.unit === "Sub Unit"}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                Sub Unit
+              </label>
+            </div>
           </div>
-          <div>
-            <label htmlFor="paySheet" className="block text-sm font-medium text-gray-700">
-              Pay Sheet
+          {client.unit === "Sub Unit" && (
+            <div>
+              <label
+                htmlFor="subUnitName"
+                className="text-sm font-medium text-gray-700"
+              >
+                Enter Sub Unit Name
+              </label>
+              <input
+                type="text"
+                name="subUnitName"
+                value={client.subUnitName}
+                onChange={handleChange}
+                placeholder="Type Sub Unit Name"
+                className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+                required
+              />
+            </div>
+          )}
+        </div>
+        <div className="mt-3">
+          <label htmlFor="invoice" className="block text-sm font-medium text-gray-700 mb-1">
+            Invoice
+          </label>
+          <div className="flex items-center gap-4">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="invoice"
+                value="Yes"
+                checked={client.invoice === "Yes"}
+                onChange={handleChange}
+                className="mr-2"
+              />
+              Yes
             </label>
-            <select
-              name="paySheet"
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            >
-              <option value="">-- Select --</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="invoice"
+                value="No"
+                checked={client.invoice === "No"}
+                onChange={handleChange}
+                className="mr-2"
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <div className="mt-3">
+          <label htmlFor="paySheet" className="block text-sm font-medium text-gray-700 mb-1">
+            Pay Sheet
+          </label>
+          <div className="flex items-center gap-4">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="paySheet"
+                value="Yes"
+                checked={client.paySheet === "Yes"}
+                onChange={handleChange}
+                className="mr-2"
+              />
+              Yes
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="paySheet"
+                value="No"
+                checked={client.paySheet === "No"}
+                onChange={handleChange}
+                className="mr-2"
+              />
+              No
+            </label>
           </div>
         </div>
         <div className="mt-3">
