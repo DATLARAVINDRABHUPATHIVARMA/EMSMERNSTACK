@@ -21,22 +21,22 @@ const AddClient = () => {
     clientLocation: "",
     clientGSTNo: "",
     state: "",
-    clientPANNo: "",
     clientBillHNo: "",
     clientBillStreet: "",
     clientBillVillage: "",
     clientBillMandal: "",
     clientBillCity: "",
     clientBillState: "",
-    clientBillCountry: "",
+    clientBillCountry: "India",
     clientBillPincode: "",
+    billPANNo: "",
     clientShipHNo: "",
     clientShipStreet: "",
     clientShipVillage: "",
     clientShipMandal: "",
     clientShipCity: "",
     clientShipState: "",
-    clientShipCountry: "",
+    clientShipCountry: "India",
     clientShipPincode: "",
     orderNo: "",
     clientDescription: "",
@@ -234,48 +234,6 @@ const AddClient = () => {
           </div>
           <div>
             <label
-              htmlFor="faxNo"
-              className="text-sm font-medium text-gray-700"
-            >
-              Fax Number
-            </label>
-            <input
-              type="text"
-              name="faxNo"
-              onChange={handleChange}
-              placeholder="Enter Client's Fax Number"
-              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label htmlFor="companyGst" className="block text-sm font-medium text-gray-700">
-              Organization GST NO
-            </label>
-            <select
-              name="companyGst"
-              value={client.companyGst}
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            >
-              <option value="36AAVCS6287K1ZA">36AAVCS6287K1ZA</option>
-              <option value="37AAVCS6287K1Z8">37AAVCS6287K1Z8</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="companyPan" className="block text-sm font-medium text-gray-700">
-              Organization PAN NO
-            </label>
-            <select
-              name="companyPan"
-              value={client.companyPan}
-              onChange={handleChange}
-              className="mt-1 p-2 block w-full border border-gray-300 bg-gray-100 rounded-md"
-            >
-              <option value="AAVCS6287K">AAVCS6287K</option>
-            </select>
-          </div>
-          <div>
-            <label
               htmlFor="clientServiceStartedOn"
               className="text-sm font-medium text-gray-700"
             >
@@ -327,7 +285,49 @@ const AddClient = () => {
             </select>
           </div>
           <div>
-        <label className="text-sm font-medium text-gray-700">Select State</label>
+            <label
+              htmlFor="faxNo"
+              className="text-sm font-medium text-gray-700"
+            >
+              Fax Number
+            </label>
+            <input
+              type="text"
+              name="faxNo"
+              onChange={handleChange}
+              placeholder="Enter Client's Fax Number"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="companyGst" className="block text-sm font-medium text-gray-700">
+              Our Company GST NO
+            </label>
+            <select
+              name="companyGst"
+              value={client.companyGst}
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            >
+              <option value="36AAVCS6287K1ZA">36AAVCS6287K1ZA</option>
+              <option value="37AAVCS6287K1Z8">37AAVCS6287K1Z8</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="companyPan" className="block text-sm font-medium text-gray-700">
+              Our Company PAN NO
+            </label>
+            <select
+              name="companyPan"
+              value={client.companyPan}
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 bg-gray-100 rounded-md"
+            >
+              <option value="AAVCS6287K">AAVCS6287K</option>
+            </select>
+          </div>
+          <div>
+        <label className="text-sm font-medium text-gray-700">-- Select State --</label>
         <select
   name="state"
   value={client.state}
@@ -363,21 +363,6 @@ const AddClient = () => {
           />
         </div>
       </div>
-          <div>
-            <label
-              htmlFor="clientPANNo"
-              className="text-sm font-medium text-gray-700"
-            >
-              PAN Number
-            </label>
-            <input
-              type="text"
-              name="clientPANNo"
-              onChange={handleChange}
-              placeholder="Enter Client's PAN Number"
-              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            />
-          </div>
         </div>
         {/* updation date, ending date, logo, map location etc*/}
         <button
@@ -491,13 +476,26 @@ const AddClient = () => {
               >
                 Country
               </label>
-              <input
-                type="text"
+              <select
                 name="clientBillCountry"
+                value={client.clientBillCountry}
                 onChange={handleChange}
-                placeholder="Enter Country"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              />
+              >
+                <option value="India">INDIA</option>
+                <option value="Other">Other</option>
+              </select>
+              {client.clientBillCountry === "Other" && (
+                <input
+                  type="text"
+                  name="billCountry"
+                  value={client.billCountry}
+                  onChange={handleChange}
+                  placeholder="Enter country name"
+                  className="mt-2 p-2 block w-full border border-gray-300 rounded-md"
+                  required
+                />
+              )}
             </div>
             <div className="mt-2 mb-2">
               <label
@@ -512,6 +510,21 @@ const AddClient = () => {
                 onChange={handleChange}
                 placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="billPANNo"
+                className="text-sm font-medium text-gray-700"
+              >
+                Billing PAN Number
+              </label>
+              <input
+                type="text"
+                name="billPANNo"
+                onChange={handleChange}
+                placeholder="Enter Billing PAN Number"
+                className="mt-1 w-full p-2 border border-gray-300 rounded-md"
               />
             </div>
           </div>
@@ -619,13 +632,26 @@ const AddClient = () => {
               >
                 Country
               </label>
-              <input
-                type="text"
+              <select
                 name="clientShipCountry"
+                value={client.clientShipCountry}
                 onChange={handleChange}
-                placeholder="Enter Country"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              />
+              >
+                <option value="India">INDIA</option>
+                <option value="Other">Other</option>
+              </select>
+              {client.clientShipCountry === "Other" && (
+                <input
+                  type="text"
+                  name="shipCountry"
+                  value={client.shipCountry}
+                  onChange={handleChange}
+                  placeholder="Enter country name"
+                  className="mt-2 p-2 block w-full border border-gray-300 rounded-md"
+                  required
+                />
+              )}
             </div>
             <div className="mt-2 mb-2">
               <label
@@ -640,6 +666,21 @@ const AddClient = () => {
                 onChange={handleChange}
                 placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="shipPANNo"
+                className="text-sm font-medium text-gray-700"
+              >
+                Shipping PAN Number
+              </label>
+              <input
+                type="text"
+                name="shipPANNo"
+                onChange={handleChange}
+                placeholder="Enter Shipping PAN Number"
+                className="mt-1 w-full p-2 border border-gray-300 rounded-md"
               />
             </div>
           </div>
