@@ -20,13 +20,12 @@ const AddClient = () => {
     clientServices: "",
     clientLocation: "",
     clientGSTNo: "",
-    state: "",
+    clientBillState: "",
     clientBillHNo: "",
     clientBillStreet: "",
     clientBillVillage: "",
     clientBillMandal: "",
     clientBillCity: "",
-    clientBillState: "",
     clientBillCountry: "India",
     clientBillPincode: "",
     billPANNo: "",
@@ -43,7 +42,7 @@ const AddClient = () => {
     clientEmployeeCount: "",
   });
 
-  const [gstSuffix, setGstSuffix] = useState("");
+  
 
   useEffect(() => {
     const getDepartments = async () => {
@@ -68,25 +67,50 @@ const AddClient = () => {
     setClient((prev) => ({ ...prev, [name]: value }));
   };
 
+  const [gstSuffix, setGstSuffix] = useState("");
+  const [shipGstSuffix, setShipGstSuffix] = useState("");
+
   const handleStateChange = (e) => {
-    const state = e.target.value;
-    const prefix = stateGstCodes[state] || "";
+    const clientBillState = e.target.value;
+    const prefix = stateGstCodes[clientBillState] || "";
     setClient((prev) => ({
       ...prev,
-      state,
+      clientBillState,
       clientGSTNo: prefix + gstSuffix
+    }));
+  };
+
+  const handleShipStateChange = (e) => {
+    const clientShipState = e.target.value;
+    const prefix1 = stateGstCodes[clientShipState] || "";
+    setClient((prev) => ({
+      ...prev,
+      clientShipState,
+      shipGSTNo: prefix1 + shipGstSuffix
     }));
   };
 
   const handleGstSuffixChange = (e) => {
     const input = e.target.value.toUpperCase().replace(/\s/g, "").slice(0, 13);
-    const prefix = stateGstCodes[client.state] || "";
+    const prefix = stateGstCodes[client.clientBillState] || "";
     const fullGst = prefix + input;
 
     setGstSuffix(input);
     setClient((prev) => ({
       ...prev,
       clientGSTNo: fullGst
+    }));
+  };
+
+  const handleShipGstSuffixChange = (e) => {
+    const input = e.target.value.toUpperCase().replace(/\s/g, "").slice(0, 13);
+    const prefix1 = stateGstCodes[client.clientShipState] || "";
+    const fullShipGst = prefix1 + input;
+
+    setShipGstSuffix(input);
+    setClient((prev) => ({
+      ...prev,
+      shipGSTNo: fullShipGst
     }));
   };
 
@@ -326,43 +350,6 @@ const AddClient = () => {
               <option value="AAVCS6287K">AAVCS6287K</option>
             </select>
           </div>
-          <div>
-        <label className="text-sm font-medium text-gray-700">-- Select State --</label>
-        <select
-  name="state"
-  value={client.state}
-  onChange={handleStateChange}
-  className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-  required
->
-  <option value="">-- Select State --</option>
-  {Object.keys(stateGstCodes).map((stateName) => (
-    <option key={stateName} value={stateName}>
-      {stateName}
-    </option>
-  ))}
-</select>
-      </div>
-
-      {/* GST Number: Single Input (prefix + editable suffix) */}
-      <div>
-        <label className="text-sm font-medium text-gray-700">GST Number</label>
-        <div className="flex mt-1">
-          <span className="inline-flex items-center px-3 border border-r-0 bg-gray-200 rounded-l-md text-sm font-mono">
-            {stateGstCodes[client.state] || ""}
-          </span>
-          <input
-            type="text"
-            value={gstSuffix}
-            onChange={handleGstSuffixChange}
-            maxLength={13}
-            disabled={!client.state}
-            placeholder="Enter the remaining GST number Completely "
-            className="flex-1 p-2 border border-l-0 rounded-r-md"
-            required
-          />
-        </div>
-      </div>
         </div>
         {/* updation date, ending date, logo, map location etc*/}
         <button
@@ -455,19 +442,21 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label
-                htmlFor="clientBillState"
-                className="block text-sm font-medium text-gray-700"
-              >
-                State
-              </label>
-              <input
-                type="text"
+              <label className="text-sm font-medium text-gray-700">-- Select State --</label>
+              <select
                 name="clientBillState"
-                onChange={handleChange}
-                placeholder="Enter State"
-                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              />
+                value={client.clientBillState}
+                onChange={handleStateChange}
+                className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+                required
+              >
+                <option value="">-- Select State --</option>
+                {Object.keys(stateGstCodes).map((stateName) => (
+                  <option key={stateName} value={stateName}>
+                    {stateName}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mt-2 mb-2">
               <label
@@ -511,6 +500,25 @@ const AddClient = () => {
                 placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               />
+            </div>
+            {/* GST Number: Single Input (prefix + editable suffix) */}
+            <div className="mt-2 mb-2">
+              <label className="text-sm font-medium text-gray-700">GST Number</label>
+              <div className="flex mt-1">
+                <span className="inline-flex items-center px-3 border border-r-0 bg-gray-200 rounded-l-md">
+                  {stateGstCodes[client.clientBillState] || ""}
+                </span>
+                <input
+                  type="text"
+                  value={gstSuffix}
+                  onChange={handleGstSuffixChange}
+                  maxLength={13}
+                  disabled={!client.clientBillState}
+                  placeholder="Enter the remaining GST number Completely "
+                  className="flex-1 p-2 border border-l-0 rounded-r-md"
+                  required
+                />
+              </div>
             </div>
             <div>
               <label
@@ -611,19 +619,21 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label
-                htmlFor="clientShipState"
-                className="block text-sm font-medium text-gray-700"
-              >
-                State
-              </label>
-              <input
-                type="text"
+              <label className="text-sm font-medium text-gray-700">-- Select State --</label>
+              <select
                 name="clientShipState"
-                onChange={handleChange}
-                placeholder="Enter State"
-                className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-              />
+                value={client.clientShipState}
+                onChange={handleShipStateChange}
+                className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+                required
+              >
+                <option value="">-- Select State --</option>
+                {Object.keys(stateGstCodes).map((stateName) => (
+                  <option key={stateName} value={stateName}>
+                    {stateName}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mt-2 mb-2">
               <label
@@ -667,6 +677,25 @@ const AddClient = () => {
                 placeholder="Enter Pincode"
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               />
+            </div>
+            {/* GST Number: Single Input (prefix + editable suffix) */}
+            <div className="mt-2 mb-2">
+              <label className="text-sm font-medium text-gray-700">GST Number</label>
+              <div className="flex mt-1">
+                <span className="inline-flex items-center px-3 border border-r-0 bg-gray-200 rounded-l-md">
+                  {stateGstCodes[client.clientShipState] || ""}
+                </span>
+                <input
+                  type="text"
+                  value={shipGstSuffix}
+                  onChange={handleShipGstSuffixChange}
+                  maxLength={13}
+                  disabled={!client.clientShipState}
+                  placeholder="Enter the remaining GST number Completely "
+                  className="flex-1 p-2 border border-l-0 rounded-r-md"
+                  required
+                />
+              </div>
             </div>
             <div>
               <label

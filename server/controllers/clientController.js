@@ -15,24 +15,35 @@ const getClients = async (req, res) => {
 
 const addClient = async (req, res) => {
   try {
-    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, billCountry, clientBillPincode, billPANNo, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, shipCountry, clientShipPincode, shipPANNo,  orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName, invoice, paySheet, clientDescription, clientEmployeeCount } = req.body;
+    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, billCountry, clientBillPincode, billPANNo, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, shipCountry, clientShipPincode, shipGSTNo, shipPANNo,  orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName, invoice, paySheet, clientDescription, clientEmployeeCount } = req.body;
 
-    if (!clientID || !clientName || !state || !clientGSTNo) {
+    if (!clientID || !clientName || !clientBillState || !clientGSTNo || !clientShipState || !shipGSTNo) {
       return res.status(400).json({ success: false, error: "Missing required fields" });
     }
 
-    const expectedPrefix = stateGstCodes[state];
+    const expectedPrefix = stateGstCodes[clientBillState];
     if (!expectedPrefix) {
-      return res.status(400).json({ success: false, error: "Invalid state selected." });
+      return res.status(400).json({ success: false, error: "Invalid Bill state selected." });
     }
 
     if (!clientGSTNo.startsWith(expectedPrefix)) {
       return res.status(400).json({
         success: false,
-        error: `GST number must start with ${expectedPrefix} for ${state}`
+        error: `GST number must start with ${expectedPrefix} for ${clientBillState}`
       });
     }
 
+    const expected1Prefix = stateGstCodes[clientShipState];
+    if (!expected1Prefix) {
+      return res.status(400).json({ success: false, error: "Invalid Ship state selected." });
+    }
+
+    if (!shipGSTNo.startsWith(expected1Prefix)) {
+      return res.status(400).json({
+        success: false,
+        error: `GST number must start with ${expected1Prefix} for ${clientShipState}`
+      });
+    }
 
     const existing = await Client.findOne({ clientID });
     if (existing) {
@@ -40,7 +51,7 @@ const addClient = async (req, res) => {
     }
 
     const newClient = new Client ({
-       clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, billPANNo, billCountry: clientBillCountry === "Other" ? billCountry : "", clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, shipPANNo, shipCountry: clientShipCountry === "Other" ? shipCountry : "", orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName: unit === "Sub Unit" ? subUnitName : "", invoice, paySheet, clientDescription, clientEmployeeCount
+       clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, billPANNo, billCountry: clientBillCountry === "Other" ? billCountry : "", clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, shipGSTNo, shipPANNo, shipCountry: clientShipCountry === "Other" ? shipCountry : "", orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName: unit === "Sub Unit" ? subUnitName : "", invoice, paySheet, clientDescription, clientEmployeeCount
     })
     await newClient.save()
     return res.status(200).json({success: true, client: newClient})
