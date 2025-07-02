@@ -19,8 +19,6 @@ const AddClient = () => {
     clientServiceEndOn: "",
     clientServices: "",
     clientLocation: "",
-    clientGSTNo: "",
-    clientBillState: "",
     clientBillHNo: "",
     clientBillStreet: "",
     clientBillVillage: "",
@@ -34,7 +32,6 @@ const AddClient = () => {
     clientShipVillage: "",
     clientShipMandal: "",
     clientShipCity: "",
-    clientShipState: "",
     clientShipCountry: "India",
     clientShipPincode: "",
     orderNo: "",
@@ -442,13 +439,12 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label className="text-sm font-medium text-gray-700">-- Select State --</label>
+              <label className="text-sm font-medium text-gray-700">Select State</label>
               <select
                 name="clientBillState"
                 value={client.clientBillState}
                 onChange={handleStateChange}
                 className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-                required
               >
                 <option value="">-- Select State --</option>
                 {Object.keys(stateGstCodes).map((stateName) => (
@@ -516,7 +512,6 @@ const AddClient = () => {
                   disabled={!client.clientBillState}
                   placeholder="Enter the remaining GST number Completely "
                   className="flex-1 p-2 border border-l-0 rounded-r-md"
-                  required
                 />
               </div>
             </div>
@@ -619,13 +614,12 @@ const AddClient = () => {
               />
             </div>
             <div className="mt-2 mb-2">
-              <label className="text-sm font-medium text-gray-700">-- Select State --</label>
+              <label className="text-sm font-medium text-gray-700">Select State</label>
               <select
                 name="clientShipState"
                 value={client.clientShipState}
                 onChange={handleShipStateChange}
                 className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-                required
               >
                 <option value="">-- Select State --</option>
                 {Object.keys(stateGstCodes).map((stateName) => (
@@ -693,7 +687,6 @@ const AddClient = () => {
                   disabled={!client.clientShipState}
                   placeholder="Enter the remaining GST number Completely "
                   className="flex-1 p-2 border border-l-0 rounded-r-md"
-                  required
                 />
               </div>
             </div>
@@ -723,21 +716,6 @@ const AddClient = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label
-              htmlFor="orderNo"
-              className="text-sm font-medium text-gray-700"
-            >
-              Buyer's Order Number
-            </label>
-            <input
-              type="text"
-              name="orderNo"
-              onChange={handleChange}
-              placeholder="Enter Buyer's Order Number"
-              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label
               htmlFor="clientLocation"
               className="text-sm font-medium text-gray-700"
             >
@@ -756,6 +734,21 @@ const AddClient = () => {
                 </option>
               ))}
             </select>
+          </div>
+          <div>
+            <label
+              htmlFor="orderNo"
+              className="text-sm font-medium text-gray-700"
+            >
+              Buyer's Order Number
+            </label>
+            <input
+              type="text"
+              name="orderNo"
+              onChange={handleChange}
+              placeholder="Enter Buyer's Order Number"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md"
+            />
           </div>
           <div>
             <label
