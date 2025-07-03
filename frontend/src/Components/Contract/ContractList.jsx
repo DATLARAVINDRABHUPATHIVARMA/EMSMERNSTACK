@@ -53,7 +53,7 @@ const CounterList = () => {
       setSearchTerm(value);
   
       const records = clients.filter((contract) =>
-       ['clientID', 'clientName', 'contractID'].some(
+       ['clientID', 'clientName', ].some(
         (key) => contract[key]?.toLowerCase().includes(value)
       )
     );

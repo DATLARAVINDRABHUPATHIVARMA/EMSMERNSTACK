@@ -15,7 +15,7 @@ import DepartmentList from "./components/department/DepartmentList.jsx";
 import AddDepartment from "./components/department/AddDepartment.jsx";
 import ViewDepartment from "./Components/Department/ViewDepartment.jsx";
 import EditDepartment from "./components/department/EditDepartment.jsx";
-import ClientList from "./components/client/ClientList.jsx";
+import ClientList from "./Components/Client/ClientList.jsx";
 import AddClient from "./Components/Client/AddClient.jsx";
 import ViewClient from "./Components/Client/ViewClient.jsx";
 import EditClient from "./components/client/EditClient.jsx";
@@ -25,6 +25,8 @@ import ViewSite from "./Components/Site/ViewSite.jsx";
 import EditSite from "./components/site/EditSite.jsx";
 import AddSalary from "./Components/Salary/AddSalary.jsx";
 import ViewSalary from "./Components/Salary/ViewSalary.jsx";
+import AddContract from "./Components/Contract/AddContract.jsx";
+import AddLicense from "./Components/License/AddLicense.jsx";
 
 function App() {
   return (
@@ -61,6 +63,8 @@ function App() {
           <Route path="/admin-dashboard/sites/:id" element={<ViewSite />}></Route>
           <Route path="/admin-dashboard/sites/edit/:id" element={<EditSite />}></Route>
           <Route path="/admin-dashboard/salary/addSalary" element={<AddSalary />}></Route>
+          <Route path="/admin-dashboard/contracts" element={<AddContract />}></Route>
+          <Route path="/admin-dashboard/licenses" element={<AddLicense />}></Route>
         </Route>
         <Route path="/manager-dashboard" element={<ManagerDashboard />}></Route>
         <Route path="/staff-dashboard" element={<StaffDashboard />}></Route>
