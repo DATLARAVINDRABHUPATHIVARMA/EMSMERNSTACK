@@ -520,12 +520,89 @@ const AddContract = () => {
                   <input
                     type="checkbox"
                     name="PFLimit"
-                    value="HRA"
-                    checked={contract.HRA}
+                    value="WA"
+                    checked={contract.WA}
                     onChange={handleCheckboxChange}
                     className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
                   />
-                  HRA
+                  WA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="OA"
+                    checked={contract.OA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  OA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="specialAllowance"
+                    checked={contract.specialAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Spec. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="medicalAllowance"
+                    checked={contract.medicalAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Med. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="foodAllowance"
+                    checked={contract.foodAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Food Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="siteAllowance"
+                    checked={contract.siteAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Site Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="gunAllowance"
+                    checked={contract.gunAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Gun Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="gunAllowance"
+                    checked={contract.gunAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Gun Allw.
                 </label>
               </div>
             </div>
