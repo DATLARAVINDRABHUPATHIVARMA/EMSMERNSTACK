@@ -297,7 +297,7 @@ const AddClient = () => {
               className="mt-1 w-full p-2 border border-gray-300 rounded-md"
               required
             >
-              <option value="">Choose Services</option>
+              <option value="">--Choose Services</option>
               {departments.map((department) => (
                 <option key={department._id} value={department._id}>
                   {department.departmentName}
