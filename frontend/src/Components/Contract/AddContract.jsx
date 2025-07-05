@@ -447,8 +447,8 @@ const AddContract = () => {
               >
                 Pay Sheet
               </button>
-              <h1 className="text-2xl underline mt-7 mb-2">PF</h1>
-              <div className="mt-2 mb-2">
+              <h1 className="text-2xl underline mt-10 mb-2">PF</h1>
+              <div className="mt-5 mb-2">
                 <label
                   htmlFor="PFLimit"
                   className="block text-sm font-medium text-gray-700"
@@ -597,6 +597,329 @@ const AddContract = () => {
                   <input
                     type="checkbox"
                     name="PFLimit"
+                    value="fireAllowance"
+                    checked={contract.fireAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Fire Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="trlAllowance"
+                    checked={contract.trlAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Trl. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="perAllowance"
+                    checked={contract.perAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Per. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="mobAllowance"
+                    checked={contract.mobAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Mob. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="bonus"
+                    checked={contract.bonus}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Bonus
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="gratuity"
+                    checked={contract.gratuity}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Grat.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="LA"
+                    checked={contract.LA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  LA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="serWetg"
+                    checked={contract.serWetg}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Ser. Wetg.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="PLAmount"
+                    checked={contract.PLAmount}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  PL Amount
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="TLAmount"
+                    checked={contract.TLAmount}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  TL Amount
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="RC"
+                    checked={contract.RC}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  RC
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="SC"
+                    checked={contract.SC}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  SC
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="Others"
+                    checked={contract.Others}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Others
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="OTs"
+                    checked={contract.OTs}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  OTs
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="WOs"
+                    checked={contract.WOs}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  WOs
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="NHS"
+                    checked={contract.NHS}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  NHS
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="PFLimit"
+                    value="NFHS"
+                    checked={contract.NHFS}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  NHFS
+                </label>
+              </div>
+              <h1 className="text-2xl underline mt-10 mb-2">ESI</h1>
+              <div className="mt-5 mb-2">
+                <label
+                  htmlFor="ESILimit"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  ESI Limit
+                </label>
+                <input
+                  type="text"
+                  name="ESILimit"
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="basic"
+                    checked={contract.basic}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Basic
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="DA"
+                    checked={contract.DA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  DA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="HRA"
+                    checked={contract.HRA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  HRA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="CCA"
+                    checked={contract.CCA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  CCA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="conv"
+                    checked={contract.conv}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Conv
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="WA"
+                    checked={contract.WA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  WA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="OA"
+                    checked={contract.OA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  OA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="specialAllowance"
+                    checked={contract.specialAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Spec. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="medicalAllowance"
+                    checked={contract.medicalAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Med. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="foodAllowance"
+                    checked={contract.foodAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Food Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="siteAllowance"
+                    checked={contract.siteAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Site Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
                     value="gunAllowance"
                     checked={contract.gunAllowance}
                     onChange={handleCheckboxChange}
@@ -604,6 +927,285 @@ const AddContract = () => {
                   />
                   Gun Allw.
                 </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="fireAllowance"
+                    checked={contract.fireAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Fire Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="trlAllowance"
+                    checked={contract.trlAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Trl. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="perAllowance"
+                    checked={contract.perAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Per. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="mobAllowance"
+                    checked={contract.mobAllowance}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Mob. Allw.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="bonus"
+                    checked={contract.bonus}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Bonus
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="gratuity"
+                    checked={contract.gratuity}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Grat.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="LA"
+                    checked={contract.LA}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  LA
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="serWetg"
+                    checked={contract.serWetg}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Ser. Wetg.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="PLAmount"
+                    checked={contract.PLAmount}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  PL Amount
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="TLAmount"
+                    checked={contract.TLAmount}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  TL Amount
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="RC"
+                    checked={contract.RC}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  RC
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="SC"
+                    checked={contract.SC}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  SC
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="Others"
+                    checked={contract.Others}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  Others
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="OTs"
+                    checked={contract.OTs}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  OTs
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="WOs"
+                    checked={contract.WOs}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  WOs
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="NHS"
+                    checked={contract.NHS}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  NHS
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="ESILimit"
+                    value="NFHS"
+                    checked={contract.NHFS}
+                    onChange={handleCheckboxChange}
+                    className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  NHFS
+                </label>
+              </div>
+              <div className="mt-10 mb-3">
+                <label htmlFor="wagesCalnOn" className="block text-sm font-medium text-gray-700">
+                  Wages Caln On
+                </label>
+                <select
+                  name="wagesCalnOn"
+                  value={contract.wagesCalnOn}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="Duties">Duties</option>
+                  <option value="Duties + WOs + NHs + L Days">Duties + WOs + NHs + L Days</option>
+                </select>
+              </div>
+              <div className="mt-3 mb-3">
+                <label htmlFor="OT" className="block text-sm font-medium text-gray-700">
+                  OT
+                </label>
+                <select
+                  name="OT"
+                  value={contract.OT}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="100%">100%</option>
+                  <option value="200%">200%</option>
+                </select>
+              </div>
+              <div className="mt-3 mb-3">
+                <label htmlFor="PTOn" className="block text-sm font-medium text-gray-700">
+                  PT On
+                </label>
+                <select
+                  name="PTOn"
+                  value={contract.PTOn}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="Total Earnings">Total Earnings</option>
+                  <option value="Gross-Bonus">Gross-Bonus</option>
+                </select>
+              </div>
+              <div className="mt-3 mb-3">
+                <label htmlFor="" className="block text-sm font-medium text-gray-700">
+                  AAA
+                </label>
+                <select
+                  name="aaa"
+                  value={contract.aaa}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">-- Select --</option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                </select>
+              </div>
+              <div className="mt-3 mb-3">
+                <label htmlFor="" className="block text-sm font-medium text-gray-700">
+                  AAB
+                </label>
+                <select
+                  name="aab"
+                  value={contract.aab}
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                >
+                  <option value="">-- Select --</option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                </select>
               </div>
             </div>
           </div>
