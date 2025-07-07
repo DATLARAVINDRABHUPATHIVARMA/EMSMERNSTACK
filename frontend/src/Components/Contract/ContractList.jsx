@@ -1,70 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { Link } from 'react-router-dom'
-import axios from 'axios';
+import { NavLink, Link } from "react-router-dom";
+import axios from "axios";
 
-const CounterList = () => {
-    const [contracts, setContracts] = useState([]);
-    const [contractLoading, setContractLoading] = useState(false);
-    const [filteredContracts, setFilteredContracts] = useState([]);
-
-    useEffect(() => {
-    const fetchContracts = async () => {
-      setContractLoading(true);
-      try {
-        const response = await axios.get("http://localhost:5000/api/contract",
-          {
-            headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`,},
-          }
-        );
-        if(response.data.success){
-          let sno = 1;
-          const data = await response.data.clients.map((contract) => ({
-            _id: contract._id,
-            sno: sno++,
-            clientID: contract.client.clientID,
-            clientName: contract.client.clientName,
-            contractID: contract.contractID,
-            departmentName: client.clientServices.departmentName,
-            siteName: client.clientLocation.siteName,
-            action: (
-              <ContractButtons _id={contract._id} />
-            ),
-          }))
-          setContracts(data);
-          setFilteredContracts(data)
-        }
-      } catch(error){
-        if (error.response && !error.response.data.success) {
-          alert(error.response.data.error);
-        }
-      } finally {
-        setClientLoading(false);
-      }
-    }
-
-    fetchContracts();
-  }, [])
-
-  const [searchTerm, setSearchTerm] = useState('');
-  
-    const filterContracts = (e) => {
-      const value = e.target.value.toLowerCase();
-      setSearchTerm(value);
-  
-      const records = clients.filter((contract) =>
-       ['clientID', 'clientName', ].some(
-        (key) => contract[key]?.toLowerCase().includes(value)
-      )
-    );
-      setFilteredContracts(records)
-    }
-
+const ContractList = () => {
   return (
-    <div>
-      
+    <div className="p-5">
+      <div className="flex items-center text-white justify gap-2 h-12 bg-gray-200 px-5 w-full rounded">
+        <NavLink to="/admin-dashboard/contracts" className={({ isActive }) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 rounded-md`}>Contracts</NavLink>
+        <NavLink to="/admin-dashboard/licenses" className={({ isActive }) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Licenses</NavLink>
+        <NavLink to="/admin-dashboard/Attendance" className={({ isActive }) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Attendance</NavLink>
+        <NavLink to="/admin-dashboard/Billing" className={({ isActive }) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Billing</NavLink>
+        <NavLink to="/admin-dashboard/Reciepts" className={({ isActive }) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Reciepts</NavLink>
+      </div>
+      <div className="text-center">
+        <h3 className="text-2xl font-bold">Manage Contracts</h3>
+      </div>
+      <div className="flex justify-between items-center">
+        <input type="text" placeholder="Search By Contract Details" className="px-4 py-0.5 border"/>
+        <Link to="/admin-dashboard/add-contract" className="px-4 py-1 bg-purple-500 rounded text-white">Add New Contract</Link>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default CounterList
+export default ContractList;

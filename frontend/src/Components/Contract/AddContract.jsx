@@ -60,7 +60,7 @@ const AddContract = () => {
     <div className="p-5">
       <div className="flex items-center text-white justify gap-2 h-12 bg-gray-200 px-5 w-full rounded">
         <NavLink
-          to="/admin-dashboard/contracts"
+          to="/admin-dashboard/add-contract"
           className={({ isActive }) =>
             `${isActive ? "bg-blue-500" : " "} px-4 py-1 rounded-md`
           }

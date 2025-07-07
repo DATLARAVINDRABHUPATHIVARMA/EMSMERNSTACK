@@ -25,6 +25,7 @@ import ViewSite from "./Components/Site/ViewSite.jsx";
 import EditSite from "./components/site/EditSite.jsx";
 import AddSalary from "./Components/Salary/AddSalary.jsx";
 import ViewSalary from "./Components/Salary/ViewSalary.jsx";
+import ContractList from "./Components/Contract/ContractList.jsx";
 import AddContract from "./Components/Contract/AddContract.jsx";
 import AddLicense from "./Components/License/AddLicense.jsx";
 
@@ -63,7 +64,8 @@ function App() {
           <Route path="/admin-dashboard/sites/:id" element={<ViewSite />}></Route>
           <Route path="/admin-dashboard/sites/edit/:id" element={<EditSite />}></Route>
           <Route path="/admin-dashboard/salary/addSalary" element={<AddSalary />}></Route>
-          <Route path="/admin-dashboard/contracts" element={<AddContract />}></Route>
+          <Route path="/admin-dashboard/contracts" element={<ContractList />}></Route>
+          <Route path="/admin-dashboard/add-contract" element={<AddContract />}></Route>
           <Route path="/admin-dashboard/licenses" element={<AddLicense />}></Route>
         </Route>
         <Route path="/manager-dashboard" element={<ManagerDashboard />}></Route>
