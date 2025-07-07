@@ -8,6 +8,9 @@ const AddContract = () => {
   const [contract, setContract] = useState({
     wagesType: "",
     professionalTax: false,
+    wagesCalnOn: "Duties",
+    OT: "100%",
+    PTOn: "Total Earnings"
   });
 
   useEffect(() => {
