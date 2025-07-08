@@ -442,6 +442,20 @@ const AddContract = () => {
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
               </div>
+              <div className="mt-2 mb-2">
+                <label
+                  htmlFor="machineryCost"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Machinery Cost
+                </label>
+                <input
+                  type="text"
+                  name="machineryCost"
+                  onChange={handleChange}
+                  className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+                />
+              </div>
             </div>
             <div>
               <button
@@ -1161,53 +1175,61 @@ const AddContract = () => {
                 </select>
               </div>
               <div className="mt-3 mb-3">
-                <label htmlFor="" className="block text-sm font-medium text-gray-700">
-                  AAA
+                <label htmlFor="indNDays" className="block text-sm font-medium text-gray-700">
+                  Ind N Day's
                 </label>
                 <select
-                  name="aaa"
-                  value={contract.aaa}
+                  name="indNDays"
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 >
                   <option value="">-- Select --</option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
+                  <option value="GEN">GEN</option>
+                  <option value="G-S">G-S</option>
+                  <option value="G-4">G-4</option>
+                  <option value="Per Hour">Per Hour</option>
+                  <option value="Per Day">Per Day</option>
+                  <option value="Per Hour / Per Day">Per Hour / Per Day</option>
+                  <option value="P.M / 8">P.M / 8</option>
+                  <option value="G-S / 8">G-S / 8</option>
+                  <option value="26 Days / 8 Hours">26 Days / 8 Hours</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
                 </select>
               </div>
               <div className="mt-3 mb-3">
-                <label htmlFor="" className="block text-sm font-medium text-gray-700">
-                  AAB
+                <label htmlFor="indNOTs" className="block text-sm font-medium text-gray-700">
+                  Ind N OT's
                 </label>
                 <select
-                  name="aab"
-                  value={contract.aab}
+                  name="indNOTs"
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 >
                   <option value="">-- Select --</option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
+                  <option value="GEN">GEN</option>
+                  <option value="G-S">G-S</option>
+                  <option value="G-4">G-4</option>
+                  <option value="Per Hour">Per Hour</option>
+                  <option value="Per Day">Per Day</option>
+                  <option value="Per Hour / Per Day">Per Hour / Per Day</option>
+                  <option value="P.M / 8">P.M / 8</option>
+                  <option value="G-S / 8">G-S / 8</option>
+                  <option value="26 Days / 8 Hours">26 Days / 8 Hours</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
                 </select>
               </div>
             </div>
