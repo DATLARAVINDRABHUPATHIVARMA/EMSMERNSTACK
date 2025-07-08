@@ -66,7 +66,7 @@ function App() {
           <Route path="/admin-dashboard/salary/addSalary" element={<AddSalary />}></Route>
           <Route path="/admin-dashboard/contracts" element={<ContractList />}></Route>
           <Route path="/admin-dashboard/add-contract" element={<AddContract />}></Route>
-          <Route path="/admin-dashboard/licenses" element={<AddLicense />}></Route>
+          <Route path="/admin-dashboard/add-license" element={<AddLicense />}></Route>
         </Route>
         <Route path="/manager-dashboard" element={<ManagerDashboard />}></Route>
         <Route path="/staff-dashboard" element={<StaffDashboard />}></Route>

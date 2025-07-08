@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { fetchClients } from "../../utils/EmployeeHelper.jsx";
+import { fetchClients } from "../../utils/EmployeeHelper.jsx"; // need to change many details including adding of client contract Helper
 
 const AddContract = () => {
   const [clients, setClients] = useState([]);
@@ -10,7 +10,7 @@ const AddContract = () => {
     professionalTax: false,
     wagesCalnOn: "Duties",
     OT: "100%",
-    PTOn: "Total Earnings"
+    PTOn: "Total Earnings",
   });
 
   useEffect(() => {
@@ -59,16 +59,11 @@ const AddContract = () => {
   return (
     <div className="p-5">
       <div className="flex items-center text-white justify gap-2 h-12 bg-gray-200 px-5 w-full rounded">
-        <NavLink
-          to="/admin-dashboard/add-contract"
-          className={({ isActive }) =>
-            `${isActive ? "bg-blue-500" : " "} px-4 py-1 rounded-md`
-          }
-        >
+        <NavLink to="/admin-dashboard/contracts" className="bg-blue-500 px-4 py-1 rounded-md">
           Contracts
         </NavLink>
         <NavLink
-          to="/admin-dashboard/licenses"
+          to="/admin-dashboard/add-license"
           className={({ isActive }) =>
             `${
               isActive ? "bg-blue-500" : " "
@@ -1133,7 +1128,10 @@ const AddContract = () => {
                 </label>
               </div>
               <div className="mt-10 mb-3">
-                <label htmlFor="wagesCalnOn" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="wagesCalnOn"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Wages Caln On
                 </label>
                 <select
@@ -1143,11 +1141,16 @@ const AddContract = () => {
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 >
                   <option value="Duties">Duties</option>
-                  <option value="Duties + WOs + NHs + L Days">Duties + WOs + NHs + L Days</option>
+                  <option value="Duties + WOs + NHs + L Days">
+                    Duties + WOs + NHs + L Days
+                  </option>
                 </select>
               </div>
               <div className="mt-3 mb-3">
-                <label htmlFor="OT" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="OT"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   OT
                 </label>
                 <select
@@ -1161,7 +1164,10 @@ const AddContract = () => {
                 </select>
               </div>
               <div className="mt-3 mb-3">
-                <label htmlFor="PTOn" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="PTOn"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   PT On
                 </label>
                 <select
@@ -1175,7 +1181,10 @@ const AddContract = () => {
                 </select>
               </div>
               <div className="mt-3 mb-3">
-                <label htmlFor="indNDays" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="indNDays"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Ind N Day's
                 </label>
                 <select
@@ -1204,7 +1213,10 @@ const AddContract = () => {
                 </select>
               </div>
               <div className="mt-3 mb-3">
-                <label htmlFor="indNOTs" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="indNOTs"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Ind N OT's
                 </label>
                 <select
@@ -1231,8 +1243,61 @@ const AddContract = () => {
                   <option value="30">30</option>
                   <option value="31">31</option>
                 </select>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="indNOTs"
+                    value="noUniform"
+                    checked={contract.noUniform}
+                    onChange={handleCheckboxChange}
+                    className="mr-1 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  No Uniform
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="indNOTs"
+                    value="noAdvSal"
+                    checked={contract.noAdvSal}
+                    onChange={handleCheckboxChange}
+                    className="mr-1 ml-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  No Adv. Sal.
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="indNOTs"
+                    value="noLWF"
+                    checked={contract.noLWF}
+                    onChange={handleCheckboxChange}
+                    className="mr-1 ml-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  No LWF
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="checkbox"
+                    name="indNOTs"
+                    value="noRegFee"
+                    checked={contract.noRegFee}
+                    onChange={handleCheckboxChange}
+                    className="mr-1 ml-2 rounded text-blue-500 focus:ring-blue-400"
+                  />
+                  No Reg. Fee.
+                </label>
               </div>
             </div>
+          </div>
+          <button
+            type="submit"
+            className="w-full mt-6 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Add Contract
+          </button>
+          <div className="mt-3">
+            <p>All * marked must be fields must be required</p>
           </div>
         </form>
       </div>
