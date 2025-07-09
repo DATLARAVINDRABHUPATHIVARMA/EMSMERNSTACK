@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { fetchClients } from "../../utils/EmployeeHelper.jsx"; // need to change many details including adding of client contract Helper
+import { fetchClients } from "../../utils/ContractHelper.jsx"; // need to change many details including adding of client contract Helper
 
 const AddContract = () => {
   const [clients, setClients] = useState([]);
