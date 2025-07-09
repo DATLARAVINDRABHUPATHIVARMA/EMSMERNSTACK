@@ -439,14 +439,14 @@ const AddContract = () => {
               </div>
               <div className="mt-2 mb-2">
                 <label
-                  htmlFor="machineryCost"
+                  htmlFor="serviceCharge"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Machinery Cost
+                  Service Charge
                 </label>
                 <input
                   type="text"
-                  name="machineryCost"
+                  name="serviceCharge"
                   onChange={handleChange}
                   className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 />
