@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { fetchClients } from "../../utils/EmployeeHelper.jsx";
+import { fetchClients } from "../../utils/ContractHelper.jsx";
+import axios from "axios";
 
 const AddLicense = () => {
   const [clients, setClients] = useState([])
@@ -32,7 +33,7 @@ const AddLicense = () => {
             }
           );
           if (response.data.success) {
-            navigate("/admin-dashboard/licenses");
+            navigate("/admin-dashboard/clients");
           }
         } catch (error) {
           if (error.response && !error.response.data.success) {
