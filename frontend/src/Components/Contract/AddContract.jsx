@@ -225,7 +225,7 @@ const AddContract = () => {
                 Type of Work
               </label>
               <select
-                name="typeofWork"
+                name="typeOfWork"
                 onChange={handleChange}
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               >
@@ -741,8 +741,8 @@ const AddContract = () => {
                   <input
                     type="checkbox"
                     name="PFLimit"
-                    value="Others"
-                    checked={contract.Others}
+                    value="others"
+                    checked={contract.others}
                     onChange={handleCheckboxChange}
                     className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
                   />
@@ -768,7 +768,7 @@ const AddContract = () => {
                     onChange={handleCheckboxChange}
                     className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
                   />
-                  WOs
+                  WO's
                 </label>
                 <label className="inline-flex items-center">
                   <input
@@ -1075,8 +1075,8 @@ const AddContract = () => {
                   <input
                     type="checkbox"
                     name="ESILimit"
-                    value="Others"
-                    checked={contract.Others}
+                    value="others"
+                    checked={contract.others}
                     onChange={handleCheckboxChange}
                     className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
                   />
@@ -1102,7 +1102,7 @@ const AddContract = () => {
                     onChange={handleCheckboxChange}
                     className="mr-2 ml-4 rounded text-blue-500 focus:ring-blue-400"
                   />
-                  WOs
+                  WO's
                 </label>
                 <label className="inline-flex items-center">
                   <input

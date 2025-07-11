@@ -50,9 +50,7 @@ const addClient = async (req, res) => {
       return res.status(400).json({ success: false, error: "Client ID already exists." });
     }
 
-    const newClient = new Client ({
-       clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, billPANNo, billCountry: clientBillCountry === "Other" ? billCountry : "", clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, shipGSTNo, shipPANNo, shipCountry: clientShipCountry === "Other" ? shipCountry : "", orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName: unit === "Sub Unit" ? subUnitName : "", invoice, paySheet, clientDescription, clientEmployeeCount
-    })
+    const newClient = new Client ({ clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, billPANNo, billCountry: clientBillCountry === "Other" ? billCountry : "", clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, shipGSTNo, shipPANNo, shipCountry: clientShipCountry === "Other" ? shipCountry : "", orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName: unit === "Sub Unit" ? subUnitName : "", invoice, paySheet, clientDescription, clientEmployeeCount })
     await newClient.save()
     return res.status(200).json({success: true, client: newClient})
   } catch (error) {

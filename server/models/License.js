@@ -4,7 +4,10 @@ import {Schema} from 'mongoose';
 const licenseSchema = new mongoose.Schema({
     clientID: { type: Schema.Types.ObjectId, ref: "Client", required: true},
     clientName: { type: Schema.Types.ObjectId, ref: "Client", required: true},
-    
+    licenseNo: { type: String, },
+    licenseLocation: { type: String, },
+    licenseStartedOn: { type: Date, required: true },
+    licenseEndOn: { type: Date, required: true, },
     createdAt:  {type: Date, default: Date.now},
     updatedAt:  {type: Date, default: Date.now},
 })
