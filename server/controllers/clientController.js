@@ -2,15 +2,7 @@ import Client from "../models/Client.js";
 import Department from "../models/Department.js";
 import Site from "../models/Site.js";
 
-const stateGstCodes = {
-  "Andhra Pradesh": "37", "Arunachal Pradesh": "12", "Assam": "18", "Bihar": "10",
-  "Chhattisgarh": "22", "Delhi": "07", "Goa": "30", "Gujarat": "24", "Haryana": "06",
-  "Himachal Pradesh": "02", "Jammu and Kashmir": "01", "Jharkhand": "20", "Karnataka": "29",
-  "Kerala": "32", "Madhya Pradesh": "23", "Maharashtra": "27", "Manipur": "14", "Meghalaya": "17",
-  "Mizoram": "15", "Nagaland": "13", "Odisha": "21", "Punjab": "03", "Rajasthan": "08", "Sikkim": "11",
-  "Tamil Nadu": "33", "Telangana": "36", "Tripura": "16", "Uttar Pradesh": "09", "Uttarakhand": "05",
-  "West Bengal": "19", "Puducherry": "34", "Other Territory": "97"
-};
+const stateGstCodes = { "Andaman and Nicobar Islands" : "35", "Andhra Pradesh": "37", "Arunachal Pradesh": "12", "Assam": "18", "Bihar": "10", "Chandigarh": "04", "Chhattisgarh": "22", "Dadra and Nagar Haveli" : "26", "Daman and Diu" : "25", "Delhi": "07", "Goa": "30", "Gujarat": "24", "Haryana": "06", "Himachal Pradesh": "02", "Jammu and Kashmir": "01", "Jharkhand": "20", "Karnataka": "29", "Kerala": "32", "Ladakh" : "38", "Lakshadweep" : "31", "Madhya Pradesh": "23", "Maharashtra": "27", "Manipur": "14", "Meghalaya": "17", "Mizoram": "15", "Nagaland": "13", "Odisha": "21", "Other Territory": "97", "Puducherry" : "34", "Punjab": "03", "Rajasthan": "08", "Sikkim": "11", "Tamil Nadu": "33", "Telangana": "36", "Tripura": "16", "Uttar Pradesh": "09", "Uttarakhand": "05", "West Bengal": "19", "Foreign Country": "96" };
 
 const getClients = async (req, res) => {
   try {
@@ -23,24 +15,35 @@ const getClients = async (req, res) => {
 
 const addClient = async (req, res) => {
   try {
-    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount } = req.body;
+    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, billCountry, clientBillPincode, billPANNo, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, shipCountry, clientShipPincode, shipGSTNo, shipPANNo,  orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName, invoice, paySheet, clientDescription, clientEmployeeCount } = req.body;
 
-    if (!clientID || !clientName || !state || !clientGSTNo) {
+    if (!clientID || !clientName ) {
       return res.status(400).json({ success: false, error: "Missing required fields" });
     }
 
-    const expectedPrefix = stateGstCodes[state];
-    if (!expectedPrefix) {
-      return res.status(400).json({ success: false, error: "Invalid state selected." });
-    }
+    // const expectedPrefix = stateGstCodes[clientBillState];
+    // if (!expectedPrefix) {
+    //   return res.status(400).json({ success: false, error: "Invalid Bill state selected." });
+    // }
 
-    if (!clientGSTNo.startsWith(expectedPrefix)) {
-      return res.status(400).json({
-        success: false,
-        error: `GST number must start with ${expectedPrefix} for ${state}`
-      });
-    }
+    // if (!clientGSTNo.startsWith(expectedPrefix)) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     error: `GST number must start with ${expectedPrefix} for ${clientBillState}`
+    //   });
+    // }
 
+    // const expected1Prefix = stateGstCodes[clientShipState];
+    // if (!expected1Prefix) {
+    //   return res.status(400).json({ success: false, error: "Invalid Ship state selected." });
+    // }
+
+    // if (!shipGSTNo.startsWith(expected1Prefix)) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     error: `GST number must start with ${expected1Prefix} for ${clientShipState}`
+    //   });
+    // }
 
     const existing = await Client.findOne({ clientID });
     if (existing) {
@@ -48,7 +51,7 @@ const addClient = async (req, res) => {
     }
 
     const newClient = new Client ({
-      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount
+       clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, billPANNo, billCountry: clientBillCountry === "Other" ? billCountry : "", clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, shipGSTNo, shipPANNo, shipCountry: clientShipCountry === "Other" ? shipCountry : "", orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName: unit === "Sub Unit" ? subUnitName : "", invoice, paySheet, clientDescription, clientEmployeeCount
     })
     await newClient.save()
     return res.status(200).json({success: true, client: newClient})
@@ -70,9 +73,10 @@ const getClient = async (req, res) => {
 const updateClient = async (req, res) => {
   try {
     const {id} = req.params;
-    const {clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount} = req.body;
+    const { clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, billCountry, clientBillPincode, billPANNo, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, shipCountry, clientShipPincode, shipGSTNo, shipPANNo,  orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName, invoice, paySheet, clientDescription, clientEmployeeCount } = req.body;
+
     const updateClient = await Client.findByIdAndUpdate({_id: id},{
-      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, state, clientGSTNo, clientPANNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, clientDescription, clientEmployeeCount
+      clientID, clientName, clientContactPerson, clientContact, clientEmail, clientDesignation, landlineNo, faxNo, companyGst, companyPan, clientServiceStartedOn, clientServiceEndOn, clientServices, clientLocation, clientGSTNo, clientBillHNo, clientBillStreet, clientBillVillage, clientBillMandal, clientBillCity, clientBillState, clientBillCountry, clientBillPincode, billPANNo, billCountry: clientBillCountry === "Other" ? billCountry : "", clientShipHNo, clientShipStreet, clientShipVillage, clientShipMandal, clientShipCity, clientShipState, clientShipCountry, clientShipPincode, shipGSTNo, shipPANNo, shipCountry: clientShipCountry === "Other" ? shipCountry : "", orderNo, PTState, LWFState, PFBranch, ESIBranch, clientType, location, unit, subUnitName: unit === "Sub Unit" ? subUnitName : "", invoice, paySheet, clientDescription, clientEmployeeCount
     })
     return res.status(200).json({success: true, updateClient})
   } catch (error) {
