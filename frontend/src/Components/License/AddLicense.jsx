@@ -5,7 +5,8 @@ import axios from "axios";
 
 const AddLicense = () => {
   const [clients, setClients] = useState([])
-  const [license, setLicense] = useState({})
+  const [license, setLicense] = useState({
+  })
 
   const navigate = useNavigate();
 
@@ -69,7 +70,7 @@ const AddLicense = () => {
                 className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                 required
               >
-                {/* <option value="">-- Select Client --</option> */}
+                <option value="">-- Select Client --</option>
                 {clients.map((client) => (
                   <option key={client._id} value={client._id}>
                     {client.clientID}
@@ -92,7 +93,7 @@ const AddLicense = () => {
                 className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                 required
               >
-                {/* <option value="">-- Select Client --</option> */}
+                <option value="">-- Select Client --</option>
                 {clients.map((client) => (
                   <option key={client._id} value={client._id}>
                     {client.clientName}
