@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import {Schema} from 'mongoose';
 
-const licenseSchema = new mongoose.Schema({
+const licenseSchema = new Schema({
     clientID: { type: Schema.Types.ObjectId, ref: "Client", required: true},
     clientName: { type: Schema.Types.ObjectId, ref: "Client", required: true},
     licenseNo: { type: String, },

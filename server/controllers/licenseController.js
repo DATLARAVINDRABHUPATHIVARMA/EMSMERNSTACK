@@ -4,7 +4,7 @@ const addLicense = async (req, res) => {
     try {
             const { clientID, clientName, licenseNo, licenseLocation, licenseStartedOn, licenseEndOn } = req.body;
     
-            const newLicense = new License ({ clientID, clientName,  licenseNo, licenseLocation, licenseStartedOn, licenseEndOn });
+            const newLicense = new License ({ clientID, clientName, licenseNo, licenseLocation, licenseStartedOn, licenseEndOn });
             await newLicense.save()
             return res.status(200).json({success: true, license: newLicense})
         } catch (error) {

@@ -8,49 +8,49 @@ const AddLicense = () => {
   const [license, setLicense] = useState({
   })
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-      const getClients = async () => {
-        const clients = await fetchClients();
-        setClients(clients);
-      };
-      getClients();
-    }, []);
+    const getClients = async () => {
+      const clients = await fetchClients();
+      setClients(clients);
+    };
+    getClients();
+  }, []);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setLicense((prev) => ({ ...prev, [name]: value }));
-      };
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          const response = await axios.post(
-            "http://localhost:5000/api/license/add",
-            license,
-            {
-              headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-            }
-          );
-          if (response.data.success) {
-            navigate("/admin-dashboard/clients");
-          }
-        } catch (error) {
-          if (error.response && !error.response.data.success) {
-            alert(error.response.data.error);
-          }
+  const navigate = useNavigate();
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLicense({ ...license, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/license/add",
+        license,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
-      };
+      );
+      if (response.data.success) {
+        navigate("/admin-dashboard/clients");
+      }
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
+  };
 
   return (
     <div className="p-5">
       <div className='flex items-center text-white justify gap-2 h-12 bg-gray-200 px-5 w-full rounded'>
         <NavLink to='/admin-dashboard/contracts' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Contracts</NavLink>
         <NavLink to='/admin-dashboard/add-license' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 rounded-md`}>Licenses</NavLink>
-        <NavLink to='/admin-dashboard/Attendance' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Attendance</NavLink>
-        <NavLink to='/admin-dashboard/Billing' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Billing</NavLink>
-        <NavLink to='/admin-dashboard/Reciepts' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Reciepts</NavLink>
+        <NavLink to='/admin-dashboard/attendance' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Attendance</NavLink>
+        <NavLink to='/admin-dashboard/billing' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Billing</NavLink>
+        <NavLink to='/admin-dashboard/reciepts' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Reciepts</NavLink>
       </div> 
       <div className="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-md shadow-md">
         <form onSubmit={handleSubmit}>
@@ -155,7 +155,7 @@ const AddLicense = () => {
               </label>
               <input
                 type="date"
-                name="LicenseEndOn"
+                name="licenseEndOn"
                 onChange={handleChange}
                 className="mt-1 w-full p-2 border border-gray-300 rounded-md"
                 required
