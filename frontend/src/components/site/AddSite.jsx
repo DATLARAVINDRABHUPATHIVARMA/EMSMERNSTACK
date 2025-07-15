@@ -6,11 +6,6 @@ import { fetchClients } from "../../utils/SiteHelper.jsx";
 const AddSite = () => {
   const [clients, setClients] = useState([]);
   const [site, setSite] = useState({
-    siteName: "",
-    siteClients: "",
-    siteAddress: "",
-    siteDescription: "",
-    siteEmployeeCount: "",
   });
 
   useEffect(() => {

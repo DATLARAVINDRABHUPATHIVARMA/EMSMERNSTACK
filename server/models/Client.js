@@ -10,7 +10,7 @@ const clientSchema = new Schema({
     clientDesignation: { type : String, },
     landlineNo: { type : String, },
     faxNo: { type : String, },
-    companyGst: { type : String, enum: ["36AAVCS6287K1ZA","37AAVCS6287K1Z8"] },
+    companyGst: { type : String, enum: ["36AAVCS6287K1ZA", "37AAVCS6287K1Z8"] },
     companyPan: { type : String, enum: ["AAVCS6287K"]},
     clientServiceStartedOn: { type: Date },
     clientServiceEndOn: { type: Date },
