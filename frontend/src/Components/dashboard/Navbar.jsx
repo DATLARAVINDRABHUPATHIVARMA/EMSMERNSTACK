@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth } from '../../context/authContext.jsx'
 
 const Navbar = () => {
-    const {user} = useAuth()
+    const {user,} = useAuth()
   return (
     <div className='flex items-center text-white justify-between h-12 bg-purple-500 px-5 w-full'>
       <p>Welcome {user.name}</p>
