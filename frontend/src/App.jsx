@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login.jsx";
-import AdminDashboard from "./pages/AdminDashboard.jsx";
-import ManagerDashboard from "./pages/ManagerDashboard.jsx";
-import StaffDashboard from "./pages/StaffDashboard.jsx";
-import EmployeeDashboard from "./pages/EmployeeDashboard.jsx";
+import AdminDashboard from "./Pages/AdminDashboard.jsx";
+import ManagerDashboard from "./Pages/ManagerDashboard.jsx";
+import StaffDashboard from "./Pages/StaffDashboard.jsx";
+import EmployeeDashboard from "./Pages/EmployeeDashboard.jsx";
 import PrivateRoutes from "./utils/PrivateRoutes.jsx";
 import RoleBaseRoutes from "./utils/RoleBaseRoutes.jsx";
 import AdminSummary from "./components/dashboard/AdminSummary.jsx";
@@ -70,10 +70,7 @@ function App() {
         </Route>
         <Route path="/manager-dashboard" element={<ManagerDashboard />}></Route>
         <Route path="/staff-dashboard" element={<StaffDashboard />}></Route>
-        <Route
-          path="/employee-dashboard"
-          element={<EmployeeDashboard />}
-        ></Route>
+        <Route path="/employee-dashboard" element={<EmployeeDashboard />}></Route>
       </Routes>
     </BrowserRouter>
   );
