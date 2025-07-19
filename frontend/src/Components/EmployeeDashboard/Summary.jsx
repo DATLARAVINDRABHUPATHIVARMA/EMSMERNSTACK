@@ -1,7 +1,10 @@
 import React from 'react'
+import { useAuth } from "../Context/AuthContext.jsx";
 import {FaUser} from "react-icons/fa"
 
 const Summary = () => {
+  const {user} = useAuth()
+
   return (
     <div className='rounded flex bg-white'>
       <div className={`text-3xl flex justify-center items-center bg-purple-600 text-white px-4`}>

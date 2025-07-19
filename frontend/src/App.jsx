@@ -28,6 +28,7 @@ import ViewSalary from "./Components/Salary/ViewSalary.jsx";
 import ContractList from "./Components/Contract/ContractList.jsx";
 import AddContract from "./Components/Contract/AddContract.jsx";
 import AddLicense from "./Components/License/AddLicense.jsx";
+import Summary from "../Components/EmployeeDashboard/Summary.jsx";
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
             </RoleBaseRoutes>
           </PrivateRoutes>
         }>
+        <Route index element={<Summary/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

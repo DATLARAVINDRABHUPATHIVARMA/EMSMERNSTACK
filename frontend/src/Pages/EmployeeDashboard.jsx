@@ -1,7 +1,7 @@
-import React from 'react'
-import Sidebar from '../Components/Employee Dashboard/Sidebar.jsx'
+import React from "react";
+import Sidebar from "../Components/EmployeeDashboard/Sidebar.jsx";
 import { Outlet } from "react-router-dom";
-import Navbar from '../components/dashboard/Navbar.jsx';
+import Navbar from "../components/dashboard/Navbar.jsx";
 
 const EmployeeDashboard = () => {
   return (
@@ -12,7 +12,7 @@ const EmployeeDashboard = () => {
         <Outlet />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EmployeeDashboard
+export default EmployeeDashboard;
