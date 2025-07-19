@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from "../Context/AuthContext.jsx";
+import { useAuth } from "../../Context/AuthContext.jsx";
 import {FaUser} from "react-icons/fa"
 
 const Summary = () => {
