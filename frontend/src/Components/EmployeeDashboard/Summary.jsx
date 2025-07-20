@@ -6,7 +6,7 @@ const Summary = () => {
   const {user} = useAuth()
 
   return (
-    <div className='rounded flex bg-white'>
+    <div className='rounded flex bg-white p-6'>
       <div className={`text-3xl flex justify-center items-center bg-purple-600 text-white px-4`}>
         <FaUser/>
       </div>
