@@ -79,6 +79,7 @@ function App() {
           </PrivateRoutes>
         }>
         <Route index element={<Summary/>}></Route>
+        <Route path="/employee-dashboard/profile" element={<Summary/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
