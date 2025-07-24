@@ -8,6 +8,7 @@ import contractRouter from './routes/contract.js'
 import licenseRouter from './routes/license.js'
 import siteRouter from './routes/site.js'
 import salaryRouter from './routes/salary.js'
+import leaveRouter from './routes/leave.js'
 import connectToDatabase from "./db/db.js"
 
 
@@ -24,6 +25,7 @@ app.use("/api/contract", contractRouter)
 app.use("/api/license", licenseRouter)
 app.use("/api/site", siteRouter)
 app.use("/api/salary", salaryRouter)
+app.use("/api/leave", leaveRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is Running on port ${process.env.PORT}`)

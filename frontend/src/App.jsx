@@ -29,6 +29,8 @@ import ContractList from "./Components/Contract/ContractList.jsx";
 import AddContract from "./Components/Contract/AddContract.jsx";
 import AddLicense from "./Components/License/AddLicense.jsx";
 import Summary from "./Components/EmployeeDashboard/Summary.jsx";
+import LeaveList from "./Components/Leave/LeaveList.jsx";
+import AddLeave from "./Components/Leave/AddLeave.jsx";
 
 function App() {
   return (
@@ -80,6 +82,8 @@ function App() {
         }>
         <Route index element={<Summary/>}></Route>
         <Route path="/employee-dashboard/profile/:id" element={<ViewEmployee/>}></Route>
+        <Route path="/employee-dashboard/leaves" element={<LeaveList/>}></Route>
+        <Route path="/employee-dashboard/add-leave" element={<AddLeave/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
