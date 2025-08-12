@@ -15,4 +15,4 @@ const LeaveList = () => {
   )
 }
 
-export default LeaveListit
+export default LeaveList
