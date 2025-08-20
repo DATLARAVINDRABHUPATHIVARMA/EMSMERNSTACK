@@ -6,6 +6,7 @@ import axios from "axios"
 const LeaveList = () => {
   const {user} = useAuth()
   const [leaves, setLeaves] = useState([])
+  let sno = 1;
 
   const fetchLeaves = async () => {
             try {
@@ -35,7 +36,7 @@ const LeaveList = () => {
         <input type="text" placeholder='Search By' className='px-4 py-0.5 border'/>
         <Link to="/employee-dashboard/add-leave" className="px-4 py-1 bg-purple-500 rounded text-white">Add Leave</Link>
       </div>
-      <table className='w-full text-sm text-left text-gray-500'>
+      <table className='w-full text-sm text-left text-gray-500 mt-6'>
         <thead className='text-xs text-gray-700 uppercase bg-gray-50 border border-gray-200'>
           <tr>
             <th className="px-6 py-3">SNO</th>
