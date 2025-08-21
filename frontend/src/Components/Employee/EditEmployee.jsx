@@ -175,6 +175,7 @@ const EditEmployee = () => {
                 <input
                   type="text"
                   name="email"
+                  onChange={handleChange}
                   value={employee.email}
                   className="mt-1 p-2 block w-full border bg-gray-200 border-gray-300 rounded-md"
                 />
