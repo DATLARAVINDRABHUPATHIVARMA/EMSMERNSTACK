@@ -31,6 +31,7 @@ import AddLicense from "./Components/License/AddLicense.jsx";
 import Summary from "./Components/EmployeeDashboard/Summary.jsx";
 import LeaveList from "./Components/Leave/LeaveList.jsx";
 import AddLeave from "./Components/Leave/AddLeave.jsx";
+import Setting from "./Components/EmployeeDashboard/Setting.jsx";
 
 function App() {
   return (
@@ -85,6 +86,7 @@ function App() {
         <Route path="/employee-dashboard/leaves" element={<LeaveList/>}></Route>
         <Route path="/employee-dashboard/add-leave" element={<AddLeave/>}></Route>
         <Route path="/employee-dashboard/salary/:id" element={<ViewSalary/>}></Route>
+        <Route path="/employee-dashboard/setting" element={<Setting/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
