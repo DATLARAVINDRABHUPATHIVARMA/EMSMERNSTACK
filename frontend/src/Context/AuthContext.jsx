@@ -6,7 +6,7 @@ const userContext = createContext();
 
 const authContext = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true) 
 
   useEffect(() => {
     const verifyUser = async () => {
