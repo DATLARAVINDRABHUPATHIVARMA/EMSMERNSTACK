@@ -7,6 +7,7 @@ import { columns, EmployeeButtons } from "../../utils/EmployeeHelper.jsx";
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [employeeLoading, setEmployeeLoading] = useState(false);
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -21,13 +22,24 @@ const EmployeeList = () => {
             _id: employee._id,
             sno: sno++,
             employeeID: employee.employeeID,
-            profileImage: <img width={40} className='rounded-full' src={`http://localhost:5000/${employee.userId.profileImage}`}/>,
+            profileImage: (
+              <img
+                width={40}
+                className="rounded-full"
+                src={`http://localhost:5000/${employee.userId.profileImage}`}
+              />
+            ),
             name: employee.userId.name,
-            dateOfJoining: new Date(employee.dateOfJoining).toLocaleDateString(),
+            aadhaarNumber: employee.aadhaarNumber,
+            personalContact: employee.personalContact,
+            dateOfJoining: new Date(
+              employee.dateOfJoining
+            ).toISOString(),
             designation: employee.designation,
             action: <EmployeeButtons _id={employee._id} />,
           }));
           setEmployees(data);
+          setFilteredEmployees(data);
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {
@@ -41,6 +53,20 @@ const EmployeeList = () => {
     fetchEmployees();
   }, []);
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleFilter = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchTerm(value);
+
+    const records = employees.filter((employee) =>
+     ['employeeID', 'name', 'aadhaarNumber', 'personalContact', 'designation', "dateOfJoining"].some(
+      (key) => employee[key]?.toLowerCase().includes(value)
+    )
+  );
+    setFilteredEmployees(records)
+  };  
+
   return (
     <div className="p-5">
       <div className="text-center">
@@ -49,8 +75,10 @@ const EmployeeList = () => {
       <div className="flex justify-between items-center">
         <input
           type="text"
-          placeholder="Search By Employee ID"
+          placeholder="Search By Employee ID / Name / Aadhaar Number"
           className="px-4 py-0.5 border"
+          value={searchTerm}
+          onChange={handleFilter}
         />
         <Link
           to="/admin-dashboard/add-employee"
@@ -60,8 +88,8 @@ const EmployeeList = () => {
         </Link>
       </div>
       <div className="mt-5">
-              <DataTable columns={columns} data={employees} pagination/>
-            </div>
+        <DataTable columns={columns} data={filteredEmployees} pagination />
+      </div>
     </div>
   );
 };

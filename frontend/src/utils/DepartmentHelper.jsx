@@ -5,20 +5,25 @@ export const columns = [
   {
     name: "S.No",
     selector: (row) => row.sno,
+    width: "58px",
+    center: true
   },
   {
     name: "Department Name",
     selector: (row) => row.departmentName,
-    sortable: true
+    sortable: true,
+    center: true
   },
   {
     name: "Total Employees",
     selector: (row) => row.departmentEmployeeCount,
-    sortable: true
+    sortable: true,
+    center: true
   },
   {
     name: "Action",
     selector: (row) => row.action,
+    center: true
   },
 ];
 
@@ -50,7 +55,9 @@ export const DepartmentButtons = ({ _id, onDepartmentDelete }) => {
 
   return (
     <div className="flex space-x-3">
-      <button className="px-3 py-1 bg-emerald-600 text-white rounded">
+      <button className="px-3 py-1 bg-emerald-600 text-white rounded"
+      onClick={() => navigate(`/admin-dashboard/departments/${_id}`)}
+      >
         View
       </button>
       <button

@@ -45,8 +45,7 @@ const Login = () => {
 
   return (
     <div
-      className="flex flex-col items-center h-screen justify-center bg-gradient-to-b from-purple-500 from-50% 
-to-gray-100 to-50% space-y-6"
+      className="flex flex-col items-center h-screen justify-center bg-gradient-to-b from-purple-500 from-50% to-gray-100 to-50% space-y-6"
     >
       <h2 className="font-oswald text-3xl text-white">
         SEVEN HILLS AND LIV SIGNITY EMPLOYEE MANAGEMENT SYSTEM
@@ -60,7 +59,7 @@ to-gray-100 to-50% space-y-6"
               Email
             </label>
             <input
-              type="email"
+              type="text"
               className="w-full px-3 py-2 border"
               placeholder="Enter Email"
               onChange={(e) => setEmail(e.target.value)}
@@ -82,8 +81,7 @@ to-gray-100 to-50% space-y-6"
               <button
                 type="button"
                 onClick={toggleVisibility}
-                className="absolute inset-y-0 right-0 px-2 py-2 text-grey-500 hover:text-purple-500 
-transition-colors duration-100"
+                className="absolute inset-y-0 right-0 px-2 py-2 text-grey-500 hover:text-purple-500 transition-colors duration-100"
               >
                 {visiblePassword ? (
                   <IoMdEye size={24} />

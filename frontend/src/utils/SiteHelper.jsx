@@ -7,8 +7,13 @@ export const columns = [
     selector: (row) => row.sno,
   },
   {
-    name: "Site Name",
+    name: "Site",
     selector: (row) => row.siteName,
+    sortable: true
+  },
+  {
+    name: "Site Clients",
+    selector: (row) => row.clientName,
     sortable: true
   },
   // {
@@ -24,8 +29,28 @@ export const columns = [
   {
     name: "Action",
     selector: (row) => row.action,
+    center: true
   },
 ];
+
+export const fetchClients = async () => {
+  let clients
+  try {
+    const response = await axios.get("http://localhost:5000/api/client", {
+      headers: {
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+    if(response.data.success){
+      clients = response.data.clients
+    }
+  } catch (error) {
+    if(error.response && !error.response.data.success){
+      alert(error.response.data.error);
+    }
+  }
+  return clients
+}
 
 export const SiteButtons = ({ _id, onSiteDelete }) => {
   const navigate = useNavigate();
@@ -55,12 +80,14 @@ export const SiteButtons = ({ _id, onSiteDelete }) => {
 
   return (
     <div className="flex space-x-3">
-      <button className="px-3 py-1 bg-emerald-600 text-white rounded">
+      <button className="px-3 py-1 bg-emerald-600 text-white rounded"
+      onClick={() => navigate(`/admin-dashboard/sites/${_id}`)}
+      >
         View
       </button>
       <button
         className="px-3 py-1 bg-purple-600 text-white rounded"
-        onClick={() => navigate(`/admin-dashboard/site/${_id}`)}
+        onClick={() => navigate(`/admin-dashboard/sites/edit/${_id}`)}
       >
         Edit
       </button>

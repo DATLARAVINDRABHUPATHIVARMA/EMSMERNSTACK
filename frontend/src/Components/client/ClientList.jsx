@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import DataTable from "react-data-table-component";
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { ClientButtons, columns } from '../../utils/ClientHelper.jsx';
 import axios from 'axios';
 
@@ -30,8 +30,8 @@ const ClientList = () => {
             sno: sno++,
             clientID: client.clientID,
             clientName: client.clientName,
-            clientServices: client.clientServices,
-            clientLocation: client.clientLocation,
+            departmentName: client.clientServices.departmentName,
+            siteName: client.clientLocation.siteName,
             action: (
               <ClientButtons _id={client._id} onClientDelete={onClientDelete}/>
             ),
@@ -51,22 +51,35 @@ const ClientList = () => {
     fetchClients();
   }, [])
 
+  const [searchTerm, setSearchTerm] = useState('');
+
   const filterClients = (e) => {
-    const records = clients.filter((client) => client.clientID.toLowerCase().includes(e.target.value.toLowerCase()))
+    const value = e.target.value.toLowerCase();
+    setSearchTerm(value);
+
+    const records = clients.filter((client) =>
+     ['clientID', 'clientName'].some(
+      (key) => client[key]?.toLowerCase().includes(value)
+    )
+  );
     setFilteredClients(records)
   }
 
   return (
-     <>
-      {clientLoading ? (
-        <div>Loading Clients Table...</div>
-      ) : (
     <div className="p-5">
+      <div className='flex items-center text-white justify gap-2 h-12 bg-gray-200 px-5 w-full rounded'>
+      <NavLink to='/admin-dashboard/contracts' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Contracts</NavLink>
+      <NavLink to='/admin-dashboard/add-license' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Licenses</NavLink>
+      <NavLink to='/admin-dashboard/attendance' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Attendance</NavLink>
+      <NavLink to='/admin-dashboard/billing' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Billing</NavLink>
+      <NavLink to='/admin-dashboard/reciepts' className={({isActive}) => `${isActive ? "bg-blue-500" : " "} px-4 py-1 bg-green-800 rounded-md`}>Reciepts</NavLink>
+    </div>
       <div className="text-center">
         <h3 className="text-2xl font-bold">Manage Clients</h3>
       </div>
       <div className="flex justify-between items-center">
         <input type="text" placeholder="Search By Client ID" className="px-4 py-0.5 border"
+        value={searchTerm}
         onChange={filterClients}
         />
         <Link to="/admin-dashboard/add-client" className="px-4 py-1 bg-purple-500 rounded text-white">
@@ -77,8 +90,6 @@ const ClientList = () => {
         <DataTable columns={columns} data={filteredClients} pagination/>
       </div>
     </div>
-     )}
-    </>
   )
 }
 
