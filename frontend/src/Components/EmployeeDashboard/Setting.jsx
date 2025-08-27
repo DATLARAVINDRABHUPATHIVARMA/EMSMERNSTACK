@@ -54,7 +54,7 @@ const Setting = () => {
             </button>
           </div>
         </div>
-        <div>
+        <div> 
           <label className="text-sm font-medium text-gray-700">New Password</label>
           <div className="relative flex justify-between">
             <input type={visiblePassword ? "text" : "password"} name='newPassword' onChange={handleChange} placeholder='New Password' className='mt-1 p-2 block w-full border border-gray-300 rounded-md' required/>
