@@ -5,7 +5,7 @@ import Navbar from "../components/dashboard/Navbar.jsx";
 import { Outlet } from "react-router-dom";
 
 
-const AdminDashboard = () => {
+const AdminDashboard = () => { 
   const { user } = useAuth();
 
   return (
