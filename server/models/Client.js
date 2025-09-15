@@ -21,7 +21,7 @@ const clientSchema = new Schema({
     clientBillStreet: { type: String, },
     clientBillVillage: { type: String, },
     clientBillMandal: { type: String, },
-    clientBillCity: { type: String, },
+    clientBillCity: { type: String, }, 
     clientBillState: { type: String, },
     clientBillCountry: { type: String, enum: [ "India", "Other" ] },
     clientBillPincode: { type: String, },
