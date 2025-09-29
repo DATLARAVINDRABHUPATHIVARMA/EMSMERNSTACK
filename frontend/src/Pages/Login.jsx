@@ -15,7 +15,7 @@ const Login = () => {
   const toggleVisibility = () => setVisiblePassword(!visiblePassword);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     try {
       const response = await axios.post(
         "http://localhost:5000/api/auth/login",
