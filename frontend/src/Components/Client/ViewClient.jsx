@@ -38,14 +38,14 @@ const ViewClient = () => {
             Client Details
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-          <div className="flex items-center  justify space-x-3 mb-2">
-            <p className="text-lg font-bold">Client ID:</p>
-            <p className="font-medium">{client.clientID}</p>
-          </div>
-          <div className="flex items-center justify space-x-3 mb-2">
-            <p className="text-lg font-bold">Client:</p>
-            <p className="font-medium">{client.clientName}</p>
-          </div>
+            <div className="flex items-center  justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Client ID:</p>
+              <p className="font-medium">{client.clientID}</p>
+            </div>
+            <div className="flex items-center justify space-x-3 mb-2">
+              <p className="text-lg font-bold">Client:</p>
+              <p className="font-medium">{client.clientName}</p>
+            </div>
             <div className="flex items-center  justify space-x-3 mb-2">
               <p className="text-lg font-bold">Contact Person:</p>
               <p className="font-medium">{client.clientContactPerson}</p>
@@ -64,7 +64,9 @@ const ViewClient = () => {
             </div>
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Starting Date:</p>
-              <p className="font-medium">{new Date(client.clientServiceStartedOn).toDateString()}</p>
+              <p className="font-medium">
+                {new Date(client.clientServiceStartedOn).toDateString()}
+              </p>
             </div>
             <div className="flex items-center justify space-x-3 mb-2">
               <p className="text-lg font-bold">Client Location:</p>
@@ -87,11 +89,45 @@ const ViewClient = () => {
           </div>
           <div className="flex items-center justify space-x-3 mb-2">
             <p className="text-lg font-bold">Billing Address:</p>
-            <p className="font-medium">{ client.clientBillHNo + ", " + client.clientBillStreet + ", " + client.clientBillVillage + ", " + client.clientBillMandal + ", " + client.clientBillCity + ", " + client.clientBillState + ", " + client.clientBillCountry + " - " + client.clientBillPincode + "." }</p>
+            <p className="font-medium">
+              {client.clientBillHNo +
+                ", " +
+                client.clientBillStreet +
+                ", " +
+                client.clientBillVillage +
+                ", " +
+                client.clientBillMandal +
+                ", " +
+                client.clientBillCity +
+                ", " +
+                client.clientBillState +
+                ", " +
+                client.clientBillCountry +
+                " - " +
+                client.clientBillPincode +
+                "."}
+            </p>
           </div>
           <div className="flex items-center justify space-x-3 mb-2">
             <p className="text-lg font-bold">Shipping Address:</p>
-            <p className="font-medium">{ client.clientShipHNo + ", " + client.clientShipStreet + ", " + client.clientShipVillage + ", " + client.clientShipMandal + ", " + client.clientShipCity + ", " + client.clientShipState + ", " + client.clientShipCountry + " - " + client.clientShipPincode + "." }</p>
+            <p className="font-medium">
+              {client.clientShipHNo +
+                ", " +
+                client.clientShipStreet +
+                ", " +
+                client.clientShipVillage +
+                ", " +
+                client.clientShipMandal +
+                ", " +
+                client.clientShipCity +
+                ", " +
+                client.clientShipState +
+                ", " +
+                client.clientShipCountry +
+                " - " +
+                client.clientShipPincode +
+                "."}
+            </p>
           </div>
           <div className="flex items-center justify space-x-3 mb-2">
             <p className="text-lg font-bold">Client Description:</p>
