@@ -18,7 +18,7 @@ const authContext = ({ children }) => {
             {
               headers: {
                 Authorization: `Bearer ${token}`,
-              },
+              }, 
             }
           );
           console.log(response)

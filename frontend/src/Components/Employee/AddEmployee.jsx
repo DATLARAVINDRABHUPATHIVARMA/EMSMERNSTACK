@@ -57,7 +57,7 @@ const AddEmployee = () => {
     const formDataObj = new FormData();
     Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key]);
-    });
+    });``
 
     try {
       const response = await axios.post(
