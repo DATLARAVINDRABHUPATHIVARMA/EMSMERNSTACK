@@ -6,7 +6,7 @@ const userContext = createContext();
 
 const authContext = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true) 
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -14,11 +14,11 @@ const authContext = ({ children }) => {
         const token = localStorage.getItem("token");
         if (token) {
           const response = await axios.get(
-            "http://localhost:5000/api/auth/verify", 
+            "http://localhost:5000/api/auth/verify",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
-              }, 
+              },
             }
           );
           console.log(response)
@@ -35,7 +35,7 @@ const authContext = ({ children }) => {
           setUser(null);
         }
       } finally {
-          setLoading(false)
+        setLoading(false)
       }
     };
     verifyUser();
