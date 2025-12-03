@@ -87,7 +87,7 @@ function App() {
         <Route path="/employee-dashboard/add-leave" element={<AddLeave/>}></Route>
         <Route path="/employee-dashboard/salary/:id" element={<ViewSalary/>}></Route>
         <Route path="/employee-dashboard/settings" element={<Setting/>}></Route>
-        </Route>
+        </Route> 
       </Routes>
     </BrowserRouter>
   );
